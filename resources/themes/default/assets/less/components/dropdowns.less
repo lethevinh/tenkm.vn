@@ -1,0 +1,35 @@
+/**
+ * Dropdowns
+ */
+
+@dropdown-link-hover-bg: transparent;
+@dropdown-link-active-bg: transparent;
+@dropdown-link-color: @brand-accent;
+@dropdown-link-active-color: @brand-primary;
+@dropdown-link-hover-color: @brand-primary;
+
+
+.dropdown {
+	.dropdown-toggle {
+		background-color: transparent;
+		border: none;
+		text-transform: uppercase;
+		font-size: (@font-size-base - 2px);
+	}
+	.dropdown-menu {
+		min-width: 50px;
+		padding: 0;
+		> li {
+			border-bottom: 1px solid rgba(169, 169, 169, 0.4);
+			> a {
+				text-transform: uppercase;
+				font-family: @headings-font-family;
+                font-weight: 700;
+                padding: 12.5px 20px; 
+                letter-spacing: 0.05em;
+                font-size: (@font-size-base - 3px);
+				transition: color 0.3s;
+			}
+		}
+	}
+}

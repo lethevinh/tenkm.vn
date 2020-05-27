@@ -1,0 +1,49 @@
+/**
+ * Tabs
+ */
+
+@nav-tabs-link-hover-border-color: transparent;
+@nav-tabs-active-link-hover-border-color: transparent;
+@nav-tabs-active-link-hover-bg: transparent;
+
+.nav-tabs {
+	border-bottom: 1px dashed rgba(169, 169, 169, 0.4);
+	> li {
+		margin: 0 !important;
+		> a {
+			font-family: @headings-font-family;
+			letter-spacing: 0.5em;
+			text-transform: uppercase;
+			border: none;
+			border-bottom: 5px solid transparent;
+			font-size: (@font-size-base - 2px);
+			color: @brand-accent;
+			transition: color 0.3s;
+			margin: 0 !important;
+			&:hover, &:active, &:focus, &:active:focus, &:active:hover {
+				color: @brand-primary;
+				border-top: none;
+				border-left: none;
+				border-right: none;
+				border-bottom: 5px solid transparent;
+				background-color: transparent;
+			}
+		}
+	}
+	> li.active {
+		> a {
+			color: @brand-primary;
+			border-bottom: 5px solid @brand-primary;
+			border-top: none;
+			border-left: none;
+			border-right: none;
+			&:hover, &:active, &:focus, &:active:focus, &:active:hover {
+				color: @brand-primary;
+				border-bottom: 5px solid @brand-primary;
+				border-top: none;
+				border-left: none;
+				border-right: none;
+			}
+		}
+	}
+}

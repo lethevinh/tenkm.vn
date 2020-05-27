@@ -1,0 +1,90 @@
+<?php
+
+namespace App\Models;
+
+use App\Traits\Cacheable;
+use App\Traits\Categorizable;
+use App\Traits\Commentable;
+use App\Traits\Locationable;
+use App\Traits\Orderable;
+use App\Traits\Ownable;
+use App\Traits\Reactable;
+use App\Traits\Taggable;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
+
+
+/**
+ * @property mixed title_lb
+ */
+class Product extends Model implements Searchable
+{
+    use Sluggable, Orderable, Ownable, Commentable, Cacheable, Categorizable, Taggable, Reactable, Locationable;
+
+    protected $table = 'products';
+
+    protected $fillable = [
+        'title_lb', 'slug_lb', 'image_lb','status_sl', 'gallery_lb',
+        'description_lb', 'content_lb', 'review_nb', 'view_nb', 'comment_nb',
+        'address_lb', 'location_lb',
+        'price_fl', 'price_sale_fl','gallery_lb',
+        'published_at', 'validated_at', 'updated_by', 'created_by',
+    ];
+
+    public function sluggable(): array
+    {
+        return [
+            'slug_lb' => [
+                'source' => 'title_lb'
+            ]
+        ];
+    }
+
+    public function makeCache($params)
+    {
+       return $this;
+    }
+
+    public function getSearchResult(): SearchResult
+    {
+        $url = $this->getLinkAttribute();
+        return new SearchResult(
+            $this,
+            $this->title_lb,
+            $url
+        );
+    }
+
+    /**
+     *
+     * @return mixed
+     */
+    public function getGalleriesAttribute() {
+        $disk = Storage::disk(config('admin.upload.disk'));
+        $thumbnail = $this->attributes['gallery_lb'];
+        if (!empty($thumbnail) && !URL::isValidUrl($thumbnail) && $disk->exists($thumbnail)) {
+            return $disk->url($thumbnail);
+        }
+        return $thumbnail;
+    }
+
+
+    public function getLinkAttribute()
+    {
+        if (isset($this->attributes['slug_lb'])) {
+            return route( 'product.show', ['slug' => $this->attributes['slug_lb']]);
+        }
+        return '';
+    }
+
+    public function amenities(): MorphToMany
+    {
+        return $this->morphToMany(Amenity::class, 'amenitable', 'amenitable')
+            ->withTimestamps();
+    }
+
+}

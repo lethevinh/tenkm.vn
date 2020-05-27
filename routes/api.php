@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return auth()->guard('sanctum')->user();
+});
+// Course Api
+Route::post('/login', "UserController@loginApi");
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('user/profile', function () {
+        // Uses first & second Middleware
+    });
+    Route::get('/logout', "UserController@logoutApi");
 });

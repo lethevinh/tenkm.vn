@@ -14,6 +14,7 @@ return [
     */
 
     'paths' => [
+        resource_path('themes/' . config('site.theme') . '/template'),
         resource_path('views'),
     ],
 
