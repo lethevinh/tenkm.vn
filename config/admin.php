@@ -211,7 +211,7 @@ return [
     'upload' => [
 
         // Disk in `config/filesystem.php`.
-        'disk' => 'public',
+        'disk' => 'admin',
 
         // Image and file upload path under the disk above.
         'directory' => [
@@ -316,16 +316,6 @@ return [
         // bg-primary, bg-info, bg-warning, bg-success, bg-danger, bg-dark
         'navbar_color' => '',
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Login page background image
-    |--------------------------------------------------------------------------
-    |
-    | This value is used to set the background image of login page.
-    |
-    */
-    'login_background_image' => '',
 
     /*
     |--------------------------------------------------------------------------

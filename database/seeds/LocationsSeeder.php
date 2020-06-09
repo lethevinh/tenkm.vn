@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Database\Seeder;
 use \Illuminate\Support\Facades\Storage;
 use App\Models\Location;
@@ -9,16 +10,22 @@ class LocationsSeeder extends Seeder
      * Run the database seeds.
      *
      * @return void
+     * @throws FileNotFoundException
      */
     public function run()
     {
        $locations = json_decode(Storage::disk('resource')->get('json/locations.json'), true);
+       $provincials = [];
        foreach ($locations as $key => $location) {
            $provincial = $this->createLocation($location);
            if ($provincial) {
-               foreach ($location['district'] as $district) {
-                   $this->createLocation($district, $provincial,'district');
-               }
+               $provincials[$key] = $provincial;
+           }
+       }
+       foreach ($locations as $key => $location) {
+           $provincial = $provincials[$key];
+           foreach ($location['district'] as $district) {
+               $this->createLocation($district, $provincial,'district');
            }
        }
     }

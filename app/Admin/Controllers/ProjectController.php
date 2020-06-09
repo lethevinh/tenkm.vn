@@ -3,14 +3,13 @@
 namespace App\Admin\Controllers;
 
 use App\Admin\Forms\ToolViewLive;
-use App\Admin\Repositories\Product;
+use App\Admin\Repositories\Project;
 use App\Models\Amenity;
-use App\Models\Location;
 use App\Models\ProductCategory;
 use App\Models\Category;
-use App\Admin\Repositories\Post;
 use App\Models\ProductTag;
-use App\Models\Tag;
+use App\Models\ProjectCategory;
+use App\Models\ProjectTag;
 use Dcat\Admin\Auth\Permission;
 use App\Admin\Forms\Form;
 use Dcat\Admin\Form\NestedForm;
@@ -24,12 +23,12 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 
-class ProductController extends AdminController
+class ProjectController extends AdminController
 {
 
     protected function getRepositoryClassName(): string
     {
-        return Product::class;
+        return Project::class;
     }
 
     protected function title()
@@ -155,17 +154,22 @@ class ProductController extends AdminController
                 });
                 $form->select('categories', __('site.category'))
                     ->options(function () {
-                        return ProductCategory::whereNotNull('parent_id')->get()->pluck('title_lb', 'id');
+                        return ProjectCategory::all()->pluck('title_lb', 'id');
                     })
                     ->customFormat(function ($v) {
                         if (!$v) return '';
                         return array_column($v, 'id')[0];
                     });
                 $form->tags('tags', __('site.tag'))->options(function () {
-                    return ProductTag::all()->pluck('title_lb', 'id');
+                    return ProjectTag::all()->pluck('title_lb', 'id');
                 })->customFormat(function ($v) {
                     return array_column($v, 'title_lb');
                 });
+                $form->checkbox('amenities',  __('site.amenity'))
+                    ->options(Amenity::ofType('amenity')->get()->pluck('title_lb', 'id'))
+                    ->customFormat(function ($v) {
+                        return array_column($v, 'id');
+                    });
             })
             ->tab(__('site.info'), function (Form $form) {
                 $form->currency('price_fl', __('site.price'))->symbol('VND')
@@ -182,38 +186,11 @@ class ProductController extends AdminController
                 $form->number('bedroom_nb', __('site.bedroom'));
                 $form->number('bathroom_nb', __('site.bathroom'));
                 $form->number('area_nb', __('site.area'));
-                $form->radio('amenities',  __('site.direction'))
-                    ->setElementName('amenities[]')
-                    ->options(Amenity::ofType('direction')->get()->pluck('title_lb', 'id'))
-                    ->customFormat(function ($v) {
-                        $v = array_column(array_filter($v, function ($item) {
-                            return $item['type_lb'] == 'direction';
-                        }), 'id');
-                        if (!$v) return '';
-                        return $v[0];
-                    });
             })
             ->tab(__('site.media'), function (Form $form) {
                 $form->media('image_lb', __('admin.avatar'))->image();
                 $form->media('video_lb', __('admin.video'))->video();
                 $form->media('gallery_lb', __('site.gallery'))->image()->multiple();
-            })
-            ->tab(__('site.amenity'), function (Form $form) {
-                $form->checkbox('amenities',  __('site.amenity'))
-                    ->options(Amenity::ofType('amenity')->get()->pluck('title_lb', 'id'))
-                    ->customFormat(function ($v) {
-                        return array_column($v, 'id');
-                    });
-                $form->checkbox('amenities',  __('site.device'))
-                    ->options(Amenity::ofType('device')->get()->pluck('title_lb', 'id'))
-                    ->customFormat(function ($v) {
-                        return array_column($v, 'id');
-                    });
-                $form->checkbox('amenities', __('site.furniture'))
-                    ->options(Amenity::ofType('furniture')->get()->pluck('title_lb', 'id'))
-                    ->customFormat(function ($v) {
-                        return array_column($v, 'id');
-                    });
             })
             ->tab(__('site.location'), function (Form $form) {
                 $form->address('address');

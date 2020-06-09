@@ -20,8 +20,11 @@ class ViPackageBlogSeeder extends Seeder
         $this->call(\ReactionsSeeder::class);
         $this->call(\PostsSeeder::class);
         $this->call(\ProductCategorySeeder::class);
+        $this->call(\ProjectCategorySeeder::class);
+        $this->call(\AmenitySeeder::class);
         $this->call(\ProductSeeder::class);
+        $this->call(\ProjectSeeder::class);
         $this->call(\UsersSeeder::class);
-        $this->call(\LocationsSeeder::class);
+//        $this->call(\LocationsSeeder::class);
     }
 }

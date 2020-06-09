@@ -16,7 +16,7 @@ class Amenity extends Model
      * @var array
      */
     protected $fillable = [
-        'title_lb', 'description_lb', 'slug_lb'
+        'title_lb', 'description_lb', 'slug_lb', 'type_lb'
     ];
 
     /**

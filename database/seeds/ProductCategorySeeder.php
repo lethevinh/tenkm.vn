@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Database\Seeder;
 use \Illuminate\Support\Facades\Storage;
 use \App\Models\ProductCategory;
@@ -10,6 +11,7 @@ class ProductCategorySeeder extends Seeder
      * Run the database seeds.
      *
      * @return void
+     * @throws FileNotFoundException
      */
     public function run()
     {

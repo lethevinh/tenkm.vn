@@ -2,8 +2,10 @@
 
 
 namespace App\Traits;
+use App\Models\Address;
 use App\Models\Location;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 

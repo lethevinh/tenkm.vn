@@ -22,19 +22,25 @@ use Spatie\Searchable\SearchResult;
 /**
  * @property mixed title_lb
  */
-class Product extends Model implements Searchable
+class Project extends Model implements Searchable
 {
     use Sluggable, Orderable, Ownable, Commentable, Cacheable, Categorizable, Taggable, Reactable,
         Locationable, Amenitable;
 
-    protected $table = 'products';
+    protected $table = 'projects';
 
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'title_lb', 'slug_lb', 'image_lb', 'status_sl', 'gallery_lb',
-        'description_lb', 'content_lb', 'review_nb', 'view_nb', 'comment_nb',
+        'description_lb', 'content_lb', 'document_lb', 'area_lb', 'floorplan_lb',
+        'review_nb', 'view_nb', 'comment_nb',
         'price_fl', 'price_sale_fl',
-        'bedroom_nb', 'bathroom_nb', 'area_nb',
-        'published_at', 'validated_at', 'updated_by', 'created_by',
+        'bedroom_nb', 'bathroom_nb', 'area_nb','streetview_lb', 'shop_nb', 'department_nb', 'floor_nb',
+        'block_nb',
+        'type_lb',
+        'published_at', 'validated_at', 'updated_by', 'created_by', 'opened_at', 'stopped_at'
     ];
 
     public function sluggable(): array
@@ -48,7 +54,7 @@ class Product extends Model implements Searchable
 
     public function makeCache($params)
     {
-       return $this;
+        return $this;
     }
 
     public function getSearchResult(): SearchResult
@@ -73,7 +79,6 @@ class Product extends Model implements Searchable
         }
         return $thumbnail;
     }
-
 
     public function getLinkAttribute()
     {

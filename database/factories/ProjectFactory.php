@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 use \Dcat\Admin\Models\Administrator;
 use Illuminate\Database\Eloquent\Factory;
 
-$factory->define(\App\Models\Product::class, function (Faker $faker) {
+$factory->define(\App\Models\Project::class, function (Faker $faker) {
     $status = $faker->randomElement(array_keys(Post::STATUS));
     $admin = Administrator::first();
     $publishedAt = $faker->dateTimeBetween('-30 days', '-1 days');
@@ -15,7 +15,7 @@ $factory->define(\App\Models\Product::class, function (Faker $faker) {
     $image = '/assets/img/dummy_blog_img-' . $faker->randomElement(['1', '2', '3']) . '.jpg';
     $galleries = implode(',', [url($image),url($image),url($image)]);
     return [
-        'title_lb' => 'Product ' . $faker->sentence(8),
+        'title_lb' => 'Project ' . $faker->sentence(8),
         'image_lb' => url($image),
         'gallery_lb' => $galleries,
         'description_lb' => $faker->sentence(50),

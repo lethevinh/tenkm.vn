@@ -16,8 +16,10 @@ class CreateAmenitiesTable extends Migration
         Schema::create('amenities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title_lb');
+            $table->string('type_lb')->default('amenity');
             $table->text('description_lb')->nullable();
             $table->string('slug_lb')->unique();
+            $table->unique(['slug_lb', 'type_lb'], 'amenities_slugs_type_unique');
             $table->timestamps();
         });
         if (!Schema::hasTable('amenitable')) {

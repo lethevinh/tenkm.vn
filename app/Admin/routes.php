@@ -21,6 +21,7 @@ Route::group([
     $router->resource('users', 'UserController');
     $router->resource('posts', 'PostController');
     $router->resource('products', 'ProductController');
+    $router->resource('projects', 'ProjectController');
     $router->resource('pages', 'PageController');
     $router->resource('partners', 'PartnerController');
     $router->resource('events', 'EventController');
@@ -111,6 +112,12 @@ Route::group([
         return Location::where('parent_id', $q)
             ->where('type_lb', '<>', 'project')
             ->where('type_lb', '<>', 'street')
+            ->get(['id', DB::raw("CONCAT(prefix_lb,' ', title_lb) as text")]);
+    });
+    $router->get('/api/locations/street', function (){
+        $q = request()->get('q');
+        return Location::where('parent_id', $q)
+            ->where('type_lb', 'street')
             ->get(['id', DB::raw("CONCAT(prefix_lb,' ', title_lb) as text")]);
     });
 });

@@ -6,7 +6,8 @@ use Closure;
 use Illuminate\Http\Request;
 
 /**
- * @method media(string $string, array|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Translation\Translator|string|null $__)
+ * @method Address address(string $column)
+ * @method Media  media(string $column, string $label = '')
  */
 class Form extends \Dcat\Admin\Form
 {

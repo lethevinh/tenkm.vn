@@ -41,13 +41,33 @@ class CreateLocationsTable extends Migration
                 $table->unsignedInteger('location_id');
                 $table->nullableMorphs('locationable');
                 $table->unique(['location_id', 'locationable_id', 'locationable_type'], 'locationable_ids_type_unique');
-                $table->foreign('location_id')->references('id')->on('categories')
+                $table->foreign('location_id')->references('id')->on('locations')
                     ->onDelete('cascade')->onUpdate('cascade');
                 $table->index('locationable_type', 'locationable_id');
                 $table->timestamps();
             });
         }
-
+        if (!Schema::hasTable('address')) {
+            Schema::create('address', function (Blueprint $table) {
+                $table->increments('id');
+                $table->unsignedInteger('provincial_id');
+                $table->foreign('provincial_id')->references('id')->on('locations')
+                    ->onDelete('cascade')->onUpdate('cascade');
+                $table->unsignedInteger('district_id')->nullable();
+                $table->foreign('district_id')->references('id')->on('locations')
+                    ->onDelete('cascade')->onUpdate('cascade');
+                $table->unsignedInteger('ward_id')->nullable();
+                $table->foreign('ward_id')->references('id')->on('locations')
+                    ->onDelete('cascade')->onUpdate('cascade');
+                $table->unsignedInteger('street_id')->nullable();
+                $table->foreign('street_id')->references('id')->on('locations')
+                    ->onDelete('cascade')->onUpdate('cascade');
+                $table->unsignedInteger('postal_code_nb')->nullable();
+                $table->text('address_lb')->nullable();
+                $table->text('location_lb')->nullable();
+                $table->timestamps();
+            });
+        }
     }
 
     /**
@@ -59,5 +79,6 @@ class CreateLocationsTable extends Migration
     {
         Schema::dropIfExists('locations');
         Schema::dropIfExists('locationable');
+        Schema::dropIfExists('address');
     }
 }
