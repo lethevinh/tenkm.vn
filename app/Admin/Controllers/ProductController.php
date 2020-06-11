@@ -196,6 +196,7 @@ class ProductController extends AdminController
             ->tab(__('site.media'), function (Form $form) {
                 $form->media('image_lb', __('admin.avatar'))->image();
                 $form->media('video_lb', __('admin.video'))->video();
+                $form->media('floorplan_lb', __('site.floorplan'))->image();
                 $form->media('gallery_lb', __('site.gallery'))->image()->multiple();
             })
             ->tab(__('site.amenity'), function (Form $form) {

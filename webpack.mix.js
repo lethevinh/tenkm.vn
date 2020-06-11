@@ -11,9 +11,9 @@ const WebpackShellPlugin = require('webpack-shell-plugin');
  |
  */
 const fs = require('fs');
-let deleteFolderRecursive = function(path) {
+let deleteFolderRecursive = function (path) {
     if (fs.existsSync(path)) {
-        fs.readdirSync(path).forEach(function(file, index) {
+        fs.readdirSync(path).forEach(function (file, index) {
             var curPath = path + "/" + file;
             if (fs.lstatSync(curPath).isDirectory()) { // recurse
                 deleteFolderRecursive(curPath);
@@ -31,7 +31,7 @@ deleteFolderRecursive('./public/js');
 mix.webpackConfig({
     plugins:
         [
-            new WebpackShellPlugin({onBuildStart:['php artisan lang:js'], onBuildEnd:[]})
+            new WebpackShellPlugin({onBuildStart: ['php artisan lang:js'], onBuildEnd: []})
         ]
 });
 
@@ -53,55 +53,20 @@ mix.copy('vendor/ckfinder/ckfinder-laravel-package/public/ckfinder', 'public/plu
 mix.copy('vendor/ckfinder/ckfinder-laravel-package/public/ckfinder', 'public/js/ckfinder');
 mix.copy('node_modules/icheck/', 'public/plugins/icheck');
 //----end admin------
-// videojs
-mix.js([
-    'resources/themes/default/js/edureal.js',
-    'resources/themes/default/js/user.js',
-    'resources/themes/default/assets/js/theme.js',
-], 'public/js/')
-    .extract(['jquery', 'bootstrap', 'jquery-countdown','toastr', 'aos', 'owl.carousel','sweetalert2', 'jquery-countto', 'lightbox2', 'axios'], 'js/vendor');
+// theme
+let theme = 'realdeal';
 
 mix.styles([
-    'node_modules/font-awesome/css/font-awesome.min.css',
-    'node_modules/@housfy/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css',
-    'node_modules/bootstrap/dist/css/bootstrap.css',
-    'node_modules/video.js/dist/video-js.min.css',
-    'node_modules/toastr/build/toastr.min.css',
-    'node_modules/sweetalert2/dist/sweetalert2.min.css',
-    'node_modules/videojs-playlist-ui/dist/videojs-playlist-ui.css',
-    'resources/themes/default/assets/css/edureal-skin-player.css',
-    'resources/themes/default/assets/css/theme.css',
-    'resources/themes/default/assets/css/custom.css'
-], 'public/css/edureal.css');
+    'resources/themes/realdeal/css/vendor.css',
+    'resources/themes/realdeal/css/style.css',
+    'resources/themes/realdeal/css/responsive.css',
+    'resources/themes/realdeal/css/custom.css'
+], 'public/css/theme.css');
 
-mix.js([
-    'resources/themes/default/js/app.js'
-], 'public/js/app.js')
-    // .copy('resources/themes/default/assets/css/theme.css', 'public/css/theme.css')
-    // .copy('resources/themes/default/assets/css/custom.css', 'public/css/custom.css')
-    .copy('resources/themes/default/assets/plugins/lightbox/dist/css/lightbox.css', 'public/css/lightbox.css')
-    .copy('resources/themes/default/assets/plugins/ionicons/css/ionicons.min.css', 'public/css/ionicons.min.css')
-    .copy('resources/themes/default/assets/plugins/owl-carousel/dist/assets/owl.carousel.min.css', 'public/css/owl.carousel.min.css')
-    .copy('resources/themes/default/assets/plugins/owl-carousel/dist/assets/owl.theme.default.min.css', 'public/css/owl.theme.default.min.css')
-    .copy('resources/themes/default/assets/plugins/aos-master/dist/aos.css', 'public/css/aos.css')
-
-    .copy('resources/themes/default/assets/js/theme.js', 'public/js/theme.js')
-    .copy('resources/themes/default/assets/js/google_maps.js', 'public/js/google_maps.js')
-    .copyDirectory('resources/themes/default/assets/plugins', 'public/plugins')
-    .copyDirectory('resources/themes/default/assets/bootstrap', 'public/plugins/bootstrap')
-    .copyDirectory('resources/themes/default/assets/js', 'public/js')
-    // .copyDirectory('resources/themes/default/assets/css', 'public/css')
-    .copyDirectory('resources/themes/default/assets/docs', 'public/docs')
-    .copyDirectory('node_modules/font-awesome/fonts', 'public/fonts')
-    .copyDirectory('node_modules/@housfy/x-editable/test/libs/bootstrap300/fonts', 'public/fonts')
-    .copyDirectory('node_modules/@housfy/x-editable/dist/bootstrap3-editable/img', 'public/img')
-    .copyDirectory('resources/themes/default/assets/img', 'public/assets/img')
-    .copyDirectory('resources/themes/default/assets/img', 'public/img')
-    .copyDirectory('resources/themes/default/assets/plugins/lightbox/dist/images', 'public/images')
-    .copyDirectory('resources/themes/default/assets/video', 'public/assets/video')
-    .copyDirectory('resources/themes/default/assets/ico', 'public/assets/ico')
-    .copyDirectory('resources/themes/default/assets/plugins/ionicons/fonts', 'public/fonts')
-
+mix.copy('resources/themes/realdeal/js/vendor.js', 'public/js/vendor.js')
+    .copy('resources/themes/realdeal/js/theme.js', 'public/js/theme.js')
+    .copyDirectory('resources/themes/realdeal/img', 'public/images')
+    .copyDirectory('resources/themes/realdeal/fonts', 'public/fonts')
     .autoload({
         jquery: ['$', 'window.jQuery', 'jQuery']
     })

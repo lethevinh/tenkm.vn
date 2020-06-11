@@ -48,13 +48,13 @@ class MenusSeeder extends Seeder
             ]);
             $site->addField([
                 'name_lb'=> 'theme',
-                'default_lb' => 'default',
+                'default_lb' => config('site.theme'),
                 'label_lb' => 'Theme Site',
                 'type_lb' => 'text'
             ]);
             $site->setMeta([
                 'key_lb' => 'theme',
-                'value_lb' => 'default'
+                'value_lb' => config('site.theme')
             ]);
             $site->addField([
                 'name_lb'=> 'logo',

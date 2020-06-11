@@ -33,7 +33,7 @@ class Product extends Model implements Searchable
         'title_lb', 'slug_lb', 'image_lb', 'status_sl', 'gallery_lb',
         'description_lb', 'content_lb', 'review_nb', 'view_nb', 'comment_nb',
         'price_fl', 'price_sale_fl',
-        'bedroom_nb', 'bathroom_nb', 'area_nb',
+        'bedroom_nb', 'bathroom_nb', 'area_nb','floorplan_lb',
         'published_at', 'validated_at', 'updated_by', 'created_by',
     ];
 
@@ -67,11 +67,17 @@ class Product extends Model implements Searchable
      */
     public function getGalleriesAttribute() {
         $disk = Storage::disk(config('admin.upload.disk'));
-        $thumbnail = $this->attributes['gallery_lb'];
-        if (!empty($thumbnail) && !URL::isValidUrl($thumbnail) && $disk->exists($thumbnail)) {
-            return $disk->url($thumbnail);
+        $galleries = [];
+        $images = explode(',', $this->attributes['gallery_lb']);
+        foreach ($images as $image)
+        {
+            if (!empty($image) && !URL::isValidUrl($image) && $disk->exists($image)) {
+                $galleries[] = $disk->url($image);
+            }else {
+                $galleries[] = $image;
+            }
         }
-        return $thumbnail;
+        return $galleries;
     }
 
 

@@ -1,27 +1,28 @@
 {
-  "_from": "icheck@^1.0.2",
+  "_from": "icheck",
   "_id": "icheck@1.0.2",
   "_inBundle": false,
   "_integrity": "sha1-BtCNo9R65EjBU7Jjm4bprX/fcSg=",
   "_location": "/icheck",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "tag",
     "registry": true,
-    "raw": "icheck@^1.0.2",
+    "raw": "icheck",
     "name": "icheck",
     "escapedName": "icheck",
-    "rawSpec": "^1.0.2",
+    "rawSpec": "",
     "saveSpec": null,
-    "fetchSpec": "^1.0.2"
+    "fetchSpec": "latest"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/icheck/-/icheck-1.0.2.tgz",
   "_shasum": "06d08da3d47ae448c153b2639b86e9ad7fdf7128",
-  "_spec": "icheck@^1.0.2",
-  "_where": "/Volumes/DATA/Work/www/Project/edureal.online/test/site_dcat",
+  "_spec": "icheck",
+  "_where": "/Volumes/DATA/Work/www/OSA/vi-site/blog",
   "author": {
     "name": "Damir Sultanov",
     "email": "info@fronteed.com",

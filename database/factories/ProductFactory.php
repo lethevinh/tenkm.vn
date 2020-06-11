@@ -12,8 +12,12 @@ $factory->define(\App\Models\Product::class, function (Faker $faker) {
     $admin = Administrator::first();
     $publishedAt = $faker->dateTimeBetween('-30 days', '-1 days');
     $validatedAt = $faker->dateTimeBetween('+100 days', '+300 days');
-    $image = '/assets/img/dummy_blog_img-' . $faker->randomElement(['1', '2', '3']) . '.jpg';
-    $galleries = implode(',', [url($image),url($image),url($image)]);
+    $image = '/images/feature/' . $faker->randomElement(['1', '2', '3', '4' ,'5', '6', '7']) . '.png';
+    $image1 = '/images/feature/' . $faker->randomElement(['1', '2', '3', '4' ,'5', '6', '7']) . '.png';
+    $image2 = '/images/feature/' . $faker->randomElement(['1', '2', '3', '4' ,'5', '6', '7']) . '.png';
+    $image3 = '/images/feature/' . $faker->randomElement(['1', '2', '3', '4' ,'5', '6', '7']) . '.png';
+    $image4 = '/images/feature/' . $faker->randomElement(['1', '2', '3', '4' ,'5', '6', '7']) . '.png';
+    $galleries = implode(',', [url($image1),url($image2),url($image3),url($image4)]);
     return [
         'title_lb' => 'Product ' . $faker->sentence(8),
         'image_lb' => url($image),
@@ -23,6 +27,9 @@ $factory->define(\App\Models\Product::class, function (Faker $faker) {
         'status_sl' => $status,
         'price_fl' => $faker->randomFloat(100000000, 500000),
         'price_sale_fl' => $faker->randomFloat(1000000, 50000),
+        'bedroom_nb' => $faker->randomFloat(2, 5),
+        'bathroom_nb' => $faker->randomFloat(2, 5),
+        'area_nb' => $faker->randomFloat(100, 500),
         'updated_by' => $admin->id,
         'created_by' => $admin->id,
         'validated_at' => $validatedAt,

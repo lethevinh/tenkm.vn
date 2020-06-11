@@ -22,7 +22,7 @@ return [
             'page' => 'site-pages-',
             'site' => 'site-pages-site'
         ],
-        'enable' => true,
+        'enable' => false,
         'store'  => 'file'
     ]
 ];

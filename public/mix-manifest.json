@@ -1,20 +1,13 @@
 {
-    "/js/app.js": "/js/app.js?id=1556930c5514a3d89ded",
+    "/js/app.js": "/js/app.js?id=d26a57f064a96ad9fa6a",
     "/css/vi-admin.css": "/css/vi-admin.css?id=5cd34331bff54545d3c1",
     "/css/skin-vi-admin.css": "/css/skin-vi-admin.css?id=5cd34331bff54545d3c1",
-    "/js/bundle-admin.js": "/js/bundle-admin.js?id=e1ba8bdf4a517fac508a",
-    "/js/edureal.js": "/js/edureal.js?id=709621726d12d1c8b3ca",
+    "/js/bundle-admin.js": "/js/bundle-admin.js?id=af03b7baf987172496aa",
     "/js/manifest.js": "/js/manifest.js?id=41f053ba9a94d81b39f8",
-    "/js/vendor.js": "/js/vendor.js?id=aee6984ca23d5f283642",
     "/css/bundle-admin.css": "/css/bundle-admin.css?id=a5cbf8762de35e3ca828",
     "/js/vi-admin.js": "/js/vi-admin.js?id=cb55a73b4b144d3723c6",
     "/plugins/hotkeys.min.js": "/plugins/hotkeys.min.js?id=3e641da43a62ccf5e63b",
-    "/css/edureal.css": "/css/edureal.css?id=6a7664f28081d952f94a",
-    "/css/lightbox.css": "/css/lightbox.css?id=efa3ca4b9a3b92f8ff00",
-    "/css/ionicons.min.css": "/css/ionicons.min.css?id=e5c40720e40dfc20694f",
-    "/css/owl.carousel.min.css": "/css/owl.carousel.min.css?id=7851305fda2cd31a9186",
-    "/css/owl.theme.default.min.css": "/css/owl.theme.default.min.css?id=51abb9f24b99add4201b",
-    "/css/aos.css": "/css/aos.css?id=a38e7369a5fa53e51cf9",
-    "/js/theme.js": "/js/theme.js?id=7cf7039c49460ae66028",
-    "/js/google_maps.js": "/js/google_maps.js?id=c2af19751460cf1e06da"
+    "/css/theme.css": "/css/theme.css?id=6a0dbc8d81cc2b43030a",
+    "/js/vendor.js": "/js/vendor.js?id=e008d3b8f7d200d5417b",
+    "/js/theme.js": "/js/theme.js?id=e5cadcffa450d3d2697c"
 }

@@ -1,9 +1,21 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["/js/app"],{
 
-/***/ "./node_modules/@babel/runtime/node_modules/regenerator-runtime/runtime.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/@babel/runtime/node_modules/regenerator-runtime/runtime.js ***!
-  \*********************************************************************************/
+/***/ "./node_modules/@babel/runtime/regenerator/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/regenerator-runtime/runtime.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -740,18 +752,6 @@ try {
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime/regenerator/index.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/@babel/runtime/node_modules/regenerator-runtime/runtime.js");
-
-
-/***/ }),
-
 /***/ "./resources/js/admin/app.js":
 /*!***********************************!*\
   !*** ./resources/js/admin/app.js ***!
@@ -876,31 +876,18 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ "./resources/themes/default/js/app.js":
-/*!********************************************!*\
-  !*** ./resources/themes/default/js/app.js ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function($, jQuery) {console.log($, jQuery, axios);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"), __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
-
-/***/ }),
-
 /***/ 0:
-/*!********************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/admin/app.js ./resources/themes/default/js/app.js ./resources/sass/admin/app.scss ./resources/sass/admin/skin-vi-admin.scss ***!
-  \********************************************************************************************************************************************************/
+/*!*******************************************************************************************************************!*\
+  !*** multi ./resources/js/admin/app.js ./resources/sass/admin/app.scss ./resources/sass/admin/skin-vi-admin.scss ***!
+  \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /Volumes/DATA/Work/www/OSA/vi-site/blog/resources/js/admin/app.js */"./resources/js/admin/app.js");
-__webpack_require__(/*! /Volumes/DATA/Work/www/OSA/vi-site/blog/resources/themes/default/js/app.js */"./resources/themes/default/js/app.js");
 __webpack_require__(/*! /Volumes/DATA/Work/www/OSA/vi-site/blog/resources/sass/admin/app.scss */"./resources/sass/admin/app.scss");
 module.exports = __webpack_require__(/*! /Volumes/DATA/Work/www/OSA/vi-site/blog/resources/sass/admin/skin-vi-admin.scss */"./resources/sass/admin/skin-vi-admin.scss");
 
 
 /***/ })
 
-},[[0,"/js/manifest","/js/vendor"]]]);
+},[[0,"/js/manifest","/js/bundle-admin"]]]);

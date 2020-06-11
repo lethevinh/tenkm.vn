@@ -34,12 +34,20 @@ if (!function_exists('option')) {
     {
         $key = str_replace("'", "", $key);
         $pageStore = Page::getStore();
-        $keyCache = config('site.cache.keys.site');
-        if (!$pageStore->has($keyCache)) {
+        $keyCache = Page::cachePrefix('site');
+        if (!Page::enableCache()) {
             $page = Page::site();
-            $page->forever($page->metas->toArray());
+        }else {
+            if (!$pageStore->has($keyCache)) {
+                $page = Page::site();
+                $page->forever($page);
+            }
+            $page = $pageStore->get($keyCache);
         }
-        $option = collect($pageStore->get($keyCache))->where('key_lb', $key)->first();
+        if ($key == 'name') {
+            return $page->title_lb;
+        }
+        $option = $page->metas->where('key_lb', $key)->first();
         if ($option && isset($option['value_lb'])) {
             return $option['value_lb'];
         }

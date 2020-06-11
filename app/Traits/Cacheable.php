@@ -134,6 +134,9 @@ trait Cacheable
      */
     public static function getCacheByName($name, $params = [])
     {
+        if (! self::enableCache()) {
+            return self::getModelCacheByName($name)->makeCache($params);
+        }
         if (!self::isExitCacheByName($name)) {
             $model = self::getModelCacheByName($name);
             $model->forever($model->makeCache($params));

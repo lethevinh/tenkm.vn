@@ -24,15 +24,15 @@ class ProductController extends Controller
     public function index()
     {
         $offset = request()->input('offset');
-        $offset = $offset ? $offset : 9;
-        $posts = Product::public()
+        $offset = $offset ? $offset : 8;
+        $products = Product::public()
             ->with(['categories', 'tags', 'comments.comments', 'creator'])
             ->paginate($offset);
         $data = [
             'user' => Auth::user(),
-            'posts' => $posts,
+            'products' => $products,
         ];
-        return view('archives.post')->with($data);
+        return view('archives.product')->with($data);
     }
 
     /**
@@ -43,11 +43,8 @@ class ProductController extends Controller
     public function show(string $slug)
     {
 //        $post= Post::where('slug_lb', $slug)->published()->firstOrFail();
-        $post= Product::getCacheByName($slug);
-        $data = [
-            'post' => $post,
-        ];
-        return view('singles.post', $data);
+        $product = Product::getCacheByName($slug);
+        return view('singles.product', compact('product'));
     }
 
     /**
@@ -57,16 +54,16 @@ class ProductController extends Controller
     public function category(ProductCategory $category)
     {
         $offset = request()->input('offset');
-        $offset = $offset ? $offset : 9;
-        $posts = $category->products()->public()
+        $offset = $offset ? $offset : 8;
+        $products = $category->products()->public()
             ->with(['categories', 'tags', 'comments.comments', 'creator'])
             ->paginate($offset);
         $data = [
             'user' => Auth::user(),
-            'posts' => $posts,
+            'products' => $products,
             'category' => $category,
         ];
-        return view('archives.post')->with($data);
+        return view('archives.product')->with($data);
     }
 
     /**
@@ -76,13 +73,13 @@ class ProductController extends Controller
     public function tag(ProductTag $tag)
     {
         $offset = request()->input('offset');
-        $offset = $offset ? $offset : 9;
+        $offset = $offset ? $offset : 8;
         $posts = $tag->products()->public()->paginate($offset);
         $data = [
             'user' => Auth::user(),
             'posts' => $posts,
             'tag' => $tag,
         ];
-        return view('archives.post')->with($data);
+        return view('archives.product')->with($data);
     }
 }
