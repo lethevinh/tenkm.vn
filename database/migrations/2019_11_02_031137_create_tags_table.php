@@ -17,6 +17,8 @@ class CreateTagsTable extends Migration
             $table->increments('id');
             $table->text('title_lb');
             $table->text('slug_lb');
+            $table->string('language_lb')->default('vi');
+            $table->unsignedInteger('translation_id')->nullable();
             $table->text('image_lb')->nullable();
             $table->string('type_lb')->default('post');
             $table->text('description_lb')->nullable();

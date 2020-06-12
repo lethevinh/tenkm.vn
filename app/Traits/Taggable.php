@@ -144,7 +144,8 @@ trait Taggable
     {
         $tags = collect($tags)->map(function ($tag) {
             return $this->tags()->firstOrCreate([
-                'title_lb' => $tag
+                'title_lb' => $tag,
+                'language_lb'=> $this->attributes['language_lb']
             ]);
         });
         $this->tags()->syncWithoutDetaching($tags->pluck('id')->toArray());

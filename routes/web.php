@@ -19,7 +19,7 @@ Route::get('/home', function () {
 Route::get('search.html', 'HomeController@search')->name('home.search');
 Route::post('contact.html', 'HomeController@doContact')->name('home.doContact');
 Route::get('/', 'PageController@home')->name('home.show');
-
+Route::get('lang/{locale}', 'PageController@lang')->name('lang');
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('profile/{user:username}', 'ProfileController@show')->name('user.profile.show');
     Route::put('profile/{user:username}', 'ProfileController@show')->name('user.profile.show');
@@ -67,6 +67,11 @@ Route::get('products.html', 'ProductController@index')->name('product.index');
 Route::get('products-cat/{category:slug_lb}.html', 'ProductController@category')->name('product.category');
 Route::get('products-tag/{tag:slug_lb}.html', 'ProductController@tag')->name('product.tag');
 Route::get('products/{slug}', 'ProductController@show')->name('product.show');
+
+Route::get('projects.html', 'ProjectController@index')->name('project.index');
+Route::get('projects-cat/{category:slug_lb}.html', 'ProjectController@category')->name('project.category');
+Route::get('projects-tag/{tag:slug_lb}.html', 'ProjectController@tag')->name('project.tag');
+Route::get('projects/{slug}', 'ProjectController@show')->name('project.show');
 
 Route::get('blog.html', 'PostController@index')->name('post.index');
 Route::get('blog-cat/{category:slug_lb}.html', 'PostController@category')->name('post.category');

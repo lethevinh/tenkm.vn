@@ -7,6 +7,7 @@ use App\Traits\Commentable;
 use App\Traits\Linkable;
 use App\Traits\Reactable;
 use App\Traits\Taggable;
+use App\Traits\Translatable;
 use App\Traits\Typeable;
 use App\Traits\Ratingable;
 use Illuminate\Database\Eloquent\Builder;
@@ -30,7 +31,8 @@ class Post extends Model implements Searchable
 {
     const STATUS = ['public' => 'public', 'draft' => 'draft', 'private' => 'private', 'trash' => 'trash'];
 
-    use Sluggable, Categorizable, Ownable, Typeable, Taggable, Commentable, Ratingable, Linkable, Cacheable, Reactable;
+    use Sluggable, Categorizable, Ownable, Typeable, Taggable, Commentable,
+        Ratingable, Linkable, Cacheable, Reactable, Translatable;
 
     protected $table = 'posts';
 
@@ -42,10 +44,10 @@ class Post extends Model implements Searchable
     protected $fillable = [
         'updated_by', 'created_by', 'title_lb', 'slug_lb', 'image_lb','status_sl', 'template_lb',
         'type_lb', 'description_lb', 'content_lb', 'review_nb', 'view_nb', 'comment_nb',
+        'language_lb', 'translation_id',
         'published_at', 'validated_at'
     ];
 
-    public $translatable = ['title_lb', 'slug_lb'];
     /**
      * Return the sluggable configuration array for this model.
      *

@@ -2,16 +2,22 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Forms\ToolTranslatable;
 use App\Admin\Forms\ToolViewLive;
 use App\Models\Category;
 use App\Admin\Repositories\Post;
+use App\Models\PostTag;
+use App\Models\PostCategory;
 use App\Models\Tag;
 use Dcat\Admin\Auth\Permission;
 use App\Admin\Forms\Form;
+use Dcat\Admin\Form\BlockForm;
 use Dcat\Admin\Form\NestedForm;
 use Dcat\Admin\Grid;
 use Dcat\Admin\IFrameGrid;
 use Dcat\Admin\Controllers\AdminController;
+use Dcat\Admin\Layout\Content;
+use Dcat\Admin\Layout\Row;
 use Dcat\Admin\Models\Administrator as AdministratorModel;
 use Dcat\Admin\Show;
 use Dcat\Admin\Support\Helper;
@@ -21,10 +27,14 @@ use Illuminate\Database\Eloquent\Builder;
 
 class PostController extends AdminController
 {
+    protected function getTypePost()
+    {
+        return request()->route('type', 'post');
+    }
 
     protected function getPostRepositoryClassName(): string
     {
-        $type = request()->route('type', 'post');
+        $type = $this->getTypePost();
         $class = "App\\Admin\\Repositories\\" . ucfirst($type);
         $classRepository = Post::class;
         if (class_exists($class)) {
@@ -46,25 +56,25 @@ class PostController extends AdminController
     protected function grid()
     {
         $postRepositoryClassName = $this->getPostRepositoryClassName();
-        return Grid::make(new $postRepositoryClassName(['categories', 'comments', 'creator']), function (Grid $grid) {
+        return Grid::make(new $postRepositoryClassName(['categories', 'creator']), function (Grid $grid) {
             $grid->model()->orderByDesc('updated_at');
             $grid->id('ID')->code()->sortable();
             $grid->actions(function (Grid\Displayers\Actions $actions) {
                 $actions->disableView();
                 $link = route('post.show', ['slug' => $actions->row['slug_lb']]);
-                $actions->append('<a target="_blank" href="' . $link . '"><i class="feather icon-eye"></i>'.__('site.view_post').'</a>');
+                $actions->append('<a target="_blank" href="' . $link . '"><i class="feather icon-eye"></i>' . __('site.view_post') . '</a>');
             });
             $grid->title_lb(__('admin.title'));
-            $grid->comments(__('admin.comment'))->count()->label();
             $grid->categories(__('site.category'))->pluck('title_lb')->label('primary', 1);
             $grid->status_sl(__('site.status'))
                 ->display(function ($value) {
                     return $value === 'public' ? 1 : 0;
                 })
                 ->switch();
-            $grid->creator(__('admin.owner'))->display(function($creator) {
+            $grid->creator(__('admin.owner'))->display(function ($creator) {
                 return $creator['name'];
             })->label('warning');
+            $grid->language_lb(__('site.lang'))->label();
             $grid->created_at(__('admin.created_at'))->display(function ($at) {
                 return Carbon::make($at)->diffForHumans();
             });
@@ -83,14 +93,18 @@ class PostController extends AdminController
                     $query->whereHas('categories', function (Builder $query) use ($value) {
                         $query->whereIn('category_id', $value);
                     });
-                },__('site.category'))->width(5)->multipleSelect($categories);
+                }, __('site.category'))->width(5)->multipleSelect($categories);
                 $filter->where('creator', function ($query) {
                     $value = $this->input;
                     $query->whereIn('created_by', $value);
-                },__('admin.owner'))->width(3)->multipleSelect($admins);
-                $filter->scope('new', __('admin.today'))
+                }, __('admin.owner'))->width(3)->multipleSelect($admins);
+                $filter->scope('new', __('site.today'))
                     ->whereDate('created_at', date('Y-m-d'))
                     ->orWhereDate('updated_at', date('Y-m-d'));
+                foreach (config('site.locales') as $locale) {
+                    $filter->scope('lang_' . $locale, __('site.' . $locale))
+                        ->where('language_lb', $locale);
+                }
             });
             $grid->disableBatchDelete();
             $grid->showQuickEditButton();
@@ -142,34 +156,45 @@ class PostController extends AdminController
     public function form()
     {
         $postRepositoryClassName = $this->getPostRepositoryClassName();
+
         $form = new Form(new $postRepositoryClassName(['categories', 'tags', 'comments']));
         $form->disableViewButton();
-        $form->tools([ToolViewLive::make()]);
+        $form->tools([ToolViewLive::make(), ToolTranslatable::make()]);
+
         $form->tab(__('admin.basic'), function (Form $form) {
-            $form->text('title_lb', __('Title'));
+            $form->text('title_lb', __('admin.title'));
+            $form->hidden('language_lb')->default(config('site.locale_default'));
             $form->datetimeRange('published_at', 'validated_at', __('site.public_time'));
-            $form->switch('status_sl', __('site.status'))->customFormat(function ($value) {
-                return $value === 'public' ? 1 : 0;
-            })->saving(function ($value) {
-                return $value === 1 ? 'public' : 'private' ;
-            });
+            $form->switch('status_sl', __('site.status'))
+                ->customFormat(function ($value) {
+                    return $value === 'public' ? 1 : 0;
+                })->saving(function ($value) {
+                    return $value === 1 ? 'public' : 'private';
+                });
             $form->multipleSelect('categories', __('site.category'))
-                ->options(function () {
-                    return Category::ofType('post')->get()->pluck('title_lb', 'id');
+                ->options(function () use ($form) {
+                    $model = $form->getModel();
+                    $language = $model ? $model->language_lb : config('site.locale_default');
+                    return PostCategory::lang($language)->get()->pluck('title_lb', 'id');
                 })
                 ->customFormat(function ($v) {
                     return array_column($v, 'id');
                 });
-            $form->tags('tags', __('site.tag'))->options(function () {
-                return Tag::ofType('post')->get()->pluck('title_lb', 'id');
-            })->customFormat(function ($v) {
-                return array_column($v, 'title_lb');
+            $form->tags('tags', __('site.tag'))
+                ->options(function () use ($form) {
+                    $model = $form->getModel();
+                    $language = $model ? $model->language_lb : config('site.locale_default');
+                    return PostTag::lang($language)->get()->pluck('title_lb', 'id');
+                })
+                ->customFormat(function ($v) {
+                    return array_column($v, 'title_lb');
+                });
+        })
+            ->tab(__('admin.content'), function (Form $form) {
+                $form->textarea('description_lb', __('admin.description'));
+                $form->editor('content_lb', __('admin.content'));
+                $form->media('image_lb', __('admin.avatar'))->image();
             });
-        })->tab(__('admin.content'), function (Form $form) {
-            $form->textarea('description_lb', __('admin.description'));
-            $form->editor('content_lb', __('admin.content'));
-            $form->media('image_lb', __('admin.avatar'))->image();
-        });
         if ($form->isCreating()) {
             $form->tab(__('admin.comment'), function (Form $form) {
                 $form->hasMany('comments', __('admin.comment'), function (NestedForm $form) {

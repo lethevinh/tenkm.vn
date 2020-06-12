@@ -15,6 +15,10 @@ return [
         'facebook' => ''
     ],
 
+    'locales' => ['vi', 'en'],
+
+    'locale_default' => 'vi',
+
     'cache' => [
         'keys' => [
             'menu' => 'site-menus-',

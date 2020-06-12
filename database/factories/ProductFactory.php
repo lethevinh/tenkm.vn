@@ -24,6 +24,7 @@ $factory->define(\App\Models\Product::class, function (Faker $faker) {
         'gallery_lb' => $galleries,
         'description_lb' => $faker->sentence(50),
         'content_lb' => $faker->sentence(200),
+        'language_lb' => 'vi',
         'status_sl' => $status,
         'price_fl' => $faker->randomFloat(100000000, 500000),
         'price_sale_fl' => $faker->randomFloat(1000000, 50000),

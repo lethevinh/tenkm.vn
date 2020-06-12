@@ -4,6 +4,7 @@ return [
 	'search' => 'Search',
 	'enter_keywords' => 'Enter keywords',
 	'review' => 'Review',
+	'today' => 'Today',
 	'reply' => 'Reply',
 	'read_more' => 'Read more',
 	'about' => 'About',
@@ -77,4 +78,8 @@ return [
     'public_time' => 'Public Time',
     'comment' => 'Comment',
     'project' => 'Project',
+    'translation' => 'Translation',
+    'lang' => 'Language',
+    'en' => 'English',
+    'vi' => 'Vietnam',
 ];

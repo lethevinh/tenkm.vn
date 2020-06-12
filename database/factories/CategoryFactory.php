@@ -17,6 +17,7 @@ $factory->define(Category::class, function (Faker $faker) {
         'description_lb' => $faker->sentence(50),
         'content_lb' => $faker->sentence(200),
         'type_lb' => 'post',
+        'language_lb' => 'vi',
         'status_sl' => $status,
         'published_at' => $publishedAt->format('Y-m-d'),
         'updated_by' => $admin->id,

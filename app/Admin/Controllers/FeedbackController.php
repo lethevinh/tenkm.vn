@@ -58,7 +58,7 @@ class FeedbackController extends AdminController
                     $value = $this->input;
                     $query->whereIn('created_by', $value);
                 },__('admin.owner'))->width(3)->multipleSelect($admins);
-                $filter->scope('new', __('admin.today'))
+                $filter->scope('new', __('site.today'))
                     ->whereDate('created_at', date('Y-m-d'))
                     ->orWhereDate('updated_at', date('Y-m-d'));
             });

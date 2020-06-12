@@ -11,6 +11,7 @@ use App\Traits\Orderable;
 use App\Traits\Ownable;
 use App\Traits\Reactable;
 use App\Traits\Taggable;
+use App\Traits\Translatable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Facades\Storage;
@@ -25,7 +26,7 @@ use Spatie\Searchable\SearchResult;
 class Product extends Model implements Searchable
 {
     use Sluggable, Orderable, Ownable, Commentable, Cacheable, Categorizable, Taggable, Reactable,
-        Locationable, Amenitable;
+        Locationable, Amenitable, Translatable;
 
     protected $table = 'products';
 
@@ -33,6 +34,7 @@ class Product extends Model implements Searchable
         'title_lb', 'slug_lb', 'image_lb', 'status_sl', 'gallery_lb',
         'description_lb', 'content_lb', 'review_nb', 'view_nb', 'comment_nb',
         'price_fl', 'price_sale_fl',
+        'language_lb', 'translation_id',
         'bedroom_nb', 'bathroom_nb', 'area_nb','floorplan_lb',
         'published_at', 'validated_at', 'updated_by', 'created_by',
     ];

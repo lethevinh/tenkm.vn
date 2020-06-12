@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Database\Eloquent\Model as Base;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
@@ -69,6 +71,17 @@ class Model extends Base
         return $query->where('type_lb', $type);
     }
 
+    public function scopeLang($query, $lang)
+    {
+        return $query->where('language_lb', $lang);
+    }
+
+    public function scopeLocale($query)
+    {
+        $locale = session()->get('locale', 'vi');
+        return $query->where('language_lb', $locale);
+    }
+
     public function scopeValidatedTime($query)
     {
         $dt = Carbon::now();
@@ -110,5 +123,12 @@ class Model extends Base
 
     public function prev() {
         return static::published()->where('id', $this->id - 1)->first();
+    }
+    /**
+     * @return Application|UrlGenerator|string
+     */
+    public function getEditAttribute() {
+        $keyModel = self::getModelKey();
+        return route(Str::plural($keyModel).'.edit', $this->id);
     }
 }

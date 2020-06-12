@@ -154,6 +154,9 @@ trait Cacheable
     public static function getCacheById($id, $params = [])
     {
         $cacheKey = self::cachePrefix($id);
+        if (! self::enableCache()) {
+            return self::getModelCacheById($id)->makeCache($params);
+        }
         if (!self::isExitCacheByName($id)) {
             $model = self::getModelCacheById($id);
             $model->forever($model->makeCache($params), $cacheKey);

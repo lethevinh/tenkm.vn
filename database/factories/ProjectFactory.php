@@ -25,6 +25,7 @@ $factory->define(\App\Models\Project::class, function (Faker $faker) {
         'price_sale_fl' => $faker->randomFloat(1000000, 50000),
         'updated_by' => $admin->id,
         'created_by' => $admin->id,
+        'language_lb' => 'vi',
         'validated_at' => $validatedAt,
         'published_at' => $publishedAt,
     ];

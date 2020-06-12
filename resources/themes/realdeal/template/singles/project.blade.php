@@ -1,5 +1,5 @@
 @extends('layouts.full')
-@section('title', $product->title_lb)
+@section('title', $project->title_lb)
 @section('id_body', 'course-single__page')
 @section('content')
 
@@ -9,14 +9,14 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-inner">
-                        <h1 class="page-title">{{$product->title_lb}}</h1>
+                        <h1 class="page-title">{{$project->title_lb}}</h1>
                         <ul class="page-list">
                             <li><a href="{{route('home.show')}}">{{ trans('site.home') }}</a></li>
                             <li><a href="{{route('product.index')}}">{{ trans('site.product') }}</a></li>
-                            @if($product->categories->count() > 0 )
-                                <li><a href="{{$product->categories[0]->link}}">{{ $product->categories[0]->title_lb }}</a></li>
+                            @if($project->categories->count() > 0 )
+                                <li><a href="{{$project->categories[0]->link}}">{{ $project->categories[0]->title_lb }}</a></li>
                             @endif
-                            <li class="active">{{$product->title_lb}}</li>
+                            <li class="active">{{$project->title_lb}}</li>
                         </ul>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                 <div class="row ">
                     <div class="col-xl-9 col-lg-8">
                         <div class="property-details-slider">
-                            @foreach($product->galleries as $gallery)
+                            @foreach($project->galleries as $gallery)
                             <div class="item">
                                 <div class="thumb">
                                     <img src="{{$gallery}}" alt="img">
@@ -41,18 +41,18 @@
                             @endforeach
                         </div>
                         <div class="property-details-slider-info">
-                            <h3><span>{{$product->priceSale}}</span> {{$product->title_lb}}</h3>
-                            <del>{{$product->price}}</del>
+                            <h3><span>{{$project->priceSale}}</span> {{$project->title_lb}}</h3>
+                            <del>{{$project->price}}</del>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4">
                         <div class="widget widget-owner-info mt-lg-0 mt-5">
                             <div class="owner-info text-center">
                                 <div class="thumb">
-                                    <img src="{{$product->creator->avatar}}" alt="img">
+                                    <img src="{{$project->creator->avatar}}" alt="img">
                                 </div>
                                 <div class="details">
-                                    <h6>{{$product->creator->name}}</h6>
+                                    <h6>{{$project->creator->name}}</h6>
                                     <span class="designation">Building Owner</span>
                                     <p class="reviews"><i class="fa fa-star"></i><span>4.8</span> 70 Review</p>
                                 </div>
@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="media-body">
                                         <p>Address</p>
-                                        <span>{{$product->address}}</span>
+                                        <span>{{$project->address}}</span>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -113,19 +113,19 @@
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
                                     <h5>{{trans('site.bedroom')}}</h5>
-                                    <p><i class="fa fa-bed"></i>{{$product->bedroom_nb}}</p>
+                                    <p><i class="fa fa-bed"></i>{{$project->bedroom_nb}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
                                     <h5>{{trans('site.bathroom')}}</h5>
-                                    <p><i class="fa fa-bath"></i>{{$product->bathroom_nb}}</p>
+                                    <p><i class="fa fa-bath"></i>{{$project->bathroom_nb}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
                                     <h5>{{trans('site.area')}}</h5>
-                                    <p><img src="/images//icons/7.png" alt="img">{{$product->area_nb}}</p>
+                                    <p><img src="/images//icons/7.png" alt="img">{{$project->area_nb}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
@@ -138,7 +138,7 @@
                     </div>
                     <div class="property-news-single-card style-two border-bottom-yellow">
                         <h4>{{trans('site.content')}}</h4>
-                        <p>{!! $product->content_lb !!}</p>
+                        <p>{!! $project->content_lb !!}</p>
                     </div>
                     <div class="property-news-single-card style-two border-bottom-yellow">
                         <h4>Base Floor Plan</h4>
@@ -149,7 +149,7 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <ul class="rld-list-style mb-3 mb-sm-0">
-                                    @foreach($product->amenities as $amenity)
+                                    @foreach($project->amenities as $amenity)
                                         <li><i class="fa fa-check"></i> {{$amenity->title_lb}}</li>
                                     @endforeach
                                     <li><i class="fa fa-check"></i> Poll</li>
@@ -181,7 +181,7 @@
                     <div class="property-news-single-card border-bottom-yellow">
                         <h4>Floor Plan</h4>
                         <div class="thumb">
-                            <img src="{{$product->floorplan_lb}}" alt="{{$product->title_lb}}">
+                            <img src="{{$project->floorplan_lb}}" alt="{{$project->title_lb}}">
                         </div>
                     </div>
                     <div class="property-news-single-card border-bottom-yellow pb-3">

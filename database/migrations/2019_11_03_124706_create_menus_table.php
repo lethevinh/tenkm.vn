@@ -17,6 +17,7 @@ class CreateMenusTable extends Migration
             $table->bigIncrements('id');
             $table->string('title_lb');
             $table->string('slug_lb')->nullable();
+            $table->string('language_lb')->default('vi');
             $table->string('media_lb')->nullable();
             $table->string('url_lb');
             $table->text('content_lb')->nullable();

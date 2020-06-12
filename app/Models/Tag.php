@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Translatable;
 use App\Traits\Typeable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
@@ -11,11 +12,11 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Tag extends Model implements Sortable
 {
-    use SortableTrait, Sluggable, Typeable;
+    use SortableTrait, Sluggable, Typeable, Translatable;
 
     protected $table  = 'tags';
 
-    public $translatable = ['title_lb', 'slug_lb'];
+    protected $fillable = ['title_lb',  'language_lb', 'translation_id',];
 
     public $guarded = [];
 

@@ -15,6 +15,7 @@ $factory->define(Tag::class, function (Faker $faker) {
         'description_lb' => $faker->sentence(100),
         'content_lb' => $faker->text(200),
         'type_lb' => 'post',
+        'language_lb' => 'vi',
         'status_sl' => $status,
         'updated_by' => $admin->id,
         'created_by' => $admin->id,

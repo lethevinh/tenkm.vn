@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use App\Traits\Linkable;
+use App\Traits\Translatable;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Kalnoy\Nestedset\NodeTrait;
@@ -14,12 +17,12 @@ use App\Traits\Typeable;
 class Category extends Model
 {
 
-    use Ownable, Typeable, Linkable, Sluggable, NodeTrait {
+    use Ownable, Typeable, Linkable, Sluggable, NodeTrait, Translatable {
         NodeTrait::replicate as replicateNode;
         Sluggable::replicate as replicateSlug;
     }
 
-    protected $fillable = ['title_lb', 'parent_id'];
+    protected $fillable = ['title_lb', 'parent_id',  'language_lb', 'translation_id',];
 
     protected $table = 'categories';
 
@@ -119,5 +122,12 @@ class Category extends Model
                 $builder->where('type_lb', $keyModel);
             });
         }
+    }
+    /**
+     * @return Application|UrlGenerator|string
+     */
+    public function getEditAttribute() {
+        $keyModel = static::getModelKey('Category');
+        return url('admin/categories/'.$keyModel.'/'.$this->id.'/edit');
     }
 }

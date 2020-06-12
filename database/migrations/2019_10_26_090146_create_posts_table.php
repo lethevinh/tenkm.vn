@@ -18,6 +18,8 @@ class CreatePostsTable extends Migration
                 $table->increments('id');
                 $table->string('title_lb');
                 $table->string('template_lb')->default('default');
+                $table->string('language_lb')->default('vi');
+                $table->unsignedInteger('translation_id')->nullable();
                 $table->string('slug_lb')->unique();
                 $table->index(['slug_lb']);
                 $table->text('image_lb')->nullable();

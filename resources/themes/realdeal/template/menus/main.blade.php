@@ -21,4 +21,5 @@
         </li>
         @endif
     @endforeach
+    @include('partials.language')
 </ul>

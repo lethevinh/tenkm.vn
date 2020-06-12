@@ -11,6 +11,7 @@ use App\Traits\Orderable;
 use App\Traits\Ownable;
 use App\Traits\Reactable;
 use App\Traits\Taggable;
+use App\Traits\Translatable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Facades\Storage;
@@ -25,7 +26,7 @@ use Spatie\Searchable\SearchResult;
 class Project extends Model implements Searchable
 {
     use Sluggable, Orderable, Ownable, Commentable, Cacheable, Categorizable, Taggable, Reactable,
-        Locationable, Amenitable;
+        Locationable, Amenitable, Translatable;
 
     protected $table = 'projects';
 
@@ -37,9 +38,9 @@ class Project extends Model implements Searchable
         'description_lb', 'content_lb', 'document_lb', 'area_lb', 'floorplan_lb',
         'review_nb', 'view_nb', 'comment_nb',
         'price_fl', 'price_sale_fl',
+        'language_lb', 'translation_id',
         'bedroom_nb', 'bathroom_nb', 'area_nb','streetview_lb', 'shop_nb', 'department_nb', 'floor_nb',
-        'block_nb',
-        'type_lb',
+        'block_nb', 'type_lb',
         'published_at', 'validated_at', 'updated_by', 'created_by', 'opened_at', 'stopped_at'
     ];
 
@@ -73,17 +74,23 @@ class Project extends Model implements Searchable
      */
     public function getGalleriesAttribute() {
         $disk = Storage::disk(config('admin.upload.disk'));
-        $thumbnail = $this->attributes['gallery_lb'];
-        if (!empty($thumbnail) && !URL::isValidUrl($thumbnail) && $disk->exists($thumbnail)) {
-            return $disk->url($thumbnail);
+        $galleries = [];
+        $images = explode(',', $this->attributes['gallery_lb']);
+        foreach ($images as $image)
+        {
+            if (!empty($image) && !URL::isValidUrl($image) && $disk->exists($image)) {
+                $galleries[] = $disk->url($image);
+            }else {
+                $galleries[] = $image;
+            }
         }
-        return $thumbnail;
+        return $galleries;
     }
 
     public function getLinkAttribute()
     {
         if (isset($this->attributes['slug_lb'])) {
-            return route( 'product.show', ['slug' => $this->attributes['slug_lb']]);
+            return route( 'project.show', ['slug' => $this->attributes['slug_lb']]);
         }
         return '';
     }

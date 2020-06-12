@@ -2,6 +2,8 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Forms\ToolTranslatable;
+use App\Admin\Forms\ToolViewLive;
 use App\Admin\Repositories\Category;
 use App\Admin\Repositories\Post;
 use App\Admin\Repositories\PostCategory;
@@ -9,6 +11,7 @@ use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Controllers\AdminController;
 use Dcat\Admin\Layout\Content;
+use Dcat\Admin\Models\Administrator as AdministratorModel;
 use Dcat\Admin\Show;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
@@ -48,8 +51,8 @@ class CategoryController extends AdminController
         $classRepository =  $this->getCategoryRepositoryClassName();
         return Grid::make(new $classRepository($widths), function (Grid $grid) use ($relations) {
             $grid->model()->orderByDesc('updated_at');
-            $grid->column('id', __('ID'))->sortable();
-            $grid->column('title_lb', __('Title'))->sortable();
+            $grid->column('id', __('admin.id'))->sortable();
+            $grid->column('title_lb', __('admin.title'))->sortable();
             if ($relations !== '') {
                 $grid->{$relations}->count()->label();
             }
@@ -58,11 +61,29 @@ class CategoryController extends AdminController
                     return $value === 'public' ? 1 : 0;
                 })
                 ->switch();
+            $grid->language_lb(__('site.lang'))->label();
             $grid->created_at(__('admin.created_at'))->display(function ($at) {
                 return Carbon::make($at)->diffForHumans();
             });
             $grid->updated_at(__('admin.updated_at'))->sortable()->display(function ($at) {
                 return Carbon::make($at)->diffForHumans();
+            });
+            $grid->quickSearch(['id', 'title_lb']);
+            $grid->filter(function (Grid\Filter $filter) {
+                $filter->panel();
+                $filter->like('title_lb', __('admin.title'))->width(3);
+                $admins = AdministratorModel::all()->pluck('name', 'id');
+                $filter->where('creator', function ($query) {
+                    $value = $this->input;
+                    $query->whereIn('created_by', $value);
+                }, __('admin.owner'))->width(3)->multipleSelect($admins);
+                $filter->scope('new', __('site.today'))
+                    ->whereDate('created_at', date('Y-m-d'))
+                    ->orWhereDate('updated_at', date('Y-m-d'));
+                foreach (config('site.locales') as $locale) {
+                    $filter->scope('lang_' . $locale, __('site.' . $locale))
+                        ->where('language_lb', $locale);
+                }
             });
             $grid->disableBatchDelete();
             $grid->showQuickEditButton();
@@ -102,8 +123,11 @@ class CategoryController extends AdminController
         $type = request()->route('type', 'post');
         $form = new Form(new $classRepository());
 
+        $form->tools([ToolViewLive::make(), ToolTranslatable::make()]);
+
         $form->display('id', __('ID'));
         $form->text('title_lb', __('Title'));
+        $form->hidden('language_lb')->default(config('site.locale_default'));
         $form->textarea('description_lb', __('Description'));
         $form->editor('content_lb', __('Content'));
         $form->image('image_lb', __('Image'));

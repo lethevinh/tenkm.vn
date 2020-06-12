@@ -3,6 +3,7 @@
 
 namespace App\Admin\Forms;
 use Closure;
+use Dcat\Admin\IFrameGrid;
 use Illuminate\Http\Request;
 
 /**
@@ -11,6 +12,14 @@ use Illuminate\Http\Request;
  */
 class Form extends \Dcat\Admin\Form
 {
+    public function getModel() {
+        $model = $this->repository()->eloquent();
+        if(empty($model->id)) {
+            return false;
+        }
+        return $model;
+    }
+
     public function __construct($repository = null, ?Closure $callback = null, Request $request = null)
     {
         parent::__construct($repository, $callback, $request);

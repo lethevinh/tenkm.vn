@@ -16,6 +16,8 @@ class CreateAmenitiesTable extends Migration
         Schema::create('amenities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title_lb');
+            $table->string('language_lb')->default('vi');
+            $table->unsignedInteger('translation_id')->nullable();
             $table->string('type_lb')->default('amenity');
             $table->text('description_lb')->nullable();
             $table->string('slug_lb')->unique();

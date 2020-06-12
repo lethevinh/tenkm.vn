@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Forms\ToolTranslatable;
 use App\Admin\Forms\ToolViewLive;
 use App\Admin\Repositories\Page;
 use Dcat\Admin\Admin;
@@ -46,7 +47,7 @@ class PageController extends AdminController
                     return $value === 'public' ? 1 : 0;
                 })
                 ->status();
-            $grid->creator(__('admin.owner'))->display(function($creator) {
+            $grid->creator(__('admin.owner'))->display(function ($creator) {
                 return $creator['name'];
             })->label('warning');
             $grid->created_at(__('admin.created_at'))->display(function ($at) {
@@ -55,6 +56,7 @@ class PageController extends AdminController
             $grid->updated_at(__('admin.updated_at'))->sortable()->display(function ($at) {
                 return Carbon::make($at)->diffForHumans();
             });
+            $grid->language_lb(__('site.lang'))->label();
 
             $grid->quickSearch(['id', 'title_lb']);
             $grid->filter(function (Grid\Filter $filter) {
@@ -64,14 +66,17 @@ class PageController extends AdminController
                 $filter->where('creator', function ($query) {
                     $value = $this->input;
                     $query->whereIn('created_by', $value);
-                },__('admin.owner'))->width(3)->multipleSelect($admins);
-                $filter->scope('new', __('admin.today'))
+                }, __('admin.owner'))->width(3)->multipleSelect($admins);
+                $filter->scope('new', __('site.today'))
                     ->whereDate('created_at', date('Y-m-d'))
                     ->orWhereDate('updated_at', date('Y-m-d'));
+                foreach (config('site.locales') as $locale) {
+                    $filter->scope('lang_' . $locale, __('site.' . $locale))
+                        ->where('language_lb', $locale);
+                }
             });
             $grid->disableBatchDelete();
             $grid->showQuickEditButton();
-            $grid->enableDialogCreate();
         });
     }
 
@@ -118,14 +123,17 @@ class PageController extends AdminController
     {
         $form = new \App\Admin\Forms\Form(new Page(['metas', 'fields']));
         $form->disableViewButton();
-        $form->tools([ToolViewLive::make()]);
+        $form->tools([ToolViewLive::make(), ToolTranslatable::make()]);
+        $form->hidden('language_lb')->default(config('site.locale_default'));
         $admin = Admin::user();
-        $form->tab(__('admin.content'), function (Form $form) use ($admin) {
+        $form->tab(__('site.content'), function (Form $form) use ($admin) {
             $form->text('title_lb', __('admin.title'));
-            $form->switch('status_sl', __('site.status'))->customFormat(function ($value) {
+            $form->switch('status_sl', __('site.status'))
+                ->customFormat(function ($value) {
                 return $value === 'public' ? 1 : 0;
-            })->saving(function ($value) {
-                return $value === 1 ? 'public' : 'private' ;
+            })
+                ->saving(function ($value) {
+                return $value === 1 ? 'public' : 'private';
             });
             $pageId = request()->route()->parameter('page');
             if ($pageId) {
@@ -139,24 +147,25 @@ class PageController extends AdminController
             if ($admin->id === Administrator::DEFAULT_ID) {
                 $form->text('template_lb', __('site.template'))->default('default');
             }
-        })->tab(__('admin.basic'), function (Form $form) {
-            $form->textarea('description_lb', __('admin.description'));
-            $form->image('image_lb', __('admin.avatar'));
-            $form->editor('content_lb', __('admin.content'));
-            $form->hidden('status_sl')->value('public');
-        })->tab(__('site.seo'), function (Form $form) {
-            $form->meta('seo_keyword', __('site.seo_keyword'));
-            $form->meta('seo_description', __('site.seo_description'))->type('textarea');
-        });
+        })
+            ->tab(__('site.basic'), function (Form $form) {
+                $form->textarea('description_lb', __('admin.description'));
+                $form->image('image_lb', __('admin.avatar'));
+                $form->editor('content_lb', __('site.content'));
+                $form->hidden('status_sl')->value('public');
+            })->tab(__('site.seo'), function (Form $form) {
+                $form->meta('seo_keyword', __('site.seo_keyword'));
+                $form->meta('seo_description', __('site.seo_description'))->type('textarea');
+            });
 
         if ($admin->id === Administrator::DEFAULT_ID) {
             $form->tab(__('site.field_manage'), function (Form $form) {
                 $form->hasMany('fields', __(''), function (Form\NestedForm $form) {
-                    $form->text('name_lb',__('admin.scaffold.key'))->required();
+                    $form->text('name_lb', __('admin.scaffold.key'))->required();
                     $form->text('label_lb', __('label'));
                     $form->text('default_lb', __('admin.default'));
                     $form->number('order_nb', __('admin.order'));
-                    $form->select('type_lb',__('admin.type'))->options([
+                    $form->select('type_lb', __('admin.type'))->options([
                         'text' => 'Text',
                         'media_image' => 'Media Image',
                         'media_images' => 'Media Images',
@@ -242,6 +251,7 @@ class PageController extends AdminController
 
         return $form;
     }
+
     /**
      * Site setting page.
      *

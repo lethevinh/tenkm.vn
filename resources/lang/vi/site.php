@@ -2,6 +2,7 @@
 return [
 	'home' => 'Trang Chủ',
 	'search' => 'Tìm kiếm',
+	'product' => 'Sản Phẩm',
 	'enter_keywords' => 'Nhập từ khoá',
 	'learn_more' => 'Xem thêm',
 	'review' => 'Nhận xét',
@@ -72,4 +73,6 @@ return [
 	'password' => 'Mật khẩu',
 	'change' => 'Cập nhật',
 	'enter' => 'Nhập',
+    'en' => 'Tiếng Anh',
+    'vi' => 'Tiếng Việt',
 ];

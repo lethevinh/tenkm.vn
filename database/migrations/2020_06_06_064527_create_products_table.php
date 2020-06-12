@@ -17,6 +17,8 @@ class CreateProductsTable extends Migration
             Schema::create('products', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('title_lb');
+                $table->string('language_lb')->default('vi');
+                $table->unsignedInteger('translation_id')->nullable();
                 $table->string('slug_lb')->unique();
                 $table->index(['slug_lb']);
                 $table->float('price_fl', 10, 0)->default(0);

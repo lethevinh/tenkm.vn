@@ -136,6 +136,14 @@ class MenusSeeder extends Seeder
             'title_lb'      =>  __('site.contact'),
             'template_lb' => 'contact'
         ]);
+        $product = Page::create([
+            'title_lb'      =>  __('site.product'),
+            'template_lb' => 'product'
+        ]);
+        $project = Page::create([
+            'title_lb'      =>  __('site.project'),
+            'template_lb' => 'project'
+        ]);
         if ($main) {
             Menu::create([
                 'title_lb'      =>  __('site.home'),
@@ -170,6 +178,28 @@ class MenusSeeder extends Seeder
                     'url_lb'        => route('post.index'),
                     'order_nb'      => 1,
                     'parent_id'     => $blog->id,
+                    'status_sl'     => 'public',
+                    'updated_by'    => $admin->id,
+                    'created_by'    => $admin->id,
+                ]);
+            }
+            if ($product) {
+                Menu::create([
+                    'title_lb'      =>  __('site.product'),
+                    'url_lb'        => route('product.index'),
+                    'order_nb'      => 1,
+                    'parent_id'     => $main->id,
+                    'status_sl'     => 'public',
+                    'updated_by'    => $admin->id,
+                    'created_by'    => $admin->id,
+                ]);
+            }
+            if ($project) {
+                Menu::create([
+                    'title_lb'      =>  __('site.project'),
+                    'url_lb'        => route('project.index'),
+                    'order_nb'      => 1,
+                    'parent_id'     => $main->id,
                     'status_sl'     => 'public',
                     'updated_by'    => $admin->id,
                     'created_by'    => $admin->id,

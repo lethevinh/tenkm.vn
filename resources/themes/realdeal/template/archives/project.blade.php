@@ -42,15 +42,15 @@
     <div class="properties-area pd-top-100 pd-bottom-70">
         <div class="container">
             <div class="row">
-                @foreach($products as $product)
+                @foreach($projects as $project)
                 <div class="col-lg-3 col-sm-6">
-                    @include('item.product', ['product' => $product])
+                    @include('item.product', ['product' => $project])
                 </div>
                 @endforeach
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    {{ $products->links() }}
+                    {{ $projects->links() }}
                 </div>
             </div> <!-- / .row -->
         </div>

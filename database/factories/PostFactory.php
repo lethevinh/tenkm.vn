@@ -19,6 +19,7 @@ $factory->define(Post::class, function (Faker $faker) {
         'description_lb' => $faker->sentence(50),
         'content_lb' => $faker->sentence(200),
         'status_sl' => $status,
+        'language_lb' => 'vi',
         'updated_by' => $admin->id,
         'created_by' => $admin->id,
         'validated_at' => $validatedAt,

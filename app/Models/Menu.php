@@ -35,6 +35,7 @@ class Menu extends Model
      * @var array
      */
     protected $fillable = [
+        'language_lb', 'translation_id',
         'title_lb', 'slug_lb', 'content_lb', 'order_nb', 'media_lb', 'url_lb', 'status_sl','parent_id', 'updated_by', 'created_by',
     ];
 
@@ -72,7 +73,7 @@ class Menu extends Model
     }
 
     /**
-     * @param $template
+     * @param $params
      * @return mixed
      */
     public function makeCache($params)
