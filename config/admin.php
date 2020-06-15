@@ -311,7 +311,9 @@ return [
 
         'sidebar_collapsed' => false,
 
-        'sidebar_dark' => false,
+        'sidebar_dark' => true,
+
+        'dark_mode_switch' => false,
 
         // bg-primary, bg-info, bg-warning, bg-success, bg-danger, bg-dark
         'navbar_color' => '',
