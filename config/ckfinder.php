@@ -81,13 +81,15 @@ $config['backends']['laravel_logs'] = array(
 //https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_backends
 
 $config['backends']['default'] = array(
-    'name'         => 'default',
-    'adapter'      => 'local',
-    'baseUrl'      => config('app.url').'/storage/',
-    'root'         => storage_path('app/public/'),
-    'chmodFiles'   => 0777,
-    'chmodFolders' => 0755,
-    'filesystemEncoding' => 'UTF-8'
+    'name'         => 'awss3',
+    'adapter'      => 's3',
+    'bucket'       => 'ckftest',
+    'region'       => 'eu-west-1',
+    'key'          => 'AYUZ7A78ZHAAZ8AL4A',
+    'secret'       => 'ab89Va7dgDFtGrASOMA58787z7dgDFtGrASOMA58odg',
+    'visibility'   => 'public',
+    'baseUrl'      => 'http://s3-eu-west-1.amazonaws.com/bucket/s3_ckf_files/',
+    'root'         => 's3_ckf_files'
 );
 
 /*================================ Resource Types =====================================*/

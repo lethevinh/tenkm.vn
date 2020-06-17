@@ -99,6 +99,13 @@ class User extends Authenticatable
                 'value_lb' => 'https://' . $user->username. '.com'
             ]);
         });
+        static::deleted(function ($user) {
+            $user->socials()->delete();
+        });
+    }
+
+    public function socials() {
+        return $this->hasMany(SocialAccount::class, 'user_id');
     }
 
     public function scopeOfType($query, $type)

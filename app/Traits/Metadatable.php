@@ -169,9 +169,9 @@ trait Metadatable
      */
     public static function bootMetadatable()
     {
-        static::deleted(function ($user) {
-            $user->metas()->delete();
-            $user->fields()->delete();
+        static::deleted(function ($model) {
+            $model->metas()->delete();
+            $model->fields()->delete();
         });
         static::addGlobalScope('metadata', function (Builder $builder) {
             $builder->with('metas')->with('fields');
