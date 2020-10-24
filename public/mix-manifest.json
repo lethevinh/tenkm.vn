@@ -1,5 +1,5 @@
 {
-    "/js/app.js": "/js/app.js?id=065a4394209371e1c278",
+    "/js/app.js": "/js/app.js?id=c866890ecc081102282b",
     "/css/vi-admin.css": "/css/vi-admin.css?id=5cd34331bff54545d3c1",
     "/css/skin-vi-admin.css": "/css/skin-vi-admin.css?id=5cd34331bff54545d3c1",
     "/js/bundle-admin.js": "/js/bundle-admin.js?id=af03b7baf987172496aa",
@@ -7,7 +7,8 @@
     "/css/bundle-admin.css": "/css/bundle-admin.css?id=a5cbf8762de35e3ca828",
     "/js/vi-admin.js": "/js/vi-admin.js?id=cb55a73b4b144d3723c6",
     "/plugins/hotkeys.min.js": "/plugins/hotkeys.min.js?id=3e641da43a62ccf5e63b",
-    "/css/theme.css": "/css/theme.css?id=e8b61cf423338aefd7cb",
-    "/js/vendor.js": "/js/vendor.js?id=e008d3b8f7d200d5417b",
-    "/js/theme.js": "/js/theme.js?id=d41d8cd98f00b204e980"
+    "/css/theme.css": "/css/theme.css?id=319464de8071b6f87610",
+    "/js/vendor.js": "/js/vendor.js?id=89e856f34669edf25726",
+    "/js/theme.js": "/js/theme.js?id=d41d8cd98f00b204e980",
+    "/js/main.js": "/js/main.js?id=6533f06cfb31117585a8"
 }

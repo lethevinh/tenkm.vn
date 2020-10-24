@@ -65,6 +65,7 @@ mix.styles([
 
 mix.copy('resources/themes/' + theme + '/js/vendor.js', 'public/js/vendor.js')
     .copy('resources/themes/' + theme + '/js/theme.js', 'public/js/theme.js')
+    .copy('resources/themes/' + theme + '/js/main.js', 'public/js/main.js')
     .copyDirectory('resources/themes/' + theme + '/img', 'public/images')
     .copyDirectory('resources/themes/' + theme + '/fonts', 'public/fonts')
     .autoload({

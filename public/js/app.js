@@ -883,9 +883,9 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Volumes/DATA/Work/www/Project/tenkm/blog/resources/js/admin/app.js */"./resources/js/admin/app.js");
-__webpack_require__(/*! /Volumes/DATA/Work/www/Project/tenkm/blog/resources/sass/admin/app.scss */"./resources/sass/admin/app.scss");
-module.exports = __webpack_require__(/*! /Volumes/DATA/Work/www/Project/tenkm/blog/resources/sass/admin/skin-vi-admin.scss */"./resources/sass/admin/skin-vi-admin.scss");
+__webpack_require__(/*! /Volumes/DATA/Work/www/Project/tenkm/ten_site/resources/js/admin/app.js */"./resources/js/admin/app.js");
+__webpack_require__(/*! /Volumes/DATA/Work/www/Project/tenkm/ten_site/resources/sass/admin/app.scss */"./resources/sass/admin/app.scss");
+module.exports = __webpack_require__(/*! /Volumes/DATA/Work/www/Project/tenkm/ten_site/resources/sass/admin/skin-vi-admin.scss */"./resources/sass/admin/skin-vi-admin.scss");
 
 
 /***/ })
