@@ -102,7 +102,7 @@ class Media extends Field\File
         return $file;
     }
 
-    protected function setUpScript()
+    protected function addScript()
     {
         $newButton = trans('admin.uploader.add_new_media');
         $options = JavaScript::format($this->options);

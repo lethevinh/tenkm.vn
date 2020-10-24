@@ -6,12 +6,9 @@ use App\Admin\Forms\ToolTranslatable;
 use App\Admin\Forms\ToolViewLive;
 use App\Admin\Repositories\Product;
 use App\Models\Amenity;
-use App\Models\Location;
 use App\Models\ProductCategory;
 use App\Models\Category;
-use App\Admin\Repositories\Post;
 use App\Models\ProductTag;
-use App\Models\Tag;
 use Dcat\Admin\Auth\Permission;
 use App\Admin\Forms\Form;
 use Dcat\Admin\Form\NestedForm;
@@ -170,12 +167,10 @@ class ProductController extends AdminController
                         if (!$v) return '';
                         return array_column($v, 'id')[0];
                     });
+                $model = $form->getModel();
+                $language = $model ? $model->language_lb : config('site.locale_default');
                 $form->tags('tags', __('site.tag'))
-                    ->options(function () use ($form) {
-                        $model = $form->getModel();
-                        $language = $model ? $model->language_lb : config('site.locale_default');
-                        return ProductTag::lang($language)->pluck('title_lb', 'id');
-                    })
+                    ->options(ProductTag::lang($language)->get()->pluck('title_lb', 'id'))
                     ->customFormat(function ($v) {
                         return array_column($v, 'title_lb');
                     });

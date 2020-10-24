@@ -6,9 +6,7 @@ use App\Admin\Forms\ToolTranslatable;
 use App\Admin\Forms\ToolViewLive;
 use App\Admin\Repositories\Project;
 use App\Models\Amenity;
-use App\Models\ProductCategory;
 use App\Models\Category;
-use App\Models\ProductTag;
 use App\Models\ProjectCategory;
 use App\Models\ProjectTag;
 use Dcat\Admin\Auth\Permission;
@@ -170,14 +168,13 @@ class ProjectController extends AdminController
                         if (!$v) return '';
                         return array_column($v, 'id')[0];
                     });
+                $model = $form->getModel();
+                $language = $model ? $model->language_lb : config('site.locale_default');
                 $form->tags('tags', __('site.tag'))
-                    ->options(function () use ($form){
-                        $model = $form->getModel();
-                        $language = $model ? $model->language_lb : config('site.locale_default');
-                    return ProjectTag::lang($language)->get()->pluck('title_lb', 'id');
-                })->customFormat(function ($v) {
-                    return array_column($v, 'title_lb');
-                });
+                    ->options(ProjectTag::lang($language)->get()->pluck('title_lb', 'id'))
+                    ->customFormat(function ($v) {
+                        return array_column($v, 'title_lb');
+                    });
                 $form->checkbox('amenities',  __('site.amenity'))
                     ->options(Amenity::ofType('amenity')->get()->pluck('title_lb', 'id'))
                     ->customFormat(function ($v) {

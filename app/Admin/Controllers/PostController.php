@@ -180,12 +180,10 @@ class PostController extends AdminController
                 ->customFormat(function ($v) {
                     return array_column($v, 'id');
                 });
+            $model = $form->getModel();
+            $language = $model ? $model->language_lb : config('site.locale_default');
             $form->tags('tags', __('site.tag'))
-                ->options(function () use ($form) {
-                    $model = $form->getModel();
-                    $language = $model ? $model->language_lb : config('site.locale_default');
-                    return PostTag::lang($language)->get()->pluck('title_lb', 'id');
-                })
+                ->options(PostTag::lang($language)->get()->pluck('title_lb', 'id'))
                 ->customFormat(function ($v) {
                     return array_column($v, 'title_lb');
                 });

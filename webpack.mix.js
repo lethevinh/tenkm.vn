@@ -54,19 +54,19 @@ mix.copy('vendor/ckfinder/ckfinder-laravel-package/public/ckfinder', 'public/js/
 mix.copy('node_modules/icheck/', 'public/plugins/icheck');
 //----end admin------
 // theme
-let theme = 'realdeal';
+let theme = 'tenkm';
 
 mix.styles([
-    'resources/themes/realdeal/css/vendor.css',
-    'resources/themes/realdeal/css/style.css',
-    'resources/themes/realdeal/css/responsive.css',
-    'resources/themes/realdeal/css/custom.css'
+    'resources/themes/' + theme + '/css/vendor.css',
+    'resources/themes/' + theme + '/css/style.css',
+    'resources/themes/' + theme + '/css/responsive.css',
+    'resources/themes/' + theme + '/css/custom.css'
 ], 'public/css/theme.css');
 
-mix.copy('resources/themes/realdeal/js/vendor.js', 'public/js/vendor.js')
-    .copy('resources/themes/realdeal/js/theme.js', 'public/js/theme.js')
-    .copyDirectory('resources/themes/realdeal/img', 'public/images')
-    .copyDirectory('resources/themes/realdeal/fonts', 'public/fonts')
+mix.copy('resources/themes/' + theme + '/js/vendor.js', 'public/js/vendor.js')
+    .copy('resources/themes/' + theme + '/js/theme.js', 'public/js/theme.js')
+    .copyDirectory('resources/themes/' + theme + '/img', 'public/images')
+    .copyDirectory('resources/themes/' + theme + '/fonts', 'public/fonts')
     .autoload({
         jquery: ['$', 'window.jQuery', 'jQuery']
     })
