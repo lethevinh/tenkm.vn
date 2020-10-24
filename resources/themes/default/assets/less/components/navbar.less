@@ -1,0 +1,118 @@
+/**
+ * Navbar
+ */
+
+@navbar-height: 70px;
+@navbar-margin-bottom: 0;
+
+/*** Navbar: Default ***/
+
+@navbar-default-link-color: white;
+@navbar-default-link-hover-color: @brand-primary;
+@navbar-default-link-active-color: @brand-primary;
+@navbar-default-bg: transparent;
+@navbar-default-link-hover-bg: transparent;
+@navbar-default-link-active-bg: transparent;
+@navbar-default-brand-color: white;
+@navbar-default-brand-hover-color: white;
+
+/*** Navbar: Inverse ***/
+
+@navbar-inverse-bg: transparent;
+@navbar-inverse-link-color: @brand-accent;
+@navbar-inverse-link-hover-color: @brand-primary;
+@navbar-inverse-link-active-color: @brand-primary;
+@navbar-inverse-link-active-bg: transparent;
+@navbar-inverse-brand-color: @brand-accent;
+@navbar-inverse-brand-hover-color: @brand-accent;
+@navbar-inverse-toggle-icon-bar-bg: @brand-accent;
+@navbar-inverse-toggle-border-color: transparent;
+@navbar-inverse-toggle-hover-bg: transparent;
+
+/*** Navbar: Collapse ***/
+
+@navbar-default-toggle-hover-bg: transparent;
+@navbar-default-toggle-icon-bar-bg: white;
+@navbar-default-toggle-border-color: transparent;
+
+.navbar {
+	border-radius: 0;
+	&:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        background-color: rgb(255, 255, 255);
+        transform: translateY(-100%);
+        transition: all .3s;
+    }
+	&-header {
+		.navbar-brand {
+			font-weight: 700;
+			font-size: 26px;
+			margin-right: 50px;
+			transition: color 0.3s;
+			position: relative;
+			> span {
+				color: @brand-primary;
+				font-size: 32px;
+			}
+			 > img {
+			 	max-height: 26px;
+			 	width: auto;
+			 }
+		}
+	}
+	&-default {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+	}
+
+	&-inverse {
+		&:before {
+	        transform: translateY(0);
+	        border-bottom: 1px solid rgba(169, 169, 169, 0.4);
+	    }
+	}
+
+	&-toggle {
+	    .icon-bar {
+	        transition: all .5s;
+	    }
+	}
+	&-nav {
+		> li {
+            > a {
+                transition: color .3s;
+                font-family: @headings-font-family;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                font-size: (@font-size-base - 3px);
+            }
+            .navbar-search__toggle {
+            	> i {
+            		font-size: (@font-size-base + 1px);
+            	}
+            }
+            .navbar-search {
+			    position: absolute;
+			    top: 100%;
+			    right: 0;
+			    width: 250px;
+			    box-shadow: 0px 2px 10px 0 rgba(0, 0, 0, 0.15);
+			    border-radius: 0 0 3px 3px;
+			    border: 1px solid rgba(0, 0, 0, 0.15);
+			    border-top-color: transparent;
+			    display: none;
+			    z-index: 1000;
+			    @media(max-width: @screen-sm-max) {
+			        left: 0;
+			    }
+			    .navbar-search__box {
+			    	padding: 15px;
+			    	background-color: #fff;
+			    }
+			}
+        }
+	}
+}

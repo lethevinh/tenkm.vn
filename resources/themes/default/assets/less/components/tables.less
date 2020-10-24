@@ -1,0 +1,40 @@
+/**
+ * Tables
+ */
+
+@table-border-color: rgb(215, 215, 215);
+@table-cell-padding: 14px;
+
+.table {
+	> tbody {
+		> tr {
+			> td {
+				vertical-align: middle;
+				@media(max-width: @screen-sm-max) {
+			        padding: 14px 10px;
+			    }
+				> i {
+					color: @brand-primary;
+					font-size: (@font-size-base + 10px);
+				}
+				> span {
+					color: rgb(169, 169, 169);
+				}
+				.lecture__title, .lecture__time {
+					color: @brand-accent;
+					font-family: @headings-font-family;
+					font-size: (@font-size-base + 2px);
+					font-weight: 700;
+					margin-bottom: 0;
+					@media(max-width: @screen-sm-max) {
+				        font-size: @font-size-base;
+				    }
+				}
+				.lecture__time {
+					float: right;
+					font-size: @font-size-base;
+				}
+			}
+		}
+	}
+}

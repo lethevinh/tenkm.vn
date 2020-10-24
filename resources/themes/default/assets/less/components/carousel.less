@@ -1,0 +1,162 @@
+/**
+ * Carousel
+ */
+
+
+@carousel-control-color: white;
+@carousel-control-opacity: 1;
+@carousel-indicator-border-color: white;
+@carousel-indicator-active-bg: @brand-primary;
+
+
+.carousel {
+	.carousel-inner {
+		.item {
+			height: 100vh;
+			width: 100%;
+			&:before {
+		        content: "";
+		        position: absolute;
+		        top: 0; right: 0; bottom: 0; left: 0;
+		        background-color: fade(@brand-accent, 50%);
+		    }
+		    .item__container {
+				display: table;
+				width: 100%;
+    			height: 100%;
+    			.item-container__inner {
+					display: table-cell;
+	    			vertical-align: middle;
+				    @media(max-width: @screen-xs-max) {
+				        font-size: 32px;
+				    }
+	    			.item__content {
+						text-align: center;
+				    	color: white;
+				    	.home__title {
+							font-size: @font-size-base;
+							text-transform: uppercase;
+							letter-spacing: 0.6em;
+							@media(max-width: @screen-xs-max) {
+						        font-size: (@font-size-base - 2px);
+						    }
+						}
+				    	.home__heading {
+				    		margin-top: 0;
+							font-size: 76px;
+							font-weight: 700;
+							font-family: @font-family-base;
+							@media(max-width: @screen-xs-max) {
+						        font-size: 52px;
+						        margin-top: 0;
+						    }
+							> span {
+								color: @brand-primary;
+							}
+						}
+						.home__info {
+							margin: 40px 0;
+							@media(max-width: @screen-xs-max) {
+						        font-size: (@font-size-base - 2px);
+						        margin-bottom: 20px;
+						    }
+						}
+				    }
+			    }
+		    }
+		}
+		.item__1 {
+			background: url('../img/slide_bg_1.jpg') no-repeat center center / cover;	
+		}
+		.item__2 {
+			background: url('../img/slide_bg_2.jpg') no-repeat center center / cover;
+		}
+		.item__3 {
+			background: url('../img/slide_bg_3.jpg') no-repeat center center / cover;
+		}
+	}
+	.carousel-control {
+		display: block;
+	    position: absolute;
+	    top: 50%;
+	    width: 30px;
+	    height: 70px;
+		background-image: none;
+		> img {
+			height: 25px;
+		}
+		@media(max-width: @screen-xs-max) {
+	        > img {
+				height: 20px;
+			}
+	    }
+	}
+	.carousel-control.left {
+		left: 20px;
+		@media(max-width: @screen-xs-max) {
+	        left: 0;
+	    }
+	}
+	.carousel-control.right {
+		right: 20px;
+		@media(max-width: @screen-xs-max) {
+	        right: 0;
+	    }
+	}
+}
+
+
+/* Fade slide transition */
+
+/*
+  Bootstrap Carousel Fade Transition (for Bootstrap 3.3.x)
+  CSS from:       http://codepen.io/transportedman/pen/NPWRGq
+  and:            http://stackoverflow.com/questions/18548731/bootstrap-3-carousel-fading-to-new-slide-instead-of-sliding-to-new-slide
+  Inspired from:  http://codepen.io/Rowno/pen/Afykb 
+*/
+.carousel-fade .carousel-inner .item {
+  opacity: 0;
+  transition-property: opacity;
+}
+
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+@media all and (transform-3d), (-webkit-transform-3d) {
+    .carousel-fade .carousel-inner > .item.next,
+    .carousel-fade .carousel-inner > .item.active.right {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.prev,
+    .carousel-fade .carousel-inner > .item.active.left {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.next.left,
+    .carousel-fade .carousel-inner > .item.prev.right,
+    .carousel-fade .carousel-inner > .item.active {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+}

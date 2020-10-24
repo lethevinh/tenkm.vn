@@ -1,0 +1,151 @@
+/**
+ * Custom Styles for courses.html
+ */
+
+#courses__page {
+
+	/*** . Section: Home ***/
+
+	@navbar-total: (@navbar-height + @navbar-margin-bottom);
+
+	.section__home {
+		height: 40vh;
+	    width: 100%;
+	    padding: 0;
+	    position: relative;
+	    &:before {
+	        content: "";
+	        position: absolute;
+	        top: 0; right: 0; bottom: 0; left: 0;
+	        background-color: fade(black, 50%);
+	    }
+	    > .container {
+	    	height: 100%;
+			> .row {
+				display: table;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				[class*="col-"] {
+					display: table-cell;
+					float: none;
+					vertical-align: middle;
+				}
+			}
+		}
+		.container.home__body {
+			padding-top: @navbar-total;
+			height: 100%;
+			.home__content {
+				color: rgb(255, 255, 255);
+				.home__heading {
+					font-size: 62px;
+					letter-spacing: 0.2em;
+					font-weight: 700;
+					text-transform: uppercase;
+					margin: 0;
+					font-family: @font-family-base;
+					@media(max-width: @screen-sm-max) {
+			        	letter-spacing: 0.1em;
+			    	}
+					@media(max-width: @screen-xs-max) {
+				        font-size: 42px;
+				        letter-spacing: 0.1em;
+				    }
+					> span {
+						color: @brand-primary;
+					}
+				}
+				.home__info {
+					margin-bottom: 40px;
+					@media(max-width: @screen-xs-max) {
+				        font-size: (@font-size-base - 2px);
+				        margin-bottom: 20px;
+				    }
+				}
+			}
+		}
+		.home__bg {
+			position: absolute;
+	    	top: 0; right: 0; bottom: 0; left: 0;
+	    	background: url(../img/courses_img.jpg) no-repeat center center / cover;
+	    	z-index: -999;
+		}
+	}
+
+	/*** . Section: Courses ***/
+
+	.section__courses {
+		padding: 100px 0;
+		background-color: rgba(250, 250, 250, 0.8);
+		@media(max-width: @screen-xs-max) {
+	        padding: 50px 0;
+	    }
+	    .course__item {
+    		margin-bottom: 50px;
+			box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+			transition: box-shadow 0.3s;
+			@media(max-width: @screen-xs-max) {
+	        	margin-bottom: 30px;
+	    	}
+	    	.course-item__img {
+				border-bottom: 4px solid @brand-primary;
+				position: relative;
+				&:before {
+			        content: "";
+			        position: absolute;
+			        top: 0; right: 0; bottom: 0; left: 0;
+			        background-color: fade(@brand-accent, 40%);
+			    }
+	    	}
+	    	.course-item__info {
+				transform: translateY(-35px);
+				padding-left: 20px;
+				.info__students, .info__price {
+					display: inline-block;
+					color: rgb(255, 255, 255);
+					font-family: @headings-font-family;
+					> i {
+						color: @brand-primary;
+						margin-right: 5px;
+					}
+				}
+				.info__price {
+					float: right;
+					padding-right: 20px;
+				}
+			}
+			.course-item__content {
+				padding: 20px 30px 10px;
+				transform: translateY(-20px);
+				@media(max-width: @screen-sm-max) {
+		        	padding: 20px 20px 10px;
+		    	}
+				.course-item__branch {
+					color: rgb(169, 169, 169);
+				}
+				> h3 {
+					font-size: (@font-size-base + 6px);
+					margin: 10px 0;
+					> a {
+						text-decoration: none;
+						text-transform: uppercase;
+						font-weight: 700;
+						color: @brand-accent;
+						font-family: @font-family-base;
+						transition: color 0.3s;
+						&:hover, &:active, &:focus {
+							color: @brand-primary;
+						}
+					}
+				}
+				.course-item__desc {
+					margin-bottom: 30px;
+				}
+			}
+			&:hover {
+				box-shadow: 0px 15px 30px 0px rgba(0,0,0,0.1);
+			}
+		}
+	}
+}

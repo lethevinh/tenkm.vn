@@ -1,0 +1,67 @@
+.course__item .course-item__content > h3 > a {
+    display: -webkit-box;
+    margin: 0 auto;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 42px;
+}
+.back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1000000;
+    display: none;
+    cursor: pointer;
+    transition: none !important;
+}
+.course__item .course-item__content .course-item__desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+ .teacher__item .teacher__info .teacher__name{
+    display: -webkit-box;
+    margin: 0 auto;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 50px;
+}
+ .teacher__item .teacher__info .teacher__prof{
+    display: -webkit-box;
+    margin: 0 auto;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 30px;
+}
+ .teacher__item .teacher_item__overlay .overlay__desc {
+    margin-top: 30px;
+}
+ .blog__item .blog-item__content .blog-item__title > h3{
+    display: -webkit-box;
+    margin: 0 auto;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 45px;
+}
+.courses_item__wrapper.category_item_course .courses__item .card__top .courses__title{
+    display: -webkit-box;
+    margin: 0 auto;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 65px;
+}
+.modal .modal-dialog .modal-body .body-signin__form .signin__alt .signin__social .linkedin:hover {
+    background-color: #0073b0;
+}

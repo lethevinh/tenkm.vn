@@ -1,0 +1,74 @@
+/**
+ * Buttons
+ */
+
+.btn {
+    padding: 10px 20px;
+    border-color: transparent;
+    font-size: (@font-size-base - 2px);
+    font-family: @headings-font-family;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    transition: all 0.3s;
+    border-radius: 5px;
+    box-shadow: 0;
+    color: white;
+    @media(max-width: @screen-sm-max) {
+        padding: 8px 15px;
+        font-size: (@font-size-base - 2px);
+    }
+}
+
+.btn-primary {
+    background-color: @brand-primary;
+    &:hover, &:focus, &:active {
+        background-color: darken(@brand-primary, 20%);
+        border-color: transparent;
+        color: white;
+    }
+}
+
+.btn-accent {
+    background-color: @brand-accent;
+    &:hover, &:focus, &:active {
+        background-color: darken(@brand-accent, 5%);
+        border-color: transparent;
+        color: white;
+    }
+}
+
+.btn-newsletter {
+    padding: 6px 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: color 0.3s;
+    > i {
+        font-size: (@font-size-base + 4px);
+    }
+    &:hover {
+        > i {
+            color: @brand-primary;
+        }
+    }
+}
+
+.btn-dropdown {
+    background-color: transparent;
+    border: none;
+    letter-spacing: 0.1em;
+    padding: 0;
+    font-size: (@font-size-base - 2px);
+    font-family: @font-family-base;
+    &:hover, &:focus, &:active {
+        color: rgb(255, 255, 255);
+        border: none;
+    }
+}
+
+.btn-carousel {
+    margin: 0 10px;
+    @media(max-width: @screen-xs-max) {
+        margin: 5px 0;
+    }
+}

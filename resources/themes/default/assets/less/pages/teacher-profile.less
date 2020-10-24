@@ -1,0 +1,280 @@
+/**
+ * Custom Styles for teacher-profile.html
+ */
+
+#teacher-profile__page {
+
+	/*** . Section: Home ***/
+
+	@navbar-total: (@navbar-height + @navbar-margin-bottom);
+
+	.section__home {
+		height: 40vh;
+	    width: 100%;
+	    padding: 0;
+	    position: relative;
+	    &:before {
+	        content: "";
+	        position: absolute;
+	        top: 0; right: 0; bottom: 0; left: 0;
+	        background-color: fade(black, 50%);
+	    }
+	    > .container {
+	    	height: 100%;
+			> .row {
+				display: table;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				[class*="col-"] {
+					display: table-cell;
+					float: none;
+					vertical-align: middle;
+				}
+			}
+		}
+		.container.home__body {
+			padding-top: @navbar-total;
+			height: 100%;
+			.home__content {
+				color: rgb(255, 255, 255);
+				.home__heading {
+					font-size: 62px;
+					letter-spacing: 0.2em;
+					font-weight: 700;
+					text-transform: uppercase;
+					margin: 0;
+					font-family: @font-family-base;
+					@media(max-width: @screen-sm-max) {
+			        	letter-spacing: 0.1em;
+			    	}
+					@media(max-width: @screen-xs-max) {
+				        font-size: 42px;
+				        letter-spacing: 0.1em;
+				    }
+					> span {
+						color: @brand-primary;
+					}
+				}
+				.home__info {
+					margin-bottom: 40px;
+					@media(max-width: @screen-xs-max) {
+				        font-size: (@font-size-base - 2px);
+				        margin-bottom: 20px;
+				    }
+				}
+			}
+		}
+		.home__bg {
+			position: absolute;
+	    	top: 0; right: 0; bottom: 0; left: 0;
+	    	background: url(../img/teachers_img.jpg) no-repeat center center / cover;
+	    	z-index: -999;
+		}
+	}
+
+	/*** . Section: Teacher Profile ***/
+
+	.section__teacher-profile {
+		padding: 100px 0;
+		background-color: rgba(250, 250, 250, 0.8);
+		@media(max-width: @screen-xs-max) {
+	        padding: 50px 0;
+	    }
+	    > .container {
+			background-color: rgb(255, 255, 255);
+			padding: 30px;
+			@media(max-width: @screen-xs-max) {
+	        	padding: 15px;
+	    	}
+			.teacher__img {
+			}
+			.subheading {
+				color: @brand-primary;
+				font-family: @headings-font-family;
+				letter-spacing: 0.5em;
+				text-transform: uppercase;
+				font-size: (@font-size-base - 2px);
+				margin: 20px 0;
+				padding: 10px 0;
+				text-align: center;
+				border-bottom: 1px dashed rgba(169, 169, 169, 0.4);
+			}
+			.social__icons {
+				padding: 0;
+				margin: 10px 0;
+				text-align: center;
+		 		.social-icons__item {
+					display: inline-block;
+		      		padding: 0 15px;
+		      		font-size: (@font-size-base + 6px);
+		      		@media(max-width: @screen-md-max) {
+				        padding: 0 12.5px;
+				    }
+		      		@media(max-width: @screen-sm-max) {
+			        	padding: 0 15px;
+			    	}
+			    	@media(max-width: @screen-xs-max) {
+			        	padding: 0 15px;
+			    	}
+					> a {
+						display: block;
+			          	text-decoration: none;
+			          	color: @brand-accent;
+			          	transition: color 0.3s;
+			          	&:hover {
+			      			color: @brand-primary;
+			      		}
+			      		@media (max-width: @screen-xs-max) {
+							font-size: (@font-size-base + 2px);
+						}
+					}
+		 		}
+		 	}
+		 	.teacher__post {
+				letter-spacing: 0.6em;
+				font-size: (@font-size-base - 2px);
+				text-transform: uppercase;
+				font-family: @headings-font-family;
+				font-weight: 700;
+				color: @brand-primary;
+				@media(max-width: @screen-xs-max) {
+			        font-size: (@font-size-base - 3px);
+			        letter-spacing: 0.3em;
+			        margin-top: 20px;
+			    }
+		 	}
+		 	.teacher__name {
+				font-size: 56px;
+		    	font-family: @font-family-base;
+		    	text-transform: uppercase;
+		    	font-weight: 700;
+		    	color: @brand-accent;
+		    	margin-top: 10px;
+		    	@media(max-width: @screen-sm-max) {
+		        	font-size: 46px;
+		        	margin: 5px 0;
+		    	}
+		    	@media(max-width: @screen-xs-max) {
+		        	font-size: 32px;
+		    	}
+		 	}
+		 	.teacher__branch {
+		 		color: rgb(169, 169, 169);
+		 	}
+	 		.teacher-biography__list {
+	 			margin: 0;
+	 			padding: 0;
+	 			list-style: none;
+	 			> li {
+	 				margin: 10px 0;
+	 				> span {
+	 					font-family: @headings-font-family;
+						font-weight: 700;
+						color: @brand-accent;
+	 				}
+	 			}
+	 		}
+	 		.teacher__contact {
+	 			list-style: none;
+	 			padding: 0;
+	 			margin: 0;
+	 			> li {
+	 				margin: 10px 0;
+	 				> i {
+	 					color: @brand-accent;
+	 					font-size: (@font-size-base + 4px);
+	 					margin-right: 10px;
+	 				}
+	 			}
+	 		}
+	 		.teacher-awards__list {
+	 			margin: 0;
+	 			padding: 0;
+	 			list-style: none;
+	 			> li {
+	 				margin: 10px 0;
+	 				> span {
+	 					font-size: (@font-size-base + 4px);
+	 					font-family: @headings-font-family;
+						font-weight: 700;
+						color: @brand-accent;
+						margin-right: 10px;
+	 				}
+	 			}
+	 		}
+		 	.teacher__skills {
+				> h5 {
+					color: @brand-accent;
+					font-weight: 700;
+					> span {
+						float: right;
+					}
+				}
+			}
+			.course__item {
+	    		margin-bottom: 50px;
+				box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+				transition: box-shadow 0.3s;
+				@media(max-width: @screen-xs-max) {
+		        	margin-bottom: 30px;
+		    	}
+		    	.course-item__img {
+					border-bottom: 4px solid @brand-primary;
+					position: relative;
+					&:before {
+				        content: "";
+				        position: absolute;
+				        top: 0; right: 0; bottom: 0; left: 0;
+				        background-color: fade(@brand-accent, 40%);
+				    }
+		    	}
+		    	.course-item__info {
+					transform: translateY(-35px);
+					padding-left: 20px;
+					.info__students, .info__price {
+						display: inline-block;
+						color: rgb(255, 255, 255);
+						font-family: @headings-font-family;
+						> i {
+							color: @brand-primary;
+							margin-right: 5px;
+						}
+					}
+					.info__price {
+						float: right;
+						padding-right: 20px;
+					}
+				}
+				.course-item__content {
+					padding: 20px 30px 10px;
+					transform: translateY(-20px);
+					.course-item__branch {
+						color: rgb(169, 169, 169);
+					}
+					> h3 {
+						font-size: (@font-size-base + 6px);
+						margin: 10px 0;
+						> a {
+							text-decoration: none;
+							text-transform: uppercase;
+							font-weight: 700;
+							color: @brand-accent;
+							font-family: @font-family-base;
+							transition: color 0.3s;
+							&:hover, &:active, &:focus {
+								color: @brand-primary;
+							}
+						}
+					}
+					.course-item__desc {
+						margin-bottom: 30px;
+					}
+				}
+				&:hover {
+					box-shadow: 0px 15px 30px 0px rgba(0,0,0,0.1);
+				}
+			}
+		}
+	}
+}

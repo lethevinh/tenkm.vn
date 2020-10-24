@@ -1,0 +1,235 @@
+/**
+ * Custom Styles for contacts.html
+ */
+
+
+#contact__page {
+	
+	/*** 1. Section: General styles ***/
+	
+	.section_title__body {
+		margin-bottom: 40px;
+		@media(max-width: @screen-xs-max) {
+	        margin-bottom: 10px;
+	    }
+		.section__title {
+			z-index: 99;
+			display: inline-block;
+			position: relative;
+	    	&:before {
+	    		position: absolute;
+	    		content: "";
+	    		left: 0;
+			    width: 60%;
+			    bottom: 0;
+			    border-top: 42px solid @brand-primary;
+			    z-index: -1;
+			    @media(max-width: @screen-sm-max) {
+			        border-top: 34px solid @brand-primary;
+			    }
+			    @media(max-width: @screen-xs-max) {
+			        border-top: 20px solid @brand-primary;
+			    }
+			}
+	    }
+		> .section_title__desc {
+			padding-right: 250px;
+			@media(max-width: @screen-sm-max) {
+		        padding-right: 100px;
+		    }
+		    @media(max-width: @screen-xs-max) {
+		        padding-right: 0;
+		        font-size: (@font-size-base - 2px);
+		    }
+		}
+	}
+	.section__subtitle {
+		letter-spacing: 0.6em;
+		font-size: (@font-size-base - 2px);
+		text-transform: uppercase;
+		font-family: @headings-font-family;
+		font-weight: 700;
+		@media(max-width: @screen-xs-max) {
+	        font-size: (@font-size-base - 3px);
+	        letter-spacing: 0.3em;
+	    }
+		> span {
+			color: @brand-primary;
+		}
+    }
+    .section__title {
+    	font-size: 68px;
+    	letter-spacing: 0.2em;
+    	font-family: @font-family-base;
+    	text-transform: uppercase;
+    	font-weight: 700;
+    	display: inline-block;
+    	@media(max-width: @screen-sm-max) {
+	        font-size: 56px;
+	    }
+	    @media(max-width: @screen-xs-max) {
+	        font-size: 32px;
+	        letter-spacing: 0.1em;
+	    }
+    }
+	.dark__subtitle {
+		
+	}
+	.dark__title {
+		color: @brand-accent;
+	}
+	.light__subtitle {
+		color: rgb(255, 255, 255);
+	}
+	.light__title {
+		color: rgb(255, 255, 255);
+	}
+
+	.card__nbr {
+		font-family: @headings-font-family;
+		font-weight: 700;
+		color: rgba(133, 133, 133, 0.9);
+	}
+
+
+	/*** . Section: Home ***/
+
+	@navbar-total: (@navbar-height + @navbar-margin-bottom);
+
+	.section__home {
+		height: 40vh;
+	    width: 100%;
+	    padding: 0;
+	    position: relative;
+	    &:before {
+	        content: "";
+	        position: absolute;
+	        top: 0; right: 0; bottom: 0; left: 0;
+	        background-color: fade(black, 50%);
+	    }
+	    > .container {
+	    	height: 100%;
+			> .row {
+				display: table;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				[class*="col-"] {
+					display: table-cell;
+					float: none;
+					vertical-align: middle;
+				}
+			}
+		}
+		.container.home__body {
+			padding-top: @navbar-total;
+			height: 100%;
+			.home__content {
+				color: rgb(255, 255, 255);
+				.home__heading {
+					font-size: 62px;
+					letter-spacing: 0.2em;
+					font-weight: 700;
+					text-transform: uppercase;
+					margin: 0;
+					font-family: @font-family-base;
+					@media(max-width: @screen-xs-max) {
+				        font-size: 42px;
+				        letter-spacing: 0.1em;
+				    }
+					> span {
+						color: @brand-primary;
+					}
+				}
+				.home__info {
+					margin-bottom: 40px;
+					@media(max-width: @screen-xs-max) {
+				        font-size: (@font-size-base - 2px);
+				        margin-bottom: 20px;
+				    }
+				}
+			}
+		}
+		.home__bg {
+			position: absolute;
+	    	top: 0; right: 0; bottom: 0; left: 0;
+	    	background: url(../img/contact_img.jpg) no-repeat center center / cover;
+	    	z-index: -999;
+		}
+	}
+
+	/*** . Section: Location ***/
+
+	.section__location {
+		padding: 100px 0;
+		background-color: rgba(235, 235, 235, 0.6);
+		@media(max-width: @screen-xs-max) {
+	        padding: 60px 0;
+	    }
+		#map {
+			height: 30vh;
+			border: 1px solid rgba(169, 169, 169, 0.6);
+		}
+	}
+
+	/*** . Section: Get in touch ***/
+
+	.section__get-in-touch {
+		padding: 100px 0;
+		.contact_info__body {
+			margin-top: 30px;
+			margin-left: 50px;
+			@media(max-width: @screen-sm-max) {
+		        margin-left: 0;
+		    }
+			.contact_info__item {
+				display: flex;
+				flex-direction: row;
+				padding-top: 20px;
+				padding-bottom: 20px;
+				margin-bottom: 10px;
+				border-bottom: 1px solid rgba(169, 169, 169, 0.4);
+				@media(max-width: @screen-sm-max) {
+			        padding-bottom: 18px;
+			        margin-bottom: 0;
+			    }
+				.contact__title {
+					text-transform: uppercase;
+					font-weight: 700;
+					letter-spacing: 0.1em;
+					font-size: (@font-size-base + 10px);
+					color: @brand-accent;
+					width: 40%;
+					@media(max-width: @screen-sm-max) {
+				        width: 50%;
+				    }
+				    @media(max-width: @screen-xs-max) {
+				        font-size: (@font-size-base + 6px);
+				    }
+					> span {
+						color: @brand-primary;
+					}
+				}
+				.contact__info {
+					@media(max-width: @screen-xs-max) {
+				        width: 50%;
+				    }
+					.contact_info__wrapper {
+						> h3 {
+							margin: 0;
+							font-family: @font-family-base;
+							text-transform: uppercase;
+							font-weight: 700;
+							letter-spacing: 0.05em;
+							font-size: (@font-size-base + 2px);
+						}
+						> p {
+							color: rgb(169, 169, 169);
+							letter-spacing: 0.02em;
+						}
+					}
+				}
+			}
+		}
+	}
+}

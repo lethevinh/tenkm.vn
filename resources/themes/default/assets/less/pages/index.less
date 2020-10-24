@@ -1,0 +1,1490 @@
+/*------------------------------------------------------------------
+[Table of contents]
+
+1. Section: General styles
+	1.1. Section title body / .section_title__body
+		1.1.1. Section title / .section__title
+		1.1.2. Section title description / .section_title__desc
+	1.2. Section subtitle / .section__subtitle
+	1.3. Section title / .section__title
+	1.4. Dark title / .dark__title
+	1.5. Light subtitle / .light__subtitle
+	1.6. light title / .light__title
+	1.7. Card number styles / .card__nbr
+	1.8. Back to top button / .back-to-top
+
+2. Section: Home / .section__home
+	2.1. Home body / .home__body
+	2.2. Home footer / .home__footer
+	2.3. Home background image / .home__bg
+	2.4. Home parallax effect background image / .home-parallax__bg
+	2.5. Home video background / .home-video__bg
+
+3. Section: About / .section__about
+	3.1. Section аbout icon / .about__icon
+	3.2. Section about description / .about__desc
+	3.3. Section about quote / .about__quote
+
+4. Section: Courses / .section__courses
+	4.1. Courses item wrapper / .courses_item__wrapper
+		4.1.1. Courses item / .courses__item
+
+5. Section: Stats / .section__stats
+	5.1. Stats item / .stat__item
+		5.1.1. Stats item number / .stats_item__nbr
+		5.1.2. Stats item text / .stats_item__text
+
+6. Section: Teachers / .section__teachers
+	6.1. Teachers item / .teacher__item
+		6.1.1. Teacher info / .teacher__info
+		6.1.2. Teacher image / .teacher__img
+		6.1.3. Teacher overlay / .teacher_item__overlay
+
+7. Section: Features / .section__features
+	7.1. Feature box styles / .left__box, .right__box
+		7.1.1. Feature title / .features__title
+		7.1.2. Feature description / .features__desc
+	7.2. Left box styles / .left__box
+	7.3. Right box styles / .right__box
+
+8. Section: Process / .section__process
+	8.1. General Process item styles / .process__item
+		8.1.1. Process item icon / .process_item__icon
+		8.1.2. Process item title / .process_item__title
+	8.2. Process item 1 / .process__item-1
+	8.3. Process item 2 / .process__item-2
+	8.4. Process item 3 / .process__item-3
+	8.5. Process item arrow 1 / .process_item__arrow-1
+	8.6. Process item arrow 2 / .process_item__arrow-2
+
+9. Section: Pricing / .section__pricing
+	9.1. Pricing item / .price__item
+		9.1.1. Pricing item title / .price_item__title
+		9.1.2. Pricing item features / .price_item__features
+		9.1.3. Pricing item price / .price_item__price
+
+10. Section: Coming Soon / .section__coming-soon
+	10.1. Coming Soon clock / #clock
+	10.2. Coming Soon text / .coming-soon__text
+	10.3. Coming Soon image / .coming-soon__img
+
+11. Section: Blog / .section__blog
+	11.1. Blog item / .blog__item
+		11.1.1. Blog item image / .blog-item__img
+		11.1.2. Blog item tags / .blog-item__tags
+		11.1.3. Blog item content / .blog-item__content
+
+12. Section: Testimonials / .section__testimonials
+	12.1. Testimonials icon / .testimonials__icon
+	12.2. Testimonials item / .testimonials__item
+		12.2.1. Testimonials title / .testimonials_item__title
+		12.2.2. Testimonials text / .testimonials_item__text
+		12.2.3. Testimonials author / .testimonials_item__author
+	12.3. Testimonials navigation dots / .owl-dots
+
+13. Section: Partners / .section__partners
+	13.1. Partner image / .partner__img
+
+14. Section: Contact / .section__contact
+	14.1. Map / #map
+	14.2. Contact info body / .contact_info__body
+		14.2.1. Contact info item / .contact_info__item
+			14.2.1.1. Contact title / .contact__title
+			14.2.1.2. Contact info / .contact__info
+
+15. Section: Instagram / .section__instagram
+	15.1. Instagram title / .instagram__title
+	15.2. Instagram image body / .intagram_img__body
+		15.2.1. Instagram image / .insagram__img
+
+-------------------------------------------------------------------*/
+
+
+#index__page {
+	
+	/*** 1. Section: General styles ***/
+	
+	/*** 1.1. Section title body ***/
+	.section_title__body {
+		margin-bottom: 40px;
+		@media(max-width: @screen-xs-max) {
+	        margin-bottom: 10px;
+	    }
+
+	    /*** 1.1.1. Section title ***/
+		.section__title {
+			z-index: 999;
+			display: inline-block;
+			position: relative;
+	    	&:before {
+	    		position: absolute;
+	    		content: "";
+	    		left: 0;
+			    width: 60%;
+			    bottom: 0;
+			    border-top: 42px solid @brand-primary;
+			    z-index: -1;
+			    @media(max-width: @screen-sm-max) {
+			        border-top: 34px solid @brand-primary;
+			    }
+			    @media(max-width: @screen-xs-max) {
+			        border-top: 20px solid @brand-primary;
+			    }
+			}
+	    }
+
+	    /*** 1.1.2. Section title description ***/
+		> .section_title__desc {
+			padding-right: 250px;
+			@media(max-width: @screen-sm-max) {
+		        padding-right: 100px;
+		    }
+		    @media(max-width: @screen-xs-max) {
+		        padding-right: 0;
+		        font-size: (@font-size-base - 2px);
+		    }
+		}
+	}
+
+	/*** 1.2. Section subtitle ***/
+	.section__subtitle {
+		letter-spacing: 0.6em;
+		font-size: (@font-size-base - 2px);
+		text-transform: uppercase;
+		color: @brand-accent;
+		font-family: @headings-font-family;
+		font-weight: 700;
+		@media(max-width: @screen-xs-max) {
+	        font-size: (@font-size-base - 3px);
+	        letter-spacing: 0.3em;
+	    }
+		> span {
+			color: @brand-primary;
+		}
+    }
+
+    /*** 1.3. Section title ***/
+    .section__title {
+    	font-size: 68px;
+    	letter-spacing: 0.2em;
+    	font-family: @font-family-base;
+    	text-transform: uppercase;
+    	font-weight: 700;
+    	display: inline-block;
+    	@media(max-width: @screen-sm-max) {
+	        font-size: 56px;
+	    }
+	    @media(max-width: @screen-xs-max) {
+	        font-size: 32px;
+	        letter-spacing: 0.1em;
+	    }
+    }
+
+    /*** 1.4. Dark title ***/
+	.dark__title {
+		color: @brand-accent;
+	}
+
+	/*** 1.5. Light subtitle ***/
+	.light__subtitle {
+		color: rgb(255, 255, 255);
+	}
+
+	/*** 1.6. light title ***/
+	.light__title {
+		color: rgb(255, 255, 255);
+	}
+
+	/*** 1.7. Card number styles ***/
+	.card__nbr {
+		font-family: @headings-font-family;
+		font-weight: 700;
+		color: rgba(133, 133, 133, 0.9);
+	}
+
+	/*** 1.8. Back to top button ***/
+	.back-to-top {
+		cursor: pointer;
+	    position: fixed;
+	    bottom: 20px;
+	    right: 20px;
+	    z-index: 1000000;
+	    display: none;
+	    transition: none !important;
+	}
+
+	/*** 2. Section: Home ***/
+
+	@navbar-total: (@navbar-height + @navbar-margin-bottom);
+
+	.section__home {
+		height: 100vh;
+	    width: 100%;
+	    padding: 0;
+	    position: relative;
+	    &:before {
+	        content: "";
+	        position: absolute;
+	        top: 0; right: 0; bottom: 0; left: 0;
+	        background-color: fade(@brand-accent, 50%);
+	    }
+	    > .container {
+	    	height: 100%;
+			> .row {
+				display: table;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				[class*="col-"] {
+					display: table-cell;
+					float: none;
+					vertical-align: middle;
+				}
+			}
+		}
+
+		/*** 2.1. Home body ***/
+		.home__body {
+			padding-top: @navbar-total;
+			height: calc(~"100% -"@navbar-total);
+			.home__content {
+				color: rgb(255, 255, 255);
+				.home__title {
+					font-size: @font-size-base;
+					text-transform: uppercase;
+					letter-spacing: 0.2em;
+					@media(max-width: @screen-xs-max) {
+				        font-size: (@font-size-base - 2px);
+				    }
+				}
+				.home__heading {
+					font-size: 76px;
+					font-weight: 700;
+					font-family: @font-family-base;
+					@media(max-width: @screen-xs-max) {
+				        font-size: 52px;
+				        margin-top: 0;
+				    }
+					> span {
+						color: @brand-primary;
+					}
+				}
+				.home__info {
+					margin-bottom: 40px;
+					@media(max-width: @screen-xs-max) {
+				        font-size: (@font-size-base - 2px);
+				        margin-bottom: 20px;
+				    }
+				}
+			}
+		}
+
+		/*** 2.2. Home footer ***/
+		.home__footer {
+			height: @navbar-total;
+			padding-top: @navbar-margin-bottom;
+			.home__address {
+				padding: @navbar-padding-vertical @navbar-padding-horizontal;
+			    text-align: left;
+			    color: rgb(255, 255, 255);
+			    font-size: @font-size-base;
+			    > i {
+					margin-right: 10px;
+    				color: @brand-primary;
+			    }
+			}
+			.home__social {
+				list-style-type: none;
+			    padding: 0;
+			    margin: 0;
+			    text-align: right;
+			    @media(max-width: @screen-xs-max) {
+			        text-align: center;
+			    }
+			    > li {
+			    	display: inline-block;
+			    	> a {
+			    		display: block;
+			    		text-decoration: none;
+					    font-size: @font-size-base;
+					    color: rgb(255, 255, 255);
+					    padding: @navbar-padding-vertical @navbar-padding-horizontal;
+					    transition: color .3s;
+			    	}
+			    	&:hover {
+			    		> a {
+			    			color: @brand-primary;
+			    		}
+			    	}
+			    }
+			}
+		}
+
+		/*** 2.3. Home background image ***/
+		.home__bg {
+			position: absolute;
+	    	top: 0; right: 0; bottom: 0; left: 0;
+	    	background: url(../img/home_bg.jpg) no-repeat center center / cover;
+	    	z-index: -999;
+		}
+
+		/*** 2.4. Home parallax effect background image ***/
+		.home-parallax__bg {
+		    position: absolute;
+		    top: 0; right: 0; bottom: 0; left: 0;
+		    background: black url(../img/parallax_bg.jpg) no-repeat center center / cover;
+		    z-index: -999;
+		}
+
+		/*** 2.5. Home video background ***/
+		.home-video__bg {
+		    position: absolute;
+		    top: 0; right: 0; bottom: 0; left: 0;
+		    z-index: -999;
+		    overflow: hidden;
+			> video {
+		    	position: absolute;
+			    width: 100%;
+			    height: auto;
+				top: 50%; left: 50%;
+				transform: translate(-50%, -50%);
+		    }
+		    @media (min-aspect-ratio: 16/9) {
+				> video {
+					width: 100%;
+					height: auto;
+				}
+			}
+			@media (max-aspect-ratio: 16/9) {
+				> video {
+		    		width: auto;
+		    		height: 100%;
+				}
+			}
+		}
+	}
+
+	/*** 3. Section: About ***/
+	
+	.section__about {
+		padding: 80px 0;
+		background: url(../img/about_bg.jpg) no-repeat center center / cover;
+		text-align: center;
+		position: relative;
+		@media(max-width: @screen-sm-max) {
+	        padding: 40px 0;
+	    }
+		&:before {
+	        content: "";
+	        position: absolute;
+	        top: 0; right: 0; bottom: 0; left: 0;
+	        background-color: fade(white, 80%);
+	    }
+
+		/*** 3.1. Section аbout icon ***/
+	    .about__icon {
+	    	color: lighten(@brand-accent, 40%);
+	    	font-size: 120px;
+	    	@media(max-width: @screen-xs-max) {
+		        font-size: 60px;
+		    }
+	    }
+
+		/*** 3.2. Section about description ***/
+	    .about__desc {
+	    	line-height: 1.8;
+	    	padding: 0 20%;
+	    	margin-top: 40px;
+	    	@media(max-width: @screen-sm-max) {
+		        padding: 0 12%;
+		    }
+		    @media(max-width: @screen-xs-max) {
+		        padding: 0 2.5%;
+		        margin-top: 15px;
+		    }
+	    }
+
+		/*** 3.3. Section about quote ***/
+	    .about__quote {
+	    	border-bottom: 1px solid lighten(@brand-accent, 30%);
+	    	border-top: 1px solid lighten(@brand-accent, 30%);
+	    	margin: 30px 20%;
+	    	@media(max-width: @screen-sm-max) {
+		        margin: 20px 12%;
+		    }
+		    @media(max-width: @screen-xs-max) {
+		        margin: 15px 2.5%;
+		    }
+	    	.about_quote__text {
+				font-style: italic;
+				font-size: (@font-size-base + 2px);
+				line-height: 1.8;
+				@media(max-width: @screen-sm-max) {
+			        font-size: @font-size-base;
+			    }
+				.quote_end {
+					transform: rotate(180deg);
+					display: inline-block;
+				}
+	    	}
+	    	.author__signature {
+	    		text-align: center;
+	    		margin-bottom: 20px;
+	    		> img {
+	    			width: 250px;
+	    			height: auto;
+	    			@media(max-width: @screen-sm-max) {
+				        width: 200px;
+				    }
+				    @media(max-width: @screen-sm-max) {
+				        width: 150px;
+				    }
+	    		}
+	    	}
+	    	.about_quote__author {
+	    		letter-spacing: 0.01em;
+				> span {
+					font-weight: 700;
+					color: @brand-accent;
+				}
+	    	}
+	    }
+	}
+
+	/*** 4. Section: Courses ***/
+	
+	.section__courses {
+		padding: 100px 0;
+		background: url(../img/courses_bg.jpg) no-repeat center center / cover;
+		text-align: center;
+		position: relative;
+		&:before {
+	        content: "";
+	        position: absolute;
+	        top: 0; right: 0; bottom: 0; left: 0;
+	        background-color: fade(@brand-accent, 85%);
+	    }
+
+	    /*** 4.1. Courses item wrapper ***/
+	    .courses_item__wrapper {
+	    	perspective: 900px;
+
+	    	/*** 4.1.1. Courses item ***/
+	    	.courses__item {
+		    	background-color: rgb(255, 255, 255);
+		    	padding: 20px;
+		    	margin: 40px 0;
+		    	position: relative;
+				transition: all 0.6s ease;
+				transform-style: preserve-3d;
+				@media(max-width: @screen-sm-max) {
+			        padding: 30px;
+			        margin: 30px 10px;
+			    }
+			    @media(max-width: @screen-xs-max) {
+			        margin: 30px 10px;
+			    }
+				.card__top, .card__back {
+					backface-visibility: hidden;
+					background-color: rgb(255, 255, 255);
+				}
+				.card__top {
+					.courses__icon {
+						font-size: 62px;
+						width: 90px;
+						height: 90px;
+						margin: 0 auto;
+						border-radius: 50%;
+						line-height: 100px;
+						> i {
+							color: rgb(255, 255, 255);
+						}
+			    	}
+			    	.courses_icon-1 {
+			    		background-color: @brand-primary;
+			    	}
+			    	.courses_icon-2 {
+			    		background-color: @brand-accent;
+			    	}
+			    	.courses_icon-3 {
+			    		background-color: @brand-info;
+			    	}
+			    	.courses_icon-4 {
+			    		background-color: lighten(@text-color, 10%);
+			    	}
+			    	.courses__title {
+						margin: 30px 0;
+						letter-spacing: 0.02em;
+						font-size: 24px;
+						color: @brand-accent;
+			    	}
+			    	.courses__desc {
+						font-style: italic;
+		    		}
+				}
+				.card__back {
+					transform: rotateY(180deg);
+					padding: 20px 10px 0;
+					position: absolute;
+					top: 0; left: 0;
+					width: 100%;
+					height: 100%;
+					.card_back__wrapper {
+						.courses__title {
+							font-size: (@font-size-base + 6px);
+							text-transform: uppercase;
+							font-weight: 700;
+							letter-spacing: 0.02em;
+							color: @brand-accent;
+							padding: 8px 0;
+							margin-bottom: 20px;
+							border-bottom: 4px solid @brand-primary;
+						}
+						.course__info {
+							margin: 0;
+							padding: 0;
+							list-style: none;
+							margin-bottom: 30px;
+							> li {
+								border-bottom: 1px solid rgba(169, 169, 169, 0.4);
+								text-align: left;
+								font-weight: 700;
+								padding: 10px 0;
+								.course-calendar {
+									color: @brand-primary;
+									font-size: (@font-size-base + 6px);
+									padding-right: 10px;
+								}
+								.rating-star {
+									color: rgb(255,162,0);
+									padding: 0 2.5px;
+								}
+								> span {
+									color: @brand-primary;
+								}
+							}
+						}
+					}
+				}
+		    }
+		    &:hover {
+				.courses__item {
+					transform: rotateY(180deg);
+				}
+		    }
+	    }
+	}
+
+	/*** 5. Section: Stats ***/
+
+	.section__stats {
+		padding: 120px 0;
+		background-color: rgb(235, 235, 235);
+		z-index: -999;
+		border-bottom: 1px solid rgba(169, 169, 169, 0.4);
+		@media(max-width: @screen-sm-max) {
+	        padding: 80px 0;
+	    }
+	    @media(max-width: @screen-xs-max) {
+	        padding: 30px 0;
+	    }
+
+	    /*** 5.1. Stats item ***/
+		.stat__item {
+			.stats_item__icon {
+				font-size: 140px;
+				margin-bottom: -200px;
+				color: lighten(@brand-info, 30%);
+				@media(max-width: @screen-xs-max) {
+			        font-size: 100px;
+			        margin-bottom: -150px;
+			    }
+			}
+			.stats_item__nbr, .stats_item__text {
+				margin-left: 80px;
+				font-weight: 700;
+				@media(max-width: @screen-xs-max) {
+			        margin-left: 60px;
+			    }
+			}
+
+			/*** 5.1.1. Stats item number ***/
+			.stats_item__nbr {
+				font-size: 68px;
+				color: @brand-primary;
+				@media(max-width: @screen-xs-max) {
+			        font-size: 54px;
+			    }
+			}
+
+			/*** 5.1.2. Stats item text ***/
+			.stats_item__text {
+				text-transform: uppercase;
+				color: @brand-accent;
+				font-size: (@font-size-base + 12px);
+				margin-top: -20px;
+				@media(max-width: @screen-xs-max) {
+			        font-size: (@font-size-base + 8px);
+			    }
+			}
+			@media(max-width: @screen-sm-max) {
+		        margin: 30px;
+		    }
+		    @media(max-width: @screen-xs-max) {
+		        margin: 50px;
+		    }
+		}
+	}
+
+	/*** 6. Section: Teachers ***/
+
+	.section__teachers {
+		padding: 100px 0;
+		background-color: rgb(244, 244, 244);
+		@media(max-width: @screen-xs-max) {
+	        padding: 60px 0;
+	    }
+
+		/*** 6.1. Teachers item ***/
+		.teacher__item {
+			margin-bottom: 70px;
+			position: relative;
+			transition: box-shadow 0.3s;
+			@media(max-width: @screen-md-max) {
+		        margin-bottom: 50px;
+		    }
+		    @media(max-width: @screen-sm-max) {
+		        margin-bottom: 65px;
+		        margin-left: 10px;
+		        margin-right: 10px;
+		    }
+
+			/*** 6.1.1. Teacher info ***/
+			.teacher__info {
+				background-color: rgb(255, 255, 255);
+				padding: 20px 20px 16px 20px;
+				border-bottom: 4px solid @brand-primary;
+				.teacher__name {
+					font-weight: 700;
+					font-size: (@font-size-base + 4px);
+					color: @brand-accent;
+				}
+				.teacher__prof {
+					font-style: italic;
+					font-size: (@font-size-base - 2px);
+					color: rgba(133, 133, 133, 1);
+				}
+			}
+
+			/*** 6.1.2. Teacher image ***/
+			.teacher__img {
+				position: relative;
+				&:before {
+			        content: "";
+			        position: absolute;
+			        top: 0; right: 0; bottom: 0; left: 0;
+			        background-color: fade(@brand-info, 20%);
+			    }
+			}
+
+			/*** 6.1.3. Teacher overlay ***/
+			.teacher_item__overlay {
+				text-align: center;
+				opacity: 0;
+			    transform: translate(0, 10px);
+			    transition: all 0.35s;
+			    position: absolute;
+			    top: 0; left: 0; bottom: 0; right: 0;
+			    padding-top: 100px;
+			    .overlay__desc {
+			    	padding: 0 20px;
+			    	@media(max-width: @screen-sm-max) {
+				        padding: 30px;
+				        line-height: 1.8;
+				    }
+			    }
+			    .overlay__social {
+			    	list-style-type: none;
+				    padding: 0;
+				    margin-bottom: 50px;
+				    @media(max-width: @screen-md-max) {
+				        margin-bottom: 0;
+				    }
+				    @media(max-width: @screen-sm-max) {
+				        margin-bottom: 70px;
+				    }
+				    @media(max-width: @screen-xs-max) {
+				        margin-bottom: 10px;
+				    }
+				    > li {
+				    	display: inline-block;
+				    	padding: 10px;
+				    	> a {
+				    		text-decoration: none;
+				    		display: block;
+						    font-size: (@font-size-base + 4px);
+				    	}
+				    }
+				}
+			}
+			&:focus, &:hover, &:active {
+				.teacher__img {
+					&:before {
+				        content: "";
+				        position: absolute;
+				        top: 0; right: 0; bottom: 0; left: 0;
+				        background-color: fade(white, 95%);
+				    }
+				}
+				.teacher_item__overlay {
+					opacity: 1;
+					transform: translate(0, 0);
+				}
+			}
+		}
+	}
+	
+	/*** 7. Section: Features ***/
+
+	.section__features {
+		background: url(../img/features_bg.jpg) no-repeat center center / cover;
+		position: relative;
+		color: rgb(255, 255, 255);
+		display: flex;
+		flex-direction: row;
+		@media(max-width: @screen-xs-max) {
+	        flex-direction: column;
+	    }
+
+	    /*** 7.1. Feature box styles ***/
+		.left__box, .right__box {
+			padding: 200px 100px;
+			line-height: 1.8;
+			position: relative;
+			@media(max-width: @screen-md-max) {
+		        padding: 100px 50px;
+		    }
+		    @media(max-width: @screen-sm-max) {
+		        padding: 60px 30px;
+		    }
+		    @media(max-width: @screen-xs-max) {
+		        width: 100%;
+		        padding: 40px 15px;
+		    }
+
+		    /*** 7.1.1. Feature title ***/
+			.features__title {
+				text-transform: uppercase;
+				font-family: @font-family-base;
+				font-weight: 700;
+				font-size: 68px;
+				letter-spacing: 0.1em;
+				margin-bottom: 30px;
+				@media(max-width: @screen-sm-max) {
+			        font-size: 56px;
+			    }
+			    @media(max-width: @screen-xs-max) {
+			        font-size: 42px;
+			        margin-bottom: 10px;
+			    }
+			}
+
+			/*** 7.1.2. Feature description ***/
+			.features__desc {
+				margin-bottom: 20px;
+			}
+		}
+
+		/*** 7.2. Left box styles ***/
+		.left__box {
+			text-align: right;
+			background-color: fade(@brand-primary, 80%);
+			@media(max-width: @screen-xs-max) {
+		        text-align: left;
+		    }
+		}
+
+		/*** 7.3. Right box styles ***/
+		.right__box {
+			text-align: left;
+		    background-color: fade(@brand-accent, 80%);
+		}
+	}
+	
+	/*** 8. Section: Process ***/
+
+	.section__process {
+		padding: 100px 0;
+		background-color: rgb(244, 244, 244);
+		@media(max-width: @screen-xs-max) {
+	        padding: 60px 0;
+	    }
+
+	    /*** 8.1. General Process item styles ***/
+		.process__item {
+			padding: 30px 0;
+
+			/*** 8.1.1. Process item icon ***/
+			.process_item__icon {
+	    		font-size: 120px;
+	    		color: @brand-info;
+	    		text-align: center;
+	    		transform: translateY(70px);
+	    		opacity: 0.4;
+	    		border-top: 4px solid @brand-primary;
+				@media(max-width: @screen-sm-max) {
+			        font-size: 86px;
+			    }
+			    @media(max-width: @screen-xs-max) {
+			        text-align: right;
+			        font-size: 72px;
+			    }
+			}
+
+			/*** 8.1.2. Process item title ***/
+			.process_item__title {
+				text-transform: uppercase;
+				color: @brand-accent;
+				font-size: 24px;
+				margin-bottom: 30px;
+				font-weight: 700;
+				position: relative;
+				z-index: 99;
+				@media(max-width: @screen-sm-max) {
+			        font-size: 20px;
+			    }
+				> span {
+					color: @brand-primary;
+				}
+			}
+		}
+
+		/*** 8.2. Process item 1 ***/
+		.process__item-1 {
+			margin-top: 80px;
+			@media(max-width: @screen-sm-max) {
+		        margin-top: 20px;
+		    }
+			.process_item__title {
+				&:before {
+					position: absolute;
+					content: "STEP 1";
+					top: -90px; left: -175px;
+					font-size: 120px;
+					text-transform: uppercase;
+					color: rgb(255, 255, 255);
+					text-shadow: 5px 5px 15px rgba(38, 64, 82, 0.4);
+					z-index: -1;
+					@media(max-width: @screen-md-max) {
+				        left: -145px;
+				    }
+				    @media(max-width: @screen-sm-max) {
+				        font-size: 86px;
+				        top: -60px; left: -110px;
+				    }
+				    @media(max-width: @screen-xs-max) {
+				        top: -150px; left: 0;
+				    }
+				}
+			}
+		}
+
+		/*** 8.3. Process item 2 ***/
+		.process__item-2 {
+			.process_item__title {
+				&:before {
+					position: absolute;
+					content: "STEP 2";
+					top: -90px; left: -175px;
+					font-size: 120px;
+					text-transform: uppercase;
+					color: rgb(255, 255, 255);
+					text-shadow: 5px 5px 15px rgba(38, 64, 82, 0.4);
+					z-index: -1;
+					@media(max-width: @screen-md-max) {
+				        left: -130px;
+				    }
+				    @media(max-width: @screen-sm-max) {
+				        font-size: 86px;
+				        top: -60px; left: -100px;
+				    }
+				    @media(max-width: @screen-xs-max) {
+				        top: -150px; left: 0;
+				    }
+				}
+			}
+		}
+
+		/*** 8.4. Process item 3 ***/
+		.process__item-3 {
+			.process_item__title {
+				&:before {
+					position: absolute;
+					content: "STEP 3";
+					top: -90px; left: -175px;
+					font-size: 120px;
+					text-transform: uppercase;
+					color: rgb(255, 255, 255);
+					text-shadow: 5px 5px 15px rgba(38, 64, 82, 0.4);
+					z-index: -1;
+					@media(max-width: @screen-md-max) {
+				        left: -145px;
+				    }
+				    @media(max-width: @screen-sm-max) {
+				        font-size: 86px;
+				        top: -60px; left: -110px;
+				    }
+				    @media(max-width: @screen-xs-max) {
+				        top: -150px; left: 0;
+				    }
+				}
+			}
+		}
+
+		/*** 8.5. Process item arrow 1 ***/
+		.process_item__arrow-1 {
+			font-size: 180px;
+			transform: translate(-200px, 200px) rotate(90deg);
+			color: rgba(169, 169, 169, 0.3);
+			@media(max-width: @screen-sm-max) {
+		        font-size: 140px;
+		        transform: translate(-100px, 120px) rotate(90deg);
+		    }
+		}
+
+		/*** 8.6. Process item arrow 2 ***/
+		.process_item__arrow-2 {
+			font-size: 180px;
+			transform: translate(150px, -260px) rotate(-90deg);
+			color: rgba(169, 169, 169, 0.3);
+			@media(max-width: @screen-sm-max) {
+		        font-size: 140px;
+		        transform: translate(80px, -120px) rotate(-90deg);
+		    }
+		}
+	}
+
+	/*** 9. Section: Pricing ***/
+
+	.section__pricing {
+		padding: 100px 0;
+		text-align: center;
+		@media(max-width: @screen-xs-max) {
+	        padding: 60px 0;
+	    }
+
+		/*** 9.1. Pricing item ***/
+		.price__item {
+			border-top: 1px solid rgba(38, 64, 82, 0.4);
+			border-left: 1px solid rgba(38, 64, 82, 0.4);
+			border-right: 1px solid rgba(38, 64, 82, 0.4);
+			border-bottom: 5px solid @brand-accent;
+			padding: 40px;
+			margin: 60px 0;
+			transition: all 0.2s;
+			@media(max-width: @screen-sm-max) {
+		        padding: 20px;
+		    }
+		    @media(max-width: @screen-xs-max) {
+		        margin: 30px 10px;
+		    }
+
+			/*** 9.1.1. Pricing item title ***/
+			.price_item__title {
+				color: @brand-accent;
+				font-size: 24px;
+			}
+
+			/*** 9.1.2. Pricing item features ***/
+			.price_item__features {
+				list-style: none;
+				margin: 20px 0;
+				padding: 0;
+				@media(max-width: @screen-sm-max) {
+			        margin: 10px 0;
+			    }
+				> li {
+					padding: 10px 0;
+					border-bottom: 1px solid rgba(199, 199, 199, 0.4);
+					@media(max-width: @screen-sm-max) {
+				        padding: 8px 0;
+				    }
+				}
+				.feature__include {
+					> i {
+						color: rgb(13, 208, 2);
+					}
+				}
+				.feature__none {
+					> i {
+						color: @brand-primary;
+					}
+				}
+			}
+
+			/*** 9.1.3. Pricing item price ***/
+			.price_item__price {
+				font-size: 56px;
+				font-family: @font-family-base;
+				font-weight: 700;
+				color: @brand-accent;
+				margin-bottom: 30px;
+				@media(max-width: @screen-sm-max) {
+			        font-size: 36px;
+			        margin-bottom: 10px;
+			    }
+				> span {
+					font-family: @headings-font-family;
+					font-size: @font-size-base;
+				}
+			}
+			&:hover {
+				margin-top: 50px;
+				box-shadow: 0 10px 25px rgba(169, 169, 169, 0.3);
+				border-bottom: 5px solid @brand-primary;
+			}
+		}
+	}
+
+	/*** 10. Section: Coming Soon ***/
+
+	.section__coming-soon {
+		background-color: rgb(244, 244, 244);
+		padding: 100px 0;
+		@media(max-width: @screen-md-max) {
+	        padding: 60px 0;
+	    }
+	    @media(max-width: @screen-xs-max) {
+	        padding: 60px 0;
+	    }
+
+		/*** 10.1. Coming Soon clock ***/
+		#clock {
+			font-family: @headings-font-family;
+			@media(max-width: @screen-sm-max) {
+		        text-align: center;
+		    }
+			> span {
+				font-size: 64px;
+				font-weight: 700;
+				color: @brand-accent;
+				font-family: @font-family-base;
+				@media(max-width: @screen-md-max) {
+			        font-size: 64px;
+			    }
+			    @media(max-width: @screen-xs-max) {
+			        font-size: 56px;
+			        padding-left: 30px;
+			    }
+			}
+		}
+
+		/*** 10.2. Coming Soon text ***/
+		.coming-soon__text {
+			.coming-soon__title {
+				text-transform: uppercase;
+				font-weight: 700;
+				font-family: @font-family-base;
+				color: @brand-accent;
+				font-size: 42px;
+				margin-bottom: 20px;
+				@media(max-width: @screen-md-max) {
+			        font-size: 36px;
+			    }
+			    @media(max-width: @screen-sm-max) {
+			        text-align: center;
+			    }
+			    @media(max-width: @screen-xs-max) {
+			        font-size: 32px;
+			    }
+				> span {
+					color: @brand-primary;
+				}
+			}
+		}
+
+		/*** 10.3. Coming Soon image ***/
+		.coming-soon__img {
+			margin-top: -150px;
+			margin-bottom: 50px;
+			box-shadow: 0px 0px 20px 10px rgba(169, 169, 169, 0.4);
+			@media(max-width: @screen-md-max) {
+		        margin-top: -90px;
+		    }
+		    @media(max-width: @screen-sm-max) {
+		        margin-top: 40px;
+		    }
+		}
+	}
+
+	/*** 11. Section: Blog ***/
+
+	.section__blog {
+		padding: 100px 0;
+		@media(max-width: @screen-xs-max) {
+	        padding: 60px 0;
+	    }
+
+	    /*** 11.1. Blog item ***/
+		.blog__item {
+			border: 1px solid rgba(169, 169, 169, 0.6);
+			margin: 40px 0 60px;
+			box-shadow: 0 10px 25px rgba(169, 169, 169, 0.3);
+			@media(max-width: @screen-sm-max) {
+		        margin: 20px 0;
+		    }
+		    @media(max-width: @screen-xs-max) {
+		    	margin-top: 5px;
+		        margin-bottom: 40px;
+		    }
+
+			/*** 11.1.1. Blog item image ***/
+			.blog-item__img {
+				border-bottom: 4px solid @brand-primary;
+				position: relative;
+				&:before {
+			        content: "";
+			        position: absolute;
+			        top: 0; right: 0; bottom: 0; left: 0;
+			        background-color: fade(@brand-accent, 40%);
+			    }
+			}
+
+			/*** 11.1.2. Blog item tags ***/
+			.blog-item__tags {
+				transform: translateY(-35px);
+				padding-left: 20px;
+				> a {
+					color: rgb(255, 255, 255);
+					padding-right: 5px;
+					letter-spacing: 0.02em;
+					font-size: (@font-size-base - 1px);
+				}
+				> i {
+					color: @brand-primary;
+					padding-right: 5px;
+				}
+			}
+
+			/*** 11.1.3. Blog item content ***/
+			.blog-item__content {
+				padding: 0 20px 20px;
+				.blog-item__date {
+					color: rgb(169, 169, 169);
+					letter-spacing: 0.1em;
+					font-family: @headings-font-family;
+					font-size: (@font-size-base - 2px);
+					> i {
+						color: @brand-info;
+						font-size: (@font-size-base + 6px);
+					}
+				}
+				.blog-item__title {
+					padding: 15px 0 0px;
+					> h3 {
+						font-family: @font-family-base;
+						text-transform: uppercase;
+						color: @brand-accent;
+						font-weight: 700;
+						font-size: 20px;
+						margin: 0;
+					}
+				}
+				.blog-item__info {
+					.item-info__list {
+						list-style: none;
+						margin: 0;
+						padding: 0;
+						.info-list__item {
+							display: inline-block;
+							margin-right: 10px;
+							color: rgb(169, 169, 169);
+							letter-spacing: 0.02em;
+							font-size: (@font-size-base - 2px);
+						}
+					}
+				}
+				.blog-item__text {
+					margin: 20px 0;
+				}
+				.blog-item__link {
+					display: inline-block;
+					> a {
+						text-decoration: none;
+						> i {
+							transition: color 0.3s;
+							color: transparent;
+						}
+						&:hover {
+							> i {
+								color: @brand-primary;
+							}
+						}
+					}
+				}
+				.blog-item__share {
+					list-style: none;
+					margin: 0;
+					padding: 0;
+					display: inline-block;
+					float: right;
+					> li {
+						display: inline-block;
+						color: rgb(169, 169, 169);
+						letter-spacing: 0.02em;
+						font-size: (@font-size-base - 1px);
+						margin-left: 10px;
+						> a {
+							text-decoration: none;
+							color: rgb(169, 169, 169);
+							transition: color 0.3s;
+							&:hover {
+								color: @brand-primary;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/*** 12. Section: Testimonials ***/
+
+	.section__testimonials {
+		padding: 100px 0;
+		background: url(../img/testimonials_bg.jpg) no-repeat center center / cover;
+		text-align: center;
+		position: relative;
+		@media(max-width: @screen-xs-max) {
+	        padding: 60px 0;
+	    }
+		&:before {
+	        content: "";
+	        position: absolute;
+	        top: 0; right: 0; bottom: 0; left: 0;
+	        background-color: fade(black, 80%);
+	    }
+
+		/*** 12.1. Testimonials icon ***/
+	    .testimonials__icon {
+	    	font-size: 64px;
+	    	color: lighten(@brand-accent, 40%);
+	    	opacity: 0.4;
+	    	@media(max-width: @screen-xs-max) {
+		        font-size: 42px;
+		    }
+	    }
+
+		/*** 12.2. Testimonials item ***/
+	    .testimonials__item {
+	    	color: rgb(255, 255, 255);
+	    	margin-top: 60px;
+	    	margin-bottom: 30px;
+	    	@media(max-width: @screen-sm-max) {
+		        margin-top: 30px;
+		    }
+		    @media(max-width: @screen-xs-max) {
+		        margin: 20px 0;
+		    }
+
+			/*** 12.2.1. Testimonials title ***/
+	    	.testimonials_item__title {
+				text-transform: uppercase;
+				font-weight: 700;
+				font-size: (@font-size-base + 10px);
+				@media(max-width: @screen-xs-max) {
+			        font-size: (@font-size-base + 6px);
+			    }
+				> span {
+					color: @brand-primary;
+				}
+	    	}
+
+			/*** 12.2.2. Testimonials text ***/
+	    	.testimonials_item__text {
+	    		line-height: 1.8;
+	    		margin: 40px 18%;
+	    		@media(max-width: @screen-sm-max) {
+			        margin: 20px 10%;
+			    }
+			    @media(max-width: @screen-xs-max) {
+			        margin: 15px 2.5%;
+			        font-size: (@font-size-base - 1px);
+			    }
+	    	}
+
+			/*** 12.2.3. Testimonials author ***/
+	    	.testimonials_item__author {
+	    		> span {
+	    			font-weight: 700;
+					letter-spacing: 0.02em;
+					color: @brand-info;
+	    		}
+	    	}
+	    }
+
+		/*** 12.3. Testimonials navigation dots ***/
+    	.owl-dots {
+    		.owl-dot.active {
+    			> span {
+    				background-color: @brand-primary;
+    			}
+    		}
+    	}
+	}
+
+	/*** 13. Section: Partners ***/
+
+	.section__partners {
+		padding: 60px 0;
+		background-color: rgb(235, 235, 235);
+		border-bottom: 1px solid rgba(169, 169, 169, 0.4);
+		@media(max-width: @screen-xs-max) {
+	        padding: 20px;
+	    }
+
+	    /*** 13.1. Partner image ***/
+		.partner__img {
+			width: 150px;
+			height: auto;
+			margin: 30px auto;
+			@media(max-width: @screen-xs-max) {
+		        width: 100px;
+		    }
+			> img {
+				transition: filter 0.3s;
+				filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale"); /* Firefox 10+, Firefox on Android */
+    			filter: gray; /* IE6-9 */
+    			-webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+				&:hover {
+					filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale");
+					filter: grayscale(0%);
+				}
+			}
+		}
+	}
+
+	/*** 14. Section: Contact ***/
+
+	.section__contact {
+		padding: 100px 0;
+		@media(max-width: @screen-xs-max) {
+	        padding: 60px 0;
+	    }
+
+		/*** 14.1. Map ***/
+		#map {
+			height: 30vh;
+		}
+
+		/*** 14.2. Contact info body ***/
+		.contact_info__body {
+			margin-top: 30px;
+			margin-left: 50px;
+			@media(max-width: @screen-sm-max) {
+		        margin-left: 0;
+		    }
+
+			/*** 14.2.1. Contact info item ***/
+			.contact_info__item {
+				display: flex;
+				flex-direction: row;
+				padding-top: 20px;
+				padding-bottom: 20px;
+				margin-bottom: 10px;
+				border-bottom: 1px solid rgba(169, 169, 169, 0.4);
+				@media(max-width: @screen-sm-max) {
+			        padding-bottom: 18px;
+			        margin-bottom: 0;
+			    }
+
+				/*** 14.2.1.1. Contact title ***/
+				.contact__title {
+					text-transform: uppercase;
+					font-weight: 700;
+					letter-spacing: 0.1em;
+					font-size: (@font-size-base + 10px);
+					color: @brand-accent;
+					width: 40%;
+					@media(max-width: @screen-sm-max) {
+				        width: 50%;
+				    }
+				    @media(max-width: @screen-xs-max) {
+				        font-size: (@font-size-base + 6px);
+				    }
+					> span {
+						color: @brand-primary;
+					}
+				}
+
+				/*** 14.2.1.2. Contact info ***/
+				.contact__info {
+					@media(max-width: @screen-xs-max) {
+				        width: 50%;
+				    }
+					.contact_info__wrapper {
+						> h3 {
+							margin: 0;
+							font-family: @font-family-base;
+							text-transform: uppercase;
+							font-weight: 700;
+							letter-spacing: 0.05em;
+							font-size: (@font-size-base + 2px);
+						}
+						> p {
+							color: rgb(169, 169, 169);
+							letter-spacing: 0.02em;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/*** 15. Section: Instagram ***/
+
+	.section__instagram {
+		padding: 40px 0;
+		border-top: 1px solid rgba(199, 199, 199, 0.4);
+		background-color: rgba(240, 240, 240, 0.4);
+		text-align: center;
+
+		/*** 15.1. Instagram title ***/
+		.instagram__title {
+			margin-bottom: 40px;
+			> a {
+				text-decoration: none;
+			}
+		}
+
+		/*** 15.2. Instagram image body ***/
+		.intagram_img__body {
+			position: relative;
+			margin-bottom: 20px;
+			&:hover {
+
+				/*** 15.2.1. Instagram image ***/
+				.insagram__img {
+					text-decoration: none;
+					&:before, &:after {
+			            position: absolute;
+			        }
+			        &:before {
+			            content: "";
+			            top: 0; right: 0; bottom: 0; left: 0;
+			            background-color: fade(@brand-accent, 60%);
+			        }
+			        &:after {
+			            content: "\f350";
+			            font-family: "Ionicons";
+			            color: #fff;
+			            font-size: 24px;
+			            top: 50%; left: 50%;
+			            transform: translate(-50%, -50%);
+			            z-index: 9999;
+			        }	
+				}
+			}
+		}
+	}
+}
