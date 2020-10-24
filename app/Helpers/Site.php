@@ -54,3 +54,15 @@ if (!function_exists('option')) {
         return !empty($default) ? $default : $key;
     }
 }
+if (!function_exists('current_theme')) {
+
+    function current_theme() {
+
+    }
+}
+
+if (!function_exists('theme_dir_view')) {
+    function theme_dir_view($path = '') {
+        return resource_path("themes/" . config('site.theme') . '/template/' . $path);
+    }
+}

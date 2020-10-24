@@ -33,13 +33,17 @@ class PageController extends Controller
      */
     public function home()
     {
-        $page = Page::getCacheById(Page::site()->home_id);
+        if (config('site.cache.page_enable')) {
+            $page = Page::getCacheById(Page::site()->home_id);
+        } else {
+            $page = Page::findOrFail(Page::site()->home_id);
+        }
         $locale = session()->get('locale', config('site.locale_default'));
         if ($translation = $page->translation($locale)) {
             $page = $translation;
         }
         $page->seo();
-        return view('pages.home', compact('page'));
+        return $this->render('pages.home', compact('page'));
     }
 
     public function lang($locale)

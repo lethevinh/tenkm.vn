@@ -26,7 +26,12 @@ return [
             'page' => 'site-pages-',
             'site' => 'site-pages-site'
         ],
-        'enable' => false,
+        'enable' => true,
+        'page_enable' => true,
+        'post_enable' => false,
+        'product_enable' => false,
+        'project_enable' => false,
+        'shortcode_enable' => false,
         'store'  => 'file'
     ]
 ];
