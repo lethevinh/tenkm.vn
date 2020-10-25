@@ -11,7 +11,7 @@ class Menu extends Component
 {
     public $name;
 
-    public string $template;
+    public $template;
 
     /**
      * Create a new component instance.

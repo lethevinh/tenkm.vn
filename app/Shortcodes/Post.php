@@ -10,11 +10,11 @@ use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 class Post extends AbstractShortcode {
     use PageTrait;
 
-    public static string $name = 'post';
+    public static $name = 'post';
 
-    protected string $dirTemplate = "components/post/";
+    protected  $dirTemplate = "components/post/";
 
-    protected string $defaultTemplate = "default";
+    protected  $defaultTemplate = "default";
 
     function __construct() {
 

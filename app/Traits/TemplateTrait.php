@@ -3,7 +3,7 @@ namespace App\Traits;
 use Illuminate\Support\Arr;
 
 trait TemplateTrait {
-    public array $locations = [];
+    public $locations = [];
     public function addLocation($paths) {
         $paths = is_array($paths) ? $paths : [$paths];
         if ($paths) {

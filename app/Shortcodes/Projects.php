@@ -5,9 +5,9 @@ use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 
 class Projects extends AbstractShortcode {
 
-    public static string $name = 'projects';
+    public static $name = 'projects';
 
-    protected string $dirTemplate = "components/projects/";
+    protected  $dirTemplate = "components/projects/";
 
     function __construct() {
 

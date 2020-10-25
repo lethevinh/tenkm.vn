@@ -5,9 +5,9 @@ use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 
 class Search extends AbstractShortcode {
 
-    public static string $name = 'search';
+    public static $name = 'search';
 
-    protected string $dirTemplate = "components/products/";
+    protected  $dirTemplate = "components/products/";
 
     function __construct() {
 

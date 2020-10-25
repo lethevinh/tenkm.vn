@@ -5,11 +5,11 @@ use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 
 class Products extends AbstractShortcode {
 
-    public static string $name = 'products';
+    public static $name = 'products';
 
-    protected string $dirTemplate = "collection";
+    protected  $dirTemplate = "collection";
 
-    protected string $defaultTemplate = "collection.default";
+    protected  $defaultTemplate = "collection.default";
 
     function __construct() {
 

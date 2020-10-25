@@ -7,9 +7,9 @@ use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 class Product extends AbstractShortcode {
     use PageTrait;
 
-    public static string $name = 'product';
+    public static $name = 'product';
 
-    protected string $dirTemplate = "components/product/";
+    protected  $dirTemplate = "components/product/";
 
     function __construct() {
         parent::__construct();

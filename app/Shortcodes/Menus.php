@@ -5,11 +5,11 @@ use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 
 class Menus extends AbstractShortcode {
 
-    public static string $name = 'menus';
+    public static $name = 'menus';
 
-    protected string $dirTemplate = "components/menus/";
+    protected  $dirTemplate = "components/menus/";
 
-    protected string $defaultTemplate = "default";
+    protected  $defaultTemplate = "default";
 
     function __construct() {
 

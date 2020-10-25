@@ -10,11 +10,11 @@ use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 class AbstractShortcode {
     use TemplateTrait,Cacheable;
 
-    public static string $name = "";
+    public static $name = "";
 
-    protected string $dirTemplate = "";
+    protected $dirTemplate = "";
 
-    protected string $defaultTemplate = "default";
+    protected $defaultTemplate = "default";
 
     function __construct() {
         $this->onContruct();

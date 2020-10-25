@@ -8,9 +8,9 @@ class Project extends AbstractShortcode {
 
     use PageTrait;
 
-    public static string $name = 'project';
+    public static $name = 'project';
 
-    protected string $dirTemplate = "components/project/";
+    protected  $dirTemplate = "components/project/";
 
     function __construct() {
         parent::__construct();

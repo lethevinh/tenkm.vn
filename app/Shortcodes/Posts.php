@@ -8,11 +8,11 @@ use Thunder\Shortcode\Shortcode\ShortcodeInterface;
  */
 class Posts extends AbstractShortcode {
 
-    public static string $name = 'posts';
+    public static $name = 'posts';
 
-    protected string $dirTemplate = "item/post";
+    protected  $dirTemplate = "item/post";
 
-    protected string $defaultTemplate = "collection.default";
+    protected  $defaultTemplate = "collection.default";
 
     public function process(ShortcodeInterface $args) {
 

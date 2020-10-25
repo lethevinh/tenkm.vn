@@ -8,11 +8,11 @@ use Thunder\Shortcode\Shortcode\ShortcodeInterface;
  */
 class Categories extends AbstractShortcode {
 
-    public static string $name = 'categories';
+    public static $name = 'categories';
 
-    protected string $dirTemplate = "components/categories/";
+    protected  $dirTemplate = "components/categories/";
 
-    protected string $defaultTemplate = "default";
+    protected  $defaultTemplate = "default";
 
     function __construct() {
 
