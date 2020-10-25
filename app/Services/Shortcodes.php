@@ -13,7 +13,7 @@ use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 class Shortcodes implements Countable
 {
     /** @var HandlerContainer */
-    protected HandlerContainer $_handlers;
+    protected $_handlers;
 
     /**
      * The constructor.
