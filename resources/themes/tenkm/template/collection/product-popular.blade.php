@@ -1,8 +1,8 @@
 <div class="properties-area pd-top-90">
     <div class="container">
         <div class="section-title">
-            <h2 class="title">Popular Property</h2>
-            <a class="btn-view-all" href="#">View All</a>
+            <h2 class="title">{{__('site.popular_property')}}</h2>
+            <a class="btn-view-all" href="#">{{__('site.view_all')}}</a>
         </div>
         <div class="row">
             @foreach($products as $product)

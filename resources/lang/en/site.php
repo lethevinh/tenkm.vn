@@ -82,4 +82,11 @@ return [
     'lang' => 'Language',
     'en' => 'English',
     'vi' => 'Vietnam',
+    'featured_properties' => 'Featured Properties',
+    'popular_property' => 'Popular Property',
+    'view_all' => 'View All',
+    'follow_us' => 'Follow Us',
+    'popular_searches' => 'Popular Searches',
+    'homepress_markets' => 'Homepress Markets',
+    'quick_links' => 'Quick Links',
 ];

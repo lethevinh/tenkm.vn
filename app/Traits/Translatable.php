@@ -26,7 +26,9 @@ trait Translatable
                     'language_lb' => 'en',
                     'translation_id' => $model->id
                 ]);
-                $translate->save();
+                if ($translate->save()){
+                    $model->update(['translation_id' => $translate->id]);
+                }
             }
         });
     }

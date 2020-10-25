@@ -11,7 +11,7 @@ use Psr\SimpleCache\InvalidArgumentException;
 trait Cacheable
 {
 
-    protected static $cacheField = 'slug_lb';
+    protected static string $cacheField = 'slug_lb';
 
     /**
      * Get an item from the cache, or execute the given Closure and store the result.

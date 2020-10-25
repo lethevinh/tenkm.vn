@@ -4,7 +4,9 @@
         <div class="footer-top">
             <div class="row">
                 <div class="col-sm-4">
-                    <a class="footer-logo" href="#"><img src="/images/footer-logo.png" alt="logo"></a>
+                    <a class="footer-logo" href="{{route('home.show')}}">
+                        <img src="{{option('logo')}}" alt="logo">
+                    </a>
                 </div>
                 <div class="col-sm-8">
                     <div class="footer-social text-sm-right">
@@ -28,7 +30,7 @@
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
                     <div class="widget widget_nav_menu">
-                        <h4 class="widget-title">Popular Searches</h4>
+                        <h4 class="widget-title">{{__('site.popular_searches')}}</h4>
                         <ul>
                             <li><a href="index.html">Apartment for Rent</a></li>
                             <li><a href="about.html">Apartment Low to hide</a></li>
@@ -39,7 +41,7 @@
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="widget widget_nav_menu">
-                        <h4 class="widget-title">Homepress Markets</h4>
+                        <h4 class="widget-title">{{__('site.homepress_markets')}}</h4>
                         <ul>
                             <li><a href="index.html">Los Angeles Offices</a></li>
                             <li><a href="about.html">Las Vegas Apartment</a></li>
@@ -50,7 +52,7 @@
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="widget widget_nav_menu">
-                        <h4 class="widget-title">Quick Links</h4>
+                        <h4 class="widget-title">{{__('site.quick_links')}}</h4>
                         <ul>
                             <li><a href="index.html">Pricing Plans</a></li>
                             <li><a href="about.html">Our Services</a></li>

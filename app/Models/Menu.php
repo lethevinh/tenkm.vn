@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use App\Traits\Cacheable;
+use App\Traits\Translatable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Dcat\Admin\Traits\HasDateTimeFormatter;
 use Dcat\Admin\Traits\ModelTree;
@@ -16,6 +17,7 @@ use Psr\SimpleCache\InvalidArgumentException;
 class Menu extends Model
 {
     use HasDateTimeFormatter,
+        Translatable,
         Sluggable,
         Cacheable,
         ModelTree {
@@ -80,6 +82,7 @@ class Menu extends Model
     {
         $templates = [
             'menus.' . $this->slug_lb,
+            'menus.' . $this->translator->slug_lb,
             'menus.default'
         ];
         if (!empty($params['template']) && $params['template'] != 'default') {
@@ -88,17 +91,47 @@ class Menu extends Model
         return view()->first($templates, ['menu' => $this])->render();
     }
 
-    protected function getCacheKey()
-    {
-        return config('site.cache.keys.menu') . $this->slug_lb;
-    }
-
     public function flushCache()
     {
         if ($this->parent) {
             return $this->parent->flushCache();
         }
-        return $this->getStore()->delete($this->getCacheKey());
+        $cacheKey = self::cachePrefix($this->slug_lb);
+        return $this->getStore()->delete($cacheKey);
     }
 
+    /**
+     * @param $name
+     * @param array $params
+     * @return mixed
+     * @throws InvalidArgumentException
+     */
+    public static function getCacheByName($name, $params = [])
+    {
+        if (! self::enableCache()) {
+            return self::getModelCacheByName($name)->makeCache($params);
+        }
+        $cacheKey = self::cachePrefix($name);
+        if (!self::isExitCacheByName($name)) {
+            $model = self::getModelCacheByName($name);
+            if ($translation = $model->translation($params['locale'])) {
+                $model = $translation;
+            }
+            if ($cache = $model->makeCache($params)){
+                $model->forever($cache, $cacheKey);
+            }
+        }
+        return self::getStore()->get($cacheKey);
+    }
+
+    /**
+     * @param string $prefix
+     * @return string
+     */
+    public static function cachePrefix($prefix = '')
+    {
+        $locale = session()->get('locale', config('site.locale_default'));
+        $keyModel = static::getModelKey();
+        return config('site.cache.keys.' . $keyModel , 'site-caches') . $prefix.'-'.$locale;
+    }
 }

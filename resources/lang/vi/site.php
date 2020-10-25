@@ -75,4 +75,11 @@ return [
 	'enter' => 'Nhập',
     'en' => 'Tiếng Anh',
     'vi' => 'Tiếng Việt',
+    'featured_properties' => 'Dự Án Nổi Bật',
+    'popular_property' => 'Dự án phổ biến',
+    'view_all' => 'Xem tất cả',
+    'follow_us' => 'Theo dõi chúng tôi',
+    'popular_searches' => 'Tìm kiếm phổ biến',
+    'homepress_markets' => 'Homepress Markets',
+    'quick_links' => 'Link Nhanh',
 ];

@@ -24,7 +24,8 @@ return [
             'menu' => 'site-menus-',
             'post' => 'site-posts-',
             'page' => 'site-pages-',
-            'site' => 'site-pages-site'
+            'site' => 'site-pages-site',
+            'shortcode' => 'site-shortcode-'
         ],
         'enable' => true,
         'page_enable' => true,

@@ -11,7 +11,7 @@ class Menu extends Component
 {
     public $name;
 
-    public $template;
+    public string $template;
 
     /**
      * Create a new component instance.
@@ -34,8 +34,10 @@ class Menu extends Component
      */
     public function render()
     {
+        $locale = session()->get('locale', config('site.locale_default'));
         return ModelMenu::getCacheByName($this->name, [
-            'template' => $this->template
+            'template' => $this->template,
+            'locale' => $locale
         ]);
     }
 }

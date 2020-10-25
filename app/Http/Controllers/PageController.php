@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
+use App\Models\Model;
 use App\Models\Page;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Psr\SimpleCache\InvalidArgumentException;
@@ -48,8 +51,12 @@ class PageController extends Controller
 
     public function lang($locale)
     {
-        app()->setLocale($locale);
-        session()->put('locale', $locale);
+        $currentlyLocale = session()->get('locale', config('site.locale_default'));
+        if ($locale != $currentlyLocale) {
+            app()->setLocale($locale);
+            session()->put('locale', $locale);
+            Artisan::call('cache:clear');
+        }
         return redirect()->back();
     }
 }
