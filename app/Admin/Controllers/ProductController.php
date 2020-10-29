@@ -245,7 +245,9 @@ class ProductController extends AdminController
             $form->location_lb = $form->location_lb . ',' . $form->lng_lb;
             $form->ignore(['lng_lb']);
             if ($form->input('amenities')) {
-                $form->amenities = array_filter($form->input('amenities'), fn($value) => !is_null($value) && $value !== '');
+                $form->amenities = array_filter($form->input('amenities'), function ($value){
+                    return !is_null($value) && $value !== '';
+                });
             }
         });
         return $form;
