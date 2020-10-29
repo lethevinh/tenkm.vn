@@ -1,3 +1,3 @@
 @foreach($posts as $post)
-    @include('item.default')
+    @includeFirst(['item.'.$template,'item.default'])
 @endforeach

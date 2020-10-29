@@ -42,7 +42,7 @@ class ProductController extends Controller
      */
     public function show(string $slug)
     {
-//        $post= Post::where('slug_lb', $slug)->published()->firstOrFail();
+        // $post= Post::where('slug_lb', $slug)->published()->firstOrFail();
         $product = Product::getCacheByName($slug);
         $locale = session()->get('locale', config('site.locale_default'));
         if ($translation = $product->translation($locale)) {

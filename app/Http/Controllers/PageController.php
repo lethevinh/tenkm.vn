@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Member;
-use App\Models\Model;
 use App\Models\Page;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Psr\SimpleCache\InvalidArgumentException;
 

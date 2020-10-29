@@ -45,55 +45,12 @@
                     <i class="fa fa-search"></i>
                 </div>
                 <form class="news-search-box">
-                    <input type="text" placeholder="Search">
+                    <input type="text" name="s" placeholder="Search">
                     <button><i class="fa fa-search"></i></button>
                 </form>
-                <h6 class="mb-3 popular-post-title">Popular Post</h6>
+                <h6 class="mb-3 popular-post-title">{{__('site.popular_post')}}</h6>
                 <div class="popular-post-slider">
-                    <div class="item">
-                        <a href="#" class="media single-popular-post">
-                            <div class="media-left">
-                                <img src="/images/popular-post/1.png" alt="news">
-                            </div>
-                            <div class="media-body">
-                                <h6>According to real estate data</h6>
-                                <span>December 25 2019</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#" class="media single-popular-post">
-                            <div class="media-left">
-                                <img src="/images/popular-post/1.png" alt="news">
-                            </div>
-                            <div class="media-body">
-                                <h6>According to real estate data</h6>
-                                <span>December 25 2019</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#" class="media single-popular-post">
-                            <div class="media-left">
-                                <img src="/images/popular-post/1.png" alt="news">
-                            </div>
-                            <div class="media-body">
-                                <h6>According to real estate data</h6>
-                                <span>December 25 2019</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="#" class="media single-popular-post">
-                            <div class="media-left">
-                                <img src="/images/popular-post/1.png" alt="news">
-                            </div>
-                            <div class="media-body">
-                                <h6>According to real estate data</h6>
-                                <span>December 25 2019</span>
-                            </div>
-                        </a>
-                    </div>
+                    {!! do_shortcode('[posts template="post-popular" limit="8"]') !!}
                 </div>
             </div>
         </div>
@@ -108,6 +65,11 @@
                         @include('item.default', ['post' => $post])
                     </div>
                 @endforeach
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                   {{ $posts->links() }}
+               </div>
             </div>
         </div>
     </div>

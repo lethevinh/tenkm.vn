@@ -39,20 +39,22 @@
     <!-- breadcrumb area End -->
 
     <!-- Properties by city start -->
-    <div class="properties-area pd-top-100 pd-bottom-70">
-        <div class="container">
-            <div class="row">
-                @foreach($projects as $project)
-                <div class="col-lg-3 col-sm-6">
-                    @include('item.product', ['product' => $project])
+    <div class="search-page-wrap pd-top-100 pd-bottom-70">
+        <div class="search-container">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-12 col-lg-12">
+                        @foreach($projects as $project)
+                            @include('item.project', ['post' => $project])
+                        @endforeach
+                    </div>
                 </div>
-                @endforeach
+                <div class="row">
+                    <div class="col-sm-12">
+                        {{ $projects->links() }}
+                    </div>
+                </div> <!-- / .row -->
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    {{ $projects->links() }}
-                </div>
-            </div> <!-- / .row -->
         </div>
     </div>
     <!-- Properties by city end -->

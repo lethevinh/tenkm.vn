@@ -37,7 +37,7 @@ class ProjectController extends Controller
      */
     public function show(string $slug)
     {
-//        $post= Post::where('slug_lb', $slug)->published()->firstOrFail();
+//        $project = Project::where('slug_lb', $slug)->published()->firstOrFail();
         $project = Project::getCacheByName($slug);
         $locale = session()->get('locale', config('site.locale_default'));
         if ($translation = $project->translation($locale)) {

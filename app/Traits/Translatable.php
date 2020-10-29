@@ -15,7 +15,11 @@ trait Translatable
         return $this->hasMany(static::class, 'translation_id', 'id');
     }
 
-    public function translation($locale) {
+    public function translation($locale)
+    {
+        if ($this->language_lb === $locale) {
+            return false;
+        }
         return $this->translations->add($this->translator)->where('language_lb', $locale)->get(0);
     }
 

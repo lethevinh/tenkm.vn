@@ -4,7 +4,7 @@
 @section('content')
 
     <!-- breadcrumb area start -->
-    <div class="breadcrumb-area jarallax" style="background-image:url(/images/bg/4.png);">
+    <div class="breadcrumb-area jarallax" style="background-image:url({{$post->thumbnail}});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -31,9 +31,9 @@
                 <div class="row">
                     <div class="col-sm-6 mb-4 mg-sm-0">
                         <div class="author">
-                            <img src="/images/news/15.png" alt="news">
-                            <p>By Agent</p>
-                            <p>17  hours ago</p>
+                            <img src="{{url($post->creator->avatar)}}" alt="news">
+                            <p>By {{$post->creator->name}}</p>
+                            <p>{{$post->created_at->format('H:i d/m/Y')}}</p>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -61,7 +61,7 @@
                         <img class="news-details-thumb" src="{{$post->image_lb}}" alt="{{$post->title_lb}}">
                         {!! $post->content_lb !!}
                     </div>
-                    @include('collection.comment',['post' => $post, 'type' => 'post'])
+                    @include('partials.comment',['post' => $post, 'type' => 'post'])
                 </div>
             </div>
         </div>

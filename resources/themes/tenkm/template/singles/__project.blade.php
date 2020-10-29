@@ -33,26 +33,26 @@
                     <div class="col-xl-9 col-lg-8">
                         <div class="property-details-slider">
                             @foreach($project->galleries as $gallery)
-                                <div class="item">
-                                    <div class="thumb">
-                                        <img src="{{$gallery}}" alt="img">
-                                    </div>
+                            <div class="item">
+                                <div class="thumb">
+                                    <img src="{{$gallery}}" alt="img">
                                 </div>
+                            </div>
                             @endforeach
                         </div>
                         <div class="property-details-slider-info">
                             <h3><span>{{$project->priceSale}}</span> {{$project->title_lb}}</h3>
-                            <h4><span>{{$project->address}}</span></h4>
+                            <del>{{$project->price}}</del>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4">
                         <div class="widget widget-owner-info mt-lg-0 mt-5">
                             <div class="owner-info text-center">
                                 <div class="thumb">
-                                    <img src="/images/news/21.png" alt="img">
+                                    <img src="{{url($project->creator->avatar)}}" alt="img">
                                 </div>
                                 <div class="details">
-                                    <h6>Jesse Edwards</h6>
+                                    <h6>{{$project->creator->name}}</h6>
                                     <span class="designation">Building Owner</span>
                                     <p class="reviews"><i class="fa fa-star"></i><span>4.8</span> 70 Review</p>
                                 </div>
@@ -74,11 +74,11 @@
                                 <h6 class="mb-3">Contact Info</h6>
                                 <div class="media">
                                     <div class="media-left">
-                                        <img src="/images/icons/1.png" alt="img">
+                                        <img src="{{url($project->creator->avatar)}}" alt="img">
                                     </div>
                                     <div class="media-body">
                                         <p>Address</p>
-                                        <span>Long Island, NY 11355, USA</span>
+                                        <span>{{$project->address}}</span>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -87,7 +87,7 @@
                                     </div>
                                     <div class="media-body">
                                         <p>Phone</p>
-                                        <span>+00 111 222 333</span>
+                                        <span>{{$project->creator->phone}}</span>
                                     </div>
                                 </div>
                                 <div class="media mb-0">
@@ -96,7 +96,7 @@
                                     </div>
                                     <div class="media-body">
                                         <p>Email</p>
-                                        <span>info@example.com</span>
+                                        <span>{{$project->creator->email}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -107,103 +107,51 @@
         </div>
         <div class="container">
             <div class="row pd-top-90">
-                <div class="col-lg-12">
+                <div class="col-lg-9">
                     <div class="property-info mb-5">
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{trans('site.sales_status')}}</h5>
-                                    <p><i class="fa fa-industry"></i>{{trans('site.sales_status_'.$project->sale_status_sl)}}</p>
+                                    <h5>{{trans('site.bedroom')}}</h5>
+                                    <p><i class="fa fa-bed"></i>{{$project->bedroom_nb}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{trans('site.apartment_type')}}</h5>
-                                    <p><i class="fa fa-home"></i>{{$project->apartment_type}}</p>
+                                    <h5>{{trans('site.bathroom')}}</h5>
+                                    <p><i class="fa fa-bath"></i>{{$project->bathroom_nb}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{trans('site.delivery_time')}}</h5>
-                                    <p><i class="fa fa-handshake-o"></i>{{$project->delivery_time}}</p>
+                                    <h5>{{trans('site.area')}}</h5>
+                                    <p><img src="/images//icons/7.png" alt="img">{{$project->area_nb}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{trans('site.total_square')}}</h5>
-                                    <p><img src="/images/icons/7.png" alt="img"> {{$project->total_area_nb}} &#13217;</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-3 col-sm-6">
-                                <div class="single-property-info">
-                                    <h5>{{trans('site.blocks')}}</h5>
-                                    <p><i class="fa fa-building"></i>{{$project->block_nb}}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="single-property-info">
-                                    <h5>{{trans('site.floors')}}</h5>
-                                    <p><i class="fa fa-building"></i>{{$project->floor_nb}}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="single-property-info">
-                                    <h5>{{trans('site.shophouse')}}</h5>
-                                    <p><i class="fa fa-home"></i>{{$project->shop_nb}}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="single-property-info">
-                                    <h5>{{trans('site.apartments')}}</h5>
-                                    <p><i class="fa fa-key"></i>{{$project->department_nb}}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-3 col-sm-6">
-                                <div class="single-property-info">
-                                    <h5>{{trans('site.apartment_square')}}</h5>
-                                    <p><img src="/images/icons/7.png" alt="img">{{$project->area_lb}} &#13217;</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="single-property-info">
-                                    <h5>{{trans('site.management_company')}}</h5>
-                                    <p><i class="fa fa-suitcase"></i>{{$project->management_company}}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="single-property-info">
-                                    <h5>{{trans('site.design_company')}}</h5>
-                                    <p><i class="fa fa-paint-brush"></i>{{$project->design_company}}</p>
+                                    <h5>{{trans('site.parking')}}</h5>
+                                    <p><i class="fa fa-car"></i>01 Indoor</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="property-news-single-card style-two border-bottom-yellow">
-                        <h4>{{trans('site.introduction')}}</h4>
-                        <p>{{$project->description_lb}}</p>
-                        <a href="#">Read More</a>
+                        <h4>{{trans('site.content')}}</h4>
+                        <p>{!! $project->content_lb !!}</p>
                     </div>
-                    <div class="property-news-single-card border-bottom-yellow mb-0">
-                        <h4>3D Gallery</h4>
-                        <div class="thumb">
-                            <img src="{{$project->gallary3D}}" alt="img">
-                        </div>
+                    <div class="property-news-single-card style-two border-bottom-yellow">
+                        <h4>Base Floor Plan</h4>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5621.1629504770535!2d-122.43633647504856!3d37.748515859182696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1578304196576!5m2!1sen!2sbd" style="border:0;" allowfullscreen=""></iframe>
                     </div>
                     <div class="property-news-single-card border-bottom-yellow">
-                        <h4>{{trans('site.amenities')}}</h4>
+                        <h4>Amenities</h4>
                         <div class="row">
                             <div class="col-sm-4">
                                 <ul class="rld-list-style mb-3 mb-sm-0">
                                     @foreach($project->amenities as $amenity)
                                         <li><i class="fa fa-check"></i> {{$amenity->title_lb}}</li>
                                     @endforeach
-                                    <li><i class="fa fa-check"></i> Attic</li>
                                     <li><i class="fa fa-check"></i> Poll</li>
                                     <li><i class="fa fa-check"></i> Concierge</li>
                                     <li><i class="fa fa-check"></i> Basketball Cout</li>
@@ -230,9 +178,110 @@
                             </div>
                         </div>
                     </div>
-                    <div class="property-news-single-card style-two border-bottom-yellow">
-                        <h4>Location</h4>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.333807744015!2d106.75457695059688!3d10.785725392277543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317525d4ac37cac3%3A0xed8b65112aeca5d3!2zTmd1eeG7hW4gVGjhu4sgxJDhu4tuaCwgQW4gUGjDuiwgUXXhuq1uIDIsIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaCwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1598249100752!5m2!1sen!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    <div class="property-news-single-card border-bottom-yellow">
+                        <h4>Floor Plan</h4>
+                        <div class="thumb">
+                            <img src="{{$project->floorplan_lb}}" alt="{{$project->title_lb}}">
+                        </div>
+                    </div>
+                    <div class="property-news-single-card border-bottom-yellow pb-3">
+                        <h4>Facts and Features</h4>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6">
+                                <div class="single-floor-list media">
+                                    <div class="media-left">
+                                        <i class="fa fa-bed"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6>Living Room</h6>
+                                        <p>20 x 16 sq feet</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="single-floor-list media">
+                                    <div class="media-left">
+                                        <i class="fa fa-car"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6>Garage</h6>
+                                        <p>20 x 16 sq feet</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="single-floor-list media">
+                                    <div class="media-left">
+                                        <img src="/images//icons/7.png" alt="img">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6>Dining Area</h6>
+                                        <p>20 x 16 sq feet</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="single-floor-list media">
+                                    <div class="media-left">
+                                        <img src="/images//icons/7.png" alt="img">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6>Dining Area</h6>
+                                        <p>20 x 16 sq feet</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="single-floor-list media">
+                                    <div class="media-left">
+                                        <i class="fa fa-bed"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6>Bedroom</h6>
+                                        <p>20 x 16 sq feet</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="single-floor-list media">
+                                    <div class="media-left">
+                                        <i class="fa fa-bath"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6>Bathroom</h6>
+                                        <p>20 x 16 sq feet</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="single-floor-list media">
+                                    <div class="media-left">
+                                        <img src="/images//icons/17.png" alt="img">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6>Gym Area</h6>
+                                        <p>20 x 16 sq feet</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="single-floor-list media">
+                                    <div class="media-left">
+                                        <img src="/images//icons/17.png" alt="img">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6>Gym Area</h6>
+                                        <p>20 x 16 sq feet</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-news-single-card border-bottom-yellow mb-0">
+                        <h4>3D Gallery</h4>
+                        <div class="thumb">
+                            <img src="/images//others/11.png" alt="img">
+                        </div>
                     </div>
                 </div>
             </div>

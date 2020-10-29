@@ -18,7 +18,7 @@
         <ul class="contact-list">
             <li><a class="phone" href="tel:{{$product->creator->phone}}"><i class="fa fa-phone"></i></a></li>
             <li><a class="message" href="#"><img src="/images/icons/8.png" alt="img"></a></li>
-            <li><a class="btn btn-yellow" href="{{$product->link}}">View Details</a></li>
+            <li><a class="btn btn-yellow" href="{{$product->link}}">{{__('site.view_details')}}</a></li>
         </ul>
     </div>
 </div>

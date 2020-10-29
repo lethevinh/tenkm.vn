@@ -87,12 +87,30 @@ class Project extends Model implements Searchable
         return $galleries;
     }
 
+    public function getGallery3DAttribute() {
+        if (!isset($this->attributes['gallery_3d_lb'])) {
+            return '';
+        }
+        $disk = Storage::disk(config('admin.upload.disk'));
+        $image = $this->attributes['gallery_3d_lb'];
+        if (!empty($image) && !URL::isValidUrl($image) && $disk->exists($image)) {
+            return $disk->url($image);
+        }
+        return $image;
+    }
+
     public function getLinkAttribute()
     {
         if (isset($this->attributes['slug_lb'])) {
             return route( 'project.show', ['slug' => $this->attributes['slug_lb']]);
         }
         return '';
+    }
+
+    public function getPriceSaleAttribute()
+    {
+        $price = $this->price_sale_fl?$this->price_sale_fl:$this->price_fl;
+        return $price;
     }
 
     public function amenities(): MorphToMany

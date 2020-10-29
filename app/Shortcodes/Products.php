@@ -25,6 +25,9 @@ class Products extends AbstractShortcode {
     {
         $query = Product::query();
         $query->locale();
+        if ($dir = $params->getParameter('dir')) {
+            $this->dirTemplate = $dir;
+        }
         if ($catalogue = $params->getParameter('catalogue')) {
             $query->whereHas('categories', function ($q) use ($catalogue) {
                 $q->whereSlug($catalogue);

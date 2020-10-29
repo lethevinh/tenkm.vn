@@ -66,3 +66,9 @@ if (!function_exists('theme_dir_view')) {
         return resource_path("themes/" . config('site.theme') . '/template/' . $path);
     }
 }
+
+if (!function_exists('do_shortcode')) {
+    function do_shortcode($html) {
+        return app('shortcode')->doShortcodes($html);
+    }
+}
