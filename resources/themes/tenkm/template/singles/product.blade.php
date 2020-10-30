@@ -49,7 +49,7 @@
                         <div class="widget widget-owner-info mt-lg-0 mt-5">
                             <div class="owner-info text-center">
                                 <div class="thumb">
-                                    <img src="{{$product->creator->avatar}}" alt="img">
+                                    <img src="{{url($product->creator->avatar)}}" alt="img">
                                 </div>
                                 <div class="details">
                                     <h6>{{$product->creator->name}}</h6>
@@ -71,13 +71,13 @@
                                 <a class="btn btn-yellow" href="#">Send Messages</a>
                             </div>
                             <div class="contact-info">
-                                <h6 class="mb-3">Contact Info</h6>
+                                <h6 class="mb-3">{{trans('site.contact_info')}}</h6>
                                 <div class="media">
                                     <div class="media-left">
                                         <img src="/images//icons/1.png" alt="img">
                                     </div>
                                     <div class="media-body">
-                                        <p>Address</p>
+                                        <p>{{trans('site.address')}}</p>
                                         <span>{{$product->address}}</span>
                                     </div>
                                 </div>
@@ -86,7 +86,7 @@
                                         <i class="fa fa-phone"></i>
                                     </div>
                                     <div class="media-body">
-                                        <p>Phone</p>
+                                        <p>{{trans('site.phone')}}</p>
                                         <span>+00 111 222 333</span>
                                     </div>
                                 </div>
@@ -145,13 +145,11 @@
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5621.1629504770535!2d-122.43633647504856!3d37.748515859182696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1578304196576!5m2!1sen!2sbd" style="border:0;" allowfullscreen=""></iframe>
                     </div>
                     <div class="property-news-single-card border-bottom-yellow">
-                        <h4>Amenities</h4>
+                        <h4>{{trans('site.amenities')}}</h4>
                         <div class="row">
                             <div class="col-sm-4">
                                 <ul class="rld-list-style mb-3 mb-sm-0">
-                                    @foreach($product->amenities as $amenity)
-                                        <li><i class="fa fa-check"></i> {{$amenity->title_lb}}</li>
-                                    @endforeach
+                                    <li><i class="fa fa-check"></i> Attic</li>
                                     <li><i class="fa fa-check"></i> Poll</li>
                                     <li><i class="fa fa-check"></i> Concierge</li>
                                     <li><i class="fa fa-check"></i> Basketball Cout</li>
@@ -179,13 +177,13 @@
                         </div>
                     </div>
                     <div class="property-news-single-card border-bottom-yellow">
-                        <h4>Floor Plan</h4>
+                        <h4>{{trans('site.floor_plan')}}</h4>
                         <div class="thumb">
                             <img src="{{$product->floorplan_lb}}" alt="{{$product->title_lb}}">
                         </div>
                     </div>
                     <div class="property-news-single-card border-bottom-yellow pb-3">
-                        <h4>Facts and Features</h4>
+                        <h4>{{trans('site.facts_and_features')}}</h4>
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-floor-list media">
@@ -193,8 +191,8 @@
                                         <i class="fa fa-bed"></i>
                                     </div>
                                     <div class="media-body">
-                                        <h6>Living Room</h6>
-                                        <p>20 x 16 sq feet</p>
+                                        <h6>{{trans('site.living_room')}}</h6>
+                                        <p>{{$product->living_room}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -204,8 +202,8 @@
                                         <i class="fa fa-car"></i>
                                     </div>
                                     <div class="media-body">
-                                        <h6>Garage</h6>
-                                        <p>20 x 16 sq feet</p>
+                                        <h6>{{trans('site.garage')}}</h6>
+                                        <p>{{$product->garage}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -215,19 +213,8 @@
                                         <img src="/images//icons/7.png" alt="img">
                                     </div>
                                     <div class="media-body">
-                                        <h6>Dining Area</h6>
-                                        <p>20 x 16 sq feet</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="single-floor-list media">
-                                    <div class="media-left">
-                                        <img src="/images//icons/7.png" alt="img">
-                                    </div>
-                                    <div class="media-body">
-                                        <h6>Dining Area</h6>
-                                        <p>20 x 16 sq feet</p>
+                                        <h6>{{trans('site.dining_area')}}</h6>
+                                        <p>{{$product->dining_area}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -237,8 +224,8 @@
                                         <i class="fa fa-bed"></i>
                                     </div>
                                     <div class="media-body">
-                                        <h6>Bedroom</h6>
-                                        <p>20 x 16 sq feet</p>
+                                        <h6>{{trans('site.bedroom')}}</h6>
+                                        <p>{{$product->bedroom_nb}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -248,8 +235,8 @@
                                         <i class="fa fa-bath"></i>
                                     </div>
                                     <div class="media-body">
-                                        <h6>Bathroom</h6>
-                                        <p>20 x 16 sq feet</p>
+                                        <h6>{{trans('site.bathroom')}}</h6>
+                                        <p>{{$product->bathroom_nb}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -259,19 +246,8 @@
                                         <img src="/images//icons/17.png" alt="img">
                                     </div>
                                     <div class="media-body">
-                                        <h6>Gym Area</h6>
-                                        <p>20 x 16 sq feet</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="single-floor-list media">
-                                    <div class="media-left">
-                                        <img src="/images//icons/17.png" alt="img">
-                                    </div>
-                                    <div class="media-body">
-                                        <h6>Gym Area</h6>
-                                        <p>20 x 16 sq feet</p>
+                                        <h6>{{trans('site.gym_area')}}</h6>
+                                        <p>{{$product->gym_area}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -280,7 +256,7 @@
                     <div class="property-news-single-card border-bottom-yellow mb-0">
                         <h4>3D Gallery</h4>
                         <div class="thumb">
-                            <img src="/images//others/11.png" alt="img">
+                            <img src="assets/img/others/11.png" alt="img">
                         </div>
                     </div>
                 </div>
@@ -292,116 +268,7 @@
     <!-- Recommended area start -->
     <div class="recommended-area pd-top-90 pd-bottom-70">
         <div class="container">
-            <div class="section-title">
-                <h2 class="title">Recommended</h2>
-                <a class="btn-view-all" href="#">View All</a>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-feature">
-                        <div class="thumb">
-                            <img src="/images//feature/4.png" alt="img">
-                            <a href="#"><i class="fa fa-heart"></i></a>
-                        </div>
-                        <div class="details">
-                            <a href="#" class="feature-logo">
-                                <img src="/images//icons/l3.png" alt="icons">
-                            </a>
-                            <p class="author"><i class="fa fa-user"></i> Vilma Jarvi By Redbrox</p>
-                            <h6 class="title"><a href="#">Jason Landville Apartment</a></h6>
-                            <h6 class="price">$350/mo</h6><del>$790/mo</del>
-                            <ul class="info-list">
-                                <li><i class="fa fa-bed"></i> 05 Bed</li>
-                                <li><i class="fa fa-bath"></i> 02 Bath</li>
-                                <li><img src="/images//icons/7.png" alt="img"> 1898 sq.</li>
-                            </ul>
-                            <ul class="contact-list">
-                                <li><a class="phone" href="#"><i class="fa fa-phone"></i></a></li>
-                                <li><a class="message" href="#"><img src="/images//icons/8.png" alt="img"></a></li>
-                                <li><a class="btn btn-yellow" href="#">View Details</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-feature">
-                        <div class="thumb">
-                            <img src="/images//feature/5.png" alt="img">
-                            <a href="#"><i class="fa fa-heart"></i></a>
-                        </div>
-                        <div class="details">
-                            <a href="#" class="feature-logo">
-                                <img src="/images//icons/l4.png" alt="icons">
-                            </a>
-                            <p class="author"><i class="fa fa-user"></i> Vilma Jarvi By Redbrox</p>
-                            <h6 class="title"><a href="#">Jason Landville Apartment</a></h6>
-                            <h6 class="price">$350/mo</h6><del>$790/mo</del>
-                            <ul class="info-list">
-                                <li><i class="fa fa-bed"></i> 05 Bed</li>
-                                <li><i class="fa fa-bath"></i> 02 Bath</li>
-                                <li><img src="/images//icons/7.png" alt="img"> 1898 sq.</li>
-                            </ul>
-                            <ul class="contact-list">
-                                <li><a class="phone" href="#"><i class="fa fa-phone"></i></a></li>
-                                <li><a class="message" href="#"><img src="/images//icons/8.png" alt="img"></a></li>
-                                <li><a class="btn btn-yellow" href="#">View Details</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-feature">
-                        <div class="thumb">
-                            <img src="/images//feature/6.png" alt="img">
-                            <a href="#"><i class="fa fa-heart"></i></a>
-                        </div>
-                        <div class="details">
-                            <a href="#" class="feature-logo">
-                                <img src="/images//icons/l5.png" alt="icons">
-                            </a>
-                            <p class="author"><i class="fa fa-user"></i> Vilma Jarvi By Redbrox</p>
-                            <h6 class="title"><a href="#">Jason Landville Apartment</a></h6>
-                            <h6 class="price">$350/mo</h6><del>$790/mo</del>
-                            <ul class="info-list">
-                                <li><i class="fa fa-bed"></i> 05 Bed</li>
-                                <li><i class="fa fa-bath"></i> 02 Bath</li>
-                                <li><img src="/images//icons/7.png" alt="img"> 1898 sq.</li>
-                            </ul>
-                            <ul class="contact-list">
-                                <li><a class="phone" href="#"><i class="fa fa-phone"></i></a></li>
-                                <li><a class="message" href="#"><img src="/images//icons/8.png" alt="img"></a></li>
-                                <li><a class="btn btn-yellow" href="#">View Details</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-feature">
-                        <div class="thumb">
-                            <img src="/images//feature/7.png" alt="img">
-                            <a href="#"><i class="fa fa-heart"></i></a>
-                        </div>
-                        <div class="details">
-                            <a href="#" class="feature-logo">
-                                <img src="/images//icons/l6.png" alt="icons">
-                            </a>
-                            <p class="author"><i class="fa fa-user"></i> Vilma Jarvi By Redbrox</p>
-                            <h6 class="title"><a href="#">Jason Landville Apartment</a></h6>
-                            <h6 class="price">$350/mo</h6><del>$790/mo</del>
-                            <ul class="info-list">
-                                <li><i class="fa fa-bed"></i> 05 Bed</li>
-                                <li><i class="fa fa-bath"></i> 02 Bath</li>
-                                <li><img src="/images//icons/7.png" alt="img"> 1898 sq.</li>
-                            </ul>
-                            <ul class="contact-list">
-                                <li><a class="phone" href="#"><i class="fa fa-phone"></i></a></li>
-                                <li><a class="message" href="#"><img src="/images//icons/8.png" alt="img"></a></li>
-                                <li><a class="btn btn-yellow" href="#">View Details</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {!! do_shortcode('[products template="product-recommended" product="'.$product->id.'" limit="4"]') !!}
         </div>
     </div>
     <!-- Recommended area end -->

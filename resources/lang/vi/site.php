@@ -102,4 +102,13 @@ return [
     'design_company' => 'Công ty thiết kế',
     'introduction' => 'Giới thiệu',
     'amenities' => 'Tiện Ích',
+    'project' => 'Dự Án',
+    'recommended' => 'Gợi ý',
+    'contact_info' => 'Thông tin liên hệ',
+    'phone' => 'Điện thoại',
+    'floor_plan' => 'Thiết Kế',
+    'facts_and_features' => 'Tính năng',
+    'living_room' => 'Phòng khách',
+    'garage' => 'Nhà để xe',
+    'dining_area' => 'Phòng Ăn',
 ];

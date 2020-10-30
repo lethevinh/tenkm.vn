@@ -15,21 +15,17 @@
                             @elseif(isset($tag))
                                 {{$tag->title_lb}}
                             @else
-                                Danh mục
+                                {{trans('site.project')}}
                             @endif
                         </h1>
                         <ul class="page-list">
                             <li><a href="{{route('home.show')}}"> {{ trans('site.home') }}</a></li>
-                            <li><a href="{{route('product.index')}}">{{ trans('site.product') }}</a></li>
-                            <li>
-                                @if(isset($category))
-                                    {{$category->title_lb}}
-                                @elseif(isset($tag))
-                                    {{$tag->title_lb}}
-                                @else
-                                    Danh mục
-                                @endif
-                            </li>
+                            <li><a href="{{route('project.index')}}">{{ trans('site.project') }}</a></li>
+                            @if(isset($category))
+                                <li> {{$category->title_lb}}</li>
+                            @elseif(isset($tag))
+                                <li> {{$tag->title_lb}}</li>
+                            @endif
                         </ul>
                     </div>
                 </div>

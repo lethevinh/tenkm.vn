@@ -5,15 +5,15 @@
     </div>
     <div class="details">
         <div class="details-wrap">
-            <a href="#" class="feature-logo">
-                <img src="{{$post->thumbnail}}" alt="icons">
+            <a href="{{$post->link}}" class="feature-logo">
+                <img src="{{$post->thumbnail}}" alt="{{$post->title_lb}}">
             </a>
             <p class="author"><i class="fa fa-location-arrow"></i> {{$post->address}}</p>
-            <h6 class="title"><a href="project-details.html">{{$post->title_lb}}</a></h6>
-            <p class="description">{{$post->description_lb}}</p>
+            <h6 class="title"><a href="{{$post->link}}">{{$post->title_lb}}</a></h6>
+            <p class="description">{{truncate($post->description_lb, 200, ' ...')}}</p>
             <ul class="info-list">
-                <li><i class="fa fa-building"></i> {{$post->block_nb}} Block</li>
-                <li><i class="fa fa-key"></i> {{$post->department_nb}} Apartments</li>
+                <li><i class="fa fa-building"></i> {{$post->block_nb}} {{trans('site.blocks')}}</li>
+                <li><i class="fa fa-key"></i> {{$post->department_nb}} {{trans('site.apartments')}}</li>
                 <li><img src="/images/icons/7.png" alt="img"> {{$post->area_nb}} sq.</li>
             </ul>
             <ul class="contact-list">

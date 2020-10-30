@@ -28,6 +28,10 @@ class CreateProductsTable extends Migration
                 $table->string('video_lb')->nullable();
                 $table->string('streetview_lb')->nullable();
                 $table->string('floorplan_lb')->nullable();
+                $table->string('living_room_lb')->nullable();
+                $table->string('garage_lb')->nullable();
+                $table->string('dining_area')->nullable();
+                $table->string('gym_area')->nullable();
                 $table->text('description_lb')->nullable();
                 $table->text('content_lb')->nullable();
                 $table->unsignedInteger('bedroom_nb')->default(0);

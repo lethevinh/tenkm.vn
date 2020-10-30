@@ -72,3 +72,9 @@ if (!function_exists('do_shortcode')) {
         return app('shortcode')->doShortcodes($html);
     }
 }
+
+if (!function_exists('truncate')) {
+    function truncate($string, $limit = 20, $end = ' (...)') {
+        return  \Illuminate\Support\Str::limit($string, $limit, $end);
+    }
+}
