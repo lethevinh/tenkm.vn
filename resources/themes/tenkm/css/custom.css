@@ -1,0 +1,7 @@
+.single-feature .details .feature-logo img{
+    width: 50px;
+    height: 50px;
+}
+.single-feature .details .feature-logo{
+    overflow: hidden;
+}

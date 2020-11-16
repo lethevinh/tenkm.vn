@@ -17,7 +17,7 @@ class Location extends Model
         Sluggable::replicate as replicateSlug;
     }
 
-    protected $fillable = ['title_lb', 'parent_id'];
+    protected $fillable = ['title_lb', 'parent_id', 'code_lb'];
 
     protected $table = 'locations';
 

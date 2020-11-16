@@ -9,14 +9,14 @@
         $(document).on('click', '.navbar-area .navbar-nav li.menu-item-has-children>a', function (e) {
             e.preventDefault();
         })
-       
+
         /*-------------------------------------
             menu
         -------------------------------------*/
         $('.menu').click (function(){
             $(this).toggleClass('open');
         });
-    
+
         // mobile menu
         if ($(window).width() < 992) {
             $(".in-mobile").clone().appendTo(".sidebar-inner");
@@ -34,7 +34,7 @@
 
         var menutoggle = $('.menu-toggle');
         var mainmenu = $('.navbar-nav');
-        
+
         menutoggle.on('click', function() {
             if (menutoggle.hasClass('is-active')) {
                 mainmenu.removeClass('menu-open');
@@ -247,6 +247,8 @@
                 dots: true,
                 nav: true,
                 smartSpeed: 1500,
+                autoHeight: true,
+                autoHeightClass: 'owl-height',
                 navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
                 items: 1,
             });
@@ -263,6 +265,8 @@
             speed: 400,
             loop: true,
             autoplay: false,
+            autoHeight: true,
+            autoHeightClass: 'owl-height',
             prevArrow: '<span class="slick-prev"><i class="fa fa-angle-left"></i></span>',
             nextArrow: '<span class="slick-next"><i class="fa fa-angle-right"></i></span>',
             appendArrows: $('.ap2-slider-controls .slider-nav'),
@@ -270,7 +274,7 @@
         //active progress
         var $progressBar = $('.ap2-list-progress');
         var $progressBarLabel = $( '.slider__label' );
-        $ap2_slider.on('beforeChange', function(event, slick, currentSlide, nextSlide) {   
+        $ap2_slider.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
             var calc = ( (nextSlide) / (slick.slideCount-1) ) * 100;
             $progressBar
             .css('background-size', calc + '% 100%')
@@ -291,7 +295,7 @@
         }
 
         /* --------------------------------------------------
-            city 
+            city
         ---------------------------------------------------- */
         $('.video-play-btn').magnificPopup({
             type: 'video',
@@ -300,7 +304,7 @@
         });
 
         /* --------------------------------------------------
-            city 
+            city
         ---------------------------------------------------- */
         var $cityFilterArea = $('.city-filter-area');
         /*Grid*/
@@ -320,7 +324,7 @@
 
 
         /* --------------------------------------------------
-            property filter 
+            property filter
         ---------------------------------------------------- */
         var $Container = $('.property-filter-area');
         if ($Container.length > 0) {
@@ -434,7 +438,7 @@
         else {
             mainMenuTop.removeClass('navbar-area-fixed');
         }
-        
+
         var ScrollTop = $('.back-to-top');
         if ($(window).scrollTop() > 1000) {
             ScrollTop.fadeIn(1000);

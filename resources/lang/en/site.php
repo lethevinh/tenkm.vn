@@ -81,7 +81,7 @@ return [
     'translation' => 'Translation',
     'lang' => 'Language',
     'en' => 'English',
-    'vi' => 'Vietnam',
+    'vi' => 'Vietnamese',
     'featured_properties' => 'Featured Properties',
     'popular_property' => 'Popular Property',
     'view_all' => 'View All',
@@ -117,4 +117,6 @@ return [
     'living_room' => 'Living Room',
     'garage' => 'Garage',
     'dining_area' => 'Dining Area',
+    'map' => 'Map',
+    'gym_area' => 'Gym area',
 ];

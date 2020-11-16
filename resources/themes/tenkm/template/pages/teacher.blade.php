@@ -17,7 +17,7 @@
                         <!-- Breadcrumbs -->
                         <ol class="breadcrumb">
                             <li><a href="{{route('home.show')}}">{{ __('site.home') }}</a></li>
-                            <li class="active">{{__('site.teacher')}} Edureal</li>
+                            <li class="active">{{__('site.teacher')}} Tenkm</li>
                         </ol>
 
                     </div> <!-- / .home__content -->
@@ -39,7 +39,7 @@
                             Gặp gỡ đội ngũ <span>chuyên nghiệp nhất</span>
                         </div>
                         <h2 class="section__title dark__title">
-                            Giảng Viên Edureal
+                            Giảng Viên Tenkm
                         </h2>
                         <p class="section_title__desc">
 {{--                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores a atque, esse delectus. Vel quas voluptate atque natus laboriosam, vero molestiae repudiandae eaque veniam repellendus nemo unde suscipit ducimus tenetur.--}}

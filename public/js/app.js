@@ -772,7 +772,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 window.admin = window.admin || {};
 
 window.admin.init = function () {
-  console.log('Init Edureal Admin');
+  console.log('Init Tenkm Admin');
   admin.setCurrentTag();
 };
 

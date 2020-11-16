@@ -36,7 +36,7 @@ class CreateProjectsTable extends Migration
                 $table->string('management_company')->nullable();
                 $table->string('design_company')->nullable();
                 $table->timestamp('delivery_time')->nullable();
-                $table->enum('sale_status_sl', ['open', 'coming_soon', 'pending', 'close'])->default('draft');
+                $table->enum('sale_status_sl', ['open', 'coming_soon', 'pending', 'close'])->default('open');
                 $table->text('description_lb')->nullable();
                 $table->text('content_lb')->nullable();
                 $table->unsignedInteger('bedroom_nb')->default(0);

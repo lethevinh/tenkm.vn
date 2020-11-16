@@ -25,6 +25,6 @@ class ViPackageBlogSeeder extends Seeder
         $this->call(\ProductSeeder::class);
         $this->call(\ProjectSeeder::class);
         $this->call(\UsersSeeder::class);
-//        $this->call(\LocationsSeeder::class);
+        $this->call(\LocationsSeeder::class);
     }
 }

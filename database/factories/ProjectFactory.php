@@ -12,7 +12,7 @@ $factory->define(\App\Models\Project::class, function (Faker $faker) {
     $admin = Administrator::first();
     $publishedAt = $faker->dateTimeBetween('-30 days', '-1 days');
     $validatedAt = $faker->dateTimeBetween('+100 days', '+300 days');
-    $image = '/assets/img/dummy_blog_img-' . $faker->randomElement(['1', '2', '3']) . '.jpg';
+    $image = '/images/dummy/projects/' . $faker->randomElement(['1', '2', '3', '4', '5', '6']) . '.jpg';
     $galleries = implode(',', [url($image),url($image),url($image)]);
     return [
         'title_lb' => 'Project ' . $faker->sentence(8),

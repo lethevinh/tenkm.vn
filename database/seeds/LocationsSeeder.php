@@ -36,7 +36,7 @@ class LocationsSeeder extends Seeder
                 //provincial
                 return Location::create([
                     'title_lb' => $location['name'],
-                    'slug_lb' => $location['code'],
+                    'code_lb' => $location['code'],
                     'address_lb' => $location['name'],
                     'type_lb' => 'provincial',
                     'status_sl' => 'public'

@@ -12,7 +12,7 @@ $factory->define(Post::class, function (Faker $faker) {
     $admin = Administrator::first();
     $publishedAt = $faker->dateTimeBetween('-30 days', '-1 days');
     $validatedAt = $faker->dateTimeBetween('+100 days', '+300 days');
-    $image = '/assets/img/dummy_blog_img-' . $faker->randomElement(['1', '2', '3']) . '.jpg';
+    $image = '/images/dummy/products/' . $faker->randomElement(['1', '2', '3','4','6','6','7','8','9']) . '.jpg';
     return [
         'title_lb' => 'Post ' . $faker->sentence(8),
         'image_lb' => url($image),

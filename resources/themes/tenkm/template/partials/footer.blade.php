@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <a class="footer-logo" href="{{route('home.show')}}">
-                        <img src="{{option('logo')}}" alt="logo">
+                        <img src="{{url(option('logo'))}}" alt="logo">
                     </a>
                 </div>
                 <div class="col-sm-8">

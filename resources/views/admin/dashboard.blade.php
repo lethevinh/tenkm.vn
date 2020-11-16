@@ -29,7 +29,7 @@
             <img class="avatar img-circle shadow mt-1" src="{{ admin_asset('@admin/images/logo.png') }}">
 
             <div class="text-center mb-1">
-                <h1 class="mb-3 mt-2 text-primary-darker">Edureal Admin</h1>
+                <h1 class="mb-3 mt-2 text-primary-darker">Tenkm Admin</h1>
                 <div class="links">
                     <a href="https://github.com/lethevinh/edureal.online" target="_blank">Github</a>
                     <a href="{{route('home.show')}}" id="doc-link" target="_blank">{{ __('admin.documentation') }}</a>

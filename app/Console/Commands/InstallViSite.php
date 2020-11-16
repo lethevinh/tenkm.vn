@@ -53,11 +53,12 @@ class InstallViSite extends Command
     public function initDatabase($package)
     {
         $tables = DB::select('SHOW TABLES');
-        $colname = 'Tables_in_' . env('DB_DATABASE', 'vi-site');
+        $colname = 'Tables_in_' . env('DB_DATABASE', 'tenkm');
         if (count($tables) > 0) {
             $datalist = [];
             foreach($tables as $table) {
-                if (isset($table->$colname) && $table->$colname !== 'vi_locations') {
+//                if (isset($table->$colname) && $table->$colname !== 'vi_locations') {
+                if (isset($table->$colname)) {
                     $datalist[] = $table->$colname;
                 }
             }

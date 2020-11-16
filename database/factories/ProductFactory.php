@@ -12,11 +12,12 @@ $factory->define(\App\Models\Product::class, function (Faker $faker) {
     $admin = Administrator::first();
     $publishedAt = $faker->dateTimeBetween('-30 days', '-1 days');
     $validatedAt = $faker->dateTimeBetween('+100 days', '+300 days');
-    $image = '/images/feature/' . $faker->randomElement(['1', '2', '3', '4' ,'5', '6', '7']) . '.png';
-    $image1 = '/images/feature/' . $faker->randomElement(['1', '2', '3', '4' ,'5', '6', '7']) . '.png';
-    $image2 = '/images/feature/' . $faker->randomElement(['1', '2', '3', '4' ,'5', '6', '7']) . '.png';
-    $image3 = '/images/feature/' . $faker->randomElement(['1', '2', '3', '4' ,'5', '6', '7']) . '.png';
-    $image4 = '/images/feature/' . $faker->randomElement(['1', '2', '3', '4' ,'5', '6', '7']) . '.png';
+    $listImages = ['1', '2', '3', '4', '6', '6', '7', '8', '9'];
+    $image = '/images/dummy/products/' . $faker->randomElement($listImages) . '.jpg';
+    $image1 = '/images/dummy/products/' . $faker->randomElement($listImages) . '.jpg';
+    $image2 = '/images/dummy/products/' . $faker->randomElement($listImages) . '.jpg';
+    $image3 = '/images/dummy/products/' . $faker->randomElement($listImages) . '.jpg';
+    $image4 = '/images/dummy/products/' . $faker->randomElement($listImages) . '.jpg';
     $galleries = implode(',', [url($image1),url($image2),url($image3),url($image4)]);
     return [
         'title_lb' => 'Product ' . $faker->sentence(8),
