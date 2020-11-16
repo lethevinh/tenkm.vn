@@ -48,7 +48,7 @@ class MenuController extends AdminController
                     $form->select('parent_id', trans('admin.parent_id'))->options($menuModel::selectOptions());
                     $form->text('title_lb', trans('admin.title'))->required();
                     $form->icon('media_lb', trans('admin.icon'))->help($this->iconHelp());
-                    $form->text('uri', trans('admin.uri'));
+                    $form->text('url_lb', trans('admin.uri'));
                     $form->hidden('_token')->default(csrf_token());
 
                     $form->width(9, 2);
