@@ -59,7 +59,7 @@ class MenuController extends AdminController
     }
 
     /**
-     * @return \Dcat\Admin\Tree
+     * @return Tree
      */
     protected function treeView()
     {
