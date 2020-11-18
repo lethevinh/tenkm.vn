@@ -118,7 +118,7 @@ class AmenityController extends AdminController
     public function destroy($id)
     {
         if (in_array(AdministratorModel::DEFAULT_ID, Helper::array($id))) {
-            Permission::error();
+//            Permission::error();
         }
 
         return parent::destroy($id);
