@@ -57,8 +57,8 @@ class InstallViSite extends Command
         if (count($tables) > 0) {
             $datalist = [];
             foreach($tables as $table) {
-//                if (isset($table->$colname) && $table->$colname !== 'vi_locations') {
-                if (isset($table->$colname)) {
+                if (isset($table->$colname) && $table->$colname !== 'vi_locations') {
+//                if (isset($table->$colname)) {
                     $datalist[] = $table->$colname;
                 }
             }
