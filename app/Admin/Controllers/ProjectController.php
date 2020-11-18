@@ -147,9 +147,13 @@ class ProjectController extends AdminController
         $form = new Form(new $repositoryClassName(['categories', 'tags', 'comments', 'locations', 'amenities', 'address']));
         $form->disableViewButton();
         $form->tools([ToolViewLive::make(), ToolTranslatable::make()]);
-
+        $model = false;
+        if (!empty($id)) {
+            $model = \App\Models\Product::find($id);
+        }
+        $language = $model ? $model->language_lb : config('site.locale_default');
         $form
-            ->tab(__('site.basic'), function (Form $form) {
+            ->tab(__('site.basic'), function (Form $form) use ($language){
                 $form->text('title_lb', __('admin.title'));
                 $form->datetimeRange('published_at', 'validated_at', __('site.public_time'));
                 $form->hidden('language_lb')->default(config('site.locale_default'));
@@ -159,17 +163,13 @@ class ProjectController extends AdminController
                     return $value === 1 ? 'public' : 'private';
                 });
                 $form->select('categories', __('site.category'))
-                    ->options(function () use($form) {
-                        $model = $form->getModel();
-                        $language = $model ? $model->language_lb : config('site.locale_default');
+                    ->options(function () use($language) {
                         return ProjectCategory::lang($language)->get()->pluck('title_lb', 'id');
                     })
                     ->customFormat(function ($v) {
                         if (!$v) return '';
                         return array_column($v, 'id')[0];
                     });
-                $model = $form->getModel();
-                $language = $model ? $model->language_lb : config('site.locale_default');
                 $form->tags('tags', __('site.tag'))
                     ->options(ProjectTag::lang($language)->get()->pluck('title_lb', 'id'))
                     ->customFormat(function ($v) {

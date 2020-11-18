@@ -26,6 +26,7 @@ Route::group([
     $router->resource('partners', 'PartnerController');
     $router->resource('events', 'EventController');
     $router->resource('menus', 'MenuController');
+    $router->resource('amenities', 'AmenityController');
     $router->get('site/setting', 'PageController@getSetting')->name('site.setting');
     $router->put('site/setting', 'PageController@putSetting');
     $router->resource('contacts', 'ContactController');

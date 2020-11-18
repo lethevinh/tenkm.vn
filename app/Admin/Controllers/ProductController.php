@@ -146,9 +146,14 @@ class ProductController extends AdminController
         $form = new Form(new $repositoryClassName(['categories', 'tags', 'comments', 'locations', 'amenities', 'address']));
         $form->disableViewButton();
         $form->tools([ToolViewLive::make(), ToolTranslatable::make()]);
-
+        $id = str_replace(['/admin/products/', '/edit'], '', request()->getRequestUri());
+        $model = false;
+        if (!empty($id)) {
+            $model = \App\Models\Product::find($id);
+        }
+        $language = $model ? $model->language_lb : config('site.locale_default');
         $form
-            ->tab(__('site.basic'), function (Form $form) {
+            ->tab(__('site.basic'), function (Form $form) use ($language){
                 $form->text('title_lb', __('admin.title'));
                 $form->datetimeRange('published_at', 'validated_at', __('site.public_time'));
                 $form->hidden('language_lb')->default(config('site.locale_default'));
@@ -158,31 +163,28 @@ class ProductController extends AdminController
                     return $value === 1 ? 'public' : 'private';
                 });
                 $form->select('categories', __('site.category'))
-                    ->options(function () use ($form) {
-                        $model = $form->getModel();
-                        $language = $model ? $model->language_lb : config('site.locale_default');
+                    ->options(function () use ($language) {
                         return ProductCategory::lang($language)->get()->pluck('title_lb', 'id');
                     })
                     ->customFormat(function ($v) {
                         if (!$v) return '';
                         return array_column($v, 'id')[0];
                     });
-                $model = $form->getModel();
-                $language = $model ? $model->language_lb : config('site.locale_default');
                 $form->tags('tags', __('site.tag'))
                     ->options(ProductTag::lang($language)->get()->pluck('title_lb', 'id'))
                     ->customFormat(function ($v) {
                         return array_column($v, 'title_lb');
                     });
             })
-            ->tab(__('site.info'), function (Form $form) {
-                $form->currency('price_fl', __('site.price'))->symbol('VND')
+            ->tab(__('site.info'), function (Form $form) use ($language){
+                $symbol = $language === 'vi' ? '₫' : '$';
+                $form->currency('price_fl', __('site.price'))->symbol($symbol)
                     ->saving(function ($value) {
                         if (!$value) return 0;
                         return str_replace(',', '', $value);
                     });
                 $form->currency('price_sale_fl', __('site.price_sale'))
-                    ->symbol('VND')
+                    ->symbol($symbol)
                     ->saving(function ($value) {
                         if (!$value) return 0;
                         return str_replace(',', '', $value);
@@ -207,19 +209,19 @@ class ProductController extends AdminController
                 $form->media('floorplan_lb', __('site.floorplan'))->image();
                 $form->media('gallery_lb', __('site.gallery'))->image()->multiple();
             })
-            ->tab(__('site.amenity'), function (Form $form) {
+            ->tab(__('site.amenity'), function (Form $form) use ($language){
                 $form->checkbox('amenities', __('site.amenity'))
-                    ->options(Amenity::ofType('amenity')->get()->pluck('title_lb', 'id'))
+                    ->options(Amenity::ofType('amenity')->lang($language)->get()->pluck('title_lb', 'id'))
                     ->customFormat(function ($v) {
                         return array_column($v, 'id');
                     });
                 $form->checkbox('amenities', __('site.device'))
-                    ->options(Amenity::ofType('device')->get()->pluck('title_lb', 'id'))
+                    ->options(Amenity::ofType('device')->lang($language)->get()->pluck('title_lb', 'id'))
                     ->customFormat(function ($v) {
                         return array_column($v, 'id');
                     });
                 $form->checkbox('amenities', __('site.furniture'))
-                    ->options(Amenity::ofType('furniture')->get()->pluck('title_lb', 'id'))
+                    ->options(Amenity::ofType('furniture')->lang($language)->get()->pluck('title_lb', 'id'))
                     ->customFormat(function ($v) {
                         return array_column($v, 'id');
                     });

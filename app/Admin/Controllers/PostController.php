@@ -160,8 +160,12 @@ class PostController extends AdminController
         $form = new Form(new $postRepositoryClassName(['categories', 'tags', 'comments']));
         $form->disableViewButton();
         $form->tools([ToolViewLive::make(), ToolTranslatable::make()]);
-
-        $form->tab(__('admin.basic'), function (Form $form) {
+        $model = false;
+        if (!empty($id)) {
+            $model = \App\Models\Product::find($id);
+        }
+        $language = $model ? $model->language_lb : config('site.locale_default');
+        $form->tab(__('admin.basic'), function (Form $form) use ($language){
             $form->text('title_lb', __('admin.title'));
             $form->hidden('language_lb')->default(config('site.locale_default'));
             $form->datetimeRange('published_at', 'validated_at', __('site.public_time'));
@@ -172,16 +176,12 @@ class PostController extends AdminController
                     return $value === 1 ? 'public' : 'private';
                 });
             $form->multipleSelect('categories', __('site.category'))
-                ->options(function () use ($form) {
-                    $model = $form->getModel();
-                    $language = $model ? $model->language_lb : config('site.locale_default');
+                ->options(function () use ($language) {
                     return PostCategory::lang($language)->get()->pluck('title_lb', 'id');
                 })
                 ->customFormat(function ($v) {
                     return array_column($v, 'id');
                 });
-            $model = $form->getModel();
-            $language = $model ? $model->language_lb : config('site.locale_default');
             $form->tags('tags', __('site.tag'))
                 ->options(PostTag::lang($language)->get()->pluck('title_lb', 'id'))
                 ->customFormat(function ($v) {
