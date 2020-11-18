@@ -46,16 +46,14 @@ class AmenityController extends AdminController
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->panel();
                 $filter->like('title_lb', __('admin.title'))->width(3);
-                $admins = AdministratorModel::all()->pluck('name', 'id');
-                $filter->where('creator', function ($query) {
-                    $value = $this->input;
-                    $query->whereIn('created_by', $value);
-                },__('admin.owner'))->width(3)->multipleSelect($admins);
                 $filter->scope('new', __('site.today'))
                     ->whereDate('created_at', date('Y-m-d'))
                     ->orWhereDate('updated_at', date('Y-m-d'));
+                foreach (config('site.locales') as $locale) {
+                    $filter->scope('lang_' . $locale, __('site.' . $locale))
+                        ->where('language_lb', $locale);
+                }
             });
-//            $grid->disableBatchDelete();
             $grid->showQuickEditButton();
             $grid->enableDialogCreate();
         });
