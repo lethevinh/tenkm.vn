@@ -55,7 +55,7 @@ class AmenityController extends AdminController
                     ->whereDate('created_at', date('Y-m-d'))
                     ->orWhereDate('updated_at', date('Y-m-d'));
             });
-            $grid->disableBatchDelete();
+//            $grid->disableBatchDelete();
             $grid->showQuickEditButton();
             $grid->enableDialogCreate();
         });
