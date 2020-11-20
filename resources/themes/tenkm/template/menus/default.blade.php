@@ -1,4 +1,5 @@
 <h4 class="widget-title">{{$menu['title_lb']}}</h4>
+@if(isset($menu['children']))
 <ul>
     @foreach($menu['children'] as $item)
         <li>
@@ -8,3 +9,4 @@
         </li>
     @endforeach
 </ul>
+@endif
