@@ -35,10 +35,9 @@ class Menu extends Component
     public function render()
     {
         $locale = session()->get('locale', config('site.locale_default'));
-        $menu =  ModelMenu::getCacheByName($this->name, [
+        return ModelMenu::getCacheByName($this->name, [
             'template' => $this->template,
             'locale' => $locale
         ]);
-        dd($menu);
     }
 }
