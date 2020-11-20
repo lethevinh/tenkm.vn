@@ -141,4 +141,7 @@ return [
     'lang' => 'Ngôn Ngữ',
     'map' => 'Bản đồ',
     'gym_area' => 'Phòng Thể Hình',
+    'residential_property' => 'Bất Động Sản nhà ở',
+    'commercial_property' => 'Bất Động Sản thương mại',
+    'about_tenkm' => 'Về Tenkm',
 ];

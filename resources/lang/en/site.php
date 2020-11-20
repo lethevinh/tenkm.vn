@@ -119,4 +119,7 @@ return [
     'dining_area' => 'Dining Area',
     'map' => 'Map',
     'gym_area' => 'Gym area',
+    'residential_property' => 'Residential Property',
+    'commercial_property' => 'Commercial Property',
+    'about_tenkm' => 'About Tenkm',
 ];

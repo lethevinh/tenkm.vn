@@ -30,7 +30,8 @@
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
                     <div class="widget widget_nav_menu">
-                        <h4 class="widget-title">{{__('site.popular_searches')}}</h4>
+                        <h4 class="widget-title">{{__('site.residential_property')}}</h4>
+                        <x-menu name="residential_property"></x-menu>
                         <ul>
                             <li><a href="index.html">Apartment for Rent</a></li>
                             <li><a href="about.html">Apartment Low to hide</a></li>
@@ -41,7 +42,8 @@
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="widget widget_nav_menu">
-                        <h4 class="widget-title">{{__('site.homepress_markets')}}</h4>
+                        <h4 class="widget-title">{{__('site.commercial_property')}}</h4>
+                        <x-menu name="commercial_property"></x-menu>
                         <ul>
                             <li><a href="index.html">Los Angeles Offices</a></li>
                             <li><a href="about.html">Las Vegas Apartment</a></li>
@@ -52,7 +54,8 @@
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="widget widget_nav_menu">
-                        <h4 class="widget-title">{{__('site.quick_links')}}</h4>
+                        <h4 class="widget-title">{{__('site.about_tenkm')}}</h4>
+                        <x-menu name="about_tenkm"></x-menu>
                         <ul>
                             <li><a href="index.html">Pricing Plans</a></li>
                             <li><a href="about.html">Our Services</a></li>
