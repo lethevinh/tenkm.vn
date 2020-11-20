@@ -114,6 +114,9 @@ class Menu extends Model
         $cacheKey = self::cachePrefix($name);
         if (!self::isExitCacheByName($name)) {
             $model = self::getModelCacheByName($name);
+            if (empty($model)) {
+                return '';
+            }
             if ($translation = $model->translation($params['locale'])) {
                 $model = $translation;
             }

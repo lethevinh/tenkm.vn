@@ -165,11 +165,11 @@ trait Cacheable
     }
 
     public static function getModelCacheByName($name) {
-        return self::where(self::getCacheField(), $name)->firstOrFail();
+        return self::where(self::getCacheField(), $name)->first();
     }
 
     public static function getModelCacheById($id) {
-        return self::findOrFail($id);
+        return self::find($id);
     }
 
     /**
