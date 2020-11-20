@@ -80,15 +80,7 @@ class Menu extends Model
      */
     public function makeCache($params)
     {
-        $templates = [
-            'menus.' . $this->slug_lb,
-            'menus.' . $this->translator->slug_lb,
-            'menus.default'
-        ];
-        if (!empty($params['template']) && $params['template'] != 'default') {
-            array_unshift($templates, 'menus.' . $params['template']);
-        }
-        return view()->first($templates, ['menu' => $this])->render();
+        return $this->toTree();
     }
 
     public function flushCache()
@@ -113,10 +105,7 @@ class Menu extends Model
         }
         $cacheKey = self::cachePrefix($name);
         if (!self::isExitCacheByName($name)) {
-            $model = self::getModelCacheByName($name);
-            if ($translation = $model->translation($params['locale'])) {
-                $model = $translation;
-            }
+            $model = new static();
             if ($cache = $model->makeCache($params)){
                 $model->forever($cache, $cacheKey);
             }
@@ -130,8 +119,7 @@ class Menu extends Model
      */
     public static function cachePrefix($prefix = '')
     {
-        $locale = session()->get('locale', config('site.locale_default'));
         $keyModel = static::getModelKey();
-        return config('site.cache.keys.' . $keyModel , 'site-caches') . $prefix.'-'.$locale;
+        return config('site.cache.keys.' . $keyModel , 'site-caches') . 'menu-all';
     }
 }

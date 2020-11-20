@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Illuminate\Container\Container;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 use App\Models\Menu as ModelMenu;
@@ -35,9 +36,19 @@ class Menu extends Component
     public function render()
     {
         $locale = session()->get('locale', config('site.locale_default'));
-        return ModelMenu::getCacheByName($this->name, [
+        $allMenu = ModelMenu::getCacheByName($this->name, [
             'template' => $this->template,
             'locale' => $locale
         ]);
+        $menu = collect($allMenu)->where('slug_lb', $this->name)->first();
+        if (!$menu) {
+            return 'not_menu';
+        }
+        if ($menu['language_lb'] != $locale) {
+            $menu = collect($allMenu)->where('translation_id', $menu['id'])
+                ->where('language_lb', $locale)
+                ->first();
+        }
+        return view('menus.'.$this->template, ['menu' => $menu]);
     }
 }
