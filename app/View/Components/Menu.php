@@ -44,6 +44,11 @@ class Menu extends Component
         if (!$menu) {
             return '';
         }
+        if ($menu['language_lb'] != $locale) {
+            $menu = collect($allMenu)->where('translation_id', $menu['id'])
+                ->where('language_lb', $locale)
+                ->first();
+        }
         return view('menus.'.$this->template, ['menu' => $menu]);
     }
 }
