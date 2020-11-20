@@ -80,15 +80,7 @@ class Menu extends Model
      */
     public function makeCache($params)
     {
-        $templates = [
-            'menus.' . $this->slug_lb,
-            'menus.' . $this->translator->slug_lb,
-            'menus.default'
-        ];
-        if (!empty($params['template']) && $params['template'] != 'default') {
-            array_unshift($templates, 'menus.' . $params['template']);
-        }
-        return view()->first($templates, ['menu' => $this])->render();
+        return $this->toTree();
     }
 
     public function flushCache()
