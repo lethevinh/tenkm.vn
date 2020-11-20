@@ -15,7 +15,7 @@
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="realdeal_main_menu">
-                <x-menu name="main" template="main"></x-menu>
+{{--                <x-menu name="main" template="main"></x-menu>--}}
             </div>
         </div>
     </nav>
