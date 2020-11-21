@@ -32,7 +32,7 @@ class ProjectController extends AdminController
 
     protected function title()
     {
-        return trans('site.product');
+        return trans('site.project');
     }
 
     /**
@@ -149,13 +149,14 @@ class ProjectController extends AdminController
         $form->tools([ToolViewLive::make(), ToolTranslatable::make()]);
         $model = false;
         if (!empty($id)) {
-            $model = \App\Models\Product::find($id);
+            $model = \App\Models\Project::find($id);
         }
         $language = $model ? $model->language_lb : config('site.locale_default');
         $form
             ->tab(__('site.basic'), function (Form $form) use ($language){
                 $form->text('title_lb', __('admin.title'));
                 $form->datetimeRange('published_at', 'validated_at', __('site.public_time'));
+                $form->datetime('delivery_time', __('site.delivery_time'));
                 $form->hidden('language_lb')->default(config('site.locale_default'));
                 $form->switch('status_sl', __('site.status'))->customFormat(function ($value) {
                     return $value === 'public' ? 1 : 0;
@@ -176,31 +177,42 @@ class ProjectController extends AdminController
                         return array_column($v, 'title_lb');
                     });
                 $form->checkbox('amenities',  __('site.amenity'))
-                    ->options(Amenity::ofType('amenity')->get()->pluck('title_lb', 'id'))
+                    ->options(Amenity::ofType('amenity')->lang($language)->get()->pluck('title_lb', 'id'))
                     ->customFormat(function ($v) {
                         return array_column($v, 'id');
                     });
             })
-            ->tab(__('site.info'), function (Form $form) {
-                $form->currency('price_fl', __('site.price'))->symbol('VND')
+            ->tab(__('site.info'), function (Form $form) use ($language) {
+                $symbol = config('site.symbols.'.$language, '₫');
+                $form->currency('price_fl', __('site.price'))->symbol($symbol)
                     ->saving(function ($value) {
                         if (!$value) return 0;
                         return  str_replace(',', '', $value );
                     });
                 $form->currency('price_sale_fl', __('site.price_sale'))
-                    ->symbol('VND')
+                    ->symbol($symbol)
                     ->saving(function ($value) {
                         if (!$value) return 0;
                         return  str_replace(',', '', $value );
                     });
+                $form->text('price_lb', __('site.price_label'));
                 $form->number('bedroom_nb', __('site.bedroom'));
                 $form->number('bathroom_nb', __('site.bathroom'));
                 $form->number('area_nb', __('site.area'));
+                $form->number('block_nb', __('site.block'));
+                $form->number('department_nb', __('site.departments'));
+                $form->number('total_area_nb', __('site.total_area'));
+                $form->switch('shop_nb', __('site.shop_nb'));
+
+                $form->text('apartment_type', __('site.apartment_type'));
+                $form->text('management_company', __('site.management_company'));
+                $form->text('design_company', __('site.design_company'));
             })
             ->tab(__('site.media'), function (Form $form) {
                 $form->media('image_lb', __('admin.avatar'))->image();
                 $form->media('video_lb', __('admin.video'))->video();
                 $form->media('gallery_lb', __('site.gallery'))->image()->multiple();
+                $form->media('gallery_3d_lb', __('site.gallery_3d'))->image();
             })
             ->tab(__('site.location'), function (Form $form) {
                 $form->address('address');

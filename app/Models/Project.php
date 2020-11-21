@@ -37,13 +37,16 @@ class Project extends Model implements Searchable
         'title_lb', 'slug_lb', 'image_lb', 'status_sl', 'gallery_lb',
         'description_lb', 'content_lb', 'document_lb', 'area_lb', 'floorplan_lb',
         'review_nb', 'view_nb', 'comment_nb',
-        'price_fl', 'price_sale_fl',
+        'price_fl', 'price_sale_fl','price_lb',
         'language_lb', 'translation_id',
         'bedroom_nb', 'bathroom_nb', 'area_nb','streetview_lb', 'shop_nb', 'department_nb', 'floor_nb',
         'block_nb', 'type_lb',
+        'apartment_type', 'type_lb','delivery_time',
         'published_at', 'validated_at', 'updated_by', 'created_by', 'opened_at', 'stopped_at'
     ];
 
+    protected $dates = ['delivery_time'];
+    
     public function sluggable(): array
     {
         return [
@@ -121,5 +124,33 @@ class Project extends Model implements Searchable
 
     public function address() {
         return $this->belongsTo(Address::class);
+    }
+
+    public function getAddressLabelAttribute()
+    {
+
+        return $this->address ? $this->address->detail : '';
+    }
+
+    public function getPriceAttribute() {
+        $priceBase = floatval($this->attributes['price_fl']);
+        $priceSale = floatval($this->attributes['price_sale_fl']);
+        return $priceSale > 0 ? $priceSale:  $priceBase;
+    }
+
+    public function getPriceLabelAttribute()
+    {
+        if (isset($this->attributes['price_lb']) && !empty($priceLabel = $this->attributes['price_lb'])) {
+            return $priceLabel;
+        }
+        $price = $this->getPriceAttribute();
+        if ($price === 0) {
+            return __('site.price_deal');
+        }
+        if ($price < 1) {
+            return __('site.price_updating');
+        }
+        $locale = session()->get('locale', config('site.locale_default'));
+        return $price . ' ' . config('site.symbols.' . $locale, '₫');
     }
 }

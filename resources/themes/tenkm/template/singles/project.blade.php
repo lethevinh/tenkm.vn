@@ -41,66 +41,12 @@
                             @endforeach
                         </div>
                         <div class="property-details-slider-info">
-                            <h3><span>{{$project->priceSale}}</span> {{$project->title_lb}}</h3>
-                            <h4><span>{{$project->address}}</span></h4>
+                            <h3><span>{{$project->priceLabel}}</span> {{$project->title_lb}}</h3>
+                            <h4><span>{{$project->addressLabel}}</span></h4>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4">
-                        <div class="widget widget-owner-info mt-lg-0 mt-5">
-                            <div class="owner-info text-center">
-                                <div class="thumb">
-                                    <img src="/images/news/21.png" alt="img">
-                                </div>
-                                <div class="details">
-                                    <h6>Jesse Edwards</h6>
-                                    <span class="designation">Building Owner</span>
-                                    <p class="reviews"><i class="fa fa-star"></i><span>4.8</span> 70 Review</p>
-                                </div>
-                            </div>
-                            <div class="contact">
-                                <h6>Contact Us</h6>
-                                <div class="rld-single-input">
-                                    <input type="text" placeholder="Full Name">
-                                </div>
-                                <div class="rld-single-input">
-                                    <input type="text" placeholder="Email">
-                                </div>
-                                <div class="rld-single-input">
-                                    <input type="text" placeholder="Messages">
-                                </div>
-                                <a class="btn btn-yellow" href="#">Send Messages</a>
-                            </div>
-                            <div class="contact-info">
-                                <h6 class="mb-3">Contact Info</h6>
-                                <div class="media">
-                                    <div class="media-left">
-                                        <img src="/images/icons/1.png" alt="img">
-                                    </div>
-                                    <div class="media-body">
-                                        <p>Address</p>
-                                        <span>Long Island, NY 11355, USA</span>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <div class="media-left">
-                                        <i class="fa fa-phone"></i>
-                                    </div>
-                                    <div class="media-body">
-                                        <p>Phone</p>
-                                        <span>+00 111 222 333</span>
-                                    </div>
-                                </div>
-                                <div class="media mb-0">
-                                    <div class="media-left">
-                                        <i class="fa fa-envelope"></i>
-                                    </div>
-                                    <div class="media-body">
-                                        <p>Email</p>
-                                        <span>info@example.com</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @include('partials/contact-card', ['post'=>$project])
                     </div>
                 </div>
             </div>
@@ -125,7 +71,7 @@
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
                                     <h5>{{trans('site.delivery_time')}}</h5>
-                                    <p><i class="fa fa-handshake-o"></i>{{$project->delivery_time}}</p>
+                                    <p><i class="fa fa-handshake-o"></i>{{date('d/m/Y', strtotime($project->delivery_time))}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
@@ -186,49 +132,30 @@
                     </div>
                     <div class="property-news-single-card style-two border-bottom-yellow">
                         <h4>{{trans('site.introduction')}}</h4>
-                        <p>{{$project->description_lb}}</p>
-                        <a href="#">Read More</a>
+                        <p>{!! $project->content_lb !!}</p>
                     </div>
                     <div class="property-news-single-card border-bottom-yellow mb-0">
                         <h4>3D Gallery</h4>
                         <div class="thumb">
-                            <img src="{{$project->gallary3D}}" alt="img">
+                            <img src="{{$project->gallery_3d_lb}}" alt="img">
                         </div>
                     </div>
                     <div class="property-news-single-card border-bottom-yellow">
                         <h4>{{trans('site.amenities')}}</h4>
+                        @if($project->amenities->count() > 0)
+                        @php $div = ceil($project->amenities->count() / 3);  $amenities = array_chunk($project->amenities->toArray(), $div); @endphp
                         <div class="row">
-                            <div class="col-sm-4">
-                                <ul class="rld-list-style mb-3 mb-sm-0">
-                                    @foreach($project->amenities as $amenity)
-                                        <li><i class="fa fa-check"></i> {{$amenity->title_lb}}</li>
-                                    @endforeach
-                                    <li><i class="fa fa-check"></i> Attic</li>
-                                    <li><i class="fa fa-check"></i> Poll</li>
-                                    <li><i class="fa fa-check"></i> Concierge</li>
-                                    <li><i class="fa fa-check"></i> Basketball Cout</li>
-                                    <li><i class="fa fa-check"></i> Sprinklers</li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-4">
-                                <ul class="rld-list-style mb-3 mb-sm-0">
-                                    <li><i class="fa fa-check"></i> Recreation</li>
-                                    <li><i class="fa fa-check"></i> Front Yard</li>
-                                    <li><i class="fa fa-check"></i> Wine Cellar</li>
-                                    <li><i class="fa fa-check"></i> Basketball Cout</li>
-                                    <li><i class="fa fa-check"></i> Fireplace</li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-4">
-                                <ul class="rld-list-style mb-3 mb-sm-0">
-                                    <li><i class="fa fa-check"></i> Balcony</li>
-                                    <li><i class="fa fa-check"></i> Pound</li>
-                                    <li><i class="fa fa-check"></i> Deck</li>
-                                    <li><i class="fa fa-check"></i> 24x7 Security</li>
-                                    <li><i class="fa fa-check"></i> Indoor Game</li>
-                                </ul>
-                            </div>
+                            @foreach($amenities as $amenity)
+                                <div class="col-sm-4">
+                                    <ul class="rld-list-style mb-3 mb-sm-0">
+                                        @foreach($amenity as $a)
+                                            <li><i class="fa fa-check"></i> {{$a['title_lb']}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endforeach
                         </div>
+                        @endif
                     </div>
                     <div class="property-news-single-card style-two border-bottom-yellow">
                         <h4>Location</h4>

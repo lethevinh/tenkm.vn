@@ -23,6 +23,7 @@ class CreateProjectsTable extends Migration
                 $table->index(['slug_lb']);
                 $table->float('price_fl', 10, 0)->default(0);
                 $table->float('price_sale_fl', 10, 0)->default(0);
+                $table->string('price_lb')->nullable();
                 $table->string('image_lb')->nullable();
                 $table->text('gallery_lb')->nullable();
                 $table->text('gallery_3d_lb')->nullable();

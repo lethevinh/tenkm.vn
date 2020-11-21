@@ -14,8 +14,8 @@ class UpdateData2111 extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->string('price_lb')->nullable();
-            $table->unsignedInteger('parking_nb')->nullable()->default(0);
+           // $table->string('price_lb')->nullable();
+           // $table->unsignedInteger('parking_nb')->nullable()->default(0);
         });
     }
 
@@ -27,8 +27,8 @@ class UpdateData2111 extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('price_lb');
-            $table->dropColumn('parking_nb');
+           // $table->dropColumn('price_lb');
+           // $table->dropColumn('parking_nb');
         });
     }
 }

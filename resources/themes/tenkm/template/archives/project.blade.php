@@ -1,5 +1,5 @@
 @extends('layouts.full')
-@section('title', __('site.course.index'))
+@section('title', __('site.project'))
 @section('id_body', 'courses__page')
 @section('content')
 

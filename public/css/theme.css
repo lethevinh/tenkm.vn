@@ -9427,3 +9427,14 @@ footer .widget_nav_menu ul li a,
 footer h1, footer h2,footer h3, footer h4,footer h5,footer h6{
     color: #fff;
 }
+.single-feature .details .title {
+    padding-left: 1px;
+    font-weight: 600;
+    display: -webkit-box;
+    margin: 0 auto;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 56px;
+}
