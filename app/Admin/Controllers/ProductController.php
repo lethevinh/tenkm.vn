@@ -177,7 +177,7 @@ class ProductController extends AdminController
                     });
             })
             ->tab(__('site.info'), function (Form $form) use ($language){
-                $symbol = $language === 'vi' ? '₫' : '$';
+                $symbol = config('site.symbols.'.$language, '₫');
                 $form->currency('price_fl', __('site.price'))->symbol($symbol)
                     ->saving(function ($value) {
                         if (!$value) return 0;
@@ -189,9 +189,15 @@ class ProductController extends AdminController
                         if (!$value) return 0;
                         return str_replace(',', '', $value);
                     });
+                $form->text('price_lb', __('site.price_label'));
                 $form->number('bedroom_nb', __('site.bedroom'));
                 $form->number('bathroom_nb', __('site.bathroom'));
                 $form->number('area_nb', __('site.area'));
+                $form->number('parking_nb', __('site.parking'));
+                $form->number('living_room_lb', __('site.living'));
+                $form->number('garage_lb', __('site.garage'));
+                $form->number('dining_area', __('site.dining'));
+                $form->number('gym_area', __('site.gym'));
                 $form->radio('amenities', __('site.direction'))
                     ->setElementName('amenities[]')
                     ->options(Amenity::ofType('direction')->get()->pluck('title_lb', 'id'))

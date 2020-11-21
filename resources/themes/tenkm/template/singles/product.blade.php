@@ -41,7 +41,7 @@
                             @endforeach
                         </div>
                         <div class="property-details-slider-info">
-                            <h3><span>{{$product->priceSale}}</span> {{$product->title_lb}}</h3>
+                            <h3><span>{{$product->priceLabel}}</span> {{$product->title_lb}}</h3>
                             <del>{{$product->price}}</del>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                         <div class="widget widget-owner-info mt-lg-0 mt-5">
                             <div class="owner-info text-center">
                                 <div class="thumb">
-                                    <img src="{{url($product->creator->avatar)}}" alt="img">
+                                    <img src="{{url('storage/'.$product->creator->avatar)}}" alt="img">
                                 </div>
                                 <div class="details">
                                     <h6>{{$product->creator->name}}</h6>
@@ -58,17 +58,17 @@
                                 </div>
                             </div>
                             <div class="contact">
-                                <h6>Contact Us</h6>
+                                <h6>{{__('site.contact')}}</h6>
                                 <div class="rld-single-input">
-                                    <input type="text" placeholder="Full Name">
+                                    <input type="text" placeholder="{{__('site.full_name')}}">
                                 </div>
                                 <div class="rld-single-input">
-                                    <input type="text" placeholder="Email">
+                                    <input type="text" placeholder="{{__('site.email')}}">
                                 </div>
                                 <div class="rld-single-input">
-                                    <input type="text" placeholder="Messages">
+                                    <input type="text" placeholder="{{__('site.content')}}">
                                 </div>
-                                <a class="btn btn-yellow" href="#">Send Messages</a>
+                                <a class="btn btn-yellow" href="#">{{__('site.subscribe')}}</a>
                             </div>
                             <div class="contact-info">
                                 <h6 class="mb-3">{{trans('site.contact_info')}}</h6>
@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="media-body">
                                         <p>{{trans('site.address')}}</p>
-                                        <span>{{$product->address}}</span>
+                                        <span>{{$product->addressLabel}}</span>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -131,7 +131,7 @@
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
                                     <h5>{{trans('site.parking')}}</h5>
-                                    <p><i class="fa fa-car"></i>01 Indoor</p>
+                                    <p><i class="fa fa-car"></i>{{$product->parking_nb}}</p>
                                 </div>
                             </div>
                         </div>
@@ -146,34 +146,17 @@
                     </div>
                     <div class="property-news-single-card border-bottom-yellow">
                         <h4>{{trans('site.amenities')}}</h4>
+                        @php $div = ceil($product->amenities->count() / 3);  $amenities = array_chunk($product->amenities->toArray(), $div); @endphp
                         <div class="row">
+                            @foreach($amenities as $amenity)
                             <div class="col-sm-4">
                                 <ul class="rld-list-style mb-3 mb-sm-0">
-                                    <li><i class="fa fa-check"></i> Attic</li>
-                                    <li><i class="fa fa-check"></i> Poll</li>
-                                    <li><i class="fa fa-check"></i> Concierge</li>
-                                    <li><i class="fa fa-check"></i> Basketball Cout</li>
-                                    <li><i class="fa fa-check"></i> Sprinklers</li>
+                                    @foreach($amenity as $a)
+                                        <li><i class="fa fa-check"></i> {{$a['title_lb']}}</li>
+                                    @endforeach
                                 </ul>
                             </div>
-                            <div class="col-sm-4">
-                                <ul class="rld-list-style mb-3 mb-sm-0">
-                                    <li><i class="fa fa-check"></i> Recreation</li>
-                                    <li><i class="fa fa-check"></i> Front Yard</li>
-                                    <li><i class="fa fa-check"></i> Wine Cellar</li>
-                                    <li><i class="fa fa-check"></i> Basketball Cout</li>
-                                    <li><i class="fa fa-check"></i> Fireplace</li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-4">
-                                <ul class="rld-list-style mb-3 mb-sm-0">
-                                    <li><i class="fa fa-check"></i> Balcony</li>
-                                    <li><i class="fa fa-check"></i> Pound</li>
-                                    <li><i class="fa fa-check"></i> Deck</li>
-                                    <li><i class="fa fa-check"></i> 24x7 Security</li>
-                                    <li><i class="fa fa-check"></i> Indoor Game</li>
-                                </ul>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="property-news-single-card border-bottom-yellow">
@@ -192,7 +175,7 @@
                                     </div>
                                     <div class="media-body">
                                         <h6>{{trans('site.living_room')}}</h6>
-                                        <p>{{$product->living_room}}</p>
+                                        <p>{{$product->living_room_lb}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -203,7 +186,7 @@
                                     </div>
                                     <div class="media-body">
                                         <h6>{{trans('site.garage')}}</h6>
-                                        <p>{{$product->garage}}</p>
+                                        <p>{{$product->garage_lb}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -256,7 +239,7 @@
                     <div class="property-news-single-card border-bottom-yellow mb-0">
                         <h4>3D Gallery</h4>
                         <div class="thumb">
-                            <img src="assets/img/others/11.png" alt="img">
+                            <img src="{{url('images/others/11.png')}}" alt="img">
                         </div>
                     </div>
                 </div>

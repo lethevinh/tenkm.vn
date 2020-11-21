@@ -46,12 +46,12 @@
                 <div class="col-lg-3 col-sm-6">
                     <form class="widget widget-subscribe">
                         <div class="rld-single-input">
-                            <input type="text" placeholder="Full Name">
+                            <input type="text" placeholder="{{__('site.full_name')}}">
                         </div>
                         <div class="rld-single-input">
-                            <input type="text" placeholder="Your@email.com">
+                            <input type="text" placeholder="{{__('site.email')}}">
                         </div>
-                        <button class="btn btn-yellow w-100">Subscribe</button>
+                        <button class="btn btn-yellow w-100">{{__('site.subscribe')}}</button>
                     </form>
                 </div>
             </div>

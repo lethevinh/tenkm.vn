@@ -10,13 +10,13 @@
                         <div class="single-leading-feature">
                             <div class="slf-overlay"></div>
                             <div class="thumb">
-                                <img src="/images/feature/1.png" alt="img">
+                                <img src="{{resize($product->thumbnail, 665,493)}}" alt="{{$product->title_lb}}">
                                 <a href="#"><i class="fa fa-heart"></i></a>
                             </div>
                             <div class="details">
                                 <h4 class="title"><a href="{{$product->link}}">{{$product->title_lb}}</a></h4>
-                                <h5 class="price">$350/mo</h5>
-                                <span>4 Bed, 3 Beth, Flats. Area 1448-2537 sqft</span>
+                                <h5 class="price">{{$product->priceLabel}}</h5>
+                                <span><i class="fa fa-bed"></i> {{$product->bedroom_nb}} | <i class="fa fa-bath"></i> 3 | <i class="fa fa-square-o"></i> {{$product->area_nb}} m²</span>
                             </div>
                         </div>
                     </div>

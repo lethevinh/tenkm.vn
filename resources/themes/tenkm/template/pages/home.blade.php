@@ -9,12 +9,12 @@
                 <div class="col-lg-6 col-md-10">
                     <div class="banner-inner-wrap">
                         <div class="banner-inner w-100">
-                            <h1 class="title">Real Estate <br>  Agent near You</h1>
+                            <h1 class="title">{{__('site.what_our_customers_are_saying')}}</h1>
                             <p class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br> Aenean vel eros quam. Sed sit amet dictum est</p>
                             <div class="rld-banner-search">
                                 <div class="rld-single-input left-icon">
-                                    <input type="text" placeholder="Find Property">
-                                    <button class="btn">Search Now</button>
+                                    <input type="text" placeholder="{{__('site.find_property')}}">
+                                    <button class="btn">{{__('site.search_now')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +89,7 @@
     <div class="team-area pd-top-70">
         <div class="container">
             <div class="section-title text-center">
-                <h2 class="title">Our Team</h2>
+                <h2 class="title">{{__('site.our_team')}}</h2>
             </div>
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
@@ -236,7 +236,7 @@
     <div class="client-area pd-top-92 pd-bottom-100">
         <div class="container">
             <div class="section-title text-center">
-                <h2 class="title">Our Partner</h2>
+                <h2 class="title">{{__('site.our_partner')}}</h2>
             </div>
             <div class="client-slider">
                 <div class="item">

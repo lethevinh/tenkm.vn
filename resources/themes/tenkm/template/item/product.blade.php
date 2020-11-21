@@ -9,7 +9,7 @@
         </a>
         <p class="author"><i class="fa fa-user"></i> {{$product->creator->name}}</p>
         <h6 class="title"><a href="{{$product->link}}">{{$product->title_lb}}</a></h6>
-        <h6 class="price">{{$product->price}}</h6><del>{{$product->priceSale}}</del>
+        <h6 class="price">{{$product->priceLabel}}</h6>
         <ul class="info-list">
             <li><i class="fa fa-bed"></i> {{$product->bedroom_nb}}</li>
             <li><i class="fa fa-bath"></i> {{$product->bathroom_nb}}</li>

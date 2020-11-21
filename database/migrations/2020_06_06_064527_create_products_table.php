@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
                 $table->index(['slug_lb']);
                 $table->float('price_fl', 10, 0)->default(0);
                 $table->float('price_sale_fl', 10, 0)->default(0);
+                $table->string('price_lb')->nullable();
                 $table->string('image_lb')->nullable();
                 $table->text('gallery_lb')->nullable();
                 $table->string('video_lb')->nullable();
@@ -37,6 +38,7 @@ class CreateProductsTable extends Migration
                 $table->unsignedInteger('bedroom_nb')->default(0);
                 $table->unsignedInteger('bathroom_nb')->default(0);
                 $table->unsignedInteger('area_nb')->default(0);
+                $table->unsignedInteger('parking_nb')->default(0);
                 $table->unsignedInteger('rating_nb')->default(0);
                 $table->unsignedInteger('view_nb')->default(0);
                 $table->unsignedInteger('comment_nb')->default(0);
