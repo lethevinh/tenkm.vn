@@ -26,7 +26,7 @@
 <div class="dashboard-title card">
     <div class="card-body">
         <div class="text-center ">
-            <img class="avatar img-circle shadow mt-1" src="{{ admin_asset('@admin/images/logo.png') }}">
+            <img class="avatar img-circle shadow mt-1" src="{{ url('/images/favicon-logo.png') }}">
 
             <div class="text-center mb-1">
                 <h1 class="mb-3 mt-2 text-primary-darker">Tenkm Admin</h1>

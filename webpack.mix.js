@@ -68,6 +68,7 @@ mix.copy('resources/themes/' + theme + '/js/vendor.js', 'public/js/vendor.js')
     .copy('resources/themes/' + theme + '/js/main.js', 'public/js/main.js')
     .copyDirectory('resources/themes/' + theme + '/img', 'public/images')
     .copyDirectory('resources/themes/' + theme + '/fonts', 'public/fonts')
+    .copyDirectory('resources/themes/' + theme + '/img/favicon', 'public/')
     .autoload({
         jquery: ['$', 'window.jQuery', 'jQuery']
     })

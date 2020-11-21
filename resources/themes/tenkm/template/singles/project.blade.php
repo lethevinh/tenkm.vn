@@ -12,7 +12,7 @@
                         <h1 class="page-title">{{$project->title_lb}}</h1>
                         <ul class="page-list">
                             <li><a href="{{route('home.show')}}">{{ trans('site.home') }}</a></li>
-                            <li><a href="{{route('product.index')}}">{{ trans('site.product') }}</a></li>
+                            <li><a href="{{route('project.index')}}">{{ trans('site.project') }}</a></li>
                             @if($project->categories->count() > 0 )
                                 <li><a href="{{$project->categories[0]->link}}">{{ $project->categories[0]->title_lb }}</a></li>
                             @endif
