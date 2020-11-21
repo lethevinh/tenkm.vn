@@ -92,7 +92,7 @@
                     </div>
                     <div class="property-news-single-card border-bottom-yellow">
                         <h4>{{trans('site.amenities')}}</h4>
-                        @if($project->amenities->count() > 0)
+                        @if($product->amenities->count() > 0)
                         @php $div = ceil($product->amenities->count() / 3);  $amenities = array_chunk($product->amenities->toArray(), $div); @endphp
                         <div class="row">
                             @foreach($amenities as $amenity)
