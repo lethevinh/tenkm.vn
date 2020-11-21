@@ -15,7 +15,7 @@ class UpdateData2111 extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             $table->string('price_lb')->nullable();
-            $table->unsignedInteger('parking_nb')->default(0);
+            $table->unsignedInteger('parking_nb')->nullable()->default(0);
         });
     }
 
