@@ -18,7 +18,7 @@ Route::get('/home', function () {
 });
 Route::get('search.html', 'HomeController@search')->name('home.search');
 Route::post('contact.html', 'HomeController@doContact')->name('home.doContact');
-Route::post('contact.html', 'HomeController@doSubscribe')->name('home.doSubscribe');
+Route::post('subscribe.html', 'HomeController@doSubscribe')->name('home.doSubscribe');
 Route::get('/', 'PageController@home')->name('home.show');
 Route::get('lang/{locale}', 'PageController@lang')->name('lang');
 Route::middleware(['auth:sanctum'])->group(function () {
