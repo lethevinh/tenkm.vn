@@ -3,7 +3,7 @@
         <li>
             <div class="single-comment-wrap">
                 <div class="thumb">
-                    <img src="{{url($post->creator->avatar)}}" alt="img">
+                    <img src="{{url('storage/'.$post->creator->avatar)}}" alt="img">
                 </div>
                 <div class="content">
                     <h4 class="title">{{$comment->creator->name}}</h4>

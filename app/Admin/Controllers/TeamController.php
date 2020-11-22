@@ -2,8 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Admin\Repositories\Partner;
-use Dcat\Admin\Admin;
+use App\Admin\Repositories\Team;
 use Dcat\Admin\Auth\Permission;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
@@ -16,11 +15,11 @@ use Dcat\Admin\Support\Helper;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 
-class PartnerController extends AdminController
+class TeamController extends AdminController
 {
     protected function title()
     {
-        return __('site.partner');
+        return __('site.our_team');
     }
 
     /**
@@ -30,7 +29,7 @@ class PartnerController extends AdminController
      */
     protected function grid()
     {
-        return Grid::make(new Partner(['creator']), function (Grid $grid) {
+        return Grid::make(new Team(['creator']), function (Grid $grid) {
             $grid->model()->orderBy('created_at', 'desc');
             $grid->id('ID')->code()->sortable();
             $grid->title_lb(__('admin.title'));
@@ -75,7 +74,7 @@ class PartnerController extends AdminController
      */
     protected function iFrameGrid()
     {
-        $grid = new IFrameGrid(new Partner());
+        $grid = new IFrameGrid(new Team());
         $grid->quickSearch(['id', 'title_lb']);
         $grid->id->sortable();
         $grid->title_lb;
@@ -93,7 +92,7 @@ class PartnerController extends AdminController
      */
     protected function detail($id)
     {
-        return Show::make($id, new Partner(), function (Show $show) {
+        return Show::make($id, new Team(), function (Show $show) {
             $show->id;
             $show->title_lb(__('admin.title'));
             $show->description_lb(__('admin.description'));
@@ -111,7 +110,7 @@ class PartnerController extends AdminController
      */
     public function form()
     {
-        $form = new Form(new Partner());
+        $form = new Form(new Team());
         $form->text('title_lb', __('admin.title'));
         $form->media('image_lb', __('admin.avatar'))->image();
         $form->hidden('language_lb')->default(config('site.locale_default'));

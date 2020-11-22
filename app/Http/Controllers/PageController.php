@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Career;
 use App\Models\Page;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -24,7 +25,14 @@ class PageController extends Controller
             return redirect($translation->link);
         }
         $page->seo();
-        return view()->first(['pages.' . $page->template_lb, 'pages.default'], ['page' => $page]);
+        $posts = [];
+        $offset = request()->input('offset', 9);
+        switch ($page->template_lb){
+            case 'career':
+                $posts = Career::lang($locale)->paginate($offset);
+                break;
+        }
+        return view()->first(['pages.' . $page->template_lb, 'pages.default'], ['page' => $page, 'posts'=>$posts]);
     }
 
     /**

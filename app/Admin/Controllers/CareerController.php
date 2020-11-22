@@ -2,8 +2,9 @@
 
 namespace App\Admin\Controllers;
 
-use App\Admin\Repositories\Partner;
-use Dcat\Admin\Admin;
+use App\Admin\Forms\ToolTranslatable;
+use App\Admin\Forms\ToolViewLive;
+use App\Admin\Repositories\Career;
 use Dcat\Admin\Auth\Permission;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
@@ -16,11 +17,11 @@ use Dcat\Admin\Support\Helper;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 
-class PartnerController extends AdminController
+class CareerController extends AdminController
 {
     protected function title()
     {
-        return __('site.partner');
+        return __('site.career');
     }
 
     /**
@@ -30,7 +31,7 @@ class PartnerController extends AdminController
      */
     protected function grid()
     {
-        return Grid::make(new Partner(['creator']), function (Grid $grid) {
+        return Grid::make(new Career(['creator']), function (Grid $grid) {
             $grid->model()->orderBy('created_at', 'desc');
             $grid->id('ID')->code()->sortable();
             $grid->title_lb(__('admin.title'));
@@ -75,7 +76,7 @@ class PartnerController extends AdminController
      */
     protected function iFrameGrid()
     {
-        $grid = new IFrameGrid(new Partner());
+        $grid = new IFrameGrid(new Career());
         $grid->quickSearch(['id', 'title_lb']);
         $grid->id->sortable();
         $grid->title_lb;
@@ -93,7 +94,7 @@ class PartnerController extends AdminController
      */
     protected function detail($id)
     {
-        return Show::make($id, new Partner(), function (Show $show) {
+        return Show::make($id, new Career(), function (Show $show) {
             $show->id;
             $show->title_lb(__('admin.title'));
             $show->description_lb(__('admin.description'));
@@ -111,16 +112,21 @@ class PartnerController extends AdminController
      */
     public function form()
     {
-        $form = new Form(new Partner());
+        $form = new Form(new Career());
+        $form->disableViewButton();
+        $form->tools([ToolViewLive::make(), ToolTranslatable::make()]);
         $form->text('title_lb', __('admin.title'));
+        $form->text('slug_lb', __('admin.slug'));
         $form->media('image_lb', __('admin.avatar'))->image();
         $form->hidden('language_lb')->default(config('site.locale_default'));
-        $form->hidden('type_lb', __('admin.avatar'))->value('partner');
-        $form->switch('status_sl', __('site.status'))->customFormat(function ($value) {
-            return $value === 'public' ? 1 : 0;
-        })->saving(function ($value) {
-            return $value === 1 ? 'public' : 'private' ;
-        })->value(1);
+        $form->hidden('type_lb', __('admin.avatar'))->value('career');
+        $form->datetimeRange('published_at', 'validated_at', __('site.public_time'));
+        $form->switch('status_sl', __('site.status'))
+            ->customFormat(function ($value) {
+                return $value === 'public' ? 1 : 0;
+            })->saving(function ($value) {
+                return $value === 1 ? 'public' : 'private';
+            });
         $form->disableViewCheck();
         return $form;
     }

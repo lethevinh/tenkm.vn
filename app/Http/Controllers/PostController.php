@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Career;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
@@ -51,6 +52,21 @@ class PostController extends Controller
     }
 
     /**
+     * @param string $slug
+     * @return Application|RedirectResponse|Redirector
+     * @throws InvalidArgumentException
+     */
+    public function career(string $slug)
+    {
+        $post= Career::getCacheByName($slug);
+        $locale = session()->get('locale', config('site.locale_default'));
+        if ($translation = $post->translation($locale)) {
+           return redirect($translation->link);
+        }
+        return view('singles.post', compact('post'));
+    }
+
+    /**
      * @param Category $category
      * @return Application|Factory|RedirectResponse|Redirector|View
      */
@@ -61,8 +77,7 @@ class PostController extends Controller
             return redirect($translation->link);
         }
 
-        $offset = request()->input('offset');
-        $offset = $offset ? $offset : 9;
+        $offset = request()->input('offset', 9);
         $posts = $category->posts()->public()->locale()
             ->with(['categories', 'tags', 'comments.comments', 'creator'])
             ->paginate($offset);

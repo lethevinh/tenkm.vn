@@ -44,12 +44,28 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
-                    <form class="widget widget-subscribe">
+                    <form class="widget widget-subscribe" action="{{route('home.doSubscribe')}}" method="POST">
+                        @csrf
                         <div class="rld-single-input">
-                            <input type="text" placeholder="{{__('site.full_name')}}">
+                            <input placeholder="{{__('site.full_name')}}" value="{{old('name')}}" type="text"
+                                   class="form-control {{ $errors->has('name') ? 'error' : '' }}" name="name" id="name">
+                            <!-- Error -->
+                            @if ($errors->has('name'))
+                                <div class="error">
+                                    {{ $errors->first('name') }}
+                                </div>
+                            @endif
                         </div>
                         <div class="rld-single-input">
-                            <input type="text" placeholder="{{__('site.email')}}">
+                            <input placeholder="{{__('site.email')}}" value="{{old('email')}}" type="email"
+                                   class="form-control {{ $errors->has('email') ? 'error' : '' }}" name="email"
+                                   id="email">
+
+                            @if ($errors->has('email'))
+                                <div class="error">
+                                    {{ $errors->first('email') }}
+                                </div>
+                            @endif
                         </div>
                         <button class="btn btn-yellow w-100">{{__('site.subscribe')}}</button>
                     </form>

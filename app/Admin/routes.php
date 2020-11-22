@@ -24,6 +24,8 @@ Route::group([
     $router->resource('projects', 'ProjectController');
     $router->resource('pages', 'PageController');
     $router->resource('partners', 'PartnerController');
+    $router->resource('teams', 'TeamController');
+    $router->resource('careers', 'CareerController');
     $router->resource('events', 'EventController');
     $router->resource('menus', 'MenuController');
     $router->resource('amenities', 'AmenityController');

@@ -128,6 +128,7 @@ class PageController extends AdminController
         $admin = Admin::user();
         $form->tab(__('site.content'), function (Form $form) use ($admin) {
             $form->text('title_lb', __('admin.title'));
+            $form->text('slug_lb', __('admin.slug'));
             $form->switch('status_sl', __('site.status'))
                 ->customFormat(function ($value) {
                 return $value === 'public' ? 1 : 0;
@@ -150,7 +151,7 @@ class PageController extends AdminController
         })
             ->tab(__('site.basic'), function (Form $form) {
                 $form->textarea('description_lb', __('admin.description'));
-                $form->image('image_lb', __('admin.avatar'));
+                $form->media('image_lb', __('site.image'))->image();
                 $form->editor('content_lb', __('site.content'));
                 $form->hidden('status_sl')->value('public');
             })->tab(__('site.seo'), function (Form $form) {

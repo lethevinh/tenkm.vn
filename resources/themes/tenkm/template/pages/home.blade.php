@@ -9,7 +9,7 @@
                 <div class="col-lg-6 col-md-10">
                     <div class="banner-inner-wrap">
                         <div class="banner-inner w-100">
-                            <h1 class="title">{{__('site.what_our_customers_are_saying')}}</h1>
+                            <h1 class="title">{{__('site.real_estate_agent_near_you')}}</h1>
                             <p class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br> Aenean vel eros quam. Sed sit amet dictum est</p>
                             <div class="rld-banner-search">
                                 <div class="rld-single-input left-icon">
@@ -165,7 +165,7 @@
     <div class="client-area pd-top-60">
         <div class="container">
             <div class="section-title text-center">
-                <h2 class="title">What Our Customers <br> Are Saying</h2>
+                <h2 class="title">{{__('site.what_our_customers_are_saying')}}</h2>
             </div>
             <div class="client-review-img">
                 <img class="clr-img clr-img1" src="/images/client/5.png" alt="client">

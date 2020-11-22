@@ -18,6 +18,7 @@ Route::get('/home', function () {
 });
 Route::get('search.html', 'HomeController@search')->name('home.search');
 Route::post('contact.html', 'HomeController@doContact')->name('home.doContact');
+Route::post('contact.html', 'HomeController@doSubscribe')->name('home.doSubscribe');
 Route::get('/', 'PageController@home')->name('home.show');
 Route::get('lang/{locale}', 'PageController@lang')->name('lang');
 Route::middleware(['auth:sanctum'])->group(function () {
@@ -77,6 +78,7 @@ Route::get('blog.html', 'PostController@index')->name('post.index');
 Route::get('blog-cat/{category:slug_lb}.html', 'PostController@category')->name('post.category');
 Route::get('blog-tag/{tag:slug_lb}.html', 'PostController@tag')->name('post.tag');
 Route::get('blog/{slug}', 'PostController@show')->name('post.show');
+Route::get('careers/{slug}', 'PostController@career')->name('career.show');
 Route::get('/{category}/{post}.html', 'PathController@subPath');
 
 Auth::routes();

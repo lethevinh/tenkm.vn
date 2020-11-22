@@ -63,22 +63,35 @@ class HomeController extends Controller
 
     public function doContact(Request $request)
     {
-        request()->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email'],
-            'message' => ['required', 'string'],
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'message' => 'required|min:20'
         ]);
-        $contact = Contact::create([
+        Contact::create([
             'name_lb' => $request->name,
             'title_lb' => $request->name,
             'email_lb' => $request->email,
+            'phone_lb' => $request->phone,
             'content_lb' => $request->message,
         ]);
-        $message = '';
-        if ($contact) {
-            $message = __('site.create_contact_success');
-        }
-        return view('pages.contact', [ 'message' => $message]);
+        return back()->with('success', __('site.create_contact_success'));
+    }
+
+    public function doSubscribe(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email'
+        ]);
+        Contact::create([
+            'name_lb' => $request->name,
+            'title_lb' => $request->name,
+            'email_lb' => $request->email,
+            'content_lb' => 'Subscribe',
+        ]);
+        return back()->with('success', __('site.create_contact_success'));
     }
 
     /**

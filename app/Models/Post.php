@@ -103,15 +103,16 @@ class Post extends Model implements Searchable
 
     public function scopePublic($query)
     {
-        return $query->ofType('post')->validated()->orderByDesc('updated_at');
+        $keyModel = static::getModelKey();
+        return $query->ofType($keyModel)->validated()->orderByDesc('updated_at');
     }
 
     public static function getModelCacheByName($name) {
-        return self::where('slug_lb', $name)->public()->firstOrFail();
+        return static::where('slug_lb', $name)->public()->firstOrFail();
     }
 
     public static function getModelCacheById($id) {
-        return self::findOrFail($id)->public()->firstOrFail();
+        return static::findOrFail($id);
     }
 
     protected static function booted()

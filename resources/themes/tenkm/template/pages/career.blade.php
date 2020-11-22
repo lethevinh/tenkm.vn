@@ -10,24 +10,12 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-inner">
                         <h1 class="page-title">
-                            @if(isset($category))
-                                {{$category->title_lb}}
-                            @elseif(isset($tag))
-                                {{$tag->title_lb}}
-                            @else
-                                {{__('site.blog')}}
-                            @endif
+                            {{__('site.career')}}
                         </h1>
                         <ul class="page-list">
                             <li><a href="{{route('home.show')}}"> {{ __('site.home') }}</a></li>
                             <li>
-                                @if(isset($category))
-                                    {{$category->title_lb}}
-                                @elseif(isset($tag))
-                                    {{$tag->title_lb}}
-                                @else
-                                    {{__('site.blog')}}
-                                @endif
+                                {{__('site.career')}}
                             </li>
                         </ul>
                     </div>
@@ -67,9 +55,9 @@
                 @endforeach
             </div>
             <div class="row">
-               <div class="col-md-12">
-                   {{ $posts->links() }}
-               </div>
+                <div class="col-md-12">
+                    {{ $posts->links() }}
+                </div>
             </div>
         </div>
     </div>

@@ -1,53 +1,68 @@
 @extends('layouts.full')
 @section('title', $page->title_lb)
-@section('id_body', 'contact__page')
+@section('id_body', 'blog-item__page')
 @section('content')
-    <!-- section home -->
-    <section class="section__home">
-        <div class="container home__body">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="home__content">
-                        <!-- Heading -->
-                        <h1 class="home__heading">
-                            {{$page->title_lb}}
-                        </h1>
-                        <!-- Breadcrumbs -->
-                        <ol class="breadcrumb">
-                            <li><a href="{{route('home.show')}}">{{ __('site.home') }}</a></li>
-                            <li class="active">{{$page->title_lb}}</li>
-                        </ol>
-                    </div> <!-- / .home__content -->
-                </div>
-            </div> <!-- / .row -->
-        </div> <!-- / .container -->
 
-        <!-- Background image -->
-        <div class="home__bg"></div>
-    </section>
-
-    <!-- section contact -->
-    <section class="section__location">
+    <!-- breadcrumb area start -->
+    <div class="breadcrumb-area jarallax" style="background-image:url({{$page->thumbnail}});">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
-                    <div class="section_title__body">
-                        <h2 class="blog_item__title dark__title">
-{{--                            {{$page->title_lb}}--}}
-                        </h2>
-                    </div> <!-- / .section_title__body  -->
-                    <div class="blog_item__abstract">
-                        {{$page->description_lb}}
+                <div class="col-lg-12">
+                    <div class="breadcrumb-inner">
+                        <h1 class="page-title">{{$page->title_lb}}</h1>
+                        <ul class="page-list">
+                            <li><a href="index.html">Home</a></li>
+                            @if($page->categories->count() > 0)
+                                <li><a href="{{$page->categories[0]->link}}">{{ $page->categories[0]->title_lb }}</a></li>
+                            @endif
+                            <li>{{$page->title_lb}}</li>
+                        </ul>
                     </div>
                 </div>
-            </div> <!-- / .row -->
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="section_title__body">
-                        {!! $page->content_lb !!}
-                    </div> <!-- / .section_title__body  -->
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb area End -->
+
+    <!-- News details area Start -->
+    <div class="news-details-area">
+        <div class="container">
+            <div class="news-details-author-social">
+                <div class="row">
+                    <div class="col-sm-6 mb-4 mg-sm-0">
+                        <div class="author">
+                            <img src="{{url('storage/'.$page->creator->avatar)}}" alt="news">
+                            <p>{{__('site.by')}} {{$page->creator->name}}</p>
+                            <p>{{$page->created_at->format('H:i d/m/Y')}}</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <ul class="social-icon style-two text-sm-right">
+                            <li class="ml-0">
+                                <a class="facebook" href="https://www.facebook.com/sharer.php?u={{$page->link}}" target="_blank"><i class="fa fa-facebook  "></i></a>
+                            </li>
+                            <li>
+                                <a class="twitter" href="https://twitter.com/intent/tweet?text={{$page->title_lb}}&url={{$page->title_lb}}" target="_blank"><i class="fa fa-twitter  "></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.facebook.com/sharer.php?u={{$page->link}}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div> <!-- / .row -->
-        </div> <!-- / .container -->
-    </section>
+            </div>
+            <div class="row justify-content-center pd-top-70">
+                <div class="col-lg-8">
+                    <div class="news-details-wrap">
+                        <h3 class="title1"> {{$page->title_lb}}</h3>
+                        <p>
+                            {{$page->description_lb}}
+                        </p>
+                        {!! $page->content_lb !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- News details area End -->
 @endsection

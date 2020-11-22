@@ -1,6 +1,6 @@
 <!-- comments-area-start -->
 <div class="comments-area">
-    <h4 class="comments-title">{{__('comments')}} ({{count($post->publicComments)}})</h4>
+    <h4 class="comments-title">{{__('site.comments')}} ({{count($post->publicComments)}})</h4>
     @include('collection.comment',['post' => $post, 'type' => 'post'])
 </div>
 <!-- comments-area-end -->
