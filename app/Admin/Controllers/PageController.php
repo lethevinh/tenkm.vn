@@ -146,7 +146,15 @@ class PageController extends AdminController
                 }
             }
             if ($admin->id === Administrator::DEFAULT_ID) {
-                $form->text('template_lb', __('site.template'))->default('default');
+                $form->select('template_lb', __('site.template'))
+                    ->options([
+                        'blog' => __('site.blog'),
+                        'about' => __('site.about'),
+                        'contact' => __('site.contact'),
+                        'product' => __('site.product'),
+                        'project' => __('site.project'),
+                    ])
+                    ->default('default');
             }
         })
             ->tab(__('site.basic'), function (Form $form) {

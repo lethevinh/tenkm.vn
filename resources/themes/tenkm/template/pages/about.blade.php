@@ -9,10 +9,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-inner">
-                        <h1 class="page-title">About us</h1>
+                        <h1 class="page-title">{{__('site.about')}}</h1>
                         <ul class="page-list">
-                            <li><a href="index.html">Home</a></li>
-                            <li>About</li>
+                            <li><a href="{{route('home.show')}}">{{__('site.home')}}</a></li>
+                            <li>{{__('site.about')}}</li>
                         </ul>
                     </div>
                 </div>
@@ -31,8 +31,8 @@
                             01
                         </div>
                         <div class="details">
-                            <h4 class="title"><a href="#">Our Mission</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae venenatis mi</p>
+                            <h4 class="title"><a href="#">{{$page->feature_1}}</a></h4>
+                            <p>{{$page->feature_description_1}}</p>
                         </div>
                     </div>
                 </div>
@@ -42,8 +42,8 @@
                             02
                         </div>
                         <div class="details">
-                            <h4 class="title"><a href="#">Our Approach</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae venenatis mi</p>
+                            <h4 class="title"><a href="#">{{$page->feature_2}}</a></h4>
+                            <p>{{$page->feature_description_2}}</p>
                         </div>
                     </div>
                 </div>
@@ -53,8 +53,8 @@
                             03
                         </div>
                         <div class="details">
-                            <h4 class="title"><a href="#">Our Philosohy</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae venenatis mi</p>
+                            <h4 class="title"><a href="#">{{$page->feature_3}}</a></h4>
+                            <p>{{$page->feature_description_3}}</p>
                         </div>
                     </div>
                 </div>
