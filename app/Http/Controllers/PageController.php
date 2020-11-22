@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Career;
 use App\Models\Page;
+use App\Models\Post;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\Artisan;
@@ -29,7 +30,12 @@ class PageController extends Controller
         $offset = request()->input('offset', 9);
         switch ($page->template_lb){
             case 'career':
-                $posts = Career::lang($locale)->paginate($offset);
+                $posts = Career::public()->locale()->paginate($offset);
+                break;
+            case 'blog':
+                $posts = Post::public()->locale()
+                    ->with(['categories', 'tags', 'comments.comments', 'creator'])
+                    ->paginate($offset);
                 break;
         }
         return view()->first(['pages.' . $page->template_lb, 'pages.default'], ['page' => $page, 'posts'=>$posts]);

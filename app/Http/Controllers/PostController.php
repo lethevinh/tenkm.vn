@@ -24,8 +24,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $offset = request()->input('offset');
-        $offset = $offset ? $offset : 9;
+        $offset = request()->input('offset', 9);
         $posts = Post::public()->locale()
             ->with(['categories', 'tags', 'comments.comments', 'creator'])
             ->paginate($offset);
