@@ -1,5 +1,5 @@
 @extends('layouts.full')
-@section('title', 'BLOG')
+@section('title', __('site.blog'))
 @section('id_body', 'blog-grid__page')
 @section('content')
 
