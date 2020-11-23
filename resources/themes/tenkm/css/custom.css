@@ -60,3 +60,22 @@ footer h1, footer h2, footer h3, footer h4, footer h5, footer h6 {
 .single-news {
     box-shadow: 0 2px 12px #97a1b25e;
 }
+#map {
+    width: 100%;
+    height: 300px;
+    background-color: grey;
+}
+.map-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}

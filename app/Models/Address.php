@@ -7,7 +7,7 @@ class Address extends Model
     protected $table = 'address';
 
     protected $fillable = [
-        "provincial_id", "district_id", "ward_id", "street_id", "postal_code_nb", "address_lb", "location_lb"
+        "provincial_id", "district_id", "ward_id", "street_id", "postal_code_nb", "address_lb", "location_lb", "lat_lb", "lng_lb"
     ];
 
     public function district()

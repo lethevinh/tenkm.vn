@@ -88,7 +88,9 @@
                     </div>
                     <div class="property-news-single-card style-two border-bottom-yellow">
                         <h4>{{__('site.map')}}</h4>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5621.1629504770535!2d-122.43633647504856!3d37.748515859182696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1578304196576!5m2!1sen!2sbd" style="border:0;" allowfullscreen=""></iframe>
+                        @if($product->address)
+                            @include('partials.google', ['address' => $product->address])
+                        @endif
                     </div>
                     <div class="property-news-single-card border-bottom-yellow">
                         <h4>{{trans('site.amenities')}}</h4>

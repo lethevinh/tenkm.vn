@@ -158,8 +158,8 @@
                         @endif
                     </div>
                     <div class="property-news-single-card style-two border-bottom-yellow">
-                        <h4>Location</h4>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.333807744015!2d106.75457695059688!3d10.785725392277543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317525d4ac37cac3%3A0xed8b65112aeca5d3!2zTmd1eeG7hW4gVGjhu4sgxJDhu4tuaCwgQW4gUGjDuiwgUXXhuq1uIDIsIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaCwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1598249100752!5m2!1sen!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        <h4>{{__('site.map')}}</h4>
+                        @include('partials.google', ['address' => $project->address])
                     </div>
                 </div>
             </div>

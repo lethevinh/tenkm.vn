@@ -41,16 +41,18 @@ class Address extends Field
         if ($model->address) {
             $streetField->value($model->address->street_id);
         }
-        $locationField = new Field\Map('address.location_lb', ['lng', __('site.location')]);
+        $locationField = new Field\Map('address.lat_lb', ['address.lng_lb', __('site.location')]);
         if ($model->address) {
-            $locationField->value($model->address->location_lb);
+            $locationField->value(['lat' => $model->address->lat_lb, 'lng' => $model->address->lng_lb]);
         }
+        $mapIframeField = new Field\Text('address.location_lb', [__('site.map_iframe')]);
         $this->addVariables([
             'provincialField' => $provincialField,
             'districtField' => $districtField,
             'wardField' => $wardField,
             'streetField' => $streetField,
             'locationField' => $locationField,
+            'mapIframeField' => $mapIframeField,
         ]);
         return parent::render();
     }

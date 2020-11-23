@@ -66,6 +66,8 @@ class CreateLocationsTable extends Migration
                 $table->unsignedInteger('postal_code_nb')->nullable();
                 $table->text('address_lb')->nullable();
                 $table->text('location_lb')->nullable();
+                $table->text('lat_lb')->nullable();
+                $table->text('lng_lb')->nullable();
                 $table->timestamps();
             });
         }
