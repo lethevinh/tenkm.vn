@@ -308,7 +308,7 @@ return [
 
         'keys' => [
             'tencent' => env('TENCENT_MAP_API_KEY'),
-            'google' => env('GOOGLE_API_KEY'),
+            'google' => env('GOOGLE_API_KEY', 'AIzaSyDSEmb9tdwZ-cyugwdeGxcaMc0gmcWwlE0'),
             'baidu' => env('BAIDU_MAP_API_KEY'),
         ],
     ],
