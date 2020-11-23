@@ -1,6 +1,6 @@
 @if($address->location_lb)
     {!! $address->location_lb !!}
-@else
+@elseif($address->lat_lb && $address->lng_lb)
     <script
         src="https://maps.googleapis.com/maps/api/js?key={{config('admin.map.keys.google')}}&callback=initMap&libraries=&v=weekly"
         defer
