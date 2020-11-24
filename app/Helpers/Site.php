@@ -33,25 +33,16 @@ if (!function_exists('option')) {
     function option($key = null, $default = '')
     {
         $key = str_replace("'", "", $key);
-        $pageStore = Page::getStore();
-        $keyCache = Page::cachePrefix('site');
-        if (!Page::enableCache()) {
-            $page = Page::site();
-        }else {
-            if (!$pageStore->has($keyCache)) {
-                $page = Page::site();
-                $page->forever($page);
-            }
-            $page = $pageStore->get($keyCache);
+        $page = Page::site();
+        if (!$page) {
+            return !empty($default) ? $default : $key;
         }
         if ($key == 'name') {
             return $page->title_lb;
         }
         $option = $page->metas->where('key_lb', $key)->first();
-        if ($option && isset($option['value_lb'])) {
-            return $option['value_lb'];
-        }
-        return !empty($default) ? $default : $key;
+
+        return !empty($option['value_lb'])?$option['value_lb']:$default;
     }
 }
 if (!function_exists('current_theme')) {

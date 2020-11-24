@@ -16,6 +16,7 @@ class MenusSeeder extends Seeder
     public function run()
     {
         // factory(Menu::class, 10)->create();
+        $locals = config('site.locales');
         $admin = Administrator::first();
         $site = Page::create([
             'title_lb'      =>  'site',
@@ -25,95 +26,191 @@ class MenusSeeder extends Seeder
             'title_lb' => __('site.home'),
             'template_lb' => 'home'
         ]);
-        if ($site) {
-            $site->addField([
-                'name_lb'=> 'email',
-                'default_lb' => 'abc@osa.com',
-                'label_lb' => 'Email Site',
-                'type_lb' => 'email'
-            ]);
-            $site->setMeta([
-                'key_lb' => 'email',
-                'value_lb' => 'abc@osa.com'
-            ]);
-            $site->addField([
-                'name_lb'=> 'phone',
-                'default_lb' => '0394037182',
-                'label_lb' => 'Phone Site',
-                'type_lb' => 'mobile'
-            ]);
-            $site->setMeta([
-                'key_lb' => 'phone',
-                'value_lb' => '0394037182'
-            ]);
-            $site->addField([
-                'name_lb'=> 'theme',
-                'default_lb' => config('site.theme'),
-                'label_lb' => 'Theme Site',
-                'type_lb' => 'text'
-            ]);
-            $site->setMeta([
-                'key_lb' => 'theme',
-                'value_lb' => config('site.theme')
-            ]);
-            $site->addField([
-                'name_lb'=> 'logo',
-                'default_lb' => 'images/logo.png',
-                'label_lb' => 'Logo Site',
-                'type_lb' => 'media_image'
-            ]);
-            $site->setMeta([
-                'key_lb' => 'logo',
-                'value_lb' => 'images/logo.png'
-            ]);
-            $site->addField([
-                'name_lb'=> 'home_id',
-                'default_lb' => $home->id,
-                'label_lb' => 'Page Home',
-                'type_lb' => 'select_page'
-            ]);
-            $site->setMeta([
-                'key_lb' => 'home',
-                'value_lb' => $home->id
-            ]);
-            $site->addField([
-                'name_lb'=> 'address',
-                'default_lb' => '67 Le Loi Ho Chi Minh',
-                'label_lb' => 'Address Site',
-                'type_lb' => 'text'
-            ]);
-            $site->setMeta([
-                'key_lb' => 'address',
-                'value_lb' => '67 Le Loi Ho Chi Minh'
-            ]);
-            $site->addField([
-                'name_lb'=> 'description',
-                'default_lb' => 'Welcome to My Website',
-                'label_lb' => 'Description Site',
-                'type_lb' => 'textarea'
-            ]);
-            $site->setMeta([
-                'key_lb' => 'description',
-                'value_lb' => 'Welcome to My Website'
-            ]);
-            $site->addField([
-                'name_lb'=> 'facebook_page_id',
-                'default_lb' => 'Facebook App ID',
-                'label_lb' => 'Facebook App ID',
-                'type_lb' => 'text'
-            ]);
-            $site->addField([
-                'name_lb'=> 'facebook',
-                'default_lb' => 'Facebook.com',
-                'label_lb' => 'Facebook Link',
-                'type_lb' => 'text'
-            ]);
-            $site->addField([
-                'name_lb'=> 'youtube',
-                'default_lb' => 'youtube.com',
-                'label_lb' => 'Youtube Link',
-                'type_lb' => 'text'
-            ]);
+        foreach ($locals as $local) {
+            if ($site && $home && $local === config('site.locale_default')) {
+                $site->addField([
+                    'name_lb'=> 'email',
+                    'default_lb' => 'abc@osa.com',
+                    'label_lb' => 'Email Site',
+                    'type_lb' => 'email'
+                ]);
+                $site->setMeta([
+                    'key_lb' => 'email',
+                    'value_lb' => 'abc@osa.com'
+                ]);
+                $site->addField([
+                    'name_lb'=> 'phone',
+                    'default_lb' => '0394037182',
+                    'label_lb' => 'Phone Site',
+                    'type_lb' => 'mobile'
+                ]);
+                $site->setMeta([
+                    'key_lb' => 'phone',
+                    'value_lb' => '0394037182'
+                ]);
+                $site->addField([
+                    'name_lb'=> 'theme',
+                    'default_lb' => config('site.theme'),
+                    'label_lb' => 'Theme Site',
+                    'type_lb' => 'text'
+                ]);
+                $site->setMeta([
+                    'key_lb' => 'theme',
+                    'value_lb' => config('site.theme')
+                ]);
+                $site->addField([
+                    'name_lb'=> 'logo',
+                    'default_lb' => 'images/logo.png',
+                    'label_lb' => 'Logo Site',
+                    'type_lb' => 'media_image'
+                ]);
+                $site->setMeta([
+                    'key_lb' => 'logo',
+                    'value_lb' => 'images/logo.png'
+                ]);
+                $site->addField([
+                    'name_lb'=> 'home_id',
+                    'default_lb' => $home->id,
+                    'label_lb' => 'Page Home',
+                    'type_lb' => 'select_page'
+                ]);
+                $site->setMeta([
+                    'key_lb' => 'home',
+                    'value_lb' => $home->id
+                ]);
+                $site->addField([
+                    'name_lb'=> 'address',
+                    'default_lb' => '67 Le Loi Ho Chi Minh',
+                    'label_lb' => 'Address Site',
+                    'type_lb' => 'text'
+                ]);
+                $site->setMeta([
+                    'key_lb' => 'address',
+                    'value_lb' => '67 Le Loi Ho Chi Minh'
+                ]);
+                $site->addField([
+                    'name_lb'=> 'description',
+                    'default_lb' => 'Welcome to My Website',
+                    'label_lb' => 'Description Site',
+                    'type_lb' => 'textarea'
+                ]);
+                $site->setMeta([
+                    'key_lb' => 'description',
+                    'value_lb' => 'Welcome to My Website'
+                ]);
+                $site->addField([
+                    'name_lb'=> 'facebook_page_id',
+                    'default_lb' => 'Facebook App ID',
+                    'label_lb' => 'Facebook App ID',
+                    'type_lb' => 'text'
+                ]);
+                $site->addField([
+                    'name_lb'=> 'facebook',
+                    'default_lb' => 'Facebook.com',
+                    'label_lb' => 'Facebook Link',
+                    'type_lb' => 'text'
+                ]);
+                $site->addField([
+                    'name_lb'=> 'youtube',
+                    'default_lb' => 'youtube.com',
+                    'label_lb' => 'Youtube Link',
+                    'type_lb' => 'text'
+                ]);
+            }
+            else{
+                $siteTran = $translation = $site->translation($local);
+                $homeTran = $translation = $home->translation($local);
+                if ($siteTran && $homeTran) {
+                    $siteTran->addField([
+                        'name_lb'=> 'email',
+                        'default_lb' => 'abc@osa.com',
+                        'label_lb' => 'Email Site',
+                        'type_lb' => 'email'
+                    ]);
+                    $siteTran->setMeta([
+                        'key_lb' => 'email',
+                        'value_lb' => 'abc@osa.com'
+                    ]);
+                    $siteTran->addField([
+                        'name_lb'=> 'phone',
+                        'default_lb' => '0394037182',
+                        'label_lb' => 'Phone Site',
+                        'type_lb' => 'mobile'
+                    ]);
+                    $siteTran->setMeta([
+                        'key_lb' => 'phone',
+                        'value_lb' => '0394037182'
+                    ]);
+                    $siteTran->addField([
+                        'name_lb'=> 'theme',
+                        'default_lb' => config('site.theme'),
+                        'label_lb' => 'Theme Site',
+                        'type_lb' => 'text'
+                    ]);
+                    $siteTran->setMeta([
+                        'key_lb' => 'theme',
+                        'value_lb' => config('site.theme')
+                    ]);
+                    $siteTran->addField([
+                        'name_lb'=> 'logo',
+                        'default_lb' => 'images/logo.png',
+                        'label_lb' => 'Logo Site',
+                        'type_lb' => 'media_image'
+                    ]);
+                    $siteTran->setMeta([
+                        'key_lb' => 'logo',
+                        'value_lb' => 'images/logo.png'
+                    ]);
+                    $siteTran->addField([
+                        'name_lb'=> 'home_id',
+                        'default_lb' => $homeTran->id,
+                        'label_lb' => 'Page Home',
+                        'type_lb' => 'select_page'
+                    ]);
+                    $siteTran->setMeta([
+                        'key_lb' => 'home',
+                        'value_lb' => $homeTran->id
+                    ]);
+                    $siteTran->addField([
+                        'name_lb'=> 'address',
+                        'default_lb' => '67 Le Loi Ho Chi Minh',
+                        'label_lb' => 'Address Site',
+                        'type_lb' => 'text'
+                    ]);
+                    $siteTran->setMeta([
+                        'key_lb' => 'address',
+                        'value_lb' => '67 Le Loi Ho Chi Minh'
+                    ]);
+                    $siteTran->addField([
+                        'name_lb'=> 'description',
+                        'default_lb' => 'Welcome to My Website',
+                        'label_lb' => 'Description Site',
+                        'type_lb' => 'textarea'
+                    ]);
+                    $siteTran->setMeta([
+                        'key_lb' => 'description',
+                        'value_lb' => 'Welcome to My Website'
+                    ]);
+                    $siteTran->addField([
+                        'name_lb'=> 'facebook_page_id',
+                        'default_lb' => 'Facebook App ID',
+                        'label_lb' => 'Facebook App ID',
+                        'type_lb' => 'text'
+                    ]);
+                    $siteTran->addField([
+                        'name_lb'=> 'facebook',
+                        'default_lb' => 'Facebook.com',
+                        'label_lb' => 'Facebook Link',
+                        'type_lb' => 'text'
+                    ]);
+                    $siteTran->addField([
+                        'name_lb'=> 'youtube',
+                        'default_lb' => 'youtube.com',
+                        'label_lb' => 'Youtube Link',
+                        'type_lb' => 'text'
+                    ]);
+                }
+            }
         }
         $main = Menu::create([
             'title_lb'      =>  __('site.main'),

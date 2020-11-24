@@ -43,19 +43,10 @@ class PageController extends Controller
 
     /**
      * @return Application|Factory|View
-     * @throws InvalidArgumentException
      */
     public function home()
     {
-        if (config('site.cache.page_enable')) {
-            $page = Page::getCacheById(Page::site()->home_id);
-        } else {
-            $page = Page::findOrFail(Page::site()->home_id);
-        }
-        $locale = session()->get('locale', config('site.locale_default'));
-        if ($translation = $page->translation($locale)) {
-            $page = $translation;
-        }
+        $page = Page::home();
         $page->seo();
         return $this->render('pages.home', compact('page'));
     }

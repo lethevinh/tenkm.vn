@@ -169,7 +169,7 @@ trait Cacheable
     }
 
     public static function getModelCacheById($id) {
-        return self::find($id);
+        return self::findOrFail($id);
     }
 
     /**

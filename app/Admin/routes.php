@@ -29,8 +29,8 @@ Route::group([
     $router->resource('events', 'EventController');
     $router->resource('menus', 'MenuController');
     $router->resource('amenities', 'AmenityController');
-    $router->get('site/setting', 'PageController@getSetting')->name('site.setting');
-    $router->put('site/setting', 'PageController@putSetting');
+    $router->get('site/setting/{id}', 'PageController@getSetting')->name('site.setting');
+    $router->put('site/setting/{id}', 'PageController@putSetting');
     $router->resource('contacts', 'ContactController');
     $router->resource('feedbacks', 'FeedbackController');
 

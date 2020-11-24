@@ -1,5 +1,6 @@
 <ul class="navbar-nav menu-open">
-    @foreach($menu['children'] as $item)
+    @if(isset($menu['children']))
+        @foreach($menu['children'] as $item)
         @if(isset($item['children']))
             <li class="menu-item-has-children">
                 <a>{{$item['title_lb']}}</a>
@@ -21,5 +22,6 @@
         </li>
         @endif
     @endforeach
+    @endif
     @include('partials.language')
 </ul>

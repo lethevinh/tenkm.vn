@@ -148,7 +148,9 @@ class PageController extends AdminController
             if ($admin->id === Administrator::DEFAULT_ID) {
                 $form->select('template_lb', __('site.template'))
                     ->options([
+                        'default' => __('site.default'),
                         'blog' => __('site.blog'),
+                        'home' => __('site.home'),
                         'about' => __('site.about'),
                         'contact' => __('site.contact'),
                         'product' => __('site.product'),
@@ -215,7 +217,7 @@ class PageController extends AdminController
      */
     public function destroy($id)
     {
-        if (in_array(AdministratorModel::DEFAULT_ID, Helper::array($id)) && $id == 1) {
+        if (in_array(AdministratorModel::DEFAULT_ID, Helper::array($id)) || $id == 1 || $id == 2 ) {
             Permission::error();
         }
 
@@ -225,13 +227,14 @@ class PageController extends AdminController
     /**
      * Model-form for user setting.
      *
+     * @param $id
      * @return Form
      */
-    protected function settingForm()
+    protected function settingForm($id)
     {
-        $form = new \App\Admin\Forms\Form(new Page());
-
-        $form->action(admin_url('site/setting'));
+        $page = \App\Models\Page::findOrFail($id);
+        $form = new \App\Admin\Forms\Form(new Page($page));
+        $form->action(admin_url('site/setting/'.$id));
 
         $form->disableCreatingCheck();
         $form->disableEditingCheck();
@@ -241,19 +244,18 @@ class PageController extends AdminController
             $tools->disableView();
             $tools->disableDelete();
         });
-
-        $form->text('title_lb', trans('site.name'));
-        $page = \App\Models\Page::site();
         if ($page) {
+            $form->text('title_lb', trans('site.name'))->value($page->title_lb);
+            $form->tools([ToolTranslatable::make()]);
             foreach ($page->fields as $field) {
                 $form->meta($field->name_lb, $field->label_lb)
                     ->type($field->type_lb)
                     ->default($field->default_lb);
             }
         }
-        $form->saved(function (Form $form) {
+        $form->saved(function (Form $form) use ($id){
             return $form->redirect(
-                admin_url('site/setting'),
+                admin_url('site/setting/'.$id),
                 trans('admin.update_succeeded')
             );
         });
@@ -266,30 +268,30 @@ class PageController extends AdminController
      *
      * @param Content $content
      *
+     * @param $id
      * @return Content
      */
-    public function getSetting(Content $content)
+    public function getSetting(Content $content, $id)
     {
-        $form = $this->settingForm();
+        $form = $this->settingForm($id);
         $form->tools(
             function (Form\Tools $tools) {
                 $tools->disableList();
             }
         );
-
         return $content
             ->title(trans('site.site_setting'))
-            ->body($form->edit(Admin::user()->getKey()));
+            ->body($form->edit($id));
     }
 
     /**
      * Update site setting.
      *
+     * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function putSetting()
+    public function putSetting($id)
     {
-        $form = $this->settingForm();
-        return $form->update(\App\Models\Page::site()->getKey());
+        return $this->settingForm($id)->update($id);
     }
 }

@@ -68,7 +68,7 @@ class ToolTranslatable extends AbstractTool
 
     public function render()
     {
-        $model = $this->parent->repository()->eloquent();
+        $model = $this->parent->getModel();
         if (empty($model->id)) {
             return '';
         }

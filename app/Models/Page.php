@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Traits\Cacheable;
 use App\Traits\Metadatable;
+use Illuminate\Support\Str;
 
 class Page extends Post
 {
@@ -21,10 +22,21 @@ class Page extends Post
 
     public static function site()
     {
-        return self::findOrFail(1);
+        $locale = session()->get('locale', config('site.locale_default'));
+        $name = $locale == config('site.locale_default') ? 'site' : 'site-1';
+        return Page::getCacheByName($name);
     }
 
-    public static function home() {
-        return self::published()->findOrFail(self::site()->home_id);
+    public static function home()
+    {
+        return self::getCacheById(self::site()->home_id);
+    }
+
+    public function getEditAttribute()
+    {
+        if ($this->id === 1 || $this->id === 2) {
+            return route('site.setting', $this->id);
+        }
+        return parent::getEditAttribute();
     }
 }

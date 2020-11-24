@@ -16,6 +16,7 @@ return [
     ],
 
     'locales' => ['vi', 'en'],
+
     'symbols' => ['vi' => '₫', 'en' => '$'],
 
     'locale_default' => 'vi',

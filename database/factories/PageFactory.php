@@ -1,10 +1,12 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+/** @var Factory $factory */
 
 use App\Models\Page;
 use Faker\Generator as Faker;
 use \Dcat\Admin\Models\Administrator;
+use Illuminate\Database\Eloquent\Factory;
+
 $factory->define(Page::class, function (Faker $faker) {
     $status = $faker->randomElement(['public', 'draft', 'private', 'trash']);
     $admin = Administrator::first();

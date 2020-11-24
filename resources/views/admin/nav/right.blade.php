@@ -1,6 +1,6 @@
 <ul class="nav navbar-nav">
     <li class="nav-item">
-        <a class="nav-link nav-link-label" href="{{route('site.setting')}}">
+        <a class="nav-link nav-link-label" href="{{route('site.setting', 1)}}">
             <i class="ficon feather icon-settings text-primary"></i> <span>{{__('admin.setting')}}</span>
         </a>
     </li>

@@ -36,5 +36,4 @@ trait Translatable
             }
         });
     }
-    abstract public function getEditAttribute();
 }
