@@ -31,6 +31,7 @@
             <div class="container">
                 <div class="row ">
                     <div class="col-xl-9 col-lg-8">
+                        @if(count($product->galleries) > 1)
                         <div class="property-details-slider">
                             @foreach($product->galleries as $gallery)
                             <div class="item">
@@ -40,6 +41,9 @@
                             </div>
                             @endforeach
                         </div>
+                        @else
+                            <img src="{{$product->thumbnail}}" alt="">
+                        @endif
                         <div class="property-details-slider-info">
                             <h3><span>{{$product->priceLabel}}</span> {{$product->title_lb}}</h3>
                         </div>
