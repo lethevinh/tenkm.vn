@@ -127,7 +127,8 @@ class Product extends Model implements Searchable
             return __('site.price_updating');
         }
         $locale = session()->get('locale', config('site.locale_default'));
-        return $price . ' ' . config('site.symbols.' . $locale, '₫');
+
+        return number_format($price, 0) . ' ' . config('site.symbols.' . $locale, '₫');
     }
 
 }

@@ -179,12 +179,14 @@ class ProductController extends AdminController
             ->tab(__('site.info'), function (Form $form) use ($language){
                 $symbol = config('site.symbols.'.$language, '₫');
                 $form->currency('price_fl', __('site.price'))->symbol($symbol)
+                    ->digits(0)
                     ->saving(function ($value) {
                         if (!$value) return 0;
                         return str_replace(',', '', $value);
                     });
                 $form->currency('price_sale_fl', __('site.price_sale'))
                     ->symbol($symbol)
+                    ->digits(0)
                     ->saving(function ($value) {
                         if (!$value) return 0;
                         return str_replace(',', '', $value);

@@ -42,7 +42,6 @@
                         </div>
                         <div class="property-details-slider-info">
                             <h3><span>{{$product->priceLabel}}</span> {{$product->title_lb}}</h3>
-                            <del>{{$product->price}}</del>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4">
