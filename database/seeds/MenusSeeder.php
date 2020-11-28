@@ -20,6 +20,7 @@ class MenusSeeder extends Seeder
         $admin = Administrator::first();
         $site = Page::create([
             'title_lb'      =>  'site',
+            'slug_lb'      =>  'site',
             'status_sl' => 'private'
         ]);
         $home = Page::create([

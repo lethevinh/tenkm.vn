@@ -48,7 +48,7 @@ class ProjectController extends AdminController
             $grid->id('ID')->code()->sortable();
             $grid->actions(function (Grid\Displayers\Actions $actions) {
                 $actions->disableView();
-                $link = route('post.show', ['slug' => $actions->row['slug_lb']]);
+                $link = route('project.show', ['slug' => $actions->row['slug_lb']]);
                 $actions->append('<a target="_blank" href="' . $link . '"><i class="feather icon-eye"></i>' . __('site.view_post') . '</a>');
             });
             $grid->title_lb(__('admin.title'));
