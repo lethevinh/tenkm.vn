@@ -3,10 +3,8 @@
 namespace App\Admin\Controllers;
 
 use App\Admin\Forms\ToolTranslatable;
-use App\Admin\Forms\ToolViewLive;
 use App\Admin\Repositories\Amenity;
-use Dcat\Admin\Auth\Permission;
-use Dcat\Admin\Form;
+use App\Admin\Forms\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\IFrameGrid;
 use Dcat\Admin\Controllers\AdminController;
@@ -20,7 +18,7 @@ class AmenityController extends AdminController
 {
     protected function title()
     {
-        return __('site.contact');
+        return __('site.amenities');
     }
 
     /**
@@ -33,8 +31,9 @@ class AmenityController extends AdminController
         return Grid::make(new Amenity(), function (Grid $grid) {
             $grid->model()->orderByDesc('updated_at');
             $grid->id('ID')->code()->sortable();
-            $grid->title_lb(__('admin.title'));
+            $grid->title_lb(__('admin.title'))->editable();
             $grid->language_lb(__('site.lang'))->label();
+            $grid->type_lb(__('site.type'))->label();
             $grid->created_at(__('admin.created_at'))->display(function ($at) {
                 return Carbon::make($at)->diffForHumans();
             });
@@ -102,6 +101,12 @@ class AmenityController extends AdminController
         $form = new Form(new Amenity);
         $form->tools([ToolTranslatable::make()]);
         $form->text('title_lb', __('admin.title'));
+        $form->select('type_lb', __('admin.type'))->options([
+            'direction' => __('site.direction'),
+            'amenity' => __('site.amenity'),
+            'device' =>  __('site.device'),
+            'furniture' =>  __('site.furniture'),
+        ]);
         $form->hidden('language_lb')->default(config('site.locale_default'));
         return $form;
     }
