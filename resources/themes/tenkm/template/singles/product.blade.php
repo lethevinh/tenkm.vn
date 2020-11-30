@@ -190,9 +190,11 @@
                         </div>
                     </div>
                     <div class="property-news-single-card border-bottom-yellow mb-0">
-                        <h4>3D Gallery</h4>
+                        <h4>Google StreetView</h4>
                         <div class="thumb">
-                            <img src="{{url('images/others/11.png')}}" alt="img">
+                            @if($product->address)
+                                @include('partials.streetview', ['address' => $product->address])
+                            @endif
                         </div>
                     </div>
                 </div>
