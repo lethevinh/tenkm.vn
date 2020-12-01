@@ -17,5 +17,4 @@
 @endif
 <!-- CSS Global -->
 <link href="{{ mix('css/theme.css') }}" rel="stylesheet">
-<script src="https://maps.googleapis.com/maps/api/js?key={{config('admin.map.keys.google')}}&libraries=&v=weekly&sensor=false" async defer></script>
 @include('partials/social')

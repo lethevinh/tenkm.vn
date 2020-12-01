@@ -6,8 +6,9 @@
                 <a>{{$item['title_lb']}}</a>
                 <ul class="sub-menu">
                     @foreach($item['children'] as $sub)
+                        @php $urlSub = (isset($sub['url_lb']) && strpos($sub['url_lb'], url('')) !== false) ? url($sub['url_lb']): $sub['url_lb']; @endphp
                         <li>
-                            <a href="{{$sub['url_lb']}}">
+                            <a href="{{$urlSub}}">
                                 {{$sub['title_lb']}}
                             </a>
                         </li>
@@ -16,7 +17,8 @@
             </li>
         @else
         <li >
-            <a href="{{$item['url_lb']}}">
+            @php $url = (isset($item['url_lb']) && strpos($item['url_lb'], url('')) !== false) ? url($item['url_lb']): $item['url_lb']; @endphp
+            <a href="{{$url}}">
                 {{$item['title_lb']}}
             </a>
         </li>

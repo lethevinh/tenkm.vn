@@ -2,8 +2,9 @@
 @if(isset($menu['children']))
 <ul>
     @foreach($menu['children'] as $item)
+        @php $url = (isset($item) && strpos($item['url_lb'], url('')) !== false) ? url($item['url_lb']): $item['url_lb']; @endphp
         <li>
-            <a href="{{$item['url_lb']}}">
+            <a href="{{$url}}">
                 {{$item['title_lb']}}
             </a>
         </li>

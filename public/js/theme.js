@@ -1,7 +1,10 @@
 $(document).ready(function () {
+
+})
+function initGoogleMap() {
     let streetView = $('#street-view');
     let panorama;
-    if (streetView.length > 0) {
+    if (streetView.length > 0 && google) {
         let lat = streetView.data('lat');
         let lng = streetView.data('lng');
         panorama = new google.maps.StreetViewPanorama(
@@ -15,7 +18,7 @@ $(document).ready(function () {
     }
     let googleMap = $('#map');
     let map;
-    if (streetView.length > 0) {
+    if (streetView.length > 0 && google) {
         let lat = googleMap.data('lat');
         let lng = googleMap.data('lng');
         const mapOptions = {
@@ -41,4 +44,4 @@ $(document).ready(function () {
             infowindow.open(map, marker);
         });
     }
-})
+}
