@@ -252,7 +252,6 @@ class ProductController extends AdminController
             });
         }
         $form->submitted(function (Form $form) {
-            $form->location_lb = $form->location_lb . ',' . $form->lng_lb;
             $form->ignore(['lng_lb']);
             if ($form->input('amenities')) {
                 $form->amenities = array_filter($form->input('amenities'), function ($value){

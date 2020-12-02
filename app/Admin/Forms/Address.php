@@ -46,6 +46,9 @@ class Address extends Field
             $locationField->value(['lat' => $model->address->lat_lb, 'lng' => $model->address->lng_lb]);
         }
         $mapIframeField = new Field\Text('address.location_lb', [__('site.map_iframe')]);
+        if ($model->address) {
+            $mapIframeField->value($model->address->location_lb);
+        }
         $this->addVariables([
             'provincialField' => $provincialField,
             'districtField' => $districtField,
