@@ -31,7 +31,9 @@ class Category extends Model
         parent::boot();
         static::deleting(function ($model) {
             collect(['posts', 'products'])->each(function ($relation) use ($model) {
-                $model->{$relation}()->sync([]);
+                if (method_exists($model, $relation)) {
+                    $model->{$relation}()->sync([]);
+                }
             });
         });
     }
