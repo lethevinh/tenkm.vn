@@ -122,7 +122,7 @@ return [
     'district' => 'Quận/Huyện',
     'ward' => 'Phường/Xã',
     'address' => 'Địa chỉ',
-    'street' => 'Đượng',
+    'street' => 'Đường',
     'amenity' => 'Tiện ích',
     'device' => 'Thiết bị',
     'furniture' => 'Furniture',

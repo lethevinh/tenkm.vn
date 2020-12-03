@@ -196,3 +196,7 @@
 .cke_dialog_background_cover{
     z-index: 999999999 !important;
 }
+div[for*='form-field-address-address_lb'],
+div[for*='form-field-address-address_lb']+div{
+    display: none;
+}

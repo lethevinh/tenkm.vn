@@ -27,7 +27,7 @@ class Address extends Field
         if ($model->address) {
             $provincialField->value($model->address->provincial_id);
         }
-        $districtField = new Field\Select('address.district_id', [ __('site.district')]);
+        $districtField = new Select('address.district_id', [ __('site.district')]);
         $districtField->loads(['address.ward_id' , 'address.street_id'], ['api/locations', 'api/locations/street']);
 
         if ($model->address) {
@@ -41,13 +41,19 @@ class Address extends Field
         if ($model->address) {
             $streetField->value($model->address->street_id);
         }
-        $locationField = new Field\Map('address.lat_lb', ['address.lng_lb', __('site.location')]);
+        $locationField = new Map('address.lat_lb', ['address.lng_lb', __('site.location')]);
+        $locationField->value(['lat' => '10.7885136', 'lng' => '106.5982012']);
         if ($model->address) {
             $locationField->value(['lat' => $model->address->lat_lb, 'lng' => $model->address->lng_lb]);
         }
         $mapIframeField = new Field\Text('address.location_lb', [__('site.map_iframe')]);
         if ($model->address) {
             $mapIframeField->value($model->address->location_lb);
+        }
+        $addressField = new Field\Text('address.address_lb', [__('site.address')]);
+        if ($model->address) {
+            $addressField->value('67 Đường Lê Lợi, Bến Nghé, Quận 1, Thành phố Hồ Chí Minh');
+            $addressField->disable();
         }
         $this->addVariables([
             'provincialField' => $provincialField,
@@ -56,6 +62,7 @@ class Address extends Field
             'streetField' => $streetField,
             'locationField' => $locationField,
             'mapIframeField' => $mapIframeField,
+            'addressField' => $addressField,
         ]);
         return parent::render();
     }

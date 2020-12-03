@@ -5,7 +5,6 @@ window.admin.init =  function () {
     admin.setCurrentTag();
 }
 window.admin.setCurrentTag =  function () {
-    console.log(window.location.hash)
     if(window.location.hash && window.location.hash.includes('#tab-form') ) {
         $('[href^="' + window.location.hash.substring(0, 11) + '"]').trigger('click');
     }
@@ -13,6 +12,7 @@ window.admin.setCurrentTag =  function () {
 window.admin.dialogAfterSave = async function () {
    await Dcat.reload();
 };
+window.admin.markers = window.admin.markers || [];
 $('.btn-nestable-save').click(function() {
     let selector = $(this).data('nestable-selector');
     let treeSelected = $('#'+selector);
