@@ -204,10 +204,10 @@ class ProductController extends AdminController
                     ->setElementName('amenities[]')
                     ->options(Amenity::ofType('direction')->get()->pluck('title_lb', 'id'))
                     ->customFormat(function ($v) {
+                        if (!$v) return '';
                         $v = array_column(array_filter($v, function ($item) {
                             return $item['type_lb'] == 'direction';
                         }), 'id');
-                        if (!$v) return '';
                         return $v[0];
                     });
             })
@@ -271,10 +271,6 @@ class ProductController extends AdminController
      */
     public function destroy($id)
     {
-        if (in_array(AdministratorModel::DEFAULT_ID, Helper::array($id))) {
-            Permission::error();
-        }
-
         return parent::destroy($id);
     }
 }

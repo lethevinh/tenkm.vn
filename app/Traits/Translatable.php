@@ -35,5 +35,10 @@ trait Translatable
                 }
             }
         });
+        static::deleted(function ($model) {
+           if ($model->translator) {
+               $model->translator->delete();
+           }
+        });
     }
 }
