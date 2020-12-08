@@ -85,42 +85,31 @@
                             </div>
                         </div>
                     </div>
-                    <div class="property-news-single-card style-two border-bottom-yellow">
-                        <h4>{{trans('site.content')}}</h4>
-                        <p>{!! $product->content_lb !!}</p>
-                    </div>
-                    <div class="property-news-single-card style-two border-bottom-yellow">
-                        <h4>{{__('site.map')}}</h4>
-                        @if($product->address)
-                            @include('partials.google', ['address' => $product->address])
-                        @endif
-                    </div>
-                    <div class="property-news-single-card border-bottom-yellow">
-                        <h4>{{trans('site.amenities')}}</h4>
-                        @if($product->amenities->count() > 0)
-                        @php $div = ceil($product->amenities->count() / 3);  $amenities = array_chunk($product->amenities->toArray(), $div); @endphp
-                        <div class="row">
-                            @foreach($amenities as $amenity)
-                            <div class="col-sm-4">
-                                <ul class="rld-list-style mb-3 mb-sm-0">
-                                    @foreach($amenity as $a)
-                                        <li><i class="fa fa-check"></i> {{$a['title_lb']}}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            @endforeach
-                        </div>
-                        @endif
-                    </div>
-                    <div class="property-news-single-card border-bottom-yellow">
-                        <h4>{{trans('site.floor_plan')}}</h4>
-                        <div class="thumb">
-                            <img src="{{$product->floorplan_lb}}" alt="{{$product->title_lb}}">
-                        </div>
-                    </div>
                     <div class="property-news-single-card border-bottom-yellow pb-3">
-                        <h4>{{trans('site.facts_and_features')}}</h4>
+                        <h4>{{trans('site.basic_info')}}</h4>
                         <div class="row">
+                            <div class="col-md-3 col-sm-6">
+                                <div class="single-floor-list media">
+                                    <div class="media-left">
+                                        <i class="fa fa-key" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6>{{trans('site.property_id')}}</h6>
+                                        <p>{{$product->property_id}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="single-floor-list media">
+                                    <div class="media-left">
+                                        <i class="fa fa-tags" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6>{{trans('site.property_type')}}</h6>
+                                        <p>{{$product->propertyTypeLabel}}</p>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-floor-list media">
                                     <div class="media-left">
@@ -189,12 +178,53 @@
                             </div>
                         </div>
                     </div>
+                    <div class="property-news-single-card style-two border-bottom-yellow">
+                        <h4>{{trans('site.content_detail')}}</h4>
+                        <p>{!! $product->content_lb !!}</p>
+                    </div>
+                    <div class="property-news-single-card border-bottom-yellow">
+                        <h4>{{trans('site.amenities')}}</h4>
+                        @if($product->amenities->count() > 0)
+                            @php $div = ceil($product->amenities->count() / 3);  $amenities = array_chunk($product->amenities->toArray(), $div); @endphp
+                            <div class="row">
+                                @foreach($amenities as $amenity)
+                                    <div class="col-sm-4">
+                                        <ul class="rld-list-style mb-3 mb-sm-0">
+                                            @foreach($amenity as $a)
+                                                <li><i class="fa fa-check"></i> {{$a['title_lb']}}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
+                    <div class="property-news-single-card style-two border-bottom-yellow">
+                        <h4>{{__('site.location_map')}}</h4>
+                        @if($product->address)
+                            @include('partials.google', ['address' => $product->address])
+                        @endif
+                    </div>
+                    <div class="property-news-single-card border-bottom-yellow">
+                        <h4>{{trans('site.video')}}</h4>
+                        <div class="thumb video-responsive">
+                            @if($product->youtube)
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{$product->youtube}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            @endif
+                        </div>
+                    </div>
                     <div class="property-news-single-card border-bottom-yellow mb-0">
                         <h4>Google StreetView</h4>
                         <div class="thumb">
                             @if($product->address)
                                 @include('partials.streetview', ['address' => $product->address])
                             @endif
+                        </div>
+                    </div>
+                    <div class="property-news-single-card border-bottom-yellow">
+                        <h4>{{trans('site.floor_plan')}}</h4>
+                        <div class="thumb">
+                            <img src="{{$product->floorplan_lb}}" alt="{{$product->title_lb}}">
                         </div>
                     </div>
                 </div>

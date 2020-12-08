@@ -154,6 +154,7 @@ class ProductController extends AdminController
         $language = $model ? $model->language_lb : config('site.locale_default');
         $form
             ->tab(__('site.basic'), function (Form $form) use ($language){
+                $form->text('property_id', __('site.property_id'));
                 $form->text('title_lb', __('admin.title'));
                 $form->datetimeRange('published_at', 'validated_at', __('site.public_time'));
                 $form->hidden('language_lb')->default(config('site.locale_default'));
@@ -175,6 +176,9 @@ class ProductController extends AdminController
                     ->customFormat(function ($v) {
                         return array_column($v, 'title_lb');
                     });
+                $form->radio('property_type', __('site.property_type'))
+                    ->setElementName('property_type')
+                    ->options(Amenity::ofType('property_type')->lang($language)->get()->pluck('title_lb', 'id'));
             })
             ->tab(__('site.info'), function (Form $form) use ($language){
                 $symbol = config('site.symbols.'.$language, '₫');
@@ -202,12 +206,13 @@ class ProductController extends AdminController
                 $form->number('gym_area', __('site.gym'));
                 $form->radio('amenities', __('site.direction'))
                     ->setElementName('amenities[]')
-                    ->options(Amenity::ofType('direction')->get()->pluck('title_lb', 'id'))
+                    ->options(Amenity::ofType('direction')->lang($language)->get()->pluck('title_lb', 'id'))
                     ->customFormat(function ($v) {
                         if (!$v) return '';
                         $v = array_column(array_filter($v, function ($item) {
                             return $item['type_lb'] == 'direction';
                         }), 'id');
+                        if (!$v) return '';
                         return $v[0];
                     });
             })

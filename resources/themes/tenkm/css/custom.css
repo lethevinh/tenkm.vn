@@ -79,3 +79,15 @@ footer h1, footer h2, footer h3, footer h4, footer h5, footer h6 {
     width:100%;
     position:absolute;
 }
+.video-responsive {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+.video-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

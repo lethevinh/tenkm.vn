@@ -17,6 +17,9 @@ class CreateProductsTable extends Migration
             Schema::create('products', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('title_lb');
+                $table->string('property_id')->nullable();
+                $table->string('property_type')->nullable();
+                $table->string('video_lb')->nullable();
                 $table->string('language_lb')->default('vi');
                 $table->unsignedInteger('translation_id')->nullable();
                 $table->string('slug_lb')->unique();

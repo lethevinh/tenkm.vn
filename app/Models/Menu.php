@@ -101,7 +101,7 @@ class Menu extends Model
     public static function getCacheByName($name, $params = [])
     {
         if (! self::enableCache()) {
-            return self::getModelCacheByName($name)->makeCache($params);
+            return self::find(1)->makeCache($params);
         }
         $cacheKey = self::cachePrefix($name);
         if (!self::isExitCacheByName($name)) {

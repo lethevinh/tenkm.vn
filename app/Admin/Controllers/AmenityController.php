@@ -22,6 +22,18 @@ class AmenityController extends AdminController
     }
 
     /**
+     * @return array
+     */
+    private function getTypes(){
+        return [
+            'direction' => __('site.direction'),
+            'amenity' => __('site.amenity'),
+            'device' =>  __('site.device'),
+            'furniture' =>  __('site.furniture'),
+            'property_type' =>  __('site.property_type'),
+        ];
+    }
+    /**
      * Make a grid builder.
      *
      * @return Grid
@@ -33,7 +45,9 @@ class AmenityController extends AdminController
             $grid->id('ID')->code()->sortable();
             $grid->title_lb(__('admin.title'))->editable();
             $grid->language_lb(__('site.lang'))->label();
-            $grid->type_lb(__('site.type'))->label();
+            $grid->type_lb(__('site.type'))->sortable()->display(function ($type) {
+                return __('site.'.$type);
+            })->label();
             $grid->created_at(__('admin.created_at'))->display(function ($at) {
                 return Carbon::make($at)->diffForHumans();
             });
@@ -48,6 +62,10 @@ class AmenityController extends AdminController
                 $filter->scope('new', __('site.today'))
                     ->whereDate('created_at', date('Y-m-d'))
                     ->orWhereDate('updated_at', date('Y-m-d'));
+                foreach ($this->getTypes() as $key => $type) {
+                    $filter->scope('type_' . $key, __('site.' . $key))
+                        ->where('type_lb', $key);
+                }
                 foreach (config('site.locales') as $locale) {
                     $filter->scope('lang_' . $locale, __('site.' . $locale))
                         ->where('language_lb', $locale);
@@ -101,12 +119,7 @@ class AmenityController extends AdminController
         $form = new Form(new Amenity);
         $form->tools([ToolTranslatable::make()]);
         $form->text('title_lb', __('admin.title'));
-        $form->select('type_lb', __('admin.type'))->options([
-            'direction' => __('site.direction'),
-            'amenity' => __('site.amenity'),
-            'device' =>  __('site.device'),
-            'furniture' =>  __('site.furniture'),
-        ]);
+        $form->select('type_lb', __('admin.type'))->options($this->getTypes());
         $form->hidden('language_lb')->default(config('site.locale_default'));
         return $form;
     }
