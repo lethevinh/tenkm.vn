@@ -104,6 +104,9 @@ class Product extends Model implements Searchable
 
     public function getPropertyTypeLabelAttribute(): string
     {
+        if (!isset($this->attributes['property_type']) || empty($this->attributes['property_type'])){
+            return '';
+        }
         $type = Amenity::find($this->attributes['property_type']);
         if ($type) {
             return $type->title_lb;
