@@ -57,7 +57,7 @@
         <div class="container">
             <div class="row pd-top-90">
                 <div class="col-lg-9">
-                    <div class="property-info mb-5">
+                    <!--<div class="property-info mb-5">
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
@@ -84,7 +84,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="property-news-single-card border-bottom-yellow pb-3">
                         <h4>{{trans('site.basic_info')}}</h4>
                         <div class="row">
