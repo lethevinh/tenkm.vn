@@ -19,7 +19,7 @@ return [
 
     'symbols' => ['vi' => '₫', 'en' => '$'],
 
-    'locale_default' => 'vi',
+    'locale_default' => env("APP_LOCAL", 'vi'),
 
     'cache' => [
         'keys' => [

@@ -27,5 +27,11 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         Paginator::useBootstrap();
+        $currentlyLocale = session()->get('locale');
+       if (is_null($currentlyLocale)) {
+           $locale = config('site.locale_default');
+           app()->setLocale($locale);
+           session()->put('locale', $locale);
+       }
     }
 }
