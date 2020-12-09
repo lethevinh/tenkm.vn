@@ -179,6 +179,9 @@ class ProductController extends AdminController
                 $form->radio('property_type', __('site.property_type'))
                     ->setElementName('property_type')
                     ->options(Amenity::ofType('property_type')->lang($language)->get()->pluck('title_lb', 'id'));
+                $form->radio('furnishing_status', __('site.furnishing_status'))
+                    ->setElementName('furnishing_status')
+                    ->options(Amenity::ofType('furnishing_status')->lang($language)->get()->pluck('title_lb', 'id'));
             })
             ->tab(__('site.info'), function (Form $form) use ($language){
                 $symbol = config('site.symbols.'.$language, '₫');

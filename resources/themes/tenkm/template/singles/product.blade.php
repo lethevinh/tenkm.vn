@@ -113,6 +113,17 @@
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-floor-list media">
                                     <div class="media-left">
+                                        <i class="fa fa-cubes" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6>{{trans('site.furnishing_status')}}</h6>
+                                        <p>{{$product->furnishingStatusLabel}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="single-floor-list media">
+                                    <div class="media-left">
                                         <i class="fa fa-bed"></i>
                                     </div>
                                     <div class="media-body">
@@ -162,17 +173,6 @@
                                     <div class="media-body">
                                         <h6>{{trans('site.bathroom')}}</h6>
                                         <p>{{$product->bathroom_nb}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="single-floor-list media">
-                                    <div class="media-left">
-                                        <img src="/images//icons/17.png" alt="img">
-                                    </div>
-                                    <div class="media-body">
-                                        <h6>{{trans('site.gym_area')}}</h6>
-                                        <p>{{$product->gym_area}}</p>
                                     </div>
                                 </div>
                             </div>

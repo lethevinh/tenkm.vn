@@ -118,6 +118,7 @@ return [
     'basic_info' => 'Thông tin cơ bản',
     'property_id' => 'Mã nhà Đất',
     'property_type' => 'Loại hình',
+    'furnishing_status' => 'Tình trạng nội thất',
     'content' => 'Nội dung',
     'content_detail' => ' Thông tin chi tiết',
     'location_map' => 'Vị trí ',

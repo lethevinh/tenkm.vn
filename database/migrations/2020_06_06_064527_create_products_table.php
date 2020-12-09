@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
                 $table->string('title_lb');
                 $table->string('property_id')->nullable();
                 $table->string('property_type')->nullable();
+                $table->string('furnishing_status')->nullable();
                 $table->string('video_lb')->nullable();
                 $table->string('language_lb')->default('vi');
                 $table->unsignedInteger('translation_id')->nullable();
