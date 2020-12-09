@@ -31,6 +31,7 @@ class AmenityController extends AdminController
             'device' =>  __('site.device'),
             'furniture' =>  __('site.furniture'),
             'property_type' =>  __('site.property_type'),
+            'furnishing_status' =>  __('site.furnishing_status'),
         ];
     }
     /**
