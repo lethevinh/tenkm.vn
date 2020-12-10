@@ -91,7 +91,8 @@ use Intervention\Image\ImageManagerStatic as Image;
 Route::get('image/{width}x{height}x{action}_{path}', function ($width, $height, $action, $path) {
     $filePath = public_path('storage/images/' . $path);
     if (file_exists($filePath)) {
-        return Image::make($filePath)->resize($width, $height)->response();
+        //return Image::make($filePath)->resize($width, $height)->response();
+        return Image::make($filePath)->fit($width, $height)->response();
     }
     return Image::canvas($width, $height)->response();
 })->name('image.single');
