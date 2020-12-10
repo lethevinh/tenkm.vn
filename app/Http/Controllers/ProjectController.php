@@ -8,9 +8,11 @@ use App\Models\ProjectTag;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Psr\SimpleCache\InvalidArgumentException;
+use Spatie\Searchable\Search;
 
 class ProjectController extends Controller
 {
@@ -81,5 +83,17 @@ class ProjectController extends Controller
         $posts = $tag->projects()->public()->paginate($offset);
         $user = Auth::user();
         return view('archives.project', compact('user', 'posts', 'tag'));
+    }
+
+    public function search(Request $request) {
+        $query = $request->input('s');
+        $title = __('site.result_search').$query;
+        app('seo')->setTitle($title);
+        $products = (new Search())->registerModel(Project::class, 'title_lb')->perform($query);
+        $products = $products->map(function ($project){
+            return $project->searchable;
+        });
+        $user = Auth::user();
+        return view('archives.product', compact('products', 'query', 'title'));
     }
 }

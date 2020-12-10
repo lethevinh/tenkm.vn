@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Post;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductTag;
-use App\Models\Tag;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
 use Psr\SimpleCache\InvalidArgumentException;
+use Spatie\Searchable\Search;
 
 class ProductController extends Controller
 {
@@ -83,8 +80,20 @@ class ProductController extends Controller
         }
         $offset = request()->input('offset');
         $offset = $offset ? $offset : 8;
-        $posts = $tag->products()->public()->paginate($offset);
+        $products = $tag->products()->public()->paginate($offset);
         $user = Auth::user();
-        return view('archives.product', compact('user', 'posts', 'tag'));
+        return view('archives.product', compact('user', 'products', 'tag'));
+    }
+
+    public function search(Request $request) {
+        $query = $request->input('s');
+        $title = __('site.result_search').$query;
+        app('seo')->setTitle($title);
+        $products = (new Search())->registerModel(Product::class, 'title_lb')->perform($query);
+        $products = $products->map(function ($product){
+           return $product->searchable;
+        });
+        $user = Auth::user();
+        return view('archives.product', compact('products', 'query', 'title'));
     }
 }

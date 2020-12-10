@@ -14,6 +14,8 @@
                                 {{$category->title_lb}}
                             @elseif(isset($tag))
                                 {{$tag->title_lb}}
+                            @elseif(isset($query))
+                                {{$title}}
                             @endif
                         </h1>
                         <ul class="page-list">
@@ -23,6 +25,8 @@
                                 <li> {{$category->title_lb}}</li>
                             @elseif(isset($tag))
                                 <li>{{$tag->title_lb}}</li>
+                            @elseif(isset($query))
+                                <li>{{$title}}</li>
                             @endif
                         </ul>
                     </div>
@@ -42,11 +46,13 @@
                 </div>
                 @endforeach
             </div>
+            @if(!isset($query))
             <div class="row">
                 <div class="col-sm-12">
                     {{ $products->links() }}
                 </div>
             </div> <!-- / .row -->
+            @endif
         </div>
     </div>
     <!-- Properties by city end -->

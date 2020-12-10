@@ -9,12 +9,16 @@
                 <div class="col-lg-6 col-md-10">
                     <div class="banner-inner-wrap">
                         <div class="banner-inner w-100">
-                            <h1 class="title">{{__('site.real_estate_agent_near_you')}}</h1>
-                            <p class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br> Aenean vel eros quam. Sed sit amet dictum est</p>
+                            <h1 class="title">{{$page->slogan}}</h1>
+                            <p class="content">
+                                {{$page->slogan_text}}
+                            </p>
                             <div class="rld-banner-search">
                                 <div class="rld-single-input left-icon">
-                                    <input type="text" placeholder="{{__('site.find_property')}}">
-                                    <button class="btn">{{__('site.search_now')}}</button>
+                                    <form action="{{route('product.search')}}">
+                                        <input type="text" name="s"  placeholder="{{__('site.find_property')}}">
+                                        <button type="submit" class="btn">{{__('site.search_now')}}</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -22,7 +26,9 @@
                 </div>
                 <div class="col-xl-5 col-lg-6 d-lg-block d-none">
                     <div class="thumb-wrap">
-                        <img src="/images/banner/2.png" alt="img">
+                        <img
+                            src="{{$page->agent_image && $page->agent_image !='null'?$page->agent_image:'/images/banner/2.png'}}"
+                            alt="img">
                     </div>
                 </div>
             </div>

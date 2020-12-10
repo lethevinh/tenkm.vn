@@ -17,6 +17,8 @@ Route::get('/home', function () {
     return redirect(\route('home.show'));
 });
 Route::get('search.html', 'HomeController@search')->name('home.search');
+Route::get('search-product.html', 'ProductController@search')->name('product.search');
+Route::get('search-project.html', 'ProjectController@search')->name('project.search');
 Route::post('contact.html', 'HomeController@doContact')->name('home.doContact');
 Route::post('subscribe.html', 'HomeController@doSubscribe')->name('home.doSubscribe');
 Route::get('/', 'PageController@home')->name('home.show');

@@ -1,6 +1,21 @@
 <!-- footer area start -->
+@php $locale = session()->get('locale', 'vi'); @endphp
 <footer class="footer-area">
     <div class="container">
+        @if($locale == 'vi')
+        <div class="subscribe-area">
+            <div class="row justify-content-center">
+                <div class="col-xl-7 col-lg-9 text-center">
+                    <h2 style="color: black">{{option('subscribe_title')}}</h2>
+                    <p>{{option('subscribe_description')}}</p>
+                    <div class="rld-single-input">
+                        <input type="text" placeholder="{{__('site.email')}}">
+                        <button class="btn">{{__('site.submit_now')}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
         <div class="footer-top">
             <div class="row">
                 <div class="col-sm-4">
@@ -47,7 +62,7 @@
                     <form class="widget widget-subscribe" action="{{route('home.doSubscribe')}}" method="POST">
                         @csrf
                         <div class="rld-single-input">
-                            <input placeholder="{{__('site.full_name')}}" value="{{old('name')}}" type="text"
+                            <input placeholder="{{__('site.form_name')}}" value="{{old('name')}}" type="text"
                                    class="form-control {{ $errors->has('name') ? 'error' : '' }}" name="name" id="name">
                             <!-- Error -->
                             @if ($errors->has('name'))
@@ -57,7 +72,7 @@
                             @endif
                         </div>
                         <div class="rld-single-input">
-                            <input placeholder="{{__('site.email')}}" value="{{old('email')}}" type="email"
+                            <input placeholder="{{__('site.form_phone')}}" value="{{old('email')}}"
                                    class="form-control {{ $errors->has('email') ? 'error' : '' }}" name="email"
                                    id="email">
 
@@ -67,7 +82,7 @@
                                 </div>
                             @endif
                         </div>
-                        <button class="btn btn-yellow w-100">{{__('site.subscribe')}}</button>
+                        <button class="btn btn-yellow w-100">{{__('site.form_subscribe')}}</button>
                     </form>
                 </div>
             </div>

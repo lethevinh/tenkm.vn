@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
-use App\Models\Course;
-use App\Models\Event;
 use App\Models\Page;
 use App\Models\Post;
-use App\Models\Teacher;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Spatie\Searchable\Search;

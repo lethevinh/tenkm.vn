@@ -23,7 +23,7 @@ class Page extends Post
     public static function site()
     {
         $locale = session()->get('locale', config('site.locale_default'));
-        $name = $locale == config('site.locale_default') ? 'site' : 'site-1';
+        $name = $locale == config('site.locale_default') ? 'site-1' : 'site';
         return Page::getCacheByName($name);
     }
 
