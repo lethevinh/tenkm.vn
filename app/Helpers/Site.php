@@ -5,7 +5,8 @@ use App\Models\Page;
 if (!function_exists('resize')) {
     function resize($file, $width, $height)
     {
-        $filePath = public_path('storage/' . $file);
+        $path = strpos($file, url('/')) == 0 ? str_replace(url('') . '/', '', $file) : $file;
+        $filePath = public_path($path);
         if (file_exists($filePath)) {
             return route('image.single', [
                 'width' => $width,
