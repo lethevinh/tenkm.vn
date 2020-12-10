@@ -88,11 +88,12 @@ class ProductController extends Controller
     public function search(Request $request) {
         $query = $request->input('s');
         $title = __('site.result_search').$query;
+        $locale = session()->get('locale', config('site.locale_default'));
         app('seo')->setTitle($title);
         $products = (new Search())->registerModel(Product::class, 'title_lb')->perform($query);
         $products = $products->map(function ($product){
            return $product->searchable;
-        });
+        })->where('language_lb', $locale);
         $user = Auth::user();
         return view('archives.product', compact('products', 'query', 'title'));
     }
