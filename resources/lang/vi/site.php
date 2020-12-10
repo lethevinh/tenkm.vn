@@ -163,6 +163,8 @@ return [
     'form_subscribe' => 'Ký gửi nhà đất',
     'submit_now' => 'Đăng Ký nhận tin',
     'result_search' => 'Kết quả tìm kiếm của từ khoá: ',
+    'properties_for_rent' => 'Nhà cho thuê',
+    'properties_for_sell' => 'Nhà đất bán',
     'email' => 'Email',
     'subscribe' => 'Đăng Ký',
     'price_updating' => 'Giá đang cập nhật',

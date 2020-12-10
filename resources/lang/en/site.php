@@ -141,6 +141,8 @@ return [
     'form_subscribe' => 'Sell/Rent Out your homes',
     'submit_now' => 'Submit Now',
     'result_search' => 'Result Search: ',
+    'properties_for_rent' => 'Properties for rent',
+    'properties_for_sell' => 'Properties for sell',
     'email' => 'Email',
     'subscribe' => 'Subscribe',
     'price_updating' => 'Price Updating',

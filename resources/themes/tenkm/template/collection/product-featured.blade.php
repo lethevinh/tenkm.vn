@@ -1,7 +1,7 @@
 <div class="featured-area pd-top-90">
     <div class="container">
         <div class="section-title text-center">
-            <h2 class="title">{{__('site.featured_properties')}}</h2>
+            <h2 class="title">{{__('site.properties_for_rent')}}</h2>
         </div>
         <div class="row justify-content-center">
             @foreach($products as $product)
