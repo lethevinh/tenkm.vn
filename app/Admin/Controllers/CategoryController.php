@@ -85,7 +85,7 @@ class CategoryController extends AdminController
                         ->where('language_lb', $locale);
                 }
             });
-            $grid->disableBatchDelete();
+            //$grid->disableBatchDelete();
             $grid->showQuickEditButton();
             $grid->enableDialogCreate();
         });
