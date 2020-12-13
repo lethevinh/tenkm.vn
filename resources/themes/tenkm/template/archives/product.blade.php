@@ -22,7 +22,7 @@
                             <li><a href="{{route('home.show')}}"> {{ trans('site.home') }}</a></li>
                             <li><a href="{{route('product.index')}}">{{ trans('site.product') }}</a></li>
                             @if(isset($category))
-                                <li> {{$category->title_lb}}</li>
+                                @include('partials/breadcrumb-categories', ['categories' => $category->toTree()])
                             @elseif(isset($tag))
                                 <li>{{$tag->title_lb}}</li>
                             @elseif(isset($query))

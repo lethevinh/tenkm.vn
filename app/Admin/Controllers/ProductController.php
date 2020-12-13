@@ -93,9 +93,9 @@ class ProductController extends AdminController
                         ->where('language_lb', $locale);
                 }
             });
-            $grid->disableBatchDelete();
+            //$grid->disableBatchDelete();
             $grid->showQuickEditButton();
-            $grid->enableDialogCreate();
+            //$grid->enableDialogCreate();
         });
     }
 
@@ -147,13 +147,16 @@ class ProductController extends AdminController
         $form->disableViewButton();
         $form->tools([ToolViewLive::make(), ToolTranslatable::make()]);
         $id = str_replace(['/admin/products/', '/edit'], '', request()->getRequestUri());
-        $model = false;
+        $model = $form->getModel();
         if (!empty($id)) {
             $model = \App\Models\Product::find($id);
         }
-        $language = $model ? $model->language_lb : config('site.locale_default');
+        if (!$model){
+            $model = new \App\Models\Product();
+        }
+        $language = $model && $model->id ? $model->language_lb : config('site.locale_default');
         $form
-            ->tab(__('site.basic'), function (Form $form) use ($language){
+            ->tab(__('site.basic'), function (Form $form) use ($language, $model){
                 $form->text('property_id', __('site.property_id'));
                 $form->text('title_lb', __('admin.title'));
                 $form->datetimeRange('published_at', 'validated_at', __('site.public_time'));
@@ -165,10 +168,19 @@ class ProductController extends AdminController
                 });
                 $form->select('categories', __('site.category'))
                     ->options(function () use ($language) {
-                        return ProductCategory::lang($language)->get()->pluck('title_lb', 'id');
+                        return ProductCategory::selectOptions($language);
                     })
-                    ->customFormat(function ($v) {
+                    ->customFormat(function ($v) use ($model){
                         if (!$v) return '';
+                        if (count($v) == 1){
+                            return array_column($v, 'id')[0];
+                        }
+                       if ($model && $model->id){
+                           $categories = collect($model->categoryToTree());
+                           if ($categories->count() > 0) {
+                               return $categories->last()->id;
+                           }
+                       }
                         return array_column($v, 'id')[0];
                     });
                 $form->tags('tags', __('site.tag'))
@@ -261,6 +273,18 @@ class ProductController extends AdminController
         }
         $form->submitted(function (Form $form) {
             $form->ignore(['lng_lb']);
+            if ($form->input('categories')) {
+                $id = $form->input('categories');
+                $categories = [$id];
+                $category = ProductCategory::find($id);
+                if ($category) {
+                    $tree = $category->toTree();
+                    foreach ($tree as $item) {
+                        $categories[] = $item->id;
+                    }
+                }
+                $form->categories = $categories;
+            }
             if ($form->input('amenities')) {
                 $form->amenities = array_filter($form->input('amenities'), function ($value){
                     return !is_null($value) && $value !== '';

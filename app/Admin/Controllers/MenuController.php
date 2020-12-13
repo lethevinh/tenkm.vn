@@ -97,7 +97,7 @@ class MenuController extends AdminController
         $form->text('title_lb', trans('admin.title'))->required();
         $form->icon('media_lb', trans('admin.icon'))->help($this->iconHelp());
         $form->text('url_lb', trans('admin.uri'));
-        $form->text('slug_lb', trans('admin.slug'));
+        //$form->text('slug_lb', trans('admin.slug'));
 
         $form->display('created_at', trans('admin.created_at'));
         $form->display('updated_at', trans('admin.updated_at'));

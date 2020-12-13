@@ -160,7 +160,7 @@ class PostController extends AdminController
         if (!empty($id)) {
             $model = \App\Models\Product::find($id);
         }
-        $language = $model ? $model->language_lb : config('site.locale_default');
+        $language = $model && $model->id ? $model->language_lb : config('site.locale_default');
         $form->tab(__('admin.basic'), function (Form $form) use ($language){
             $form->text('title_lb', __('admin.title'));
             $form->hidden('language_lb')->default(config('site.locale_default'));

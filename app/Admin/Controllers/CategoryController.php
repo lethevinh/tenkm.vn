@@ -4,10 +4,9 @@ namespace App\Admin\Controllers;
 
 use App\Admin\Forms\ToolTranslatable;
 use App\Admin\Forms\ToolViewLive;
-use App\Admin\Repositories\Category;
-use App\Admin\Repositories\Post;
 use App\Admin\Repositories\PostCategory;
-use Dcat\Admin\Form;
+use App\Admin\Forms\Form;
+use App\Models\Category;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Controllers\AdminController;
 use Dcat\Admin\Layout\Content;
@@ -25,6 +24,16 @@ class CategoryController extends AdminController
         $type = request()->route('type', 'post');
         $class = "App\\Admin\\Repositories\\" . ucfirst($type) . "Category";
         $classRepository = PostCategory::class;
+        if (class_exists($class)) {
+            $classRepository = $class;
+        }
+        return $classRepository;
+    }
+    protected function getCategoryModelClassName(): string
+    {
+        $type = request()->route('type', 'post');
+        $class = "App\\Models\\" . ucfirst($type) . "Category";
+        $classRepository = Category::class;
         if (class_exists($class)) {
             $classRepository = $class;
         }
@@ -87,7 +96,7 @@ class CategoryController extends AdminController
             });
             //$grid->disableBatchDelete();
             $grid->showQuickEditButton();
-            $grid->enableDialogCreate();
+            //$grid->enableDialogCreate();
         });
 
     }
@@ -121,10 +130,18 @@ class CategoryController extends AdminController
         $classRepository =  $this->getCategoryRepositoryClassName();
 
         $type = request()->route('type', 'post');
+        $id = request()->route('id');
         $form = new Form(new $classRepository());
-
+        $classMode = $this->getCategoryModelClassName();
+        $model = $form->getModel();
+        if (!$model){
+            $model = new $classMode();
+        }
+        if ($id) {
+            $model = $model->find($id);
+        }
+        $language = $model && $model->id ? $model->language_lb : config('site.locale_default');
         $form->tools([ToolViewLive::make(), ToolTranslatable::make()]);
-
         $form->display('id', __('ID'));
         $form->text('title_lb', __('Title'));
         $form->hidden('language_lb')->default(config('site.locale_default'));
@@ -137,9 +154,8 @@ class CategoryController extends AdminController
         })->saving(function ($value) {
             return $value === 1 ? 'public' : 'private';
         });
-
         $form->select('parent_id', 'Parent')
-            ->options(\App\Models\Category::where('type_lb', $type)->get()->pluck('title_lb', 'id'));
+            ->options($model->selectOptions($language));
         return $form;
     }
 

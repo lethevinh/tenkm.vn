@@ -14,7 +14,7 @@
                             <li><a href="{{route('home.show')}}">{{ trans('site.home') }}</a></li>
                             <li><a href="{{route('product.index')}}">{{ trans('site.product') }}</a></li>
                             @if($product->categories->count() > 0 )
-                                <li><a href="{{$product->categories[0]->link}}">{{ $product->categories[0]->title_lb }}</a></li>
+                                @include('partials/breadcrumb-categories', ['categories' => $product->categoryToTree()])
                             @endif
                             <li class="active">{{$product->title_lb}}</li>
                         </ul>

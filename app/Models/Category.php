@@ -22,7 +22,7 @@ class Category extends Model
         Sluggable::replicate as replicateSlug;
     }
 
-    protected $fillable = ['title_lb', 'parent_id',  'language_lb', 'translation_id',];
+    protected $fillable = ['title_lb', 'parent_id', 'language_lb', 'translation_id',];
 
     protected $table = 'categories';
 
@@ -38,6 +38,25 @@ class Category extends Model
         });
     }
 
+    public static function selectOptions($locale, $rootText = ' '): array
+    {
+        $nodes = self::lang($locale)->get()->toTree();
+        $data = [];
+        $traverse = function ($categories, &$data, $prefix = '-') use (&$traverse) {
+            foreach ($categories as $category) {
+                $data[$category->id] = $prefix . ' ' . $category->title_lb;
+                $traverse($category->children, $data, $prefix . $prefix);
+            }
+        };
+        $traverse($nodes, $data);
+        return $data;
+    }
+
+    /**
+     * @param $query
+     * @param $type
+     * @return mixed
+     */
     public function scopeOfType($query, $type)
     {
         return $query->where('type_lb', $type);
@@ -49,7 +68,7 @@ class Category extends Model
      *
      * @return array
      */
-    public function sluggable():array
+    public function sluggable(): array
     {
         return [
             'slug_lb' => [
@@ -57,7 +76,6 @@ class Category extends Model
             ]
         ];
     }
-
 
     public function replicate(array $except = null)
     {
@@ -67,9 +85,21 @@ class Category extends Model
         return $instance;
     }
 
-    public function categorizables($class)
+    public function categorizables($class): \Illuminate\Database\Eloquent\Relations\MorphToMany
     {
         return $this->morphedByMany($class, 'categorizable', 'categorizable', 'category_id');
+    }
+
+    public function toTree(): array
+    {
+        if (!$this->parent) {
+            return [$this];
+        }
+        $parent = $this->parent;
+        if (!$parent->parent){
+            return [$parent, $this];
+        }
+        return [$parent->parent, $parent, $this];
     }
 
     public function getRelationValue($key)
@@ -88,29 +118,31 @@ class Category extends Model
         }
         return parent::getRelationValue($key);
     }
-    public function __call($method, $arguments)
+
+    public function __call($method, $parameters)
     {
         if (class_exists($method)) {
             $class = class_basename($method);
             return $this->categorizables($class);
         }
-        $keyModel= static::getModelKey('Category', 'post');
-        if ($method == Str::plural($keyModel) && !method_exists($this, $method )) {
+        $keyModel = static::getModelKey('Category', 'post');
+        if ($method == Str::plural($keyModel) && !method_exists($this, $method)) {
             $classModel = "App\\Models\\" . ucfirst($keyModel);
             if (class_exists($classModel)) {
-                return $this->morphedByMany($classModel ,'categorizable', 'categorizable', 'category_id', 'categorizable_id')
+                return $this->morphedByMany($classModel, 'categorizable', 'categorizable', 'category_id', 'categorizable_id')
                     ->withTimestamps();
             }
         }
-        return parent::__call($method, $arguments);
+        return parent::__call($method, $parameters);
     }
 
     /**
      * @return string
      */
-    public function getLinkAttribute(){
+    public function getLinkAttribute(): string
+    {
         $keyModel = static::getModelKey('Category', 'post');
-        return route($keyModel.'.category', ['category' => $this]);
+        return route($keyModel . '.category', ['category' => $this]);
     }
 
     protected static function booted()
@@ -125,11 +157,13 @@ class Category extends Model
             });
         }
     }
+
     /**
      * @return Application|UrlGenerator|string
      */
-    public function getEditAttribute() {
+    public function getEditAttribute()
+    {
         $keyModel = static::getModelKey('Category');
-        return url('admin/categories/'.$keyModel.'/'.$this->id.'/edit');
+        return url('admin/categories/' . $keyModel . '/' . $this->id . '/edit');
     }
 }

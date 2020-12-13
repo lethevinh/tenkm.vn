@@ -165,4 +165,16 @@ class Product extends Model implements Searchable
         return number_format($price, 0) . ' ' . config('site.symbols.' . $locale, '₫');
     }
 
+    public function categoryToTree(): array
+    {
+        $categories = [];
+        $traverse = function ($categories, &$data) use (&$traverse) {
+            foreach ($categories as $category) {
+                $data[] =  $category;
+                $traverse($category->children, $data);
+            }
+        };
+        $traverse($this->categories->toTree(), $categories);
+        return $categories;
+    }
 }

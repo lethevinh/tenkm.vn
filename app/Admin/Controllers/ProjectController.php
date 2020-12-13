@@ -151,7 +151,7 @@ class ProjectController extends AdminController
         if (!empty($id)) {
             $model = \App\Models\Project::find($id);
         }
-        $language = $model ? $model->language_lb : config('site.locale_default');
+        $language = $model && $model->id ? $model->language_lb : config('site.locale_default');
         $form
             ->tab(__('site.basic'), function (Form $form) use ($language){
                 $form->text('title_lb', __('admin.title'));

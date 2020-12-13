@@ -25,13 +25,19 @@ trait Translatable
 
     public static function bootTranslatable() {
         static::created(function (Model $model) {
-            if (empty($model->language_lb) || $model->language_lb == config('site.locale_default')) {
-                $translate = $model->replicate()->fill([
-                    'language_lb' => 'en',
-                    'translation_id' => $model->id
-                ]);
-                if ($translate->save()){
-                    $model->update(['translation_id' => $translate->id]);
+            $defaultLocale = config('site.locale_default');
+            if (empty($model->language_lb) || $model->language_lb == $defaultLocale) {
+                $locales = config('site.locales');
+                foreach ($locales as $locale) {
+                    if ($locale != $defaultLocale) {
+                        $translate = $model->replicate()->fill([
+                            'language_lb' => $locale,
+                            'translation_id' => $model->id
+                        ]);
+                        if ($translate->save()) {
+                            $model->update(['translation_id' => $translate->id]);
+                        }
+                    }
                 }
             }
         });
