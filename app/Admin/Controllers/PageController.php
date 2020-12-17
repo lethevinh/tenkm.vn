@@ -42,6 +42,10 @@ class PageController extends AdminController
                 $actions->prepend('<a target="_blank" href="' . $link . '"><i class="feather icon-eye"></i>' . __('site.view_post') . '</a>');
             });
             $grid->title_lb(__('admin.title'));
+            $grid->column('slug_lb', __('site.link'))
+                ->display(function ($slug) {
+                    return route('page.show', ['slug' => $slug]);
+                })->copyable();
             $grid->status_sl(__('admin.status'))
                 ->display(function ($value) {
                     return $value === 'public' ? 1 : 0;

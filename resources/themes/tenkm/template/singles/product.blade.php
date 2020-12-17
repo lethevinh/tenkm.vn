@@ -11,8 +11,8 @@
                     <div class="breadcrumb-inner">
                         <h1 class="page-title">{{$product->title_lb}}</h1>
                         <ul class="page-list">
-                            <li><a href="{{route('home.show')}}">{{ trans('site.home') }}</a></li>
-                            <li><a href="{{route('product.index')}}">{{ trans('site.product') }}</a></li>
+                            <li><a href="{{route('home.show')}}">{{ tran('site.home') }}</a></li>
+                            <li><a href="{{route('product.index')}}">{{ tran('site.product') }}</a></li>
                             @if($product->categories->count() > 0 )
                                 @include('partials/breadcrumb-categories', ['categories' => $product->categoryToTree()])
                             @endif
@@ -61,32 +61,32 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{__('site.bedroom')}}</h5>
+                                    <h5>{{tran('site.bedroom')}}</h5>
                                     <p><i class="fa fa-bed"></i>{{$product->bedroom_nb}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{trans('site.bathroom')}}</h5>
+                                    <h5>{{tran('site.bathroom')}}</h5>
                                     <p><i class="fa fa-bath"></i>{{$product->bathroom_nb}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{trans('site.area')}}</h5>
+                                    <h5>{{tran('site.area')}}</h5>
                                     <p><img src="/images//icons/7.png" alt="img">{{$product->area_nb}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{trans('site.parking')}}</h5>
+                                    <h5>{{tran('site.parking')}}</h5>
                                     <p><i class="fa fa-car"></i>{{$product->parking_nb}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>-->
                     <div class="property-news-single-card border-bottom-yellow pb-3">
-                        <h4>{{trans('site.basic_info')}}</h4>
+                        <h4>{{tran('site.basic_info')}}</h4>
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-floor-list media">
@@ -94,7 +94,7 @@
                                         <i class="fa fa-key" aria-hidden="true"></i>
                                     </div>
                                     <div class="media-body">
-                                        <h6>{{trans('site.property_id')}}</h6>
+                                        <h6>{{tran('site.property_id')}}</h6>
                                         <p>{{$product->property_id}}</p>
                                     </div>
                                 </div>
@@ -105,7 +105,7 @@
                                         <i class="fa fa-tags" aria-hidden="true"></i>
                                     </div>
                                     <div class="media-body">
-                                        <h6>{{trans('site.property_type')}}</h6>
+                                        <h6>{{tran('site.property_type')}}</h6>
                                         <p>{{$product->propertyTypeLabel}}</p>
                                     </div>
                                 </div>
@@ -116,7 +116,7 @@
                                         <i class="fa fa-cubes" aria-hidden="true"></i>
                                     </div>
                                     <div class="media-body">
-                                        <h6>{{trans('site.furnishing_status')}}</h6>
+                                        <h6>{{tran('site.furnishing_status')}}</h6>
                                         <p>{{$product->furnishingStatusLabel}}</p>
                                     </div>
                                 </div>
@@ -127,7 +127,7 @@
                                         <i class="fa fa-bed"></i>
                                     </div>
                                     <div class="media-body">
-                                        <h6>{{trans('site.living_room')}}</h6>
+                                        <h6>{{tran('site.living_room')}}</h6>
                                         <p>{{$product->living_room_lb}}</p>
                                     </div>
                                 </div>
@@ -138,7 +138,7 @@
                                         <i class="fa fa-car"></i>
                                     </div>
                                     <div class="media-body">
-                                        <h6>{{trans('site.garage')}}</h6>
+                                        <h6>{{tran('site.garage')}}</h6>
                                         <p>{{$product->garage_lb}}</p>
                                     </div>
                                 </div>
@@ -149,7 +149,7 @@
                                         <img src="/images//icons/7.png" alt="img">
                                     </div>
                                     <div class="media-body">
-                                        <h6>{{trans('site.dining_area')}}</h6>
+                                        <h6>{{tran('site.dining_area')}}</h6>
                                         <p>{{$product->dining_area}}</p>
                                     </div>
                                 </div>
@@ -160,7 +160,7 @@
                                         <i class="fa fa-bed"></i>
                                     </div>
                                     <div class="media-body">
-                                        <h6>{{trans('site.bedroom')}}</h6>
+                                        <h6>{{tran('site.bedroom')}}</h6>
                                         <p>{{$product->bedroom_nb}}</p>
                                     </div>
                                 </div>
@@ -171,7 +171,7 @@
                                         <i class="fa fa-bath"></i>
                                     </div>
                                     <div class="media-body">
-                                        <h6>{{trans('site.bathroom')}}</h6>
+                                        <h6>{{tran('site.bathroom')}}</h6>
                                         <p>{{$product->bathroom_nb}}</p>
                                     </div>
                                 </div>
@@ -179,11 +179,11 @@
                         </div>
                     </div>
                     <div class="property-news-single-card style-two border-bottom-yellow">
-                        <h4>{{trans('site.content_detail')}}</h4>
+                        <h4>{{tran('site.content_detail')}}</h4>
                         <p>{!! $product->content_lb !!}</p>
                     </div>
                     <div class="property-news-single-card border-bottom-yellow">
-                        <h4>{{trans('site.amenities')}}</h4>
+                        <h4>{{tran('site.amenities')}}</h4>
                         @if($product->amenities->count() > 0)
                             @php $div = ceil($product->amenities->count() / 3);  $amenities = array_chunk($product->amenities->toArray(), $div); @endphp
                             <div class="row">
@@ -200,13 +200,13 @@
                         @endif
                     </div>
                     <div class="property-news-single-card style-two border-bottom-yellow">
-                        <h4>{{__('site.location_map')}}</h4>
+                        <h4>{{tran('site.location_map')}}</h4>
                         @if($product->address)
                             @include('partials.google', ['address' => $product->address])
                         @endif
                     </div>
                     <div class="property-news-single-card border-bottom-yellow">
-                        <h4>{{trans('site.video')}}</h4>
+                        <h4>{{tran('site.video')}}</h4>
                         <div class="thumb video-responsive">
                             @if($product->youtube)
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/{{$product->youtube}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -222,7 +222,7 @@
                         </div>
                     </div>
                     <div class="property-news-single-card border-bottom-yellow">
-                        <h4>{{trans('site.floor_plan')}}</h4>
+                        <h4>{{tran('site.floor_plan')}}</h4>
                         <div class="thumb">
                             <img src="{{$product->floorplan_lb}}" alt="{{$product->title_lb}}">
                         </div>

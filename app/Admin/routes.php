@@ -29,6 +29,7 @@ Route::group([
     $router->resource('events', 'EventController');
     $router->resource('menus', 'MenuController');
     $router->resource('amenities', 'AmenityController');
+    $router->resource('languages', 'LangController');
     $router->get('site/setting/{id}', 'PageController@getSetting')->name('site.setting');
     $router->put('site/setting/{id}', 'PageController@putSetting');
     $router->resource('contacts', 'ContactController');

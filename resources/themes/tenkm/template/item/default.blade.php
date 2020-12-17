@@ -7,7 +7,7 @@
         <p>{{Str::of($post->description_lb)->limit(200, ' (...)')}}</p>
         <div class="author">
             <img class="rounded-circle" src="{{url('storage/'.$post->creator->avatar)}}" alt="{{$post->title_lb}}">
-            <span>{{__('site.by')}} {{$post->creator->name}}</span>
+            <span>{{tran('site.by')}} {{$post->creator->name}}</span>
             <span class="date">{{$post->created_at->diffForHumans()}}</span>
         </div>
     </div>

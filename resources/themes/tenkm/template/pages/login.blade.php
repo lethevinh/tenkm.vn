@@ -16,7 +16,7 @@
 
                         <!-- Breadcrumbs -->
                         <ol class="breadcrumb">
-                            <li><a href="{{route('home.show')}}">{{ __('site.home') }}</a></li>
+                            <li><a href="{{route('home.show')}}">{{ tran('site.home') }}</a></li>
                             <li class="active">Contact</li>
                         </ol>
 
@@ -33,7 +33,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Login') }}</div>
+                    <div class="card-header">{{ tran('Login') }}</div>
 
                     <div class="card-body">
 

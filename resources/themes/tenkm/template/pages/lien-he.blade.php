@@ -16,7 +16,7 @@
 
                         <!-- Breadcrumbs -->
                         <ol class="breadcrumb">
-                            <li><a href="{{route('home.show')}}">{{ __('site.home') }}</a></li>
+                            <li><a href="{{route('home.show')}}">{{ tran('site.home') }}</a></li>
                             <li class="active">Contact</li>
                         </ol>
 

@@ -28,10 +28,10 @@
                         <i class="ion-android-star rating-star" aria-hidden="true"></i>
                         <i class="ion-android-star rating-star" aria-hidden="true"></i>
                     </li>
-                    <li>{{__('site.course.price')}}: <span> {{$course->price}}</span></li>
-                    <li>{{__('site.teacher')}}: <span> {{$course->firstTeacher()->name?? ''}}</span></li>
+                    <li>{{tran('site.course.price')}}: <span> {{$course->price}}</span></li>
+                    <li>{{tran('site.teacher')}}: <span> {{$course->firstTeacher()->name?? ''}}</span></li>
                 </ul> <!-- / .course__info -->
-                <a href="{{$course->link}}" class="btn btn-primary text-center">{{__('site.read_more')}}</a>
+                <a href="{{$course->link}}" class="btn btn-primary text-center">{{tran('site.read_more')}}</a>
             </div> <!-- / .card_back__wrapper -->
         </div> <!-- / .card__back -->
     </div> <!-- / .courses__item -->

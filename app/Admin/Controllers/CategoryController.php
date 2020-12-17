@@ -59,9 +59,17 @@ class CategoryController extends AdminController
         $widths[] = $relations;
         $classRepository =  $this->getCategoryRepositoryClassName();
         return Grid::make(new $classRepository($widths), function (Grid $grid) use ($relations) {
+            $grid->actions(function (Grid\Displayers\Actions $actions) {
+                $actions->disableView();
+                $link = route('product.category', ['category' => $actions->row['slug_lb']]);
+                $actions->append('<a target="_blank" href="' . $link . '"><i class="feather icon-eye"></i>' . __('site.view_post') . '</a>');
+            });
             $grid->model()->orderByDesc('updated_at');
-            $grid->column('id', __('admin.id'))->sortable();
             $grid->column('title_lb', __('admin.title'))->sortable();
+            $grid->column('slug_lb', __('site.link'))
+                ->display(function ($slug) {
+                    return route('product.category', ['category' => $slug]);
+                })->copyable();
             if ($relations !== '') {
                 $grid->{$relations}->count()->label();
             }
@@ -71,9 +79,6 @@ class CategoryController extends AdminController
                 })
                 ->switch();
             $grid->language_lb(__('site.lang'))->label();
-            $grid->created_at(__('admin.created_at'))->display(function ($at) {
-                return Carbon::make($at)->diffForHumans();
-            });
             $grid->updated_at(__('admin.updated_at'))->sortable()->display(function ($at) {
                 return Carbon::make($at)->diffForHumans();
             });
@@ -144,6 +149,7 @@ class CategoryController extends AdminController
         $form->tools([ToolViewLive::make(), ToolTranslatable::make()]);
         $form->display('id', __('ID'));
         $form->text('title_lb', __('Title'));
+        $form->text('slug_lb', __('Slug'));
         $form->hidden('language_lb')->default(config('site.locale_default'));
         $form->textarea('description_lb', __('Description'));
         $form->editor('content_lb', __('Content'));

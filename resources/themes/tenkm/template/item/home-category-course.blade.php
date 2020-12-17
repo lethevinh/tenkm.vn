@@ -27,7 +27,7 @@
                     </li>
                 </ul> <!-- / .course__info -->
                 <a href="{{$category->link}}" class="btn btn-primary text-center">
-                    {{__('site.read_more')}}
+                    {{tran('site.read_more')}}
                 </a>
             </div> <!-- / .card_back__wrapper -->
         </div> <!-- / .card__back -->

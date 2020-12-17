@@ -16,7 +16,7 @@
 
                     <!-- Breadcrumbs -->
                     <ol class="breadcrumb">
-                        <li><a href="{{route('home.show')}}">{{ __('site.home') }}</a></li>
+                        <li><a href="{{route('home.show')}}">{{ tran('site.home') }}</a></li>
                         <li class="active">Thông tin học viên</li>
                     </ol>
 
@@ -80,17 +80,17 @@
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item active">
                         <a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" aria-expanded="true">
-                            {{__('site.info')}}
+                            {{tran('site.info')}}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="password-tab" data-toggle="tab" href="#password_tab" role="tab" aria-controls="password" aria-selected="false">
-                            {{__('site.password')}}
+                            {{tran('site.password')}}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">
-                            {{__('site.social')}}
+                            {{tran('site.social')}}
                         </a>
                     </li>
                 </ul>
@@ -128,7 +128,7 @@
                                     <input type="text" class="form-control" id="inputAddress" name="address" placeholder="Address" value="{{$user->address}}">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">{{__('site.change')}} {{__('site.info')}}</button>
+                            <button type="submit" class="btn btn-primary">{{tran('site.change')}} {{tran('site.info')}}</button>
                         </form>
                     </div>
                     <div class="tab-pane fade" id="password_tab" role="tabpanel" aria-labelledby="password-tab">
@@ -152,7 +152,7 @@
                                     <input type="password" class="form-control" required name="new_confirm_password" id="inputAPassword" placeholder="*****">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">{{__('site.change')}} {{__('site.password')}}</button>
+                            <button type="submit" class="btn btn-primary">{{tran('site.change')}} {{tran('site.password')}}</button>
                         </form>
                     </div>
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
@@ -188,7 +188,7 @@
                                     <input type="text" name="website" class="form-control form-control-plaintext" id="static_youtube" value="{{$user->website}}">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">{{__('site.change')}} {{__('site.social')}}</button>
+                            <button type="submit" class="btn btn-primary">{{tran('site.change')}} {{tran('site.social')}}</button>
                         </form>
                     </div>
                 </div>

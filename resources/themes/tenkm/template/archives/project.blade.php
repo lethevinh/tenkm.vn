@@ -1,5 +1,5 @@
 @extends('layouts.full')
-@section('title', __('site.project'))
+@section('title', tran('site.project'))
 @section('id_body', 'courses__page')
 @section('content')
 
@@ -15,12 +15,12 @@
                             @elseif(isset($tag))
                                 {{$tag->title_lb}}
                             @else
-                                {{trans('site.project')}}
+                                {{tran('site.project')}}
                             @endif
                         </h1>
                         <ul class="page-list">
-                            <li><a href="{{route('home.show')}}"> {{ trans('site.home') }}</a></li>
-                            <li><a href="{{route('project.index')}}">{{ trans('site.project') }}</a></li>
+                            <li><a href="{{route('home.show')}}"> {{ tran('site.home') }}</a></li>
+                            <li><a href="{{route('project.index')}}">{{ tran('site.project') }}</a></li>
                             @if(isset($category))
                                 <li> {{$category->title_lb}}</li>
                             @elseif(isset($tag))

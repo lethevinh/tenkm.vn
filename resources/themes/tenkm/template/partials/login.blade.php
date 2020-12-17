@@ -56,7 +56,7 @@
                                 <div class="checkbox">
                                     <label>
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                        {{ __('admin.remember_me') }}
+                                        {{ tran('admin.remember_me') }}
                                     </label>
                                 </div>
                                 <button class="btn btn-accent btn-block btn-login">Gửi</button>

@@ -46,6 +46,19 @@ if (!function_exists('option')) {
         return !empty($option['value_lb'])?$option['value_lb']:$default;
     }
 }
+
+if (!function_exists('tran')) {
+    function tran($key = null, $default = '')
+    {
+        $key = str_replace("'", "", $key);
+        $locale = session()->get('locale', config('site.locale_default'));
+        $langs = \App\Models\Lang::getCache('site-langs');
+        if ($langs->count() > 0 && $lang = $langs->where('key_lb', $key)->where('language_lb', $locale)->first()) {
+            return $lang->value_lb;
+        }
+        return __($key);
+    }
+}
 if (!function_exists('current_theme')) {
 
     function current_theme() {

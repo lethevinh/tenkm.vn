@@ -16,7 +16,7 @@
 
                         <!-- Breadcrumbs -->
                         <ol class="breadcrumb">
-                            <li><a href="{{route('home.show')}}">{{ __('site.home') }}</a></li>
+                            <li><a href="{{route('home.show')}}">{{ tran('site.home') }}</a></li>
                             @if($post->categories->count() > 0)
                                 <li><a href="{{$post->categories[0]->link}}">{{ $post->categories[0]->title_lb }}</a></li>
                             @endif
@@ -77,7 +77,7 @@
                             Đăng bởi: <a href="#">{{$post->creator->name}}</a>
                         </div>
                         <ul class="blog_item__share">
-                            <li class="social-icons__item">{{__('site.share')}}:</li>
+                            <li class="social-icons__item">{{tran('site.share')}}:</li>
                             <li class="social-icons__item">
                                 <a href="https://twitter.com/intent/tweet?text={{$post->title_lb}}&url={{$post->title_lb}}">
                                     <i class="icon ion-social-twitter" aria-hidden="true"></i>

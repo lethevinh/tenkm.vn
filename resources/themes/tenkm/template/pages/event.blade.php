@@ -1,5 +1,5 @@
 @extends('layouts.full')
-@section('title', __('site.event'))
+@section('title', tran('site.event'))
 @section('id_body', 'events__page')
 @section('content')
     <!-- section home -->
@@ -143,7 +143,7 @@
                                     <h3>Giá vé: <span> {{number_format($event->price_fl, 0)}} VND</span></h3>
                                 </div>
                                 <div class="timeline-link">
-                                    <a href="{{$event->link}}"> {{__('site.read_more')}}
+                                    <a href="{{$event->link}}"> {{tran('site.read_more')}}
                                         <i class="ion-android-arrow-forward" aria-hidden="true"></i>
                                     </a>
                                 </div>

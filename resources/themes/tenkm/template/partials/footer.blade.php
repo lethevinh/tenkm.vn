@@ -9,8 +9,8 @@
                     <h2 style="color: black">{{option('subscribe_title')}}</h2>
                     <p>{{option('subscribe_description')}}</p>
                     <div class="rld-single-input">
-                        <input type="text" placeholder="{{__('site.email')}}">
-                        <button class="btn">{{__('site.submit_now')}}</button>
+                        <input type="text" placeholder="{{tran('site.email')}}">
+                        <button class="btn">{{tran('site.submit_now')}}</button>
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-sm-8">
                     <div class="footer-social text-sm-right">
-                        <span>{{trans('site.follow_us')}}</span>
+                        <span>{{tran('site.follow_us')}}</span>
                         <ul class="social-icon">
                             <li>
                                 <a href="{{option('facebook')}}" target="_blank"><i class="fa fa-facebook  "></i></a>
@@ -62,7 +62,7 @@
                     <form class="widget widget-subscribe" action="{{route('home.doSubscribe')}}" method="POST">
                         @csrf
                         <div class="rld-single-input">
-                            <input placeholder="{{__('site.form_name')}}" value="{{old('name')}}" type="text"
+                            <input placeholder="{{tran('site.form_name')}}" value="{{old('name')}}" type="text"
                                    class="form-control {{ $errors->has('name') ? 'error' : '' }}" name="name" id="name">
                             <!-- Error -->
                             @if ($errors->has('name'))
@@ -72,7 +72,7 @@
                             @endif
                         </div>
                         <div class="rld-single-input">
-                            <input placeholder="{{__('site.form_phone')}}" value="{{old('email')}}"
+                            <input placeholder="{{tran('site.form_phone')}}" value="{{old('email')}}"
                                    class="form-control {{ $errors->has('email') ? 'error' : '' }}" name="email"
                                    id="email">
 
@@ -82,7 +82,7 @@
                                 </div>
                             @endif
                         </div>
-                        <button class="btn btn-yellow w-100">{{__('site.form_subscribe')}}</button>
+                        <button class="btn btn-yellow w-100">{{tran('site.form_subscribe')}}</button>
                     </form>
                 </div>
             </div>

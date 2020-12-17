@@ -41,3 +41,39 @@ Artisan::command('lang:js {locale=vi}', function ($locale) {
     $filePublicPath = 'public/lang/'.$locale.'.json';
     file_put_contents(base_path($filePublicPath), stripslashes($langContent));
 })->describe('Make lang to json');
+
+Artisan::command('lang:db {locale=vi}', function ($locale) {
+    $folderPath = resource_path('/lang/' . $locale . '/');
+    if (!File::exists($folderPath)) {
+        return false;
+    }
+    $filesInFolder = File::files($folderPath);
+    $lang = [];
+    foreach($filesInFolder as $path) {
+        $file = pathinfo($path);
+        $filePath = $file['dirname'] . '/' . $file['basename'];
+        if (!is_readable($filePath)) {
+            continue;
+        }
+        $lang[$file['filename']] =  require($filePath);
+    }
+    foreach ($lang['site'] as $key => $lang) {
+        if (is_string($lang)){
+            \App\Models\Lang::updateOrCreate([
+                'key_lb' => 'site.' . $key,
+                'language_lb' => $locale,
+            ], [
+                'value_lb' => $lang,
+            ]);
+        }else{
+            foreach ($lang as $skey => $slang) {
+                \App\Models\Lang::updateOrCreate([
+                    'key_lb' => 'site.' .$skey.'.'. $key,
+                    'language_lb' => $locale,
+                ], [
+                    'value_lb' => $slang,
+                ]);
+            }
+        }
+    }
+})->describe('Make lang to db');

@@ -15,8 +15,8 @@
                         </h1>
                         <!-- Breadcrumbs -->
                         <ol class="breadcrumb">
-                            <li><a href="{{route('home.show')}}">{{ __('site.home') }}</a></li>
-                            <li><a href="{{route('event.index')}}">{{ __('site.event') }}</a></li>
+                            <li><a href="{{route('home.show')}}">{{ tran('site.home') }}</a></li>
+                            <li><a href="{{route('event.index')}}">{{ tran('site.event') }}</a></li>
                             <li class="active">Event {{$event->title_lb}}</li>
                         </ol>
                     </div> <!-- / .home__content -->

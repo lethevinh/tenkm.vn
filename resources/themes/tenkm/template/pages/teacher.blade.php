@@ -1,5 +1,5 @@
 @extends('layouts.full')
-@section('title', __('site.teacher'))
+@section('title', tran('site.teacher'))
 @section('id_body', 'teachers__page')
 @section('content')
     <!-- section home -->
@@ -16,8 +16,8 @@
 
                         <!-- Breadcrumbs -->
                         <ol class="breadcrumb">
-                            <li><a href="{{route('home.show')}}">{{ __('site.home') }}</a></li>
-                            <li class="active">{{__('site.teacher')}} Tenkm</li>
+                            <li><a href="{{route('home.show')}}">{{ tran('site.home') }}</a></li>
+                            <li class="active">{{tran('site.teacher')}} Tenkm</li>
                         </ol>
 
                     </div> <!-- / .home__content -->

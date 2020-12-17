@@ -1,5 +1,5 @@
 @extends('layouts.full')
-@section('title', __('site.blog'))
+@section('title', tran('site.blog'))
 @section('id_body', 'blog-grid__page')
 @section('content')
 
@@ -15,18 +15,18 @@
                             @elseif(isset($tag))
                                 {{$tag->title_lb}}
                             @else
-                                {{__('site.blog')}}
+                                {{tran('site.blog')}}
                             @endif
                         </h1>
                         <ul class="page-list">
-                            <li><a href="{{route('home.show')}}"> {{ __('site.home') }}</a></li>
+                            <li><a href="{{route('home.show')}}"> {{ tran('site.home') }}</a></li>
                             <li>
                                 @if(isset($category))
                                     {{$category->title_lb}}
                                 @elseif(isset($tag))
                                     {{$tag->title_lb}}
                                 @else
-                                    {{__('site.blog')}}
+                                    {{tran('site.blog')}}
                                 @endif
                             </li>
                         </ul>
@@ -48,7 +48,7 @@
                     <input type="text" name="s" placeholder="Search">
                     <button><i class="fa fa-search"></i></button>
                 </form>
-                <h6 class="mb-3 popular-post-title">{{__('site.popular_post')}}</h6>
+                <h6 class="mb-3 popular-post-title">{{tran('site.popular_post')}}</h6>
                 <div class="popular-post-slider">
                     {!! do_shortcode('[posts template="post-popular" limit="8"]') !!}
                 </div>

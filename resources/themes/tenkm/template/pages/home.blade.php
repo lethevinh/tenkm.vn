@@ -16,8 +16,8 @@
                             <div class="rld-banner-search">
                                 <div class="rld-single-input left-icon">
                                     <form action="{{route('product.search')}}">
-                                        <input type="text" name="s"  placeholder="{{__('site.find_property')}}">
-                                        <button type="submit" class="btn">{{__('site.search_now')}}</button>
+                                        <input type="text" name="s"  placeholder="{{tran('site.find_property')}}">
+                                        <button type="submit" class="btn">{{tran('site.search_now')}}</button>
                                     </form>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
     <div class="team-area pd-top-70">
         <div class="container">
             <div class="section-title text-center">
-                <h2 class="title">{{__('site.our_team')}}</h2>
+                <h2 class="title">{{tran('site.our_team')}}</h2>
             </div>
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
@@ -171,7 +171,7 @@
     <div class="client-area pd-top-60">
         <div class="container">
             <div class="section-title text-center">
-                <h2 class="title">{{__('site.what_our_customers_are_saying')}}</h2>
+                <h2 class="title">{{tran('site.what_our_customers_are_saying')}}</h2>
             </div>
             <div class="client-review-img">
                 <img class="clr-img clr-img1" src="/images/client/5.png" alt="client">
@@ -242,7 +242,7 @@
     <div class="client-area pd-top-92 pd-bottom-100">
         <div class="container">
             <div class="section-title text-center">
-                <h2 class="title">{{__('site.our_partner')}}</h2>
+                <h2 class="title">{{tran('site.our_partner')}}</h2>
             </div>
             <div class="client-slider">
                 <div class="item">

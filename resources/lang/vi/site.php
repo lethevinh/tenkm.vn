@@ -34,17 +34,6 @@ return [
     'learning' => 'Đang học',
     'passed' => 'Đã học xong',
     'locked' => 'Đang bị khoá',
-	'course' => [
-		'index' => 'Khóa học',
-		'description' => 'Giới thiệu khoá học',
-		'content' => 'Nội dung khoá học',
-		'requirement' => 'yêu cầu khoá học',
-		'price' => 'học phí',
-		'category' => 'Danh mục khoá học',
-		'free' => 'Miễn Phí',
-		'read_more' => 'Xem Khoá học',
-        'not_finished' => 'Bài học hiện tại bạn chưa hoàn thành.'
-	],
     'main'                  => 'Main',
     'published_at'          => 'Ngày Bắt đầu',
     'validated_at'          => 'Ngày Kết Thúc',

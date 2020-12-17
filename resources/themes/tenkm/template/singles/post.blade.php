@@ -32,7 +32,7 @@
                     <div class="col-sm-6 mb-4 mg-sm-0">
                         <div class="author">
                             <img src="{{url('storage/'.$post->creator->avatar)}}" alt="news">
-                            <p>{{__('site.by')}} {{$post->creator->name}}</p>
+                            <p>{{tran('site.by')}} {{$post->creator->name}}</p>
                             <p>{{$post->created_at->format('H:i d/m/Y')}}</p>
                         </div>
                     </div>

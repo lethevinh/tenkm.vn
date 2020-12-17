@@ -11,8 +11,8 @@
                     <div class="breadcrumb-inner">
                         <h1 class="page-title">{{$project->title_lb}}</h1>
                         <ul class="page-list">
-                            <li><a href="{{route('home.show')}}">{{ trans('site.home') }}</a></li>
-                            <li><a href="{{route('project.index')}}">{{ trans('site.project') }}</a></li>
+                            <li><a href="{{route('home.show')}}">{{ tran('site.home') }}</a></li>
+                            <li><a href="{{route('project.index')}}">{{ tran('site.project') }}</a></li>
                             @if($project->categories->count() > 0 )
                                 <li><a href="{{$project->categories[0]->link}}">{{ $project->categories[0]->title_lb }}</a></li>
                             @endif
@@ -62,25 +62,25 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{trans('site.sales_status')}}</h5>
-                                    <p><i class="fa fa-industry"></i>{{trans('site.sales_status_'.$project->sale_status_sl)}}</p>
+                                    <h5>{{tran('site.sales_status')}}</h5>
+                                    <p><i class="fa fa-industry"></i>{{tran('site.sales_status_'.$project->sale_status_sl)}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{trans('site.apartment_type')}}</h5>
+                                    <h5>{{tran('site.apartment_type')}}</h5>
                                     <p><i class="fa fa-home"></i>{{$project->apartment_type}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{trans('site.delivery_time')}}</h5>
+                                    <h5>{{tran('site.delivery_time')}}</h5>
                                     <p><i class="fa fa-handshake-o"></i>{{date('d/m/Y', strtotime($project->delivery_time))}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{trans('site.total_square')}}</h5>
+                                    <h5>{{tran('site.total_square')}}</h5>
                                     <p><img src="/images/icons/7.png" alt="img"> {{$project->total_area_nb}} &#13217;</p>
                                 </div>
                             </div>
@@ -89,25 +89,25 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{trans('site.blocks')}}</h5>
+                                    <h5>{{tran('site.blocks')}}</h5>
                                     <p><i class="fa fa-building"></i>{{$project->block_nb}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{trans('site.floors')}}</h5>
+                                    <h5>{{tran('site.floors')}}</h5>
                                     <p><i class="fa fa-building"></i>{{$project->floor_nb}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{trans('site.shophouse')}}</h5>
+                                    <h5>{{tran('site.shophouse')}}</h5>
                                     <p><i class="fa fa-home"></i>{{$project->shop_nb}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{trans('site.apartments')}}</h5>
+                                    <h5>{{tran('site.apartments')}}</h5>
                                     <p><i class="fa fa-key"></i>{{$project->department_nb}}</p>
                                 </div>
                             </div>
@@ -116,26 +116,26 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{trans('site.apartment_square')}}</h5>
+                                    <h5>{{tran('site.apartment_square')}}</h5>
                                     <p><img src="/images/icons/7.png" alt="img">{{$project->area_lb}} &#13217;</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{trans('site.management_company')}}</h5>
+                                    <h5>{{tran('site.management_company')}}</h5>
                                     <p><i class="fa fa-suitcase"></i>{{$project->management_company}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{trans('site.design_company')}}</h5>
+                                    <h5>{{tran('site.design_company')}}</h5>
                                     <p><i class="fa fa-paint-brush"></i>{{$project->design_company}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="property-news-single-card style-two border-bottom-yellow">
-                        <h4>{{trans('site.introduction')}}</h4>
+                        <h4>{{tran('site.introduction')}}</h4>
                         <p>{!! $project->content_lb !!}</p>
                     </div>
                     <div class="property-news-single-card border-bottom-yellow mb-0">
@@ -145,7 +145,7 @@
                         </div>
                     </div>
                     <div class="property-news-single-card border-bottom-yellow">
-                        <h4>{{trans('site.amenities')}}</h4>
+                        <h4>{{tran('site.amenities')}}</h4>
                         @if($project->amenities->count() > 0)
                         @php $div = ceil($project->amenities->count() / 3);  $amenities = array_chunk($project->amenities->toArray(), $div); @endphp
                         <div class="row">
@@ -162,7 +162,7 @@
                         @endif
                     </div>
                     <div class="property-news-single-card style-two border-bottom-yellow">
-                        <h4>{{__('site.map')}}</h4>
+                        <h4>{{tran('site.map')}}</h4>
                         @include('partials.google', ['address' => $project->address])
                     </div>
                 </div>

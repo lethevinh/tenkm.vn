@@ -10,26 +10,26 @@
         </div>
     </div>
     <div class="contact">
-        <h6>{{__('site.contact')}}</h6>
+        <h6>{{tran('site.contact')}}</h6>
         <div class="rld-single-input">
-            <input type="text" placeholder="{{__('site.full_name')}}">
+            <input type="text" placeholder="{{tran('site.full_name')}}">
         </div>
         <div class="rld-single-input">
-            <input type="text" placeholder="{{__('site.email')}}">
+            <input type="text" placeholder="{{tran('site.email')}}">
         </div>
         <div class="rld-single-input">
-            <input type="text" placeholder="{{__('site.content')}}">
+            <input type="text" placeholder="{{tran('site.content')}}">
         </div>
-        <a class="btn btn-yellow" href="#">{{__('site.subscribe')}}</a>
+        <a class="btn btn-yellow" href="#">{{tran('site.subscribe')}}</a>
     </div>
     <div class="contact-info">
-        <h6 class="mb-3">{{trans('site.contact_info')}}</h6>
+        <h6 class="mb-3">{{tran('site.contact_info')}}</h6>
         <div class="media">
             <div class="media-left">
                 <img src="/images//icons/1.png" alt="img">
             </div>
             <div class="media-body">
-                <p>{{trans('site.address')}}</p>
+                <p>{{tran('site.address')}}</p>
                 <span>{{$post->addressLabel}}</span>
             </div>
         </div>
@@ -38,7 +38,7 @@
                 <i class="fa fa-phone"></i>
             </div>
             <div class="media-body">
-                <p>{{trans('site.phone')}}</p>
+                <p>{{tran('site.phone')}}</p>
                 <span>+00 111 222 333</span>
             </div>
         </div>

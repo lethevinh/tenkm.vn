@@ -20,7 +20,7 @@
         <ul class="contact-list">
             <li><a class="phone" href="#"><i class="fa fa-phone"></i></a></li>
             <li><a class="message" href="#"><i class="fa fa-comment-o"></i></a></li>
-            <li><a class="btn btn-yellow" href="{{$product->link}}">{{__('site.view_details')}}</a></li>
+            <li><a class="btn btn-yellow" href="{{$product->link}}">{{tran('site.view_details')}}</a></li>
         </ul>
     </div>
 </div>

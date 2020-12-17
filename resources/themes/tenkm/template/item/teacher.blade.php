@@ -23,7 +23,7 @@
                 <li><a href="{{$teacher->skype}}"><i class="ion-social-skype"></i></a></li>
                 <li><a href="{{$teacher->whatsapp}}"><i class="ion-social-whatsapp-outline"></i></a></li>
             </ul>
-            <a href="{{$teacher->link}}" class="btn btn-accent">{{__('site.read_more')}}</a>
+            <a href="{{$teacher->link}}" class="btn btn-accent">{{tran('site.read_more')}}</a>
         </div> <!-- / .teacher_item__overlay -->
     </div> <!-- / .teacher__item -->
 </div>

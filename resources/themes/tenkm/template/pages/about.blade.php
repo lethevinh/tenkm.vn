@@ -9,10 +9,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-inner">
-                        <h1 class="page-title">{{__('site.about')}}</h1>
+                        <h1 class="page-title">{{tran('site.about')}}</h1>
                         <ul class="page-list">
-                            <li><a href="{{route('home.show')}}">{{__('site.home')}}</a></li>
-                            <li>{{__('site.about')}}</li>
+                            <li><a href="{{route('home.show')}}">{{tran('site.home')}}</a></li>
+                            <li>{{tran('site.about')}}</li>
                         </ul>
                     </div>
                 </div>

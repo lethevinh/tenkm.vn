@@ -1,5 +1,5 @@
 @extends('layouts.full')
-@section('title', __('site.contact'))
+@section('title', tran('site.contact'))
 @section('id_body', 'contact__page')
 @section('content')
 
@@ -9,10 +9,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-inner">
-                        <h1 class="page-title">{{__('site.contact')}}</h1>
+                        <h1 class="page-title">{{tran('site.contact')}}</h1>
                         <ul class="page-list">
-                            <li><a href="{{route('home.show')}}">{{__('site.home')}}</a></li>
-                            <li>{{__('site.contact')}}</li>
+                            <li><a href="{{route('home.show')}}">{{tran('site.home')}}</a></li>
+                            <li>{{tran('site.contact')}}</li>
                         </ul>
                     </div>
                 </div>
@@ -44,9 +44,9 @@
                 <div class="col-lg-4">
                     <form class="contact-form-wrap contact-form-bg" action="{{route('home.doContact')}}" method="POST">
                         @csrf
-                        <h4>{{__('site.contact')}}</h4>
+                        <h4>{{tran('site.contact')}}</h4>
                         <div class="rld-single-input">
-                            <input placeholder="{{__('site.full_name')}}" value="{{old('name')}}" type="text"
+                            <input placeholder="{{tran('site.full_name')}}" value="{{old('name')}}" type="text"
                                    class="form-control {{ $errors->has('name') ? 'error' : '' }}" name="name" id="name">
                             <!-- Error -->
                             @if ($errors->has('name'))
@@ -56,7 +56,7 @@
                             @endif
                         </div>
                         <div class="rld-single-input">
-                            <input placeholder="{{__('site.email')}}" value="{{old('email')}}" type="email"
+                            <input placeholder="{{tran('site.email')}}" value="{{old('email')}}" type="email"
                                    class="form-control {{ $errors->has('email') ? 'error' : '' }}" name="email"
                                    id="email">
 
@@ -67,7 +67,7 @@
                             @endif
                         </div>
                         <div class="rld-single-input">
-                            <input placeholder="{{__('site.phone')}}" value="{{old('phone')}}" type="text"
+                            <input placeholder="{{tran('site.phone')}}" value="{{old('phone')}}" type="text"
                                    class="form-control {{ $errors->has('phone') ? 'error' : '' }}" name="phone"
                                    id="phone">
 
@@ -78,7 +78,7 @@
                             @endif
                         </div>
                         <div class="rld-single-input">
-                                    <textarea placeholder="{{__('site.content')}}" value="{{old('message')}}"
+                                    <textarea placeholder="{{tran('site.content')}}" value="{{old('message')}}"
                                               class="form-control {{ $errors->has('message') ? 'error' : '' }}"
                                               name="message" id="message"
                                               rows="4"></textarea>
@@ -90,7 +90,7 @@
                             @endif
                         </div>
                         <div class="btn-wrap text-center">
-                            <button class="btn btn-yellow">{{__('site.submit')}}</button>
+                            <button class="btn btn-yellow">{{tran('site.submit')}}</button>
                         </div>
                     </form>
                 </div>
@@ -98,7 +98,7 @@
             <div class="row pd-top-92">
                 <div class="col-xl-3 col-sm-6">
                     <div class="single-contact-info">
-                        <p><i class="fa fa-phone"></i>{{__('site.call_us')}}:</p>
+                        <p><i class="fa fa-phone"></i>{{tran('site.call_us')}}:</p>
                         <h5>{{option('phone')}}</h5>
                     </div>
                 </div>
@@ -110,13 +110,13 @@
                 </div>
                 <div class="col-xl-3 col-sm-6">
                     <div class="single-contact-info">
-                        <p><i class="fa fa-envelope"></i>{{__('site.email')}}</p>
+                        <p><i class="fa fa-envelope"></i>{{tran('site.email')}}</p>
                         <h5>{{option('email')}}</h5>
                     </div>
                 </div>
                 <div class="col-xl-3 col-sm-6">
                     <div class="single-contact-info">
-                        <p><i class="fa fa-phone"></i>{{__('site.address')}}</p>
+                        <p><i class="fa fa-phone"></i>{{tran('site.address')}}</p>
                         <h5>{{option('address')}}</h5>
                     </div>
                 </div>

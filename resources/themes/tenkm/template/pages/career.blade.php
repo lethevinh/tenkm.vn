@@ -10,12 +10,12 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-inner">
                         <h1 class="page-title">
-                            {{__('site.career')}}
+                            {{tran('site.career')}}
                         </h1>
                         <ul class="page-list">
-                            <li><a href="{{route('home.show')}}"> {{ __('site.home') }}</a></li>
+                            <li><a href="{{route('home.show')}}"> {{ tran('site.home') }}</a></li>
                             <li>
-                                {{__('site.career')}}
+                                {{tran('site.career')}}
                             </li>
                         </ul>
                     </div>
@@ -36,7 +36,7 @@
                     <input type="text" name="s" placeholder="Search">
                     <button><i class="fa fa-search"></i></button>
                 </form>
-                <h6 class="mb-3 popular-post-title">{{__('site.popular_post')}}</h6>
+                <h6 class="mb-3 popular-post-title">{{tran('site.popular_post')}}</h6>
                 <div class="popular-post-slider">
                     {!! do_shortcode('[posts template="post-popular" limit="8"]') !!}
                 </div>

@@ -1,5 +1,5 @@
 @extends('layouts.full')
-@section('title', __('site.product'))
+@section('title', tran('site.product'))
 @section('id_body', 'courses__page')
 @section('content')
 
@@ -19,8 +19,8 @@
                             @endif
                         </h1>
                         <ul class="page-list">
-                            <li><a href="{{route('home.show')}}"> {{ trans('site.home') }}</a></li>
-                            <li><a href="{{route('product.index')}}">{{ trans('site.product') }}</a></li>
+                            <li><a href="{{route('home.show')}}"> {{ tran('site.home') }}</a></li>
+                            <li><a href="{{route('product.index')}}">{{ tran('site.product') }}</a></li>
                             @if(isset($category))
                                 @include('partials/breadcrumb-categories', ['categories' => $category->toTree()])
                             @elseif(isset($tag))
