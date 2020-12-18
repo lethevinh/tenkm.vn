@@ -65,6 +65,13 @@ if (!function_exists('current_theme')) {
 
     }
 }
+if (!function_exists('meta')) {
+
+    function meta($model, $field, $default = ''): string
+    {
+        return ($model->$field && $model->$field !== 'null') ? $model->$field : $default;
+    }
+}
 
 if (!function_exists('theme_dir_view')) {
     function theme_dir_view($path = '') {

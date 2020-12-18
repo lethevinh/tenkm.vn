@@ -46,21 +46,21 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="thumb mb-4 mb-lg-0">
-                        <img src="/images/others/1.jpg" alt="img">
+                        <img src="{{meta($page, 'follow_dream_image', '/images/others/1.jpg')}}" alt="img">
                     </div>
                 </div>
                 <div class="col-lg-6 align-self-center">
                     <div class="section-title">
-                        <h3 class="title inner-title">Follow steps make dream</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fringilla dui nibh, idhendrerit tellus rhoncus sit amet</p>
+                        <h3 class="title inner-title">{{ meta($page, 'follow_dream_title', 'Follow steps make dream') }}</h3>
+                        <p>{{ meta($page, 'follow_dream_description', 'Follow steps make dream') }}</p>
                     </div>
                     <div class="single-follow-dream media">
                         <div class="media-left">
                             <i class="fa fa-user-o"></i>
                         </div>
                         <div class="media-body">
-                            <h4>Get a link from your agent</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel eros quam. Sed sit amet dictum est, at fringilla enim Praesent. </p>
+                            <h4>{{meta($page, 'follow_dream_1_title', 'Get a link from your agent')}}</h4>
+                            <p>{{meta($page, 'follow_dream_1_description', 'Get a link from your agent')}}</p>
                         </div>
                     </div>
                     <div class="single-follow-dream media">
@@ -68,8 +68,8 @@
                             <i class="fa fa-desktop"></i>
                         </div>
                         <div class="media-body">
-                            <h4>Star your Membership</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel eros quam. Sed sit amet dictum est, at fringilla enim Praesent. </p>
+                            <h4>{{meta($page, 'follow_dream_2_title', 'Star your Membership')}}</h4>
+                            <p>{{meta($page, 'follow_dream_2_description', 'Star your Membership')}}</p>
                         </div>
                     </div>
                     <div class="single-follow-dream media mb-0">
@@ -77,8 +77,8 @@
                             <i class="fa fa-home"></i>
                         </div>
                         <div class="media-body">
-                            <h4>Enjoy your New Home</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel eros quam. Sed sit amet dictum est, at fringilla enim Praesent. </p>
+                            <h4>{{meta($page, 'follow_dream_3_title', 'Enjoy your New Home')}}</h4>
+                            <p>{{meta($page, 'follow_dream_3_description', 'Enjoy your New Home')}}</p>
                         </div>
                     </div>
                 </div>
