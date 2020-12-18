@@ -151,4 +151,6 @@ return [
     'submit' => 'Submit',
     'call_us' => 'Call Us',
     'career' => 'Career',
+    'about_us' => 'About Us',
+    'best_service' => 'Best Service',
 ];

@@ -70,16 +70,16 @@
                 <div class="col-lg-6 mb-4 mb-lg-0">
                     <div class="shape-image-list-wrap">
                         <div class="shape-image-list left-top">
-                            <img class="shadow-img" src="/images/others/7.png" alt="img">
+                            <img class="shadow-img" src="{{meta($page, 'about_us_image', '/images/others/7.png')}}" alt="img">
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 align-self-center">
                     <div class="section-title pd-left mb-0">
-                        <h5 class="sub-title">About Us</h5>
-                        <h2 class="title">We Are Dynamic Team And Business Agency</h2>
-                        <p>Hand selected, local experienced agents, and neighborhood specialists, work with you to achieve your goals. The highest level of market knowledge, transparency, technology utilization, and transaction experience.</p>
-                        <a class="btn btn-yellow" href="#">More Service</a>
+                        <h5 class="sub-title">{{tran('site.about_us')}}</h5>
+                        <h2 class="title">{{meta($page, 'about_us_title', 'We Are Dynamic Team And Business Agency')}}</h2>
+                        <p>{{meta($page, 'about_us_description', 'We Are Dynamic Team And Business Agency')}}</p>
+                        <a class="btn btn-yellow" href="#">{{tran('site.read_more')}}</a>
                     </div>
                 </div>
             </div>
@@ -91,44 +91,44 @@
     <div class="service-area service-area-about mg-bottom-100 pb-xl-5 pd-0" style="background-image: url(/images/bg/5.png);">
         <div class="container">
             <div class="section-title">
-                <h5 class="sub-title">Best Service</h5>
-                <h2 class="title">Service We Provide</h2>
-                <p>Partner with a top neighborhood specialist to sell your home. Combined <br> with our high level marketing approach, negotiation skills,</p>
+                <h5 class="sub-title">{{tran('site.best_service')}}</h5>
+                <h2 class="title">{{meta($page, 'best_service_title', 'Service We Provide')}}</h2>
+                <p>{{meta($page, 'best_service_description', 'Service We Provide')}}</p>
             </div>
             <div class="service-slider-2 row pb-xl-5 pd-0">
                 <div class="item">
                     <div class="single-intro text-center">
                         <div class="thumb">
-                            <img src="/images/icons/19.png" alt="img">
+                            <img src="{{meta($page, 'best_service_1_image', '/images/icons/19.png')}}" alt="img">
                         </div>
                         <div class="details">
-                            <h4 class="title"><a href="#">Marketing Analaysis</a></h4>
-                            <p>Describe your home online and get <br> your appraisal in 5 minutes</p>
-                            <a class="read-more" href="#">Read More</a>
+                            <h4 class="title"><a href="#">{{meta($page, 'best_service_1_title', 'Marketing Analaysis')}}</a></h4>
+                            <p>{{meta($page, 'best_service_1_description', 'Marketing Analaysis')}}</p>
+                            <a class="read-more" href="#">{{tran('site.read_more')}}</a>
                         </div>
                     </div>
                 </div>
                 <div class="item">
                     <div class="single-intro text-center">
                         <div class="thumb">
-                            <img src="/images/icons/20.png" alt="img">
+                            <img src="{{meta($page, 'best_service_2_image', '/images/icons/20.png')}}" alt="img">
                         </div>
                         <div class="details">
-                            <h4 class="title"><a href="#">Business Consultancy</a></h4>
-                            <p>Describe your home online and get <br> your appraisal in 5 minutes</p>
-                            <a class="read-more" href="#">Read More</a>
+                            <h4 class="title"><a href="#">{{meta($page, 'best_service_2_title', 'Business Consultancy')}}</a></h4>
+                            <p>{{meta($page, 'best_service_2_description', 'Marketing Analaysis')}}</p>
+                            <a class="read-more" href="#">{{tran('site.read_more')}}</a>
                         </div>
                     </div>
                 </div>
                 <div class="item">
                     <div class="single-intro text-center">
                         <div class="thumb">
-                            <img src="/images/icons/21.png" alt="img">
+                            <img src="{{meta($page, 'best_service_3_image', '/images/icons/21.png')}}" alt="img">
                         </div>
                         <div class="details">
-                            <h4 class="title"><a href="#">Business planing</a></h4>
-                            <p>Describe your home online and get <br> your appraisal in 5 minutes</p>
-                            <a class="read-more" href="#">Read More</a>
+                            <h4 class="title"><a href="#">{{meta($page, 'best_service_3_title', 'Business planing')}}</a></h4>
+                            <p>{{meta($page, 'best_service_3_description', 'Marketing Analaysis')}}</p>
+                            <a class="read-more" href="#">{{tran('site.read_more')}}</a>
                         </div>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
     <div class="team-area bg-gray mg-top-70 pd-top-90 pd-bottom-70">
         <div class="container">
             <div class="section-title text-center">
-                <h2 class="title">We Are Dynamic Team</h2>
+                <h2 class="title">{{tran('site.our_team')}}</h2>
             </div>
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
@@ -217,7 +217,7 @@
     <div class="client-area pd-top-90 pd-bottom-100">
         <div class="container">
             <div class="section-title text-center">
-                <h2 class="title">What Our Customers <br> Are Saying</h2>
+                <h2 class="title">{{tran('site.what_our_customers_are_saying')}}</h2>
             </div>
             <div class="client-review-img">
                 <img class="clr-img clr-img1" src="/images/client/5.png" alt="client">

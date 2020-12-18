@@ -162,4 +162,6 @@ return [
     'submit' => 'Gửi',
     'call_us' => 'Gọi chúng tôi',
     'career' => 'Tuyển dụng',
+    'about_us' => 'Về Chúng Tôi',
+    'best_service' => 'Dịch Vụ',
 ];
