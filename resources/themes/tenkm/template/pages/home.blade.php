@@ -60,7 +60,7 @@
                         </div>
                         <div class="media-body">
                             <h4>{{meta($page, 'follow_dream_1_title', 'Get a link from your agent')}}</h4>
-                            <p>{{meta($page, 'follow_dream_1_description', 'Get a link from your agent')}}</p>
+                            <p>{!! meta($page, 'follow_dream_1_description', 'Get a link from your agent') !!}</p>
                         </div>
                     </div>
                     <div class="single-follow-dream media">
@@ -69,7 +69,7 @@
                         </div>
                         <div class="media-body">
                             <h4>{{meta($page, 'follow_dream_2_title', 'Star your Membership')}}</h4>
-                            <p>{{meta($page, 'follow_dream_2_description', 'Star your Membership')}}</p>
+                            <p>{!! meta($page, 'follow_dream_2_description', 'Star your Membership') !!}</p>
                         </div>
                     </div>
                     <div class="single-follow-dream media mb-0">
@@ -78,7 +78,7 @@
                         </div>
                         <div class="media-body">
                             <h4>{{meta($page, 'follow_dream_3_title', 'Enjoy your New Home')}}</h4>
-                            <p>{{meta($page, 'follow_dream_3_description', 'Enjoy your New Home')}}</p>
+                            <p>{!! meta($page, 'follow_dream_3_description', 'Enjoy your New Home') !!}</p>
                         </div>
                     </div>
                 </div>
