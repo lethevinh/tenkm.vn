@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
                 $table->string('property_type')->nullable();
                 $table->string('furnishing_status')->nullable();
                 $table->string('video_lb')->nullable();
+                $table->integer('end_of_contract')->default(1);
                 $table->string('language_lb')->default('vi');
                 $table->unsignedInteger('translation_id')->nullable();
                 $table->string('slug_lb')->unique();

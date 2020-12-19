@@ -164,4 +164,5 @@ return [
     'career' => 'Tuyển dụng',
     'about_us' => 'Về Chúng Tôi',
     'best_service' => 'Dịch Vụ',
+    'end_of_contract' => 'Kết thúc hợp đồng.',
 ];

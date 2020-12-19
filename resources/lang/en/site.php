@@ -153,4 +153,5 @@ return [
     'career' => 'Career',
     'about_us' => 'About Us',
     'best_service' => 'Best Service',
+    'end_of_contract' => 'End of contract.',
 ];

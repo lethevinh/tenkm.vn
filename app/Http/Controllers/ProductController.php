@@ -11,6 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Psr\SimpleCache\InvalidArgumentException;
 use Spatie\Searchable\Search;
 
@@ -61,9 +62,11 @@ class ProductController extends Controller
 
         $offset = request()->input('offset');
         $offset = $offset ? $offset : 8;
-        $products = $category->products()->public()
-            ->with(['categories', 'tags', 'comments.comments', 'creator'])
-            ->paginate($offset);
+        $products = $category->products()->lang($category->language_lb)->public();
+        if (Str::contains(request()->path(), 'nha-dat-cho-thue')  || Str::contains(request()->path(), 'properties-for-sell')){
+            $products = Product::where('end_of_contract', 1)->lang($locale)->public();
+        }
+        $products = $products->with(['categories', 'tags', 'comments.comments', 'creator'])->paginate($offset);
         $user = Auth::user();
         return view('archives.product', compact('user', 'products', 'category'));
     }

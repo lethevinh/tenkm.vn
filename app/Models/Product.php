@@ -36,7 +36,7 @@ class Product extends Model implements Searchable
         'price_fl', 'price_sale_fl', 'price_lb',
         'language_lb', 'translation_id','video_lb','property_type','furnishing_status',
         'bedroom_nb', 'bathroom_nb', 'area_nb','floorplan_lb','parking_nb',
-        'living_room_lb', 'garage_lb', 'dining_area','gym_area','parking_nb',
+        'living_room_lb', 'garage_lb', 'dining_area','gym_area','parking_nb', 'end_of_contract',
         'published_at', 'validated_at', 'updated_by', 'created_by',
     ];
 
