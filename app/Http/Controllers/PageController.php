@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Career;
 use App\Models\Page;
 use App\Models\Post;
+use App\Models\Product;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\Artisan;
@@ -27,8 +28,9 @@ class PageController extends Controller
         }
         $page->seo();
         $posts = [];
-        $offset = request()->input('offset', 9);
-        switch ($page->template_lb){
+        $offset = request()->input('offset', 8);
+        $template = 'pages.' . $page->template_lb;
+        switch ($page->template_lb) {
             case 'career':
                 $posts = Career::public()->locale()->paginate($offset);
                 break;
@@ -37,8 +39,20 @@ class PageController extends Controller
                     ->with(['categories', 'tags', 'comments.comments', 'creator'])
                     ->paginate($offset);
                 break;
+            case 'products_sell':
+            case 'product':
+            case 'products':
+                $template = 'pages.products';
+                $posts = Product::locale()->public()
+                    ->with(['categories', 'tags', 'comments.comments', 'creator'])->paginate($offset);
+                break;
+            case 'products_rent':
+                $template = 'pages.products';
+                $posts = Product::locale()->public()->where('end_of_contract', 1)
+                    ->with(['categories', 'tags', 'comments.comments', 'creator'])->paginate($offset);
+                break;
         }
-        return view()->first(['pages.' . $page->template_lb, 'pages.default'], ['page' => $page, 'posts'=>$posts]);
+        return view()->first([$template, 'pages.default'], ['page' => $page, 'posts'=>$posts]);
     }
 
     /**

@@ -157,8 +157,10 @@ class PageController extends AdminController
                         'home' => __('site.home'),
                         'about' => __('site.about'),
                         'contact' => __('site.contact'),
-                        'product' => __('site.product'),
-                        'project' => __('site.project'),
+                        'products' => __('site.products'),
+                        'products_rent' => __('site.products_rent'),
+                        'products_sell' => __('site.products_sell'),
+                        'projects' => __('site.projects'),
                     ])
                     ->default('default');
             }

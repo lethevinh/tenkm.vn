@@ -60,8 +60,7 @@ class ProductController extends Controller
             return redirect($translation->link);
         }
 
-        $offset = request()->input('offset');
-        $offset = $offset ? $offset : 8;
+        $offset = request()->input('offset', 8);
         $products = $category->products()->lang($category->language_lb)->public();
         if (Str::contains(request()->path(), 'nha-dat-cho-thue')  || Str::contains(request()->path(), 'properties-for-sell')){
             $products = Product::where('end_of_contract', 1)->lang($locale)->public();
