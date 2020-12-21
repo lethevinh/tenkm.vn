@@ -7,6 +7,9 @@ use Psr\SimpleCache\InvalidArgumentException;
 class Lang extends Model
 {
     use Cacheable;
+
+    const KEY_CACHE = 'site-langs';
+
     protected $table = 'langs';
 
     protected $fillable = [
@@ -18,7 +21,12 @@ class Lang extends Model
         return Lang::all();
     }
 
-    public static function getCache($name)
+    public function flushCache()
+    {
+        return $this->getStore()->delete(self::KEY_CACHE);
+    }
+
+    public static function getCache($name = self::KEY_CACHE)
     {
         if (!self::enableCache()) {
             return (new static())->makeCache([]);
