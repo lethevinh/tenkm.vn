@@ -29,6 +29,7 @@ use App\Admin\Grids\Status;
 use App\Admin\Forms\Lecture;
 use App\Admin\Forms\Metadata;
 use App\Admin\Forms\Address;
+use App\Admin\Forms\Select;
 
 //icheck
 Admin::css('plugins/icheck/skins/minimal/_all.css');
@@ -48,6 +49,7 @@ Form::extend('xTable', Table::class);
 Form::extend('meta', Metadata::class);
 Form::extend('address', Address::class);
 Column::extend('status', Status::class);
+Form::extend('xSelect', Select::class);
 
 Admin::navbar(function (\Dcat\Admin\Layout\Navbar $navbar) {
 

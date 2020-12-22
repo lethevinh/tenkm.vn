@@ -2,8 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\Linkable;
+use App\Traits\Ownable;
+use function Clue\StreamFilter\remove;
+
 class Address extends Model
 {
+    use Linkable;
     protected $table = 'address';
 
     protected $fillable = [
@@ -46,5 +51,13 @@ class Address extends Model
             $address .=  $province->prefix_lb.' '.$province->title_lb;
         }
         return $address;
+    }
+
+    public function products() {
+        return $this->hasMany(Product::class, 'address_id');
+    }
+
+    public function wards() {
+        return $this->hasMany(Address::class, 'ward_id', 'ward_id');
     }
 }

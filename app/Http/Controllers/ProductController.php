@@ -24,8 +24,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $offset = request()->input('offset');
-        $offset = $offset ? $offset : 8;
+        $offset = request()->input('offset', 8);
         $products = Product::public()->locale()
             ->with(['categories', 'tags', 'comments.comments', 'creator'])
             ->paginate($offset);

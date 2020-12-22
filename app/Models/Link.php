@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
+use App\Traits\Ownable;
+use App\Traits\Translatable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property mixed template_lb
+ */
 class Link extends Model
 {
-    use Sluggable;
+    use Sluggable, Ownable, Translatable;
 
     protected $table = 'links';
 
@@ -18,6 +23,7 @@ class Link extends Model
      */
     protected $fillable = [
        'title_lb', 'meta_lb', 'template_lb', 'slug_lb', 'image_lb','status_sl',
+        'language_lb', 'translation_id',
         'type_lb', 'description_lb', 'content_lb', 'updated_by', 'created_by'
     ];
 
@@ -37,7 +43,7 @@ class Link extends Model
     /**
      * Get the user that owns the phone.
      */
-    public function contentable()
+    public function contentable(): \Illuminate\Database\Eloquent\Relations\MorphTo
     {
         return $this->morphTo('contentable');
     }
@@ -45,11 +51,9 @@ class Link extends Model
     /**
      * @param Model $linkable
      * @param $data
-     * @param Model $creator
-     *
      * @return static
      */
-    public function createLink(Model $linkable, $data)
+    public function createLink(Model $linkable, $data): Link
     {
         $link = new static();
         $link->fill($data);
@@ -73,18 +77,42 @@ class Link extends Model
     /**
      * @return mixed
      */
-    public function renderContent() {
+    public function renderContent()
+    {
         $template = $this->template_lb;
         $content = $this->contentable;
+        $locale = session()->get('locale', config('site.locale_default'));
         $data = [
-          'content' => $content,
-           'link' => $this,
-            $content->getModelKey() => $content
+            'content' => $content,
+            'link' => $this
         ];
-        return theme_view($this->contentable->template, $data);
+        $offset = request()->input('offset', 8);
+        if ($translation = $this->translation($locale)) {
+            return redirect($translation->link);
+        }
+        switch ($this->contentable_type){
+            case ProductCategory::class:
+                $data['products'] = $content->products()->public()->locale()
+                ->with(['categories', 'tags', 'comments.comments', 'creator'])
+                ->paginate($offset);
+                $data['category'] = $content;
+                break;
+            case Page::class:
+                $data['page'] = $content;
+                $template = $content->template_lb ? $content->template_lb : $template;
+                break;
+            case Address::class:
+                $data['products'] = $content->wards()
+                    ->with(['products', 'products.categories', 'products.tags', 'products.comments.comments', 'products.creator'])
+                    ->paginate($offset);
+                $data['address'] = $content;
+                break;
+        }
+        return view()->first(['pages.'.$template, 'pages.default'], $data);
     }
 
-    public function getUrlAttribute() {
-        return route('link.show', ['link' => $this]);
+    public function getLinkAttribute(): string
+    {
+        return route('link.show', ['slug' => $this->slug_lb]);
     }
 }

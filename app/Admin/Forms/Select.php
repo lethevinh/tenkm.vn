@@ -16,9 +16,9 @@ class Select extends BaseSelect
      * @param string $idField
      * @param string $textField
      *
-     * @return \Dcat\Admin\Form\Field\Select
+     * @return BaseSelect
      */
-    public function loads($fields = [], $sourceUrls = [], string $idField = 'id', string $textField = 'text')
+    public function loads($fields = [], $sourceUrls = [], string $idField = 'id', string $textField = 'text'): BaseSelect
     {
         $fieldsStr = implode('^', array_map(function ($field) {
             if (Str::contains($field, '.')) {

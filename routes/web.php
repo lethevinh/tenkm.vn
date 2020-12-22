@@ -113,4 +113,5 @@ Route::get('/lang/{lang}', function ($locale) {
     }
     return response()->json($lang);
 });
+Route::get('{slug}.html', 'LinkController@path')->name('link.show');
 Route::get('{slug}', 'PageController@show')->name('page.show');

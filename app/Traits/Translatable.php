@@ -24,7 +24,7 @@ trait Translatable
     }
 
     public static function bootTranslatable() {
-        static::created(function (Model $model) {
+        static::created(function ($model) {
             $defaultLocale = config('site.locale_default');
             if (empty($model->language_lb) || $model->language_lb == $defaultLocale) {
                 $locales = config('site.locales');

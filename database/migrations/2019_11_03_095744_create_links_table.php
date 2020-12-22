@@ -22,6 +22,8 @@ class CreateLinksTable extends Migration
             $table->text('image_lb')->nullable();
             $table->string('type_lb')->default('post');
             $table->string('template_lb')->nullable()->default('post');
+            $table->string('language_lb')->default('vi');
+            $table->unsignedInteger('translation_id')->nullable();
             $table->index(['slug_lb', 'type_lb']);
             $table->text('meta_lb')->nullable();
             $table->text('description_lb')->nullable();

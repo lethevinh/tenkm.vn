@@ -12,6 +12,8 @@
                         <h1 class="page-title">
                             @if(isset($category))
                                 {{$category->title_lb}}
+                            @elseif(isset($address))
+                                {{$address->address_lb}}
                             @elseif(isset($tag))
                                 {{$tag->title_lb}}
                             @elseif(isset($query))
@@ -25,6 +27,8 @@
                                 @include('partials/breadcrumb-categories', ['categories' => $category->toTree()])
                             @elseif(isset($tag))
                                 <li>{{$tag->title_lb}}</li>
+                            @elseif(isset($address))
+                                <li>{{$address->address_lb}}</li>
                             @elseif(isset($query))
                                 <li>{{$title}}</li>
                             @endif
@@ -39,14 +43,29 @@
     <!-- Properties by city start -->
     <div class="properties-area pd-top-100 pd-bottom-70">
         <div class="container">
-            <div class="row">
-                @foreach($products as $product)
-                <div class="col-lg-3 col-sm-6">
-                    @include('item.product', ['product' => $product])
+            @if(isset($address))
+                <div class="section-title">
+                    <h2 class="title">{{$address->address_lb}}</h2>
                 </div>
-                @endforeach
+            @endif
+            <div class="row">
+                @if(isset($products))
+                    @foreach($products as $product)
+                            @if(isset($address))
+                                @foreach($product->products as $adProduct)
+                                    <div class="col-lg-3 col-sm-6">
+                                        @include('item.product', ['product' => $adProduct])
+                                    </div>
+                                @endforeach
+                            @else
+                                <div class="col-lg-3 col-sm-6">
+                                    @include('item.product', ['product' => $product])
+                                </div>
+                            @endif
+                    @endforeach
+                @endif
             </div>
-            @if(!isset($query))
+            @if(!isset($query) && isset($products))
             <div class="row">
                 <div class="col-sm-12">
                     {{ $products->links() }}

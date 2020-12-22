@@ -30,6 +30,8 @@ Route::group([
     $router->resource('menus', 'MenuController');
     $router->resource('amenities', 'AmenityController');
     $router->resource('languages', 'LangController');
+    $router->resource('links', 'LinkController');
+    $router->resource('address', 'AddressController');
     $router->get('site/setting/{id}', 'PageController@getSetting')->name('site.setting');
     $router->put('site/setting/{id}', 'PageController@putSetting');
     $router->resource('contacts', 'ContactController');
@@ -117,6 +119,20 @@ Route::group([
             ->where('type_lb', '<>', 'project')
             ->where('type_lb', '<>', 'street')
             ->get(['id', DB::raw("CONCAT(prefix_lb,' ', title_lb) as text")]);
+    });
+    $router->get('/api/contentable', function () {
+        $q = request()->get('q');
+        switch ($q) {
+            case 'page':
+                return \App\Models\Page::where('status_sl', 'public')
+                    ->get(['id', DB::raw("title_lb as text")]);
+            case 'location':
+                return \App\Models\Address::query()
+                    ->get(['id', DB::raw("address_lb as text")]);
+            case 'category':
+                return \App\Models\ProductCategory::where('status_sl', 'public')
+                    ->get(['id', DB::raw("title_lb as text")]);
+        }
     });
     $router->get('/api/locations/street', function (){
         $q = request()->get('q');
