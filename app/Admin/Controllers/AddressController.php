@@ -29,7 +29,7 @@ class AddressController extends AdminController
     protected function grid()
     {
         return Grid::make(new Address([]), function (Grid $grid) {
-            $grid->model()->orderBy('created_at', 'desc');
+            $grid->model()->orderBy('created_at', 'desc')->whereNull('street_id');
             $grid->id('ID')->code()->sortable();
             $grid->address_lb(__('admin.title'));
             $grid->created_at(__('admin.created_at'))->display(function ($at) {
@@ -53,7 +53,7 @@ class AddressController extends AdminController
             });
             //$grid->disableBatchDelete();
             $grid->showQuickEditButton();
-            $grid->enableDialogCreate();
+            //$grid->enableDialogCreate();
         });
     }
 

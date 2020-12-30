@@ -8,7 +8,6 @@ use function Clue\StreamFilter\remove;
 
 class Address extends Model
 {
-    use Linkable;
     protected $table = 'address';
 
     protected $fillable = [
