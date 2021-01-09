@@ -48,6 +48,7 @@ return [
     'be_teacher'            => 'Giảng dạy online với Tenkm',
 	'posted_on' => 'Đăng lúc',
 	'category' => 'Danh mục',
+	'category_project' => 'Danh mục dự án',
 	'docs' => 'Tài liệu',
 	'download' => 'Tải về',
 	'share' => 'Chia sẻ',

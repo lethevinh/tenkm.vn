@@ -66,10 +66,6 @@ class CategoryController extends AdminController
             });
             $grid->model()->orderByDesc('updated_at');
             $grid->column('title_lb', __('admin.title'))->sortable();
-            $grid->column('slug_lb', __('site.link'))
-                ->display(function ($slug) {
-                    return route('product.category', ['category' => $slug]);
-                })->copyable();
             if ($relations !== '') {
                 $grid->{$relations}->count()->label();
             }

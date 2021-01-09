@@ -147,9 +147,13 @@ class ProjectController extends AdminController
         $form = new Form(new $repositoryClassName(['categories', 'tags', 'comments', 'locations', 'amenities', 'address']));
         $form->disableViewButton();
         $form->tools([ToolViewLive::make(), ToolTranslatable::make()]);
-        $model = false;
+        $id = str_replace(['/admin/projects/', '/edit'], '', request()->getRequestUri());
+        $model = $form->getModel();
         if (!empty($id)) {
             $model = \App\Models\Project::find($id);
+        }
+        if (!$model){
+            $model = new \App\Models\Project();
         }
         $language = $model && $model->id ? $model->language_lb : config('site.locale_default');
         $form

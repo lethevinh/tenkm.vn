@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Traits\Ownable;
 use App\Traits\Translatable;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property mixed template_lb
@@ -106,6 +105,12 @@ class Link extends Model
                     ->with(['products', 'products.categories', 'products.tags', 'products.comments.comments', 'products.creator'])
                     ->paginate($offset);
                 $data['address'] = $content;
+                break;
+            case ProjectCategory::class:
+                $data['projects'] = $content->projects()->public()->locale()
+                    ->with(['categories', 'tags', 'comments.comments', 'creator'])
+                    ->paginate($offset);
+                $data['category'] = $content;
                 break;
         }
         return view()->first(['pages.'.$template, 'pages.default'], $data);

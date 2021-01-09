@@ -6,10 +6,9 @@ use App\Admin\Forms\ToolTranslatable;
 use App\Admin\Forms\ToolViewLive;
 use App\Admin\Repositories\Link;
 use App\Models\Address;
-use App\Models\Location;
 use App\Models\ProductCategory;
 use App\Models\Page;
-use Dcat\Admin\Auth\Permission;
+use App\Models\ProjectCategory;
 use App\Admin\Forms\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\IFrameGrid;
@@ -17,8 +16,6 @@ use Dcat\Admin\Controllers\AdminController;
 use Dcat\Admin\Models\Administrator;
 use Dcat\Admin\Models\Administrator as AdministratorModel;
 use Dcat\Admin\Show;
-use Dcat\Admin\Support\Helper;
-use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 
 class LinkController extends AdminController
@@ -143,6 +140,7 @@ class LinkController extends AdminController
                 'category' => tran('site.category'),
                 'page' => tran('site.page'),
                 'location' => tran('site.location'),
+                'category_project' => tran('site.category_project'),
             ];
         })->customFormat(function($value) use ($model){
             switch ($model->contentable_type){
@@ -152,6 +150,8 @@ class LinkController extends AdminController
                     return 'page';
                 case Address::class:
                     return 'location';
+                case ProjectCategory::class:
+                    return 'category_project';
             }
         })->loads(['contentable'], ['api/contentable']);
         $form->xSelect('contentable', __('site.content'))
@@ -180,6 +180,9 @@ class LinkController extends AdminController
                     case 'location':
                         $linkable = Address::find($id);
                         break;
+                    case 'category_project':
+                        $linkable = ProjectCategory::find($id);
+                        break;
                 }
                 if ($linkable && $linkable->id) {
                     $linkable->link()->save($model);
@@ -203,6 +206,9 @@ class LinkController extends AdminController
                         break;
                     case 'location':
                         $linkable = Address::find($id);
+                        break;
+                    case 'category_project':
+                        $linkable = ProjectCategory::find($id);
                         break;
                 }
                 if ($linkable && $linkable->id) {
