@@ -112,7 +112,7 @@
                         <h5>{{option('email')}}</h5>
                     </div>
                 </div>
-                <div class="col-xl-3 col-sm-6">
+                <div class="col-xl-6 col-sm-6">
                     <div class="single-contact-info">
                         <p><i class="fa fa-phone"></i>{{tran('site.address')}}</p>
                         <h5>{{option('address')}}</h5>
