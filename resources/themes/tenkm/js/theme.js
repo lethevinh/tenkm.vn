@@ -22,7 +22,7 @@ function initGoogleMap() {
         let lat = googleMap.data('lat');
         let lng = googleMap.data('lng');
         const mapOptions = {
-            zoom: 8,
+            zoom: 16,
             center: {lat: lat, lng: lng},
         };
         map = new google.maps.Map(document.getElementById("map"), mapOptions);

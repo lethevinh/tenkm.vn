@@ -30,7 +30,7 @@
             </div>
             <div class="media-body">
                 <p>{{tran('site.address')}}</p>
-                <span>{{$post->addressLabel}}</span>
+                <span>{{option('address')}}</span>
             </div>
         </div>
         <div class="media">
