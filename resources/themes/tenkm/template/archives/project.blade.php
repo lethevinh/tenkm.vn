@@ -53,7 +53,7 @@
                                 @endforeach
                             @else
                                 <div class="col-lg-3 col-sm-6">
-                                    @include('item.projects', ['project' => $project])
+                                    @include('item.project', ['project' => $project])
                                 </div>
                             @endif
                         @endforeach
