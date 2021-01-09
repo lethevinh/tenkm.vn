@@ -127,6 +127,8 @@ Route::group([
                 return \App\Models\Page::where('status_sl', 'public')
                     ->get(['id', DB::raw("title_lb as text")]);
             case 'location':
+            case 'location_product':
+            case 'location_project':
                 return \App\Models\Address::query()
                     ->get(['id', DB::raw("address_lb as text")]);
             case 'category':

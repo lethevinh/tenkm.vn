@@ -69,6 +69,8 @@ return [
     'media' => 'Media',
     'video' => 'Video',
     'location' => 'Location',
+    'location_product' => 'Location Property',
+    'location_project' => 'Location Project',
     'provincial' => 'Provincial',
     'district' => 'District',
     'ward' => 'Ward',

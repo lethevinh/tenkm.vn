@@ -3,10 +3,12 @@
 
 namespace App\Traits;
 
+use App\Models\Address;
 use App\Models\Link;
 use App\Models\Model;
 use App\Observers\LinkableObserver;
 use Illuminate\Support\Str;
+use function Symfony\Component\String\s;
 
 trait Linkable
 {
@@ -34,8 +36,6 @@ trait Linkable
     /**
      * @param $id
      * @param $data
-     * @param Model|null $parent
-     *
      * @return mixed
      */
     public function updateLink($id, $data)
@@ -57,13 +57,23 @@ trait Linkable
         $class = Str::slug(class_basename(get_class($this)));
         $type = $class === $this->type_lb ? $this->type_lb : $class . '_' . $this->type_lb;
         $status = $this->status_sl ? $this->status_sl : 'draft';
+        $template = $this->generateTemplate();
+        $title = $this->title_lb;
+        switch (self::class) {
+            case Address::class:
+                $title = $this->address_lb;
+                $template = $this->type_lb;
+                $status = 'public';
+                break;
+        }
         return [
-            'title_lb' => $this->title_lb,
+            'title_lb' => $title,
             'meta_lb' => $this->makeMetaTag(),
-            'template_lb' => $this->generateTemplate(),
+            'template_lb' => $template,
             'image_lb' => $this->image_lb,
             'status_sl' => $status,
             'type_lb' => $type,
+            'language_lb' => config('site.locale_default'),
             'description_lb' => $this->description_lb,
             'content_lb' => $this->content_lb,
             'updated_by' => $this->updated_by,

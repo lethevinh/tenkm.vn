@@ -3,15 +3,15 @@
 namespace App\Models;
 
 use App\Traits\Linkable;
-use App\Traits\Ownable;
-use function Clue\StreamFilter\remove;
 
 class Address extends Model
 {
     protected $table = 'address';
 
+    use Linkable;
+
     protected $fillable = [
-        "provincial_id", "district_id", "ward_id", "street_id", "postal_code_nb", "address_lb", "location_lb", "lat_lb", "lng_lb"
+        "provincial_id", "district_id", "ward_id", "street_id", "postal_code_nb", "address_lb", "type_lb", "status_lb", "location_lb", "lat_lb", "lng_lb"
     ];
 
     public function district()
@@ -34,6 +34,11 @@ class Address extends Model
         return $this->belongsTo(Location::class, 'street_id');
     }
 
+    public function getTitleLbAttribute()
+    {
+        return $this->attributes['address_lb'];
+    }
+
     public function getDetailAttribute()
     {
         $address = '';
@@ -54,6 +59,10 @@ class Address extends Model
 
     public function products() {
         return $this->hasMany(Product::class, 'address_id');
+    }
+
+    public function projects() {
+        return $this->hasMany(Project::class, 'address_id');
     }
 
     public function wards() {

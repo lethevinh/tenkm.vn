@@ -118,6 +118,8 @@ return [
     'video' => 'Video',
     'media' => 'Media',
     'location' => 'Địa điểm',
+    'location_product' => 'Địa điểm BDS',
+    'location_project' => 'Địa điểm dự án',
     'provincial' => 'Tỉnh/TP',
     'district' => 'Quận/Huyện',
     'ward' => 'Phường/Xã',

@@ -101,10 +101,21 @@ class Link extends Model
                 $template = $content->template_lb ? $content->template_lb : $template;
                 break;
             case Address::class:
-                $data['products'] = $content->wards()
-                    ->with(['products', 'products.categories', 'products.tags', 'products.comments.comments', 'products.creator'])
-                    ->paginate($offset);
-                $data['address'] = $content;
+                switch ($this->template_lb) {
+                    case 'location':
+                    case 'location_product':
+                        $data['products'] = $content->wards()
+                            ->with(['products', 'products.categories', 'products.tags', 'products.comments.comments', 'products.creator'])
+                            ->paginate($offset);
+                        $data['address'] = $content;
+                        break;
+                    case 'location_project';
+                        $data['projects'] = $content->wards()
+                            ->with(['projects', 'projects.categories', 'projects.tags', 'projects.comments.comments', 'projects.creator'])
+                            ->paginate($offset);
+                        $data['address'] = $content;
+                        break;
+                }
                 break;
             case ProjectCategory::class:
                 $data['projects'] = $content->projects()->public()->locale()

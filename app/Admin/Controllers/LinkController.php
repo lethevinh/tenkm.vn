@@ -36,19 +36,19 @@ class LinkController extends AdminController
             $grid->model()->orderBy('created_at', 'desc');
             $grid->id('ID')->code()->sortable();
             $grid->title_lb(__('admin.title'));
-            $grid->contentable(__('admin.title'))->display(function ($value) {
-                return isset($value['title_lb'])?$value['title_lb']:'' ;
-            });
-            $grid->status_sl(__('admin.status'))
-                ->display(function ($value) {
-                    return $value === 'public' ? 1 : 0;
-                })
-                ->status();
+            /*$grid->contentable(__('admin.title'))->display(function ($value) {
+                return isset($value['title_lb']) ? $value['title_lb'] :( isset($value['address_lb']) ? $value['address_lb']:'');
+            });*/
             $grid->language_lb(__('site.lang'))->label();
             $grid->column('slug_lb', __('site.link'))
                 ->display(function ($slug) {
                     return route('link.show', ['slug' => $slug]);
                 })->copyable();
+            $grid->status_sl(__('admin.status'))
+                ->display(function ($value) {
+                    return $value === 'public' ? 1 : 0;
+                })
+                ->status();
             $grid->creator(__('admin.owner'))->display(function($creator) {
                 return $creator['name'];
             })->label('warning');
@@ -139,20 +139,12 @@ class LinkController extends AdminController
             return [
                 'category' => tran('site.category'),
                 'page' => tran('site.page'),
-                'location' => tran('site.location'),
+                'location' => tran('site.location_product'),
+                'location_project' => tran('site.location_project'),
                 'category_project' => tran('site.category_project'),
             ];
         })->customFormat(function($value) use ($model){
-            switch ($model->contentable_type){
-                case ProductCategory::class:
-                    return 'category';
-                case Page::class:
-                    return 'page';
-                case Address::class:
-                    return 'location';
-                case ProjectCategory::class:
-                    return 'category_project';
-            }
+             return $model->template_lb;
         })->loads(['contentable'], ['api/contentable']);
         $form->xSelect('contentable', __('site.content'))
             ->customFormat(function ($v) use ($model){
@@ -178,6 +170,8 @@ class LinkController extends AdminController
                         $linkable = Page::find($id);
                         break;
                     case 'location':
+                    case 'location_product':
+                    case 'location_project':
                         $linkable = Address::find($id);
                         break;
                     case 'category_project':
@@ -205,6 +199,8 @@ class LinkController extends AdminController
                         $linkable = Page::find($id);
                         break;
                     case 'location':
+                    case 'location_product':
+                    case 'location_project':
                         $linkable = Address::find($id);
                         break;
                     case 'category_project':

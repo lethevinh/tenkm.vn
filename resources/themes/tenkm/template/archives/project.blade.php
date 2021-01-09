@@ -12,6 +12,8 @@
                         <h1 class="page-title">
                             @if(isset($category))
                                 {{$category->title_lb}}
+                            @elseif(isset($address))
+                                {{$address->address_lb}}
                             @elseif(isset($tag))
                                 {{$tag->title_lb}}
                             @else
@@ -23,6 +25,8 @@
                             <li><a href="{{route('project.index')}}">{{ tran('site.project') }}</a></li>
                             @if(isset($category))
                                 <li> {{$category->title_lb}}</li>
+                            @elseif(isset($address))
+                                <li>{{$address->address_lb}}</li>
                             @elseif(isset($tag))
                                 <li> {{$tag->title_lb}}</li>
                             @endif
@@ -41,7 +45,17 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-12 col-lg-12">
                         @foreach($projects as $project)
-                            @include('item.project', ['post' => $project])
+                            @if(isset($address))
+                                @foreach($project->projects as $adProject)
+                                    <div class="col-lg-3 col-sm-6">
+                                        @include('item.project', ['project' => $adProject])
+                                    </div>
+                                @endforeach
+                            @else
+                                <div class="col-lg-3 col-sm-6">
+                                    @include('item.projects', ['project' => $project])
+                                </div>
+                            @endif
                         @endforeach
                     </div>
                 </div>
