@@ -47,14 +47,10 @@
                         @foreach($projects as $project)
                             @if(isset($address))
                                 @foreach($project->projects as $adProject)
-                                    <div class="col-lg-3 col-sm-6">
-                                        @include('item.project', ['project' => $adProject])
-                                    </div>
+                                  @include('item.project', ['project' => $adProject])
                                 @endforeach
                             @else
-                                <div class="col-lg-3 col-sm-6">
-                                    @include('item.project', ['project' => $project])
-                                </div>
+                               @include('item.project', ['project' => $project])
                             @endif
                         @endforeach
                     </div>
