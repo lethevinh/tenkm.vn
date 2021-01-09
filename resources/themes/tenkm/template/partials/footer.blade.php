@@ -31,7 +31,7 @@
                                 <a href="{{option('facebook')}}" target="_blank"><i class="fa fa-facebook  "></i></a>
                             </li>
                             <li>
-                                <a href="{{option('twitter')}}" target="_blank"><i class="fa fa-twitter  "></i></a>
+                                <a href="{{option('youtube')}}" target="_blank"><i class="fa fa-youtube  "></i></a>
                             </li>
                             <li>
                                 <a href="{{option('linkedin')}}" target="_blank"><i class="fa fa-linkedin"></i></a>

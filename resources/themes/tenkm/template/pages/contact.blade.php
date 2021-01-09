@@ -36,9 +36,13 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="contact-page-map">
+                        @if(option('map_iframe'))
+                            {{option('map_iframe')}}
+                        @else
                         <iframe class="w-100"
                                 src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d60021.82409444856!2d-122.40118071595978!3d37.7546723469594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1577786376747!5m2!1sen!2sbd"
                                 style="border:0;" allowfullscreen=""></iframe>
+                        @endif
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -100,12 +104,6 @@
                     <div class="single-contact-info">
                         <p><i class="fa fa-phone"></i>{{tran('site.call_us')}}:</p>
                         <h5>{{option('phone')}}</h5>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="single-contact-info">
-                        <p><i class="fa fa-fax"></i>Fax:</p>
-                        <h5>{{option('fax')}}</h5>
                     </div>
                 </div>
                 <div class="col-xl-3 col-sm-6">
