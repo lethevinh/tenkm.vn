@@ -35,11 +35,11 @@
             </div>
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="contact-page-map">
+                    <div class="contact-page-map video-responsive">
                         @if(option('map_iframe'))
                             {!! option('map_iframe') !!}
                         @else
-                        <iframe class="w-100"
+                        <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d60021.82409444856!2d-122.40118071595978!3d37.7546723469594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1577786376747!5m2!1sen!2sbd"
                                 style="border:0;" allowfullscreen=""></iframe>
                         @endif
