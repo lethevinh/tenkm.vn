@@ -86,7 +86,7 @@ class Link extends Model
             'content' => $content,
             'link' => $this
         ];
-        $offset = request()->input('offset', 8);
+        $offset = request()->input('offset', 10);
         if ($translation = $this->translation($locale)) {
             return redirect($translation->link);
         }
