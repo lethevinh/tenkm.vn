@@ -68,4 +68,12 @@ class Address extends Model
     public function wards() {
         return $this->hasMany(Address::class, 'ward_id', 'ward_id');
     }
+
+    public function projectWards() {
+        return $this->hasMany(Address::class, 'ward_id', 'ward_id');
+    }
+
+    public function projectDistricts() {
+        return $this->hasMany(Address::class, 'district_id', 'district_id');
+    }
 }

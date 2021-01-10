@@ -95,8 +95,8 @@ class ProjectController extends AdminController
                 }
             });
             $grid->disableBatchDelete();
-            $grid->showQuickEditButton();
-            $grid->enableDialogCreate();
+            // $grid->showQuickEditButton();
+            // $grid->enableDialogCreate();
         });
     }
 

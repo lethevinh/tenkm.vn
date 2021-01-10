@@ -120,7 +120,7 @@ class Link extends Model
                         $data['address'] = $content;
                         break;
                     case 'location_project';
-                        $data['projects'] = $content->wards()
+                        $data['projects'] = $content->projectDistricts()
                             ->with(['projects', 'projects.categories', 'projects.tags', 'projects.comments.comments', 'projects.creator'])
                             ->paginate($offset);
                         $data['address'] = $content;
