@@ -60,7 +60,6 @@
                                     }
                                   }
                             }
-                            dd($ps);
                         }
                     @endphp
                     @foreach($products as $product)
