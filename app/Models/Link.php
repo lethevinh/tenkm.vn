@@ -115,13 +115,19 @@ class Link extends Model
                     case 'location':
                     case 'location_product':
                         $data['products'] = $content->wards()
-                            ->with(['products', 'products.categories', 'products.tags', 'products.comments.comments', 'products.creator'])
+                            ->has('products')
+                            ->with(['products'=>function($query) use($locale){
+                                $query->where('language_lb', $locale)->where('status_sl', 'public');
+                            }, 'products.categories', 'products.tags', 'products.comments.comments', 'products.creator'])
                             ->paginate($offset);
                         $data['address'] = $content;
                         break;
                     case 'location_project';
                         $data['projects'] = $content->projectDistricts()
-                            ->with(['projects', 'projects.categories', 'projects.tags', 'projects.comments.comments', 'projects.creator'])
+                            ->has('projects')
+                            ->with(['projects' => function($query) use($locale){
+                                $query->where('language_lb', $locale)->where('status_sl', 'public');
+                            }, 'projects.categories', 'projects.tags', 'projects.comments.comments', 'projects.creator'])
                             ->paginate($offset);
                         $data['address'] = $content;
                         break;

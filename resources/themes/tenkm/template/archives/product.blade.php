@@ -50,6 +50,19 @@
             @endif
             <div class="row">
                 @if(isset($products))
+                    @php
+                        if (isset($address)) {
+                            $ps = [];
+                            foreach ($products as $address) {
+                                  foreach ($address->products as $p) {
+                                    if (!isset($ps[$p->id])){
+                                        $ps[$p->id] = $p;
+                                    }
+                                  }
+                            }
+                            dd($ps);
+                        }
+                    @endphp
                     @foreach($products as $product)
                             @if(isset($address))
                                 @foreach($product->products as $adProduct)

@@ -44,15 +44,27 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-12 col-lg-12">
-                        @foreach($projects as $project)
-                            @if(isset($address))
-                                @foreach($project->projects as $adProject)
-                                  @include('item.project', ['project' => $adProject])
-                                @endforeach
-                            @else
-                               @include('item.project', ['project' => $project])
-                            @endif
-                        @endforeach
+                        @php
+                            if (isset($address)) {
+                                $ps = [];
+                                foreach ($projects as $address) {
+                                      foreach ($address->projects as $p) {
+                                        if (!isset($ps[$p->id])){
+                                            $ps[$p->id] = $p;
+                                        }
+                                      }
+                                }
+                            }
+                        @endphp
+                        @if(isset($address))
+                            @foreach($ps as $adProject)
+                                @include('item.project', ['project' => $adProject])
+                            @endforeach
+                        @else
+                            @foreach($projects as $project)
+                                @include('item.project', ['project' => $project])
+                            @endforeach
+                        @endif
                     </div>
                 </div>
                 <div class="row">
