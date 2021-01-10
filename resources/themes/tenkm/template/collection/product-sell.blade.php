@@ -2,7 +2,7 @@
     <div class="container">
         <div class="section-title">
             <h2 class="title">{{tran('site.properties_for_sell')}}</h2>
-            <a class="btn-view-all" href="http://tenkm.vn/properties-for-rent.html">{{tran('site.view_all')}}</a>
+            <a class="btn-view-all" href="http://tenkm.vn/properties-for-sells.html">{{tran('site.view_all')}}</a>
         </div>
         <div class="row">
             @foreach($products as $product)
