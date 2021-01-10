@@ -37,7 +37,7 @@
     <!-- banner area end -->
 
     <!-- feature area start -->
-    [products template="product-featured" limit="7"]
+    [products template="product-rent" limit="7"]
     <!-- feature area end -->
 
     <!-- dream area end -->
@@ -88,7 +88,7 @@
     <!-- dream area end -->
 
     <!-- Properties area start -->
-    [products template="product-popular" limit="8"]
+    [products template="product-sell" limit="8"]
     <!-- feature Properties area end -->
 
     <!-- team area start -->
