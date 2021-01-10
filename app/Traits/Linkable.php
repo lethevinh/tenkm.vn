@@ -14,7 +14,9 @@ trait Linkable
 {
     public static function bootLinkable()
     {
-        static::observe(app(LinkableObserver::class));
+        if (self::class !== Address::class){
+            static::observe(app(LinkableObserver::class));
+        }
     }
 
     /**

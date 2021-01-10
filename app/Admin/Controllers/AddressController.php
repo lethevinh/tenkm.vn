@@ -102,7 +102,10 @@ class AddressController extends AdminController
             ->load('district_id', 'api/locations');
         $form->select('district_id')
             ->loads(['ward_id' , 'address.street_id'], ['api/locations', 'api/locations/street']);
-        $form->select('ward_id');
+        $form->select('ward_id')->saving(function ($value) {
+            if (!$value) return NULL;
+            return $value;
+        });
         $form->hidden('status_lb')->value('official')->default('official');
         $form->disableViewCheck();
         return $form;
