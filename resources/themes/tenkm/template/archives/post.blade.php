@@ -60,15 +60,19 @@
     <div class="property-news-area pd-top-100 pd-bottom-70">
         <div class="container">
             <div class="row">
-                @foreach($posts as $post)
-                    <div class="col-lg-6">
-                        @include('item.default', ['post' => $post])
-                    </div>
-                @endforeach
+                @if(isset($posts) && count($posts) > 0)
+                    @foreach($posts as $post)
+                        <div class="col-lg-6">
+                            @include('item.default', ['post' => $post])
+                        </div>
+                    @endforeach
+                @endif
             </div>
             <div class="row">
                <div class="col-md-12">
-                   {{ $posts->links() }}
+                   @if(isset($posts) && count($posts) > 0)
+                    {{ $posts->links() }}
+                   @endif
                </div>
             </div>
         </div>
