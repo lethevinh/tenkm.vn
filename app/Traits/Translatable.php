@@ -3,8 +3,6 @@
 
 namespace App\Traits;
 
-use App\Models\Model;
-
 trait Translatable
 {
     public function translator() {
