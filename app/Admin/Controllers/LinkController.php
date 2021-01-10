@@ -25,6 +25,15 @@ class LinkController extends AdminController
         return __('site.links');
     }
 
+    private function getTypes(){
+        return [
+            'category' => tran('site.category'),
+            'page' => tran('site.page'),
+            'location' => tran('site.location_product'),
+            'location_project' => tran('site.location_project'),
+            'category_project' => tran('site.category_project'),
+        ];
+    }
     /**
      * Make a grid builder.
      *
@@ -71,6 +80,10 @@ class LinkController extends AdminController
                 $filter->scope('new', __('site.today'))
                     ->whereDate('created_at', date('Y-m-d'))
                     ->orWhereDate('updated_at', date('Y-m-d'));
+                foreach ($this->getTypes() as $key => $type) {
+                    $filter->scope('template_' . $key, __('site.' . $key))
+                        ->where('template_lb', $key);
+                }
             });
             //$grid->disableBatchDelete();
             $grid->showQuickEditButton();
