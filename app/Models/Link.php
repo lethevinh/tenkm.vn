@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\Ownable;
 use App\Traits\Translatable;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @property mixed template_lb
@@ -99,6 +100,15 @@ class Link extends Model
             case Page::class:
                 $data['page'] = $content;
                 $template = $content->template_lb ? $content->template_lb : $template;
+                switch ($template){
+                    case 'blog':
+                        $data['posts'] = Post::public()->locale()
+                            ->with(['categories', 'tags', 'comments.comments', 'creator'])
+                            ->orderBy('created_at', 'desc')
+                            ->paginate($offset);
+                        $data['user'] = Auth::user();
+                        break;
+                }
                 break;
             case Address::class:
                 switch ($this->template_lb) {
