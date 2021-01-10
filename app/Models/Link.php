@@ -117,8 +117,7 @@ class Link extends Model
                         $q = $content->wards();
                         if ($content->ward_id){
                             $q = $content->wards();
-                        }
-                        if ($content->district_id){
+                        }elseif ($content->district_id){
                             $q = $content->districts();
                         }
                         $data['products'] = $q
