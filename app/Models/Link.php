@@ -114,7 +114,14 @@ class Link extends Model
                 switch ($this->template_lb) {
                     case 'location':
                     case 'location_product':
-                        $data['products'] = $content->wards()
+                        $q = $content->wards();
+                        if ($content->ward_id){
+                            $q = $content->wards();
+                        }
+                        if ($content->district_id){
+                            $q = $content->districts();
+                        }
+                        $data['products'] = $q
                             ->has('products')
                             ->with(['products'=>function($query) use($locale){
                                 $query->where('language_lb', $locale)->where('status_sl', 'public');
