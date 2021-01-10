@@ -62,7 +62,6 @@ trait Linkable
         switch (self::class) {
             case Address::class:
                 $title = $this->address_lb;
-                $template = $this->type_lb;
                 $status = 'public';
                 break;
         }
@@ -87,5 +86,9 @@ trait Linkable
             'keyword' => "",
             'description' => "",
         ]);
+    }
+
+    public function getPublicUrlAttribute() {
+      return url($this->link()->first()->slug_lb. '.html');
     }
 }

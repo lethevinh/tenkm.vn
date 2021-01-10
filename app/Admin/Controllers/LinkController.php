@@ -129,33 +129,39 @@ class LinkController extends AdminController
         if (!$model){
             $model = new \App\Models\Link();
         }
-        $form->text('title_lb', __('admin.title'));
-        $form->text('slug_lb', __('admin.slug'))->rules(function ($form) {
-            if (!$id = $form->model()->id) {
-                return 'unique:links,slug_lb';
-            }
-        });
-        $form->xSelect('template_lb', __('site.type'))->options(function(){
-            return [
-                'category' => tran('site.category'),
-                'page' => tran('site.page'),
-                'location' => tran('site.location_product'),
-                'location_project' => tran('site.location_project'),
-                'category_project' => tran('site.category_project'),
-            ];
-        })->customFormat(function($value) use ($model){
-             return $model->template_lb;
-        })->loads(['contentable'], ['api/contentable']);
-        $form->xSelect('contentable', __('site.content'))
-            ->customFormat(function ($v) use ($model){
-                return $model->contentable && $model->contentable->id? $model->contentable->id:'';
+        $form
+            ->tab(__('site.basic'), function (Form $form) use ($model) {
+                $form->text('title_lb', __('admin.title'));
+                $form->text('slug_lb', __('admin.slug'))->rules(function ($form) {
+                    if (!$id = $form->model()->id) {
+                        return 'unique:links,slug_lb';
+                    }
+                });
+                $form->xSelect('template_lb', __('site.type'))->options(function () {
+                    return [
+                        'category' => tran('site.category'),
+                        'page' => tran('site.page'),
+                        'location' => tran('site.location_product'),
+                        'location_project' => tran('site.location_project'),
+                        'category_project' => tran('site.category_project'),
+                    ];
+                })->customFormat(function ($value) use ($model) {
+                    return $model->template_lb;
+                })->loads(['contentable'], ['api/contentable']);
+                $form->xSelect('contentable', __('site.content'))
+                    ->customFormat(function ($v) use ($model) {
+                        return $model->contentable && $model->contentable->id ? $model->contentable->id : '';
+                    });
+                $form->hidden('language_lb')->default(config('site.locale_default'));
+                $form->switch('status_sl', __('site.status'))->customFormat(function ($value) {
+                    return $value === 'public' ? 1 : 0;
+                })->saving(function ($value) {
+                    return $value === 1 ? 'public' : 'private';
+                })->value(1);
+            })
+            ->tab(__('site.seo'), function (Form $form){
+
             });
-        $form->hidden('language_lb')->default(config('site.locale_default'));
-        $form->switch('status_sl', __('site.status'))->customFormat(function ($value) {
-            return $value === 'public' ? 1 : 0;
-        })->saving(function ($value) {
-            return $value === 1 ? 'public' : 'private' ;
-        })->value(1);
         $form->disableViewCheck();
         $form->submitted(function (Form $form) use ($model){
             if ($model->id && $form->input('contentable')) {
