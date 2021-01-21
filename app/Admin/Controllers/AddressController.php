@@ -32,9 +32,9 @@ class AddressController extends AdminController
             $grid->model()->orderBy('created_at', 'desc')->whereNull('street_id');
             $grid->id('ID')->code()->sortable();
             $grid->address_lb(__('admin.title'));
-            $grid->ward_id(__('admin.ward'))->sortable();
-            $grid->district_id(__('admin.district'))->sortable();
-            $grid->provincial_id(__('admin.provincial'))->sortable();
+            //$grid->ward_id(__('admin.ward'))->sortable();
+            //$grid->district_id(__('admin.district'))->sortable();
+            //$grid->provincial_id(__('admin.provincial'))->sortable();
             $grid->created_at(__('admin.created_at'))->display(function ($at) {
                 return Carbon::make($at)->diffForHumans();
             });
