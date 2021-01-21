@@ -116,9 +116,28 @@ class Link extends Model
                     case 'location_product':
                         $q = $content->wards();
                         if ($content->ward_id){
-                            $q = $content->wards();
+                            $q = $content->productsInWard()
+                                ->with(['product' => function ($query) use ($locale) {
+                                    $query->where('language_lb', $locale);
+                                }]);
                         }elseif ($content->district_id){
                             $q = $content->districts();
+                            $data['children'] = $content->districts()
+                                ->has('productsInWard')
+                                ->with([
+                                    'productsInWard',
+                                    'productsInWard.product' => function($query) use($locale){
+                                        $query->where('language_lb', $locale);
+                                    },
+                                    'link' => function($query) use($locale){
+                                        $query->where('language_lb', $locale);
+                                    }
+                                ])
+                                ->whereNull('street_id')
+                                ->whereNotNull('ward_id')
+                                ->where('show_in_parrent', 1)->get();
+                            //dd($data['children'][0]->link->toArray());
+                            $template = 'location_district_product';
                         }
                         $data['products'] = $q
                             ->has('products')
@@ -129,7 +148,7 @@ class Link extends Model
                         $data['address'] = $content;
                         break;
                     case 'location_project';
-                        $data['projects'] = $content->projectDistricts()
+                        $data['projects'] = $content->districts()
                             ->has('projects')
                             ->with(['projects' => function($query) use($locale){
                                 $query->where('language_lb', $locale)->where('status_sl', 'public');

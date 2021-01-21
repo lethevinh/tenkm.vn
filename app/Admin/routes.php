@@ -130,6 +130,8 @@ Route::group([
             case 'location_product':
             case 'location_project':
                 return \App\Models\Address::query()
+                    ->where('status_lb', 'official')
+                    ->whereNull('street_id')
                     ->get(['id', DB::raw("address_lb as text")]);
             case 'category':
                 return \App\Models\ProductCategory::where('status_sl', 'public')

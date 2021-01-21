@@ -56,6 +56,7 @@ return [
     'products_sell' => 'Properties for sell',
     'tag' => 'Tag',
     'category' => 'Category',
+    'category_product' => 'Category Product',
     'category_project' => 'Category Project',
     'news' => 'News',
     'basic' => 'Basic',

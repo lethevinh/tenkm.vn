@@ -11,7 +11,7 @@ class Address extends Model
     use Linkable;
 
     protected $fillable = [
-        "provincial_id", "district_id", "ward_id", "street_id", "postal_code_nb", "address_lb", "type_lb", "status_lb", "location_lb", "lat_lb", "lng_lb"
+        "provincial_id", "district_id", "ward_id", "street_id", "show_in_parrent", "postal_code_nb", "address_lb", "type_lb", "status_lb", "location_lb", "lat_lb", "lng_lb"
     ];
 
     public function district()
@@ -61,6 +61,10 @@ class Address extends Model
         return $this->hasMany(Product::class, 'address_id');
     }
 
+    public function product() {
+        return $this->hasOne(Product::class, 'address_id');
+    }
+
     public function projects() {
         return $this->hasMany(Project::class, 'address_id');
     }
@@ -73,11 +77,8 @@ class Address extends Model
         return $this->hasMany(Address::class, 'ward_id', 'ward_id');
     }
 
-    public function projectWards() {
-        return $this->hasMany(Address::class, 'ward_id', 'ward_id');
-    }
-
-    public function projectDistricts() {
-        return $this->hasMany(Address::class, 'district_id', 'district_id');
+    public function productsInWard() {
+        return $this->hasMany(Address::class, 'ward_id', 'ward_id')
+            ->whereNotNull('street_id')->whereNull('status_lb');
     }
 }

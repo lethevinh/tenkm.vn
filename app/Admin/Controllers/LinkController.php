@@ -25,10 +25,11 @@ class LinkController extends AdminController
         return __('site.links');
     }
 
-    private function getTypes(){
+    private function linkTemplates(): array
+    {
         return [
-            'category' => tran('site.category'),
             'page' => tran('site.page'),
+            'category' => tran('site.category_product'),
             'location' => tran('site.location_product'),
             'location_project' => tran('site.location_project'),
             'category_project' => tran('site.category_project'),
@@ -80,7 +81,7 @@ class LinkController extends AdminController
                 $filter->scope('new', __('site.today'))
                     ->whereDate('created_at', date('Y-m-d'))
                     ->orWhereDate('updated_at', date('Y-m-d'));
-                foreach ($this->getTypes() as $key => $type) {
+                foreach ($this->linkTemplates() as $key => $type) {
                     $filter->scope('template_' . $key, __('site.' . $key))
                         ->where('template_lb', $key);
                 }
@@ -150,17 +151,12 @@ class LinkController extends AdminController
                         return 'unique:links,slug_lb';
                     }
                 });
-                $form->xSelect('template_lb', __('site.type'))->options(function () {
-                    return [
-                        'category' => tran('site.category'),
-                        'page' => tran('site.page'),
-                        'location' => tran('site.location_product'),
-                        'location_project' => tran('site.location_project'),
-                        'category_project' => tran('site.category_project'),
-                    ];
-                })->customFormat(function ($value) use ($model) {
-                    return $model->template_lb;
-                })->loads(['contentable'], ['api/contentable']);
+                $form
+                    ->xSelect('template_lb', __('site.type'))
+                    ->options($this->linkTemplates())
+                    ->customFormat(function ($value) use ($model) {
+                        return $model->template_lb;
+                    })->loads(['contentable'], ['api/contentable']);
                 $form->xSelect('contentable', __('site.content'))
                     ->customFormat(function ($v) use ($model) {
                         return $model->contentable && $model->contentable->id ? $model->contentable->id : '';
@@ -173,7 +169,14 @@ class LinkController extends AdminController
                 })->value(1);
             })
             ->tab(__('site.seo'), function (Form $form){
-
+                $form
+                    ->embeds('meta_lb', 'SEO', function ($form) {
+                        $form->text('keyword', __('site.seo_keyword'));
+                        $form->text('description',  __('site.seo_description'));
+                    })
+                    ->saving(function ($v) {
+                        return json_encode($v);
+                    });
             });
         $form->disableViewCheck();
         $form->submitted(function (Form $form) use ($model){

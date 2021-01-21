@@ -32,6 +32,9 @@ class AddressController extends AdminController
             $grid->model()->orderBy('created_at', 'desc')->whereNull('street_id');
             $grid->id('ID')->code()->sortable();
             $grid->address_lb(__('admin.title'));
+            $grid->ward_id(__('admin.ward'))->sortable();
+            $grid->district_id(__('admin.district'))->sortable();
+            $grid->provincial_id(__('admin.provincial'))->sortable();
             $grid->created_at(__('admin.created_at'))->display(function ($at) {
                 return Carbon::make($at)->diffForHumans();
             });
@@ -102,10 +105,13 @@ class AddressController extends AdminController
             ->load('district_id', 'api/locations');
         $form->select('district_id')
             ->loads(['ward_id' , 'address.street_id'], ['api/locations', 'api/locations/street']);
-        $form->select('ward_id')->saving(function ($value) {
-            if (!$value) return NULL;
-            return $value;
-        });
+        $form
+            ->select('ward_id')
+            ->saving(function ($value) {
+                if (!$value) return NULL;
+                return $value;
+            });
+        $form->switch('show_in_parrent', __('site.status'))->value(1);
         $form->hidden('status_lb')->value('official')->default('official');
         $form->disableViewCheck();
         return $form;
