@@ -49,7 +49,7 @@
         <div class="container">
             @if(isset($address))
                 <div class="section-title">
-                    <h2 class="title">{{$address->address_lb}}</h2>
+                    <h2 class="title">{{$address->link->title_lb}}</h2>
                 </div>
             @endif
             <div class="row">

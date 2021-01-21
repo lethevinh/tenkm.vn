@@ -5,11 +5,8 @@ namespace App\Traits;
 
 use App\Models\Address;
 use App\Models\Link;
-use App\Models\Model;
 use App\Models\Page;
-use App\Observers\LinkableObserver;
 use Illuminate\Support\Str;
-use function Symfony\Component\String\s;
 
 trait Linkable
 {
@@ -25,7 +22,8 @@ trait Linkable
      */
     public function link()
     {
-        return $this->morphOne(Link::class, 'contentable');
+        $locale = session()->get('locale', config('site.locale_default'));
+        return $this->morphOne(Link::class, 'contentable')->where('language_lb', $locale);
     }
 
     public function makeLink($data = [])
