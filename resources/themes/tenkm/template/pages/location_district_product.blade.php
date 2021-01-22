@@ -53,6 +53,8 @@
                         @if(isset($ward->link))
                         <h2 class="title">{{$ward->link->title_lb}}</h2>
                         <a class="btn-view-all" href="{{ route('link.show', ['slug' => $ward->link->slug_lb])}}">{{tran('site.view_all')}}</a>
+                        @else
+                            <h2 class="title">{{$ward->address_lb}}</h2>
                         @endif
                     </div>
                     <div class="row">
