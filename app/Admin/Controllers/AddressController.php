@@ -100,13 +100,13 @@ class AddressController extends AdminController
     {
         $form = new Form(new Address());
         $form->text('address_lb', __('admin.title'))->required();
-        $form->select('provincial_id')
+        $form->xSelect('provincial_id')
             ->options(Location::ofType('provincial')->get()->pluck('title_lb', 'id'))
             ->load('district_id', 'api/locations');
-        $form->select('district_id')
+        $form->xSelect('district_id')
             ->loads(['ward_id' , 'address.street_id'], ['api/locations', 'api/locations/street']);
         $form
-            ->select('ward_id')
+            ->xSelect('ward_id')
             ->saving(function ($value) {
                 if (!$value) return NULL;
                 return $value;
