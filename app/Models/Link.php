@@ -105,6 +105,9 @@ class Link extends Model
                         $data['products'] = Product::public()->locale()
                             ->where('end_of_contract', 0)
                             ->with(['categories', 'tags', 'comments.comments', 'creator'])
+                            ->whereHas('categories', function ($query){
+                                $query->whereIn('category_id', [81, 82]);
+                            })
                             ->orderBy('created_at', 'desc')
                             ->paginate($offset);
                         $data['user'] = Auth::user();
