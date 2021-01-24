@@ -117,10 +117,14 @@ class Link extends Model
                         $q = $content->wards();
                         if ($content->ward_id){
                             $q = $content->productsInWard()
-                                ->with(['product','product.categories'])
-                                ->whereHas('product', function ($query) use ($locale) {
-                                    $query->where('language_lb', $locale)->where('status_sl', 'public');
-                                })
+                                ->with([
+                                    'product' => function ($query) use ($locale) {
+                                        $query->where('language_lb', $locale)->where('status_sl', 'public');
+                                    },
+                                    'product.categories' => function ($query) use ($locale) {
+                                        $query->whereIn('category_id', [81, 82]);
+                                    }
+                                ])
                                 ->whereHas('product.categories', function ($query) use ($locale) {
                                     $query->whereIn('category_id', [81, 82]);
                                 });
@@ -130,15 +134,16 @@ class Link extends Model
                                 ->has('productsInWard')
                                 ->with([
                                     'productsInWard',
-                                    'productsInWard.product',
-                                    'link'
+                                    'productsInWard.product' => function($query) use($locale){
+                                        $query->where('language_lb', $locale)->where('status_sl', 'public');
+                                    },
+                                    'productsInWard.product.categories' => function($query) use($locale){
+                                        $query->whereIn('category_id', [81, 82]);
+                                    },
+                                    'link' => function($query) use($locale){
+                                        $query->where('language_lb', $locale);
+                                    }
                                 ])
-                                ->whereHas('link', function ($query) use ($locale) {
-                                    $query->where('language_lb', $locale);
-                                })
-                                ->whereHas('productsInWard.product', function ($query) use ($locale) {
-                                    $query->where('language_lb', $locale)->where('status_sl', 'public');
-                                })
                                 ->whereHas('productsInWard.product.categories', function ($query) use ($locale) {
                                     $query->whereIn('category_id', [81, 82]);
                                 })
