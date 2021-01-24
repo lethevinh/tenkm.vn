@@ -119,7 +119,9 @@ class Link extends Model
                             $q = $content->productsInWard()
                                 ->with([
                                     'product' => function ($query) use ($locale) {
-                                        $query->where('language_lb', $locale)->where('status_sl', 'public');
+                                        $query->where('language_lb', $locale)
+                                            ->where('end_of_contract', 1)
+                                            ->where('status_sl', 'public');
                                     },
                                     'product.categories' => function ($query) use ($locale) {
                                         $query->whereIn('category_id', [81, 82]);
@@ -140,7 +142,7 @@ class Link extends Model
                                             ->where('status_sl', 'public');
                                     },
                                     'productsInWard.product.categories' => function($query) use($locale){
-                                       // $query->whereIn('category_id', [81, 82]);
+                                        $query->whereIn('category_id', [81, 82]);
                                     },
                                     'link' => function($query) use($locale){
                                         $query->where('language_lb', $locale);
@@ -148,6 +150,11 @@ class Link extends Model
                                 ])
                                 ->whereHas('productsInWard.product.categories', function ($query) use ($locale) {
                                     $query->whereIn('category_id', [81, 82]);
+                                })
+                                ->whereHas('productsInWard.product', function ($query) use ($locale) {
+                                    $query->where('language_lb', $locale)
+                                        ->where('end_of_contract', 1)
+                                        ->where('status_sl', 'public');
                                 })
                                 ->whereNull('street_id')
                                 ->whereNotNull('ward_id')
