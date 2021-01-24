@@ -53,6 +53,7 @@ return [
     'product' => 'Product',
     'products' => 'Products',
     'products_rent' => 'Properties for rent',
+    'products_rented' => 'Properties for rented',
     'products_sell' => 'Properties for sell',
     'tag' => 'Tag',
     'category' => 'Category',

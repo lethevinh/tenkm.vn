@@ -5,6 +5,7 @@ return [
 	'product' => 'Sản Phẩm',
 	'products' => 'Sản Phẩm',
 	'products_rent' => 'Nhà đất cho thuê',
+	'products_rented' => 'Nhà đất đã cho thuê',
 	'products_sell' => 'Nhà đất bán',
 	'enter_keywords' => 'Nhập từ khoá',
 	'learn_more' => 'Xem thêm',

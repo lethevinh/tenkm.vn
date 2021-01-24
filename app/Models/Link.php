@@ -101,6 +101,14 @@ class Link extends Model
                 $data['page'] = $content;
                 $template = $content->template_lb ? $content->template_lb : $template;
                 switch ($template){
+                    case 'products_rented':
+                        $data['products'] = Product::public()->locale()
+                            ->where('end_of_contract', 0)
+                            ->with(['categories', 'tags', 'comments.comments', 'creator'])
+                            ->orderBy('created_at', 'desc')
+                            ->paginate($offset);
+                        $data['user'] = Auth::user();
+                        break;
                     case 'blog':
                         $data['posts'] = Post::public()->locale()
                             ->with(['categories', 'tags', 'comments.comments', 'creator'])
