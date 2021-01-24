@@ -119,7 +119,10 @@ class Link extends Model
                             $q = $content->productsInWard()
                                 ->with(['product' => function ($query) use ($locale) {
                                     $query->where('language_lb', $locale);
-                                }]);
+                                }])
+                                ->whereHas('product.categories', function ($query) use ($locale) {
+                                    $query->whereIn('category_id', [80, 81]);
+                                });
                         }elseif ($content->district_id){
                             $q = $content->districts();
                             $data['children'] = $content->districts()
@@ -133,6 +136,9 @@ class Link extends Model
                                         $query->where('language_lb', $locale);
                                     }
                                 ])
+                                ->whereHas('productsInWard.product.categories', function ($query) use ($locale) {
+                                    $query->whereIn('category_id', [80, 81]);
+                                })
                                 ->whereNull('street_id')
                                 ->whereNotNull('ward_id')
                                 ->where('show_in_parrent', 1)->get();
