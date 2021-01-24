@@ -135,10 +135,12 @@ class Link extends Model
                                 ->with([
                                     'productsInWard',
                                     'productsInWard.product' => function($query) use($locale){
-                                        $query->where('language_lb', $locale)->where('status_sl', 'public');
+                                        $query->where('language_lb', $locale)
+                                            ->where('end_of_contract', 1)
+                                            ->where('status_sl', 'public');
                                     },
                                     'productsInWard.product.categories' => function($query) use($locale){
-                                        $query->whereIn('category_id', [81, 82]);
+                                       // $query->whereIn('category_id', [81, 82]);
                                     },
                                     'link' => function($query) use($locale){
                                         $query->where('language_lb', $locale);
