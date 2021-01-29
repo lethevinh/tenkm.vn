@@ -1,6 +1,7 @@
 <?php
 namespace App\Shortcodes;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 
 class Products extends AbstractShortcode {
@@ -23,23 +24,25 @@ class Products extends AbstractShortcode {
 
     public function makeCache($params)
     {
-        $query = Product::query();
-        $query->locale();
+        $limit = $params->getParameter('limit', 10);
         if ($dir = $params->getParameter('dir')) {
             $this->dirTemplate = $dir;
         }
-        if ($catalogue = $params->getParameter('catalogue')) {
-            $query->whereHas('categories', function ($q) use ($catalogue) {
-                $q->whereSlug($catalogue);
-            });
-
-            if ($catalogue == "ban") {
-                $query->where('transaction_type', 29);
-            } elseif ($catalogue == "cho-thue") {
-                $query->where('transaction_type', 28);
+        $locale = session()->get('locale', config('site.locale_default'));
+        if ($categorySlug = $params->getParameter('category')) {
+            $category = ProductCategory::whereSlugLb($categorySlug)->first();
+            if ($translation = $category->translation($locale)) {
+              $category = $translation;
+            }
+            if ($category){
+                return $category->products()->locale()->orderBy('updated_at', 'desc')
+                    ->with('categories', 'creator')->paginate($limit);
             }
         }
-        $limit = $params->getParameter('limit', 10);
-        return $query->orderBy('updated_at', 'desc')->with('categories', 'creator')->paginate($limit);
+        $query = Product::query();
+        $query->locale();
+        return $query
+            ->orderBy('updated_at', 'desc')
+            ->with('categories', 'creator')->paginate($limit);
     }
 }

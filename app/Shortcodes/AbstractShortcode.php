@@ -79,7 +79,8 @@ class AbstractShortcode {
      */
     public static function getCacheByName($model, $params = [])
     {
-        if (! self::enableCache()) {
+        return $model->makeCache($params);
+        /* if (! self::enableCache()) {
             return $model->makeCache($params);
         }
         $template = $model->getTemplate($params);
@@ -89,6 +90,6 @@ class AbstractShortcode {
                 $model->forever($cache, $cacheKey);
             }
         }
-        return $model->getStore()->get($cacheKey);
+        return $model->getStore()->get($cacheKey);*/
     }
 }

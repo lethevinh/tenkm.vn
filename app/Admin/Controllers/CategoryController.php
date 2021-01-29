@@ -66,6 +66,7 @@ class CategoryController extends AdminController
             });
             $grid->model()->orderByDesc('updated_at');
             $grid->column('title_lb', __('admin.title'))->sortable();
+            $grid->slug_lb(__('site.name'))->label();
             if ($relations !== '') {
                 $grid->{$relations}->count()->label();
             }
