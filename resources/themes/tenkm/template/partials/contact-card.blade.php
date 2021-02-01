@@ -39,7 +39,7 @@
             </div>
             <div class="media-body">
                 <p>{{tran('site.phone')}}</p>
-                <span>+00 111 222 333</span>
+                <span>{{option('phone')}}</span>
             </div>
         </div>
         <div class="media mb-0">
@@ -48,7 +48,7 @@
             </div>
             <div class="media-body">
                 <p>Email</p>
-                <span>info@example.com</span>
+                <span>{{option('email')}}</span>
             </div>
         </div>
     </div>
