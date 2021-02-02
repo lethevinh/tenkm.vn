@@ -1,6 +1,7 @@
 @extends('layouts.full')
 @section('title', tran('site.project'))
-@section('id_body', 'courses__page')
+@section('id_body', 'projects_page')
+@section('class-body', 'projects_page')
 @section('content')
 
     <!-- breadcrumb area start -->
@@ -40,7 +41,7 @@
 
     <!-- Properties by city start -->
     <div class="search-page-wrap pd-top-100 pd-bottom-70">
-        <div class="search-container">
+        <div class="search-container projec">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-12 col-lg-12">

@@ -173,4 +173,12 @@ return [
     'about_us' => 'Về Chúng Tôi',
     'best_service' => 'Dịch Vụ',
     'end_of_contract' => 'Kết thúc hợp đồng.',
+    'developer' => 'Chủ đầu tư',
+    'total_unit_area' => 'Tổng số căn hộ',
+    'handover_condition' => 'Điều kiện bàn giao',
+    'legal_ownership' => 'Thời hạn sở hữu',
+    'fully_furnished' => "Đầy đủ nôị thất",
+    'semi_furnished' => "Nội thất cơ bản",
+    'unfurnished' => "Không nội thất",
+    'bare_unit' => "Nhà Thô",
 ];

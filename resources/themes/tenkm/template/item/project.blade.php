@@ -11,11 +11,7 @@
             <p class="author"><i class="fa fa-location-arrow"></i> {{$project->addressLabel}}</p>
             <h6 class="title"><a href="{{$project->link}}">{{$project->title_lb}}</a></h6>
             <p class="description">{{truncate($project->description_lb, 200, ' ...')}}</p>
-            <ul class="info-list">
-                <li><i class="fa fa-building"></i> {{$project->block_nb}} {{tran('site.blocks')}}</li>
-                <li><i class="fa fa-key"></i> {{$project->department_nb}} {{tran('site.apartments')}}</li>
-                <li><img src="/images/icons/7.png" alt="img"> {{$project->area_nb}} m²</li>
-            </ul>
+            <h6 class="title" style="color: #ec665e;height: auto">{{$project->priceLabel}}</h6>
             <ul class="contact-list">
                 <li><a class="phone" href="#"><i class="fa fa-phone"></i></a></li>
                 <li><a class="message" href="#"><img src="/images/icons/8.png" alt="img"></a></li>

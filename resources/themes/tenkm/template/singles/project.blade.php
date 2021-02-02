@@ -89,81 +89,61 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{tran('site.blocks')}}</h5>
-                                    <p><i class="fa fa-building"></i>{{$project->block_nb}}</p>
+                                    <h5>{{tran('site.developer')}}</h5>
+                                    <p><i class="fa fa-building"></i>{{$project->developer_lb}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{tran('site.floors')}}</h5>
-                                    <p><i class="fa fa-building"></i>{{$project->floor_nb}}</p>
+                                    <h5>{{tran('site.total_unit_area')}}</h5>
+                                    <p><i class="fa fa-building"></i>{{$project->total_unit_area_lb}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{tran('site.shophouse')}}</h5>
-                                    <p><i class="fa fa-home"></i>{{$project->shop_nb}}</p>
+                                    <h5>{{tran('site.handover_condition')}}</h5>
+                                    <p><i class="fa fa-home"></i>{{tran('site.'.$project->handover_condition_lb)}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="single-property-info">
-                                    <h5>{{tran('site.apartments')}}</h5>
-                                    <p><i class="fa fa-key"></i>{{$project->department_nb}}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-3 col-sm-6">
-                                <div class="single-property-info">
-                                    <h5>{{tran('site.apartment_square')}}</h5>
-                                    <p><img src="/images/icons/7.png" alt="img">{{$project->area_lb}} &#13217;</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="single-property-info">
-                                    <h5>{{tran('site.management_company')}}</h5>
-                                    <p><i class="fa fa-suitcase"></i>{{$project->management_company}}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="single-property-info">
-                                    <h5>{{tran('site.design_company')}}</h5>
-                                    <p><i class="fa fa-paint-brush"></i>{{$project->design_company}}</p>
+                                    <h5>{{tran('site.legal_ownership')}}</h5>
+                                    <p><i class="fa fa-key"></i>{{$project->legal_ownership_lb}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="property-news-single-card style-two border-bottom-yellow">
-                        <h4>{{tran('site.introduction')}}</h4>
+                        <h4>{{tran('site.content_detail')}}</h4>
                         <p>{!! $project->content_lb !!}</p>
                     </div>
+                    <div class="property-news-single-card style-two border-bottom-yellow">
+                        <h4>{{tran('site.location_map')}}</h4>
+                        @if($project->address)
+                            @include('partials.google', ['address' => $project->address])
+                        @endif
+                    </div>
+                    <div class="property-news-single-card border-bottom-yellow">
+                        <h4>{{tran('site.video')}}</h4>
+                        <div class="thumb video-responsive">
+                            @if($project->youtube)
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{$project->youtube}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            @endif
+                        </div>
+                    </div>
                     <div class="property-news-single-card border-bottom-yellow mb-0">
-                        <h4>3D Gallery</h4>
+                        <h4>Google StreetView</h4>
                         <div class="thumb">
-                            <img src="{{$project->gallery_3d_lb}}" alt="img">
+                            @if($project->address)
+                                @include('partials.streetview', ['address' => $project->address])
+                            @endif
                         </div>
                     </div>
                     <div class="property-news-single-card border-bottom-yellow">
-                        <h4>{{tran('site.amenities')}}</h4>
-                        @if($project->amenities->count() > 0)
-                        @php $div = ceil($project->amenities->count() / 3);  $amenities = array_chunk($project->amenities->toArray(), $div); @endphp
-                        <div class="row">
-                            @foreach($amenities as $amenity)
-                                <div class="col-sm-4">
-                                    <ul class="rld-list-style mb-3 mb-sm-0">
-                                        @foreach($amenity as $a)
-                                            <li><i class="fa fa-check"></i> {{$a['title_lb']}}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endforeach
+                        <h4>{{tran('site.floor_plan')}}</h4>
+                        <div class="thumb">
+                            <img src="{{$project->gallery_3d_lb}}" alt="{{$project->title_lb}}">
                         </div>
-                        @endif
-                    </div>
-                    <div class="property-news-single-card style-two border-bottom-yellow">
-                        <h4>{{tran('site.map')}}</h4>
-                        @include('partials.google', ['address' => $project->address])
                     </div>
                 </div>
             </div>

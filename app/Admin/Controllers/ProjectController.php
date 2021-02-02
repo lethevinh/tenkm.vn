@@ -209,16 +209,24 @@ class ProjectController extends AdminController
                 $form->number('department_nb', __('site.departments'));
                 $form->number('total_area_nb', __('site.total_area'));
                 $form->switch('shop_nb', __('site.shop_nb'));
-
                 $form->text('apartment_type', __('site.apartment_type'));
                 $form->text('management_company', __('site.management_company'));
                 $form->text('design_company', __('site.design_company'));
+                $form->text('developer_lb', __('site.developer'));
+                $form->text('total_unit_area_lb', __('site.total_unit_area'));
+                $form->text('legal_ownership_lb', __('site.legal_ownership'));
+                $form->select('handover_condition_lb', __('site.handover_condition'))->options([
+                    'fully_furnished' => __("site.fully_furnished"),
+                    'semi_furnished' => __("site.semi_furnished"),
+                    'unfurnished' => __("site.unfurnished"),
+                    'bare_unit' => __("site.bare_unit"),
+                ]);
             })
             ->tab(__('site.media'), function (Form $form) {
                 $form->media('image_lb', __('admin.avatar'))->image();
-                $form->media('video_lb', __('admin.video'))->video();
+                $form->url('video_lb', __('admin.video'));
                 $form->media('gallery_lb', __('site.gallery'))->image()->multiple();
-                $form->media('gallery_3d_lb', __('site.gallery_3d'))->image();
+                $form->media('gallery_3d_lb', __('site.floorplan'))->image();
             })
             ->tab(__('site.location'), function (Form $form) {
                 $form->address('address');

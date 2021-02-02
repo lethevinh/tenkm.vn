@@ -153,4 +153,13 @@ class Project extends Model implements Searchable
         $locale = session()->get('locale', config('site.locale_default'));
         return number_format($price, 0) . ' ' . config('site.symbols.' . $locale, '₫');
     }
+    public function getYoutubeAttribute()
+    {
+        if (isset($this->attributes['video_lb'])) {
+            $url = $this->attributes['video_lb'];
+            preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
+            return $match[1];
+        }
+        return  '';
+    }
 }

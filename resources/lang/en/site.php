@@ -162,4 +162,12 @@ return [
     'about_us' => 'About Us',
     'best_service' => 'Best Service',
     'end_of_contract' => 'End of contract.',
+    'developer' => 'Developer',
+    'total_unit_area' => 'Total Unit',
+    'handover_condition' => 'Handover Condition',
+    'legal_ownership' => 'Legal Ownership',
+    'fully_furnished' => "Fully furnished",
+    'semi_furnished' => "Semi-furnished",
+    'unfurnished' => "Unfurnished",
+    'bare_unit' => "Bare unit",
 ];
