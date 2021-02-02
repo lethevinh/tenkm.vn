@@ -87,7 +87,8 @@ class ProductController extends Controller
     }
 
     public function search(Request $request) {
-        $query = $request->input('s');
+        $query = $request->input('s',' ');
+        $query = !empty($query) ? $query : ' ';
         $title = __('site.result_search').$query;
         $locale = session()->get('locale', config('site.locale_default'));
         app('seo')->setTitle($title);
