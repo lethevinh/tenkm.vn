@@ -59,6 +59,7 @@ return [
     'category' => 'Category',
     'category_product' => 'Category Product',
     'category_project' => 'Category Project',
+    'category_post' => 'Category Post',
     'news' => 'News',
     'basic' => 'Basic',
     'basic_info' => 'Basic Info',
