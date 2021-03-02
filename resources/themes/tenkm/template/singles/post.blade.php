@@ -61,7 +61,7 @@
                         <img class="news-details-thumb" src="{{$post->image_lb}}" alt="{{$post->title_lb}}">
                         {!! $post->content_lb !!}
                         @if($post->download_lb)
-                            <a download href="{{$post->download_lb}}">{{tran('site.')}}</a>
+                            <a download href="{{$post->download_lb}}">{{tran('site.download_full_report')}}</a>
                         @endif
                     </div>
                     @include('partials.comment',['post' => $post, 'type' => 'post'])
