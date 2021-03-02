@@ -156,9 +156,13 @@ class PostController extends AdminController
         $form = new Form(new $postRepositoryClassName(['categories', 'tags', 'comments']));
         $form->disableViewButton();
         $form->tools([ToolViewLive::make(), ToolTranslatable::make()]);
-        $model = false;
+        $id = str_replace(['/admin/posts/', '/edit'], '', request()->getRequestUri());
+        $model = $form->getModel();
         if (!empty($id)) {
-            $model = \App\Models\Product::find($id);
+            $model = \App\Models\Post::find($id);
+        }
+        if (!$model){
+            $model = new \App\Models\Post();
         }
         $language = $model && $model->id ? $model->language_lb : config('site.locale_default');
         $form->tab(__('admin.basic'), function (Form $form) use ($language){
@@ -188,6 +192,7 @@ class PostController extends AdminController
                 $form->textarea('description_lb', __('admin.description'));
                 $form->editor('content_lb', __('admin.content'));
                 $form->media('image_lb', __('admin.avatar'))->image();
+                $form->media('download_lb', __('site.docs'))->file();
             });
         if ($form->isCreating()) {
             $form->tab(__('admin.comment'), function (Form $form) {

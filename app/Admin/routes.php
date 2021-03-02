@@ -139,6 +139,9 @@ Route::group([
             case 'category_project':
                 return \App\Models\ProjectCategory::where('status_sl', 'public')
                     ->get(['id', DB::raw("title_lb as text")]);
+            case 'category_post':
+                return \App\Models\PostCategory::where('status_sl', 'public')
+                    ->get(['id', DB::raw("title_lb as text")]);
         }
     });
     $router->get('/api/locations/street', function (){

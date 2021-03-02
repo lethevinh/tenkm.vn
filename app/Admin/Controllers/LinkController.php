@@ -9,6 +9,7 @@ use App\Models\Address;
 use App\Models\ProductCategory;
 use App\Models\Page;
 use App\Models\ProjectCategory;
+use App\Models\PostCategory;
 use App\Admin\Forms\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\IFrameGrid;
@@ -33,6 +34,7 @@ class LinkController extends AdminController
             'location' => tran('site.location_product'),
             'location_project' => tran('site.location_project'),
             'category_project' => tran('site.category_project'),
+            'category_post' => tran('site.category_post'),
         ];
     }
     /**
@@ -199,6 +201,9 @@ class LinkController extends AdminController
                     case 'category_project':
                         $linkable = ProjectCategory::find($id);
                         break;
+                    case 'category_post':
+                        $linkable = PostCategory::find($id);
+                        break;
                 }
                 if ($linkable && $linkable->id) {
                     $linkable->link()->save($model);
@@ -227,6 +232,9 @@ class LinkController extends AdminController
                         break;
                     case 'category_project':
                         $linkable = ProjectCategory::find($id);
+                        break;
+                    case 'category_post':
+                        $linkable = PostCategory::find($id);
                         break;
                 }
                 if ($linkable && $linkable->id) {

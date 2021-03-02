@@ -23,6 +23,7 @@ class CreatePostsTable extends Migration
                 $table->string('slug_lb')->unique();
                 $table->index(['slug_lb']);
                 $table->text('image_lb')->nullable();
+                $table->text('download_lb')->nullable();
                 $table->string('type_lb')->default('post');
                 $table->index(['slug_lb', 'type_lb']);
                 $table->text('description_lb')->nullable();
