@@ -156,6 +156,7 @@ class PostController extends AdminController
         $form = new Form(new $postRepositoryClassName(['categories', 'tags', 'comments']));
         $form->disableViewButton();
         $form->tools([ToolViewLive::make(), ToolTranslatable::make()]);
+        $id = str_replace(['/admin/posts/', '/edit'], '', request()->getRequestUri());
         $model = $form->getModel();
         if (!empty($id)) {
             $model = \App\Models\Post::find($id);
