@@ -1,8 +1,10 @@
 @extends('layouts.full')
+@if(isset($page))
 @section('title', $page->title_lb)
+@endif
 @section('id_body', 'blog-item__page')
 @section('content')
-
+@if(isset($page))
     <!-- breadcrumb area start -->
     <div class="breadcrumb-area jarallax" style="background-image:url({{$page->thumbnail}});">
         <div class="container">
@@ -11,7 +13,7 @@
                     <div class="breadcrumb-inner">
                         <h1 class="page-title">{{$page->title_lb}}</h1>
                         <ul class="page-list">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="{{route('home.show')}}">{{tran('site.home')}}</a></li>
                             @if($page->categories->count() > 0)
                                 <li><a href="{{$page->categories[0]->link}}">{{ $page->categories[0]->title_lb }}</a></li>
                             @endif
@@ -65,4 +67,35 @@
         </div>
     </div>
     <!-- News details area End -->
+@else
+    <!-- breadcrumb area start -->
+    <div class="breadcrumb-area jarallax">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-inner">
+                        <h1 class="page-title">404</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb area End -->
+    <section class="section__home">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="welcome__content">
+                        <h1 class="welcome_content__title">404</h1>
+                        <p class="welcome_content__title-primary">Page not found</p>
+                        <p class="welcome_content__desc">Sorry, but the page you were looking for doesn’t exist.</p>
+                        <p class="welcome_content__action">Go back to <a href="{{url('/')}}">Home page</a></p>
+                    </div> <!-- .welcome__content -->
+                </div>
+            </div> <!-- / .row -->
+        </div> <!-- / .container -->
+        <!-- Background image -->
+        <div class="home__bg"></div>
+    </section>
+@endif
 @endsection

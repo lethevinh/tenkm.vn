@@ -51,6 +51,7 @@ return [
 	'category' => 'Danh mục',
     'category_product' => 'Danh mục nhà đất',
 	'category_project' => 'Danh mục dự án',
+	'category_post' => 'Danh mục bài viết',
 	'docs' => 'Tài liệu',
 	'download' => 'Tải về',
 	'share' => 'Chia sẻ',

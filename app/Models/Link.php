@@ -198,6 +198,13 @@ class Link extends Model
                     ->paginate($offset);
                 $data['category'] = $content;
                 break;
+            case PostCategory::class:
+                $data['posts'] = $content->posts()->public()->locale()
+                    ->with(['categories', 'tags', 'comments.comments', 'creator'])
+                    ->paginate($offset);
+                $data['category'] = $content;
+                $template = 'category_post';
+                break;
         }
         return view()->first(['pages.'.$template, 'pages.default'], $data);
     }
