@@ -43,7 +43,7 @@ class Post extends Model implements Searchable
      */
     protected $fillable = [
         'updated_by', 'created_by', 'title_lb', 'slug_lb', 'image_lb','status_sl', 'template_lb',
-        'type_lb', 'description_lb', 'content_lb', 'review_nb', 'view_nb', 'comment_nb',
+        'type_lb', 'description_lb', 'content_lb', 'review_nb', 'view_nb', 'comment_nb', 'download_lb',
         'language_lb', 'translation_id',
         'published_at', 'validated_at'
     ];

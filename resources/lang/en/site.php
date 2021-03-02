@@ -40,6 +40,7 @@ return [
 	'posted_on' => 'posted on',
 	'docs' => 'Document',
 	'download' => 'Download',
+    'download_full_report' => 'Read the full report.',
 	'share' => 'Share',
 	'duration' => 'Duration',
 	'hour' => 'Hour',

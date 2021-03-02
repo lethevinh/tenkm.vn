@@ -54,6 +54,7 @@ return [
 	'category_post' => 'Danh mục bài viết',
 	'docs' => 'Tài liệu',
 	'download' => 'Tải về',
+	'download_full_report' => 'Tải về báo cáo đầy đủ',
 	'share' => 'Chia sẻ',
 	'download_certificate' => 'Tải Chứng chỉ',
 	'test_now' => 'Thi ngay',

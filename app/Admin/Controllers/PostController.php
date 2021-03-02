@@ -192,6 +192,7 @@ class PostController extends AdminController
                 $form->textarea('description_lb', __('admin.description'));
                 $form->editor('content_lb', __('admin.content'));
                 $form->media('image_lb', __('admin.avatar'))->image();
+                $form->media('download_lb', __('site.docs'))->file();
             });
         if ($form->isCreating()) {
             $form->tab(__('admin.comment'), function (Form $form) {
