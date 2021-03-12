@@ -4,8 +4,60 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5f71839ed2e77330cc2dae7a674c600f",
+    "content-hash": "16e83853207fa7293869aca5aa0bd30f",
     "packages": [
+        {
+            "name": "ajcastro/searchable",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ajcastro/searchable.git",
+                "reference": "14158e31e405968bfcf7c77a547ca2b6828d73fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ajcastro/searchable/zipball/14158e31e405968bfcf7c77a547ca2b6828d73fa",
+                "reference": "14158e31e405968bfcf7c77a547ca2b6828d73fa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AjCastro\\Searchable\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arjon Jason Castro",
+                    "email": "ajcastro29@gmail.com"
+                }
+            ],
+            "description": "Full-text search and reusable queries in laravel.",
+            "keywords": [
+                "eloquent-search",
+                "full-text-search",
+                "grid",
+                "laravel",
+                "laravel-package",
+                "query",
+                "query-builder"
+            ],
+            "support": {
+                "issues": "https://github.com/ajcastro/searchable/issues",
+                "source": "https://github.com/ajcastro/searchable/tree/v1.5.0"
+            },
+            "time": "2020-04-11T03:31:33+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.0.2",
@@ -9557,5 +9609,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

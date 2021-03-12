@@ -356,37 +356,61 @@
             $('.single-intro-media').removeClass('single-intro-media-active');
             $(this).addClass('single-intro-media-active');
         });
-
         /*--------------------------------------
             range slider
         ---------------------------------------*/
         $( function() {
-            var handle = $( ".ui-slider-handle-price" );
-            $( ".rld-price-slider" ).slider({
+            let handle = $( ".ui-slider-handle-price" );
+            let priceSlider = $( ".rld-price-slider" );
+            let priceInput = $('input[name="price"]');
+            let value = priceInput.val()??500;
+            let min = priceInput.data('min')??1;
+            let max = priceInput.data('max')??6500;
+            let currency = priceInput.data('currency')??'USD';
+            let locale = priceInput.data('locale')??'en-US';
+            let formatter = new Intl.NumberFormat(locale, {
+                style: 'currency',
+                currency: currency,
+                maximumSignificantDigits: 1
+            });
+            priceSlider.slider({
                 range: "min",
-                value: 750,
-                min: 1,
-                max: 3500,
+                value: value,
+                min: min,
+                max: max,
                 create: function() {
-                    handle.text( $( this ).slider( "value" ) );
+                    handle.text( formatter.format($( this ).slider( "value" )) );
                 },
                 slide: function( event, ui ) {
-                    handle.text( ui.value );
+                    handle.text( formatter.format(ui.value ));
+                },
+                change: function( event, ui ) {
+                    let value = priceSlider.slider( "option", "value" );
+                    priceInput.val(value);
                 }
             });
         } );
         $( function() {
-            var handle = $( ".ui-slider-handle-size" );
-            $( ".rld-size-slider" ).slider({
+            let handle = $( ".ui-slider-handle-size" );
+            let sizeSlider = $( ".rld-size-slider" );
+            let sizeInput = $('input[name="size"]');
+            let value = sizeInput.val()??500;
+            let min = sizeInput.data('min')??1;
+            let max = sizeInput.data('max')??6500;
+            sizeSlider.slider({
                 range: "min",
-                value: 600,
-                min: 1,
-                max: 6500,
+                value: value,
+                min: min,
+                max: max,
                 create: function() {
                     handle.text( $( this ).slider( "value" ) );
                 },
                 slide: function( event, ui ) {
                     handle.text( ui.value );
+                },
+                change: function( event, ui ) {
+                    let value = sizeSlider.slider( "option", "value" );
+                    sizeInput.val(value);
                 }
             });
         } );
@@ -424,6 +448,16 @@
             });
         }
 
+        /*-------------------------------------------------
+           SEARCH
+        --------------------------------------------------*/
+        $('.category-filter-btn').click(function (event){
+            let $element = $(this);
+            let idCat = $element.data('id-cat');
+            $('.category-filter-btn').removeClass('active');
+            $element.addClass('active');
+            $('input[name="cat"]').val(idCat);
+        });
 
     });
 

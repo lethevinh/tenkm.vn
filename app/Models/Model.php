@@ -105,6 +105,11 @@ class Model extends Base
         return $query->validated()->orderByDesc('updated_at');
     }
 
+    public function scopeWithAndWhereHas($query, $relation, $constraint){
+        return $query->whereHas($relation, $constraint)
+            ->with([$relation => $constraint]);
+    }
+
     public function getThumbnailAttribute() {
         if (!isset($this->attributes['image_lb'])) {
             return '';

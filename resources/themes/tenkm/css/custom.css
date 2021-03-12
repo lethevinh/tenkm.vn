@@ -98,3 +98,7 @@ footer h1, footer h2, footer h3, footer h4, footer h5, footer h6 {
 .projects_page .single-feature.style-two .thumb img{
  height: auto;
 }
+.btn-outline-custom{
+    color: #176b8f;
+    border: 1px solid #176b8f;
+}

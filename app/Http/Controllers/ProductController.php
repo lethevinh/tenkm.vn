@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Amenity;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductTag;
@@ -87,16 +88,49 @@ class ProductController extends Controller
     }
 
     public function search(Request $request) {
-        $query = $request->input('s',' ');
-        $query = !empty($query) ? $query : ' ';
-        $title = __('site.result_search').$query;
+        $string = $request->input('s','');
+        $offset = request()->input('offset', 8);
+        $title = __('site.result_search').$string;
         $locale = session()->get('locale', config('site.locale_default'));
         app('seo')->setTitle($title);
-        $products = (new Search())->registerModel(Product::class, 'title_lb')->perform($query);
-        $products = $products->map(function ($product){
-           return $product->searchable;
-        })->where('language_lb', $locale);
-        $user = Auth::user();
-        return view('archives.product', compact('products', 'query', 'title'));
+
+        $query = Product::where('language_lb', $locale)->public();
+
+        if(($bedroom = $request->input('bedroom', -1)) >= 0) {
+            $min = explode('-', Product::$bedrooms[$bedroom])[0];
+            $max = explode('-', Product::$bedrooms[$bedroom])[1];
+            $query = $query->where('bedroom_nb', '>', $min)->where('bedroom_nb', '<', $max);
+        }
+
+        if(($bathroom = $request->input('bathroom', -1)) >= 0) {
+            $min = explode('-', Product::$bathrooms[$bathroom])[0];
+            $max = explode('-', Product::$bathrooms[$bathroom])[1];
+            $query = $query->where('bathroom_nb', '>', $min)->where('bedroom_nb', '<', $max);
+        }
+
+        if($area = $request->input('size','')) {
+            $query = $query->where('area_nb','>', $area);
+        }
+        if($price = $request->input('price','')) {
+            $query = $query->where('price_fl','>', $price)->orWhere('price_sale_fl', '>', $price);
+        }
+        if($string) {
+            $query = $query->search($string);
+        }
+        if($category = $request->input('cat','')) {
+            $query = $query->withAndWhereHas('categories', function($query) use ($category) {
+                $query->where('category_id', $category);
+            });
+        }
+        if($type = $request->input('property_type','')) {
+            $query = $query->where('property_type', $type);
+        }
+        $products = $query->paginate($offset);
+        $categories = ProductCategory::where('language_lb', $locale)->get();
+        $parentCategories = $categories->whereNull('parent_id');
+        $types = Amenity::ofType('property_type')->lang($locale)->get();
+        return view('pages.search', compact(
+            'products', 'query', 'title', 'categories','parentCategories', 'types')
+        );
     }
 }

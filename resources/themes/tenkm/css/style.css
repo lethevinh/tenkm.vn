@@ -2531,7 +2531,7 @@ ul {
 
 .rld-price-slider-wrap .ui-slider-handle {
   height: 24px;
-  width: 42px;
+  width: auto;
   background: var(--main-color-one);
   border: 0;
   text-align: center;

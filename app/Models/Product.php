@@ -16,17 +16,16 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
-use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
-
+use AjCastro\Searchable\Searchable;
 
 /**
  * @property mixed title_lb
  */
-class Product extends Model implements Searchable
+class Product extends Model
 {
     use Sluggable, Orderable, Ownable, Commentable, Cacheable, Categorizable, Taggable, Reactable,
-        Locationable, Amenitable, Translatable;
+        Locationable, Amenitable, Translatable, Searchable;
 
     protected $table = 'products';
 
@@ -40,6 +39,8 @@ class Product extends Model implements Searchable
         'published_at', 'validated_at', 'updated_by', 'created_by',
     ];
 
+    public static $bedrooms = ['2-4','3-4', '1-3', '5-9'];
+    public static $bathrooms = ['2-4','3-4', '1-3', '5-9'];
     public function sluggable(): array
     {
         return [
@@ -48,6 +49,25 @@ class Product extends Model implements Searchable
             ]
         ];
     }
+
+    /**
+     * Searchable model definitions.
+     */
+    protected $searchable = [
+        'columns' => [
+            'products.title_lb',
+            'products.slug_lb',
+        ],
+    ];
+
+    /**
+     * Can also be written like this for searchable columns.
+     *
+     * @var array
+     */
+    protected $searchableColumns = [
+        'title_lb','slug_lb'
+    ];
 
     public function makeCache($params)
     {
