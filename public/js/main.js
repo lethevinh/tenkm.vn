@@ -363,11 +363,11 @@
             let handle = $( ".ui-slider-handle-price" );
             let priceSlider = $( ".rld-price-slider" );
             let priceInput = $('input[name="price"]');
-            let value = (priceInput && priceInput.val())??500;
-            let min = (priceInput && priceInput.data('min'))??1;
-            let max = (priceInput && priceInput.data('max'))??6500;
-            let currency = (priceInput && priceInput.data('currency'))??'USD';
-            let locale = (priceInput && priceInput.data('locale'))??'en-US';
+            let value = (priceInput && priceInput.val()) ? priceInput.val() : 500;
+            let min = (priceInput && priceInput.data('min')) ? priceInput.data('min') : 1;
+            let max = (priceInput && priceInput.data('max')) ? priceInput.data('max') : 6500;
+            let currency = (priceInput && priceInput.data('currency')) ? priceInput.data('currency') : 'USD';
+            let locale = (priceInput && priceInput.data('locale')) ? priceInput.data('locale') : 'en-US';
             let formatter = new Intl.NumberFormat(locale, {
                 style: 'currency',
                 currency: currency,
