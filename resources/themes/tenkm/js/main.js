@@ -394,9 +394,9 @@
             let handle = $( ".ui-slider-handle-size" );
             let sizeSlider = $( ".rld-size-slider" );
             let sizeInput = $('input[name="size"]');
-            let value = sizeInput.val()??500;
-            let min = sizeInput.data('min')??1;
-            let max = sizeInput.data('max')??6500;
+            let value = (sizeInput && sizeInput.val()) ? sizeInput.val() : 500;
+            let min = (sizeInput && sizeInput.data('min')) ? sizeInput.data('min') : 1;
+            let max = (sizeInput && sizeInput.data('max')) ? sizeInput.data('max') : 6500;
             sizeSlider.slider({
                 range: "min",
                 value: value,
