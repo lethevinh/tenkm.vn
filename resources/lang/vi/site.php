@@ -194,4 +194,5 @@ return [
     'properties' => "Bất động sản",
     'all' => "Tất cả",
     'ward_city' => "Phường",
+    'show_in_search' => "Hiển thị khung tìm",
 ];

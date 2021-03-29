@@ -183,4 +183,5 @@ return [
     'properties' => "Properties",
     'all' => "All",
     'ward_city' => "Ward",
+    'show_form_search' => "Show form search",
 ];

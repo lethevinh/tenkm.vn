@@ -142,6 +142,7 @@ class ProductController extends Controller
         $parentCategories = $categories->whereNull('parent_id');
         $types = Amenity::ofType('property_type')->lang($locale)->get();
         $wards = Address::whereNotNull('ward_id')
+            ->where('show_form_search', 1)
             ->whereNull('street_id')
             ->with('ward')->get()
             ->map(function($address){

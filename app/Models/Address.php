@@ -11,7 +11,7 @@ class Address extends Model
     use Linkable;
 
     protected $fillable = [
-        "provincial_id", "district_id", "ward_id", "street_id", "show_in_parrent", "postal_code_nb", "address_lb", "type_lb", "status_lb", "location_lb", "lat_lb", "lng_lb"
+        "provincial_id", "district_id", "ward_id", "street_id", "show_in_parrent", "show_form_search", "postal_code_nb", "address_lb", "type_lb", "status_lb", "location_lb", "lat_lb", "lng_lb"
     ];
 
     public function district()

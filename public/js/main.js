@@ -2,7 +2,7 @@
     "use strict";
 function convertMoney($input, locale = 'vi') {
     if (locale === 'en'){
-        return $input;
+        return $input + ' $';
     }
     let  string = {
          ty : 'tỷ',
@@ -14,7 +14,7 @@ function convertMoney($input, locale = 'vi') {
     };
 
     for (const conditionKey in condition) {
-        console.log(condition, conditionKey)
+        //console.log(condition, conditionKey)
         let $secs = condition[conditionKey];
         let $d = $input / $secs;
         let $str = string[conditionKey];
@@ -388,14 +388,20 @@ function convertMoney($input, locale = 'vi') {
             let handleLeft = $( ".ui-slider-handle-price.left" );
             let handleRight = $( ".ui-slider-handle-price.right" );
             let priceSlider = $( ".rld-price-slider" );
+            let locale = (priceSlider && priceSlider.data('locale')) ? priceSlider.data('locale') : 'en';
+            let nMin = 500;
+            let nMax = 30000;
+            if (locale === 'vi') {
+                nMin = 10000000;
+                nMax = 60000000000;
+            }
             let priceMinInput = $('input[name="mi_price"]');
             let priceMaxInput = $('input[name="ma_price"]');
-            let min = (priceSlider && priceSlider.data('min')) ? priceSlider.data('min') : 100;
-            let max = (priceSlider && priceSlider.data('max')) ? priceSlider.data('max') : 16500;
-            let minValue = (priceMinInput && priceMinInput.val()) ? priceMinInput.val() : 100;
-            let maxValue = (priceMaxInput && priceMaxInput.val()) ? priceMaxInput.val() : 16500;
+            let min = (priceSlider && priceSlider.data('min')) ? priceSlider.data('min') : nMin;
+            let max = (priceSlider && priceSlider.data('max')) ? priceSlider.data('max') : nMax;
+            let minValue = (priceMinInput && priceMinInput.val()) ? priceMinInput.val() : nMin;
+            let maxValue = (priceMaxInput && priceMaxInput.val()) ? priceMaxInput.val() : nMax;
             let currency = (priceSlider && priceSlider.data('currency')) ? priceSlider.data('currency') : 'USD';
-            let locale = (priceSlider && priceSlider.data('locale')) ? priceSlider.data('locale') : 'en';
             priceSlider.slider({
                 range: true,
                 min: Math.max(min, 0),
@@ -427,26 +433,27 @@ function convertMoney($input, locale = 'vi') {
             let max = (sizeSlider && sizeSlider.data('max')) ? sizeSlider.data('max') : 6500;
             let minValue = (sizeMinInput && sizeMinInput.val()) ? sizeMinInput.val() : 1;
             let maxValue = (sizeMaxInput && sizeMaxInput.val()) ? sizeMaxInput.val() : 6500;
+            let m2 = ' m²';
             sizeSlider.slider({
                 range: true,
                 min: Math.max(min, 0),
                 max: max,
                 values: [minValue, maxValue],
                 create: function() {
-                    handleLeft.text(minValue);
-                    handleRight.text(maxValue);
+                    handleLeft.text(minValue + m2);
+                    handleRight.text(maxValue + m2);
                 },
                 slide: function( event, ui ) {
                     let minValue = ui.values[0];
                     let maxValue = ui.values[1];
-                    handleLeft.text(minValue);
-                    handleRight.text(maxValue);
+                    handleLeft.text(minValue + m2);
+                    handleRight.text(maxValue + m2);
                     sizeMinInput.val(minValue);
                     sizeMaxInput.val(maxValue);
                 },
                 change: function( event, ui ) {
-                   let value = sizeSlider.slider( "option", "value" );
-                   console.log(value)
+                   //let value = sizeSlider.slider( "option", "value" );
+                   //console.log(value)
                   //  sizeInput.val(value);
                 }
             });

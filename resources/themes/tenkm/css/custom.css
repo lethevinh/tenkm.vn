@@ -105,3 +105,16 @@ footer h1, footer h2, footer h3, footer h4, footer h5, footer h6 {
 .ui-slider-horizontal .ui-slider-range{
     background-color: #d48215;
 }
+.rld-price-slider-wrap .ui-slider-handle {
+    height: auto;
+    width: auto;
+    background: var(--main-color-one);
+    border: 0;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+    top: -10px;
+    font-size: 15px;
+    line-height: 18px;
+    padding: 2px;
+}
