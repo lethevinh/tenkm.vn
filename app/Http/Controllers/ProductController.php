@@ -110,16 +110,16 @@ class ProductController extends Controller
         }
 
         if($minArea = $request->input('mi_size','')) {
-            $query = $query->where('area_nb','>', $minArea);
+            $query = $query->where('area_nb','>', floatval($minArea));
         }
         if($maxArea = $request->input('ma_size','')) {
-            $query = $query->where('area_nb','<', $maxArea);
+            $query = $query->where('area_nb','<', floatval($maxArea));
         }
         if($minPrice = $request->input('mi_price','')) {
-            $query = $query->where('price_fl','>', $minPrice)->orWhere('price_sale_fl', '>', $minPrice);
+            $query = $query->where('price_fl','>', floatval($minPrice))->orWhere('price_sale_fl', '>', floatval($minPrice));
         }
         if($maxPrice = $request->input('ma_price','')) {
-            $query = $query->where('price_fl','<', $maxPrice)->orWhere('price_sale_fl', '<', $maxPrice);
+            $query = $query->where('price_fl','<', floatval($maxPrice))->orWhere('price_sale_fl', '<', floatval($maxPrice));
         }
         if($string) {
             $query = $query->search($string);
