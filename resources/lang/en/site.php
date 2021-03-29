@@ -182,4 +182,5 @@ return [
     'all_properties' => "All Properties",
     'properties' => "Properties",
     'all' => "All",
+    'ward_city' => "Ward",
 ];

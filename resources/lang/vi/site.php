@@ -193,4 +193,5 @@ return [
     'all_properties' => "Tất cả loại hình",
     'properties' => "Bất động sản",
     'all' => "Tất cả",
+    'ward_city' => "Phường",
 ];

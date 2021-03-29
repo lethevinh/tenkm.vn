@@ -95,12 +95,12 @@
                                 @if(count($wards) > 0)
                                 <div class="widget-sidebar-item-wrap rld-single-select">
                                     <select name="ward" value="{{request('ward')}}" class="select single-select">
-                                        <option value="">{{tran('site.ward')}}</option>
+                                        <option value="">{{tran('site.ward_city')}}</option>
                                         @foreach($wards as $ward)
                                             @if($ward)
                                                 <option @if($ward->id == request('ward')) selected @endif
                                                 value="{{$ward->id}}">
-                                                  {{tran('site.ward')}}  {{$ward->title_lb}}
+                                                  {{tran('site.ward_city')}}  {{$ward->title_lb}}
                                                 </option>
                                             @endif
                                         @endforeach
