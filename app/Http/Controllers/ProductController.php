@@ -141,7 +141,9 @@ class ProductController extends Controller
         $categories = ProductCategory::where('language_lb', $locale)->get();
         $parentCategories = $categories->whereNull('parent_id');
         $types = Amenity::ofType('property_type')->lang($locale)->get();
-        $wards = Address::whereNull('street_id')->with('ward')->get()
+        $wards = Address::whereNotNull('ward_id')
+            ->whereNull('street_id')
+            ->with('ward')->get()
             ->map(function($address){
                 return $address->ward;
             })->unique('id');
