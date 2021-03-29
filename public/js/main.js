@@ -1,5 +1,30 @@
 ; (function ($) {
     "use strict";
+function convertMoney($input, locale = 'vi') {
+    if (locale === 'en'){
+        return $input;
+    }
+    let  string = {
+         ty : 'tỷ',
+         trieu : 'triệu',
+    };
+    let  condition = {
+        ty : 1000000000,
+        trieu : 1000000,
+    };
+
+    for (const conditionKey in condition) {
+        console.log(condition, conditionKey)
+        let $secs = condition[conditionKey];
+        let $d = $input / $secs;
+        let $str = string[conditionKey];
+        if ($d >= 1) {
+            let $r = Math.round($d);
+            $input =  '' + $r + ' ' + $str + ($r > 1 ? ' ' : '') + ' VND';
+        }
+    }
+    return $input;
+}
 
     $(document).ready(function () {
 
@@ -360,57 +385,69 @@
             range slider
         ---------------------------------------*/
         $( function() {
-            let handle = $( ".ui-slider-handle-price" );
+            let handleLeft = $( ".ui-slider-handle-price.left" );
+            let handleRight = $( ".ui-slider-handle-price.right" );
             let priceSlider = $( ".rld-price-slider" );
-            let priceInput = $('input[name="price"]');
-            let value = (priceInput && priceInput.val()) ? priceInput.val() : 500;
-            let min = (priceInput && priceInput.data('min')) ? priceInput.data('min') : 1;
-            let max = (priceInput && priceInput.data('max')) ? priceInput.data('max') : 6500;
-            let currency = (priceInput && priceInput.data('currency')) ? priceInput.data('currency') : 'USD';
-            let locale = (priceInput && priceInput.data('locale')) ? priceInput.data('locale') : 'en-US';
-            let formatter = new Intl.NumberFormat(locale, {
-                style: 'currency',
-                currency: currency,
-                maximumSignificantDigits: 1
-            });
+            let priceMinInput = $('input[name="mi_price"]');
+            let priceMaxInput = $('input[name="ma_price"]');
+            let min = (priceSlider && priceSlider.data('min')) ? priceSlider.data('min') : 100;
+            let max = (priceSlider && priceSlider.data('max')) ? priceSlider.data('max') : 16500;
+            let minValue = (priceMinInput && priceMinInput.val()) ? priceMinInput.val() : 100;
+            let maxValue = (priceMaxInput && priceMaxInput.val()) ? priceMaxInput.val() : 16500;
+            let currency = (priceSlider && priceSlider.data('currency')) ? priceSlider.data('currency') : 'USD';
+            let locale = (priceSlider && priceSlider.data('locale')) ? priceSlider.data('locale') : 'en';
             priceSlider.slider({
-                range: "min",
-                value: value,
-                min: min,
+                range: true,
+                min: Math.max(min, 0),
                 max: max,
+                values: [minValue, maxValue],
                 create: function() {
-                    handle.text( formatter.format($( this ).slider( "value" )) );
+                    handleLeft.text(convertMoney(parseFloat(minValue), locale));
+                    handleRight.text(convertMoney(parseFloat(maxValue), locale));
                 },
                 slide: function( event, ui ) {
-                    handle.text( formatter.format(ui.value ));
+                    let minValue = ui.values[0];
+                    let maxValue = ui.values[1];
+                    handleLeft.text(convertMoney(parseFloat(minValue), locale));
+                    handleRight.text(convertMoney(parseFloat(maxValue), locale));
+                    priceMinInput.val(minValue);
+                    priceMaxInput.val(maxValue);
                 },
                 change: function( event, ui ) {
-                    let value = priceSlider.slider( "option", "value" );
-                    priceInput.val(value);
                 }
             });
         } );
         $( function() {
-            let handle = $( ".ui-slider-handle-size" );
+            let handleLeft = $( ".ui-slider-handle-size.left" );
+            let handleRight = $( ".ui-slider-handle-size.right" );
             let sizeSlider = $( ".rld-size-slider" );
-            let sizeInput = $('input[name="size"]');
-            let value = (sizeInput && sizeInput.val()) ? sizeInput.val() : 500;
-            let min = (sizeInput && sizeInput.data('min')) ? sizeInput.data('min') : 1;
-            let max = (sizeInput && sizeInput.data('max')) ? sizeInput.data('max') : 6500;
+            let sizeMinInput = $('input[name="mi_size"]');
+            let sizeMaxInput = $('input[name="ma_size"]');
+            let min = (sizeSlider && sizeSlider.data('min')) ? sizeSlider.data('min') : 1;
+            let max = (sizeSlider && sizeSlider.data('max')) ? sizeSlider.data('max') : 6500;
+            let minValue = (sizeMinInput && sizeMinInput.val()) ? sizeMinInput.val() : 1;
+            let maxValue = (sizeMaxInput && sizeMaxInput.val()) ? sizeMaxInput.val() : 6500;
             sizeSlider.slider({
-                range: "min",
-                value: value,
-                min: min,
+                range: true,
+                min: Math.max(min, 0),
                 max: max,
+                values: [minValue, maxValue],
                 create: function() {
-                    handle.text( $( this ).slider( "value" ) );
+                    handleLeft.text(minValue);
+                    handleRight.text(maxValue);
                 },
                 slide: function( event, ui ) {
-                    handle.text( ui.value );
+                    let minValue = ui.values[0];
+                    let maxValue = ui.values[1];
+                    handleLeft.text(minValue);
+                    handleRight.text(maxValue);
+                    sizeMinInput.val(minValue);
+                    sizeMaxInput.val(maxValue);
                 },
                 change: function( event, ui ) {
-                    let value = sizeSlider.slider( "option", "value" );
-                    sizeInput.val(value);
+                   let value = sizeSlider.slider( "option", "value" );
+                   console.log(value)
+                  //  sizeInput.val(value);
                 }
             });
         } );

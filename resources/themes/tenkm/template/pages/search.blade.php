@@ -92,6 +92,21 @@
                                     <input name="s" type="text" value="{{request('s')}}"
                                            placeholder="">
                                 </div>
+                                @if(count($wards) > 0)
+                                <div class="widget-sidebar-item-wrap rld-single-select">
+                                    <select name="ward" value="{{request('ward')}}" class="select single-select">
+                                        <option value="">{{tran('site.ward')}}</option>
+                                        @foreach($wards as $ward)
+                                            @if($ward)
+                                                <option @if($ward->id == request('ward')) selected @endif
+                                                value="{{$ward->id}}">
+                                                    {{$ward->title_lb}}
+                                                </option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @endif
                                 @if(count($types) > 0)
                                 <div class="widget-sidebar-item-wrap rld-single-select">
                                     <select name="property_type" value="{{request('property_type')}}" class="select single-select">
@@ -109,16 +124,15 @@
                                         <span>{{tran('site.start_price')}}</span>
                                         <span class="float-right">{{tran('site.end_price')}}</span>
                                     </div>
-                                    <div class="rld-price-slider">
-                                        <div class="ui-slider-handle-price ui-slider-handle"></div>
-                                        <input
-                                            data-min="{{$locale == 'vi' ? 10000000 : 500}}"
-                                            data-max="{{$locale == 'vi' ? 60000000000 : 30000}}"
-                                            data-locale="{{$locale == 'vi' ? 'vi-VN' : 'en-US'}}"
-                                            data-currency="{{$locale == 'vi' ? 'VND' : 'USD'}}" type="hidden"
-                                               name="price"
-                                               value="{{request('price')
-                                        }}">
+                                    <div data-min="{{$locale == 'vi' ? 10000000 : 500}}"
+                                         data-max="{{$locale == 'vi' ? 60000000000 : 30000}}"
+                                         data-locale="{{$locale}}"
+                                         data-currency="{{$locale == 'vi' ? 'VND' : 'USD'}}"
+                                         class="rld-price-slider">
+                                        <div class="ui-slider-handle-price ui-slider-handle left"></div>
+                                        <input type="hidden" name="mi_price" value="{{request('mi_price')}}">
+                                        <input  type="hidden" name="ma_price" value="{{request('ma_price')}}">
+                                        <div class="ui-slider-handle-price ui-slider-handle right"></div>
                                     </div>
                                 </div>
                                 <div class="widget-sidebar-item-wrap rld-price-slider-wrap">
@@ -127,10 +141,11 @@
                                         <span>50 m2</span>
                                         <span class="float-right">5.000 m2</span>
                                     </div>
-                                    <div class="rld-size-slider">
-                                        <div class="ui-slider-handle-size ui-slider-handle"></div>
-                                        <input data-min="50" data-max="5000" type="hidden" name="size" value="{{request
-                                        ('size')}}">
+                                    <div data-min="50" data-max="5000" class="rld-size-slider">
+                                        <div class="ui-slider-handle-size ui-slider-handle left"></div>
+                                        <input type="hidden" name="mi_size" value="{{request('mi_size')}}">
+                                        <input  type="hidden" name="ma_size" value="{{request('ma_size')}}">
+                                        <div class="ui-slider-handle-size ui-slider-handle right"></div>
                                     </div>
                                 </div>
                                 <div class="widget-sidebar-item-wrap rld-single-select-wrap">

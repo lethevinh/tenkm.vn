@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\Amenity;
 use App\Models\Product;
 use App\Models\ProductCategory;
@@ -108,11 +109,17 @@ class ProductController extends Controller
             $query = $query->where('bathroom_nb', '>', $min)->where('bedroom_nb', '<', $max);
         }
 
-        if($area = $request->input('size','')) {
-            $query = $query->where('area_nb','>', $area);
+        if($minArea = $request->input('mi_size','')) {
+            $query = $query->where('area_nb','>', $minArea);
         }
-        if($price = $request->input('price','')) {
-            $query = $query->where('price_fl','>', $price)->orWhere('price_sale_fl', '>', $price);
+        if($maxArea = $request->input('ma_size','')) {
+            $query = $query->where('area_nb','<', $maxArea);
+        }
+        if($minPrice = $request->input('mi_price','')) {
+            $query = $query->where('price_fl','>', $minPrice)->orWhere('price_sale_fl', '>', $minPrice);
+        }
+        if($maxPrice = $request->input('ma_price','')) {
+            $query = $query->where('price_fl','<', $maxPrice)->orWhere('price_sale_fl', '<', $maxPrice);
         }
         if($string) {
             $query = $query->search($string);
@@ -122,6 +129,11 @@ class ProductController extends Controller
                 $query->where('category_id', $category);
             });
         }
+        if($ward = $request->input('ward','')) {
+            $query = $query->withAndWhereHas('address', function($query) use ($ward) {
+                $query->where('ward_id', $ward);
+            });
+        }
         if($type = $request->input('property_type','')) {
             $query = $query->where('property_type', $type);
         }
@@ -129,8 +141,12 @@ class ProductController extends Controller
         $categories = ProductCategory::where('language_lb', $locale)->get();
         $parentCategories = $categories->whereNull('parent_id');
         $types = Amenity::ofType('property_type')->lang($locale)->get();
+        $wards = Address::whereNull('street_id')->with('ward')->get()
+            ->map(function($address){
+                return $address->ward;
+            })->unique('id');
         return view('pages.search', compact(
-            'products', 'query', 'title', 'categories','parentCategories', 'types')
+            'products', 'query', 'title', 'categories','parentCategories', 'types', 'wards')
         );
     }
 }
