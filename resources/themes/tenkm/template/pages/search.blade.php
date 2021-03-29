@@ -100,7 +100,7 @@
                                             @if($ward)
                                                 <option @if($ward->id == request('ward')) selected @endif
                                                 value="{{$ward->id}}">
-                                                    {{$ward->title_lb}}
+                                                  {{tran('site.ward')}}  {{$ward->title_lb}}
                                                 </option>
                                             @endif
                                         @endforeach
