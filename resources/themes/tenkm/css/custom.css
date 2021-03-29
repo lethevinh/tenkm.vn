@@ -106,7 +106,7 @@ footer h1, footer h2, footer h3, footer h4, footer h5, footer h6 {
     background-color: #d48215;
 }
 .rld-price-slider-wrap .ui-slider-handle {
-    height: auto;
+    height: 20px;
     width: auto;
     background: var(--main-color-one);
     border: 0;
