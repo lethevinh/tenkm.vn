@@ -112,7 +112,7 @@ class AddressController extends AdminController
                 return $value;
             });
         $form->switch('show_in_parrent', __('site.status'))->value(1);
-        $form->switch('show_in_search', __('site.show_is_show'))->value(1);
+        $form->switch('show_from_search', __('site.show_from_search'))->value(1);
         $form->hidden('status_lb')->value('official')->default('official');
         $form->disableViewCheck();
         return $form;
