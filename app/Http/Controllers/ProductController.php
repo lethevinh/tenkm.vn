@@ -117,10 +117,18 @@ class ProductController extends Controller
             $query = $query->where('area_nb','<', floatval($maxArea));
         }
         if($minPrice = $request->input('mi_price','')) {
+            $minPrice = floatval($minPrice);
+            if($locale == 'en'){
+                $minPrice = $minPrice * 23000;
+            }
             $query = $query->where('price_fl','>', floatval($minPrice));
         }
         if($maxPrice = $request->input('ma_price','')) {
-            $query = $query->where('price_fl','<', floatval($maxPrice));
+            $maxPrice = floatval($maxPrice);
+            if($locale == 'en'){
+                $maxPrice = $maxPrice * 23000;
+            }
+            $query = $query->where('price_fl','<', $maxPrice);
         }
         if($string) {
             $query = $query->search($string);
