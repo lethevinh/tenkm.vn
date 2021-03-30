@@ -1,5 +1,5 @@
 $(document).ready(function (){
-    function convertMoney($input, locale = 'vi') {
+    function convertMoney($input, locale = 'vi', max = false) {
         let  string = {
             ty : 'tỷ',
             trieu : 'triệu',
@@ -32,7 +32,7 @@ $(document).ready(function (){
                 $input =  '' + $r + ' ' + $str + ($r > 1 ? ' ' : '');
             }
         }
-        return $input + ' ' + currency;
+        return $input + (max ? ' ++ ' : ' ') + currency;
     }
     let priceSlider = $( ".rld-price-slider" );
     if (priceSlider.length > 0) {
@@ -53,14 +53,18 @@ $(document).ready(function (){
             max: max,
             values: [minValue, maxValue],
             create: function() {
-                handleLeft.text(convertMoney(parseFloat(minValue), locale));
-                handleRight.text(convertMoney(parseFloat(maxValue), locale));
+                let minLabel = minValue > 0 && minValue === min ? convertMoney(parseFloat(minValue), locale, true): convertMoney(parseFloat(minValue), locale);
+                let maxLabel = maxValue > 0 && maxValue === max ? convertMoney(parseFloat(maxValue), locale, true):convertMoney(parseFloat(maxValue), locale);
+                handleLeft.text(minLabel);
+                handleRight.text(maxLabel);
             },
             slide: function( event, ui ) {
                 let minValue = ui.values[0];
                 let maxValue = ui.values[1];
-                handleLeft.text(convertMoney(parseFloat(minValue), locale));
-                handleRight.text(convertMoney(parseFloat(maxValue), locale));
+                let minLabel = minValue > 0 && minValue === min ? convertMoney(parseFloat(minValue), locale, true): convertMoney(parseFloat(minValue), locale);
+                let maxLabel = maxValue > 0 && maxValue === max ? convertMoney(parseFloat(maxValue), locale, true):convertMoney(parseFloat(maxValue), locale);
+                handleLeft.text(minLabel);
+                handleRight.text(maxLabel);
                 priceMinInput.val(minValue);
                 priceMaxInput.val(maxValue);
             }
@@ -86,14 +90,18 @@ $(document).ready(function (){
             max: max,
             values: [minValue, maxValue],
             create: function() {
-                handleLeft.text(minValue + m2);
-                handleRight.text(maxValue + m2);
+                let minLabel = minValue > 1 && minValue === min ? minValue + ' ++': minValue;
+                let maxLabel = maxValue > 0 && maxValue === max ? maxValue + ' ++': maxValue;
+                handleLeft.text(minLabel + m2);
+                handleRight.text(maxLabel + m2);
             },
             slide: function( event, ui ) {
                 let minValue = ui.values[0];
                 let maxValue = ui.values[1];
-                handleLeft.text(minValue + m2);
-                handleRight.text(maxValue + m2);
+                let minLabel = minValue > 1 && minValue === min ? minValue + ' ++': minValue;
+                let maxLabel = maxValue > 0 && maxValue === max ? maxValue + ' ++': maxValue;
+                handleLeft.text(minLabel + m2);
+                handleRight.text(maxLabel + m2);
                 sizeMinInput.val(minValue);
                 sizeMaxInput.val(maxValue);
             },
