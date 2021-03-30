@@ -53,7 +53,7 @@ $(document).ready(function (){
             max: max,
             values: [minValue, maxValue],
             create: function() {
-                let minLabel = minValue > 0 && minValue === min ? convertMoney(parseFloat(minValue), locale, true): convertMoney(parseFloat(minValue), locale);
+                let minLabel = convertMoney(parseFloat(minValue), locale);
                 let maxLabel = maxValue > 0 && maxValue === max ? convertMoney(parseFloat(maxValue), locale, true):convertMoney(parseFloat(maxValue), locale);
                 handleLeft.text(minLabel);
                 handleRight.text(maxLabel);
@@ -61,7 +61,7 @@ $(document).ready(function (){
             slide: function( event, ui ) {
                 let minValue = ui.values[0];
                 let maxValue = ui.values[1];
-                let minLabel = minValue > 0 && minValue === min ? convertMoney(parseFloat(minValue), locale, true): convertMoney(parseFloat(minValue), locale);
+                let minLabel = convertMoney(parseFloat(minValue), locale);
                 let maxLabel = maxValue > 0 && maxValue === max ? convertMoney(parseFloat(maxValue), locale, true):convertMoney(parseFloat(maxValue), locale);
                 handleLeft.text(minLabel);
                 handleRight.text(maxLabel);
@@ -98,7 +98,7 @@ $(document).ready(function (){
             slide: function( event, ui ) {
                 let minValue = ui.values[0];
                 let maxValue = ui.values[1];
-                let minLabel = minValue > 1 && minValue === min ? minValue + ' ++': minValue;
+                let minLabel = minValue > 0 && minValue === min ? minValue + ' ++': minValue;
                 let maxLabel = maxValue > 0 && maxValue === max ? maxValue + ' ++': maxValue;
                 handleLeft.text(minLabel + m2);
                 handleRight.text(maxLabel + m2);
