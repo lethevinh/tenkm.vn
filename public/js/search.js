@@ -79,10 +79,10 @@ $(document).ready(function (){
         let handleRight = $( ".max-area-label" );
         let sizeMinInput = $('input[name="mi_size"]');
         let sizeMaxInput = $('input[name="ma_size"]');
-        let min = (sizeSlider && sizeSlider.data('min')) ? sizeSlider.data('min') : 1;
-        let max = (sizeSlider && sizeSlider.data('max')) ? sizeSlider.data('max') : 6500;
-        let minValue = (sizeMinInput && sizeMinInput.val()) ? sizeMinInput.val() : 1;
-        let maxValue = (sizeMaxInput && sizeMaxInput.val()) ? sizeMaxInput.val() : 6500;
+        let min = window.tenkm.searchOption.minArea;
+        let max = window.tenkm.searchOption.maxArea;
+        let minValue = (sizeMinInput && sizeMinInput.val()) ? sizeMinInput.val() : min;
+        let maxValue = (sizeMaxInput && sizeMaxInput.val()) ? sizeMaxInput.val() : max;
         let m2 = ' m²';
         sizeSlider.slider({
             range: true,
@@ -90,7 +90,7 @@ $(document).ready(function (){
             max: max,
             values: [minValue, maxValue],
             create: function() {
-                let minLabel = minValue > 1 && minValue === min ? minValue + ' ++': minValue;
+                let minLabel = minValue > 0 && minValue === min ? minValue + ' ++': minValue;
                 let maxLabel = maxValue > 0 && maxValue === max ? maxValue + ' ++': maxValue;
                 handleLeft.text(minLabel + m2);
                 handleRight.text(maxLabel + m2);
