@@ -61,7 +61,7 @@
                                 <div class="widget-sidebar-item-wrap btn-area">
                                     @foreach($parentCategories as $cat)
                                         @if(request('cat') == $cat->id)
-                                            <a href="{{ route('product.search') }}?cat={{$cat->id}}" class="btn btn-outline-primary
+                                            <a class="btn btn-outline-primary
                                             btn-outline-custom
                                             active
                                             float-right
