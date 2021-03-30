@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Address;
 use App\Models\Amenity;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductTag;
@@ -148,8 +149,28 @@ class ProductController extends Controller
             ->map(function($address){
                 return $address->ward;
             })->unique('id');
+        $category = Category::find($request->input('cat'));
+        $option = [
+            'minPrice' => 0,
+            'maxPrice' => 100000000,
+            'minArea' => 0,
+            'maxArea' => 500,
+        ];
+        if($category && Str::contains(Str::slug($category->title_lb), 'ban')){
+            $option['minPrice'] = 500000000;
+            $option['maxPrice'] = 50000000000;
+        }
+        if($locale == 'en'){
+            $option['minPrice'] = 0;
+            $option['maxPrice'] = 5000;
+            if($category && Str::contains(Str::slug($category->title_lb), 'sell')){
+                $option['minPrice'] = 20000;
+                $option['maxPrice'] = 20000000;
+            }
+        }
+
         return view('pages.search', compact(
-            'products', 'query', 'title', 'categories','parentCategories', 'types', 'wards')
+            'products', 'query', 'title', 'categories','parentCategories', 'types', 'wards', 'option')
         );
     }
 }

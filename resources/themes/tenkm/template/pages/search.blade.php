@@ -61,7 +61,11 @@
                                 <div class="widget-sidebar-item-wrap btn-area">
                                     @foreach($parentCategories as $cat)
                                         @if(request('cat') == $cat->id)
-                                            <a class="btn btn-outline-primary btn-outline-custom active float-right category-filter-btn "
+                                            <a href="{{ route('product.search') }}?cat={{$cat->id}}" class="btn btn-outline-primary
+                                            btn-outline-custom
+                                            active
+                                            float-right
+                                            category-filter-btn "
                                                data-s="{{\Illuminate\Support\Str::slug($cat->title_lb)}}"
                                                data-id-cat="{{$cat->id}}">
                                                 @if(\Illuminate\Support\Str::contains(\Illuminate\Support\Str::slug
@@ -73,7 +77,8 @@
                                                 @endif
                                             </a>
                                         @else
-                                            <a class="btn btn-outline-primary btn-outline-custom category-filter-btn"
+                                            <a href="{{ route('product.search') }}?cat={{$cat->id}}" class="btn
+                                            btn-outline-primary btn-outline-custom category-filter-btn"
                                                data-id-cat="{{$cat->id}}" data-s="{{\Illuminate\Support\Str::slug($cat->title_lb)}}">
                                                 @if(\Illuminate\Support\Str::contains(\Illuminate\Support\Str::slug
                                                 ($cat->title_lb), 'ban') || \Illuminate\Support\Str::contains
@@ -88,10 +93,6 @@
                                     <input type="hidden" name="cat" value="{{request('cat')}}">
                                 </div>
                                 @endif
-                                <div class="widget-sidebar-item-wrap rld-single-input left-icon">
-                                    <input name="s" type="text" value="{{request('s')}}"
-                                           placeholder="">
-                                </div>
                                 @if(count($wards) > 0)
                                 <div class="widget-sidebar-item-wrap rld-single-select">
                                     <select name="ward" value="{{request('ward')}}" class="select single-select">
@@ -119,13 +120,13 @@
                                 </div>
                                 @endif
                                 <div class="widget-sidebar-item-wrap rld-price-slider-wrap">
-                                    <div class="title">{{tran('site.any_price')}}</div>
+                                    <div class="title ">{{tran('site.any_price')}}</div>
                                     <div class="price">
-                                        <span>{{tran('site.start_price')}}</span>
-                                        <span class="float-right">{{tran('site.end_price')}}</span>
+                                        <span class="min-price-label">{{tran('site.start_price')}}</span>
+                                        <span class="float-right max-price-label">{{tran('site.end_price')}}</span>
                                     </div>
-                                    <div data-min="{{$locale == 'vi' ? 10000000 : 500}}"
-                                         data-max="{{$locale == 'vi' ? 60000000000 : 30000}}"
+                                    <div data-min="{{$option['minPrice'] }}"
+                                         data-max="{{$option['maxPrice'] }}"
                                          data-locale="{{$locale}}"
                                          data-currency="{{$locale == 'vi' ? 'VND' : 'USD'}}"
                                          class="rld-price-slider">
@@ -138,10 +139,11 @@
                                 <div class="widget-sidebar-item-wrap rld-price-slider-wrap">
                                     <div class="title">{{tran('site.area')}}</div>
                                     <div class="price">
-                                        <span>50 m2</span>
-                                        <span class="float-right">5.000 m2</span>
+                                        <span class="min-area-label">0 m²</span>
+                                        <span class="float-right max-area-label">500 m²</span>
                                     </div>
-                                    <div data-min="50" data-max="5000" class="rld-size-slider">
+                                    <div data-min="{{ $option['minArea'] }}" data-max="{{ $option['maxArea'] }}"
+                                         class="rld-size-slider">
                                         <div class="ui-slider-handle-size ui-slider-handle left"></div>
                                         <input type="hidden" name="mi_size" value="{{request('mi_size')}}">
                                         <input  type="hidden" name="ma_size" value="{{request('ma_size')}}">

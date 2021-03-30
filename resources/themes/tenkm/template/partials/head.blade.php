@@ -1,17 +1,21 @@
-<!-- Stylesheets
+<!-- Stylesheets -->
 @if (Auth::check())
     <script>
-        window.edureal = {!!json_encode([
+        window.tenkm = {!!json_encode([
+               'locale' => session()->get('locale', config('site.locale_default')),
                'isLoggedin' => true,
                'isAdminLogin' => !empty(Admin::user()),
                'user' => Auth::user()->toInfo(),
+               'searchOption' => isset($option)?$option:[]
            ])!!}
     </script>
 @else
     <script>
-        window.edureal = {!!json_encode([
+        window.tenkm = {!!json_encode([
+	            'locale' => session()->get('locale', config('site.locale_default')),
                 'isLoggedin' => false,
                 'isAdminLogin' => !empty(Admin::user()),
+                 'searchOption' => isset($option)?$option:[]
             ])!!}
     </script>
 @endif

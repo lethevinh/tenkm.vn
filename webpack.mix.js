@@ -66,6 +66,7 @@ mix.styles([
 mix.copy('resources/themes/' + theme + '/js/vendor.js', 'public/js/vendor.js')
     .copy('resources/themes/' + theme + '/js/theme.js', 'public/js/theme.js')
     .copy('resources/themes/' + theme + '/js/main.js', 'public/js/main.js')
+    .copy('resources/themes/' + theme + '/js/search.js', 'public/js/search.js')
     .copyDirectory('resources/themes/' + theme + '/img', 'public/images')
     .copyDirectory('resources/themes/' + theme + '/fonts', 'public/fonts')
     .copyDirectory('resources/themes/' + theme + '/img/favicon', 'public/')

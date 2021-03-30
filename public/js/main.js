@@ -1,30 +1,5 @@
 ; (function ($) {
     "use strict";
-function convertMoney($input, locale = 'vi') {
-    if (locale === 'en'){
-        return $input + ' $';
-    }
-    let  string = {
-         ty : 'tỷ',
-         trieu : 'triệu',
-    };
-    let  condition = {
-        ty : 1000000000,
-        trieu : 1000000,
-    };
-
-    for (const conditionKey in condition) {
-        //console.log(condition, conditionKey)
-        let $secs = condition[conditionKey];
-        let $d = $input / $secs;
-        let $str = string[conditionKey];
-        if ($d >= 1) {
-            let $r = Math.round($d);
-            $input =  '' + $r + ' ' + $str + ($r > 1 ? ' ' : '') + ' VND';
-        }
-    }
-    return $input;
-}
 
     $(document).ready(function () {
 
@@ -384,80 +359,7 @@ function convertMoney($input, locale = 'vi') {
         /*--------------------------------------
             range slider
         ---------------------------------------*/
-        $( function() {
-            let handleLeft = $( ".ui-slider-handle-price.left" );
-            let handleRight = $( ".ui-slider-handle-price.right" );
-            let priceSlider = $( ".rld-price-slider" );
-            let locale = (priceSlider && priceSlider.data('locale')) ? priceSlider.data('locale') : 'en';
-            let nMin = 500;
-            let nMax = 30000;
-            if (locale === 'vi') {
-                nMin = 10000000;
-                nMax = 60000000000;
-            }
-            let priceMinInput = $('input[name="mi_price"]');
-            let priceMaxInput = $('input[name="ma_price"]');
-            let min = (priceSlider && priceSlider.data('min')) ? priceSlider.data('min') : nMin;
-            let max = (priceSlider && priceSlider.data('max')) ? priceSlider.data('max') : nMax;
-            let minValue = (priceMinInput && priceMinInput.val()) ? priceMinInput.val() : nMin;
-            let maxValue = (priceMaxInput && priceMaxInput.val()) ? priceMaxInput.val() : nMax;
-            let currency = (priceSlider && priceSlider.data('currency')) ? priceSlider.data('currency') : 'USD';
-            priceSlider.slider({
-                range: true,
-                min: Math.max(min, 0),
-                max: max,
-                values: [minValue, maxValue],
-                create: function() {
-                    handleLeft.text(convertMoney(parseFloat(minValue), locale));
-                    handleRight.text(convertMoney(parseFloat(maxValue), locale));
-                },
-                slide: function( event, ui ) {
-                    let minValue = ui.values[0];
-                    let maxValue = ui.values[1];
-                    handleLeft.text(convertMoney(parseFloat(minValue), locale));
-                    handleRight.text(convertMoney(parseFloat(maxValue), locale));
-                    priceMinInput.val(minValue);
-                    priceMaxInput.val(maxValue);
-                },
-                change: function( event, ui ) {
-                }
-            });
-        } );
-        $( function() {
-            let handleLeft = $( ".ui-slider-handle-size.left" );
-            let handleRight = $( ".ui-slider-handle-size.right" );
-            let sizeSlider = $( ".rld-size-slider" );
-            let sizeMinInput = $('input[name="mi_size"]');
-            let sizeMaxInput = $('input[name="ma_size"]');
-            let min = (sizeSlider && sizeSlider.data('min')) ? sizeSlider.data('min') : 1;
-            let max = (sizeSlider && sizeSlider.data('max')) ? sizeSlider.data('max') : 6500;
-            let minValue = (sizeMinInput && sizeMinInput.val()) ? sizeMinInput.val() : 1;
-            let maxValue = (sizeMaxInput && sizeMaxInput.val()) ? sizeMaxInput.val() : 6500;
-            let m2 = ' m²';
-            sizeSlider.slider({
-                range: true,
-                min: Math.max(min, 0),
-                max: max,
-                values: [minValue, maxValue],
-                create: function() {
-                    handleLeft.text(minValue + m2);
-                    handleRight.text(maxValue + m2);
-                },
-                slide: function( event, ui ) {
-                    let minValue = ui.values[0];
-                    let maxValue = ui.values[1];
-                    handleLeft.text(minValue + m2);
-                    handleRight.text(maxValue + m2);
-                    sizeMinInput.val(minValue);
-                    sizeMaxInput.val(maxValue);
-                },
-                change: function( event, ui ) {
-                   //let value = sizeSlider.slider( "option", "value" );
-                   //console.log(value)
-                  //  sizeInput.val(value);
-                }
-            });
-        } );
+
 
         /*--------------------------------------------
             News Search
@@ -495,13 +397,7 @@ function convertMoney($input, locale = 'vi') {
         /*-------------------------------------------------
            SEARCH
         --------------------------------------------------*/
-        $('.category-filter-btn').click(function (event){
-            let $element = $(this);
-            let idCat = $element.data('id-cat');
-            $('.category-filter-btn').removeClass('active');
-            $element.addClass('active');
-            $('input[name="cat"]').val(idCat);
-        });
+
 
     });
 
