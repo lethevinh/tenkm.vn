@@ -34,6 +34,14 @@ class Media extends Field\File
     public function multiple()
     {
         $this->multiple = true;
+        $this->options['fileNumLimit'] = 1000;
+        return $this;
+    }
+
+    public function limit(int $limit)
+    {
+        $this->options['fileNumLimit'] = $limit;
+
         return $this;
     }
 
