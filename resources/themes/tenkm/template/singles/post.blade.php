@@ -25,7 +25,7 @@
     <!-- breadcrumb area End -->
 
     <!-- News details area Start -->
-    <div class="news-details-area">
+    <div class="news-details-area" style="margin-bottom: 300px">
         <div class="container">
             <div class="news-details-author-social">
                 <div class="row">
