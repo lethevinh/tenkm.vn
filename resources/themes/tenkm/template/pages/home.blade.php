@@ -98,70 +98,7 @@
                 <h2 class="title">{{tran('site.our_team')}}</h2>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-team">
-                        <div class="thumb">
-                            <img src="/images/team/1.png" alt="team">
-                        </div>
-                        <div class="team-details">
-                            <h4>Louis Rowley</h4>
-                            <span>Co-Founder</span>
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-team">
-                        <div class="thumb">
-                            <img src="/images/team/2.png" alt="team">
-                        </div>
-                        <div class="team-details">
-                            <h4>Riley Moss</h4>
-                            <span>Developer</span>
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-team">
-                        <div class="thumb">
-                            <img src="/images/team/3.png" alt="team">
-                        </div>
-                        <div class="team-details">
-                            <h4>Max Gotch</h4>
-                            <span>Founder</span>
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-team">
-                        <div class="thumb">
-                            <img src="/images/team/4.png" alt="team">
-                        </div>
-                        <div class="team-details">
-                            <h4>Jamie Coal</h4>
-                            <span>Manager</span>
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                [teams template="team"]
             </div>
         </div>
     </div>

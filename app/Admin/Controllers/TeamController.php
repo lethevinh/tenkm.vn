@@ -111,7 +111,8 @@ class TeamController extends AdminController
     public function form()
     {
         $form = new Form(new Team());
-        $form->text('title_lb', __('admin.title'));
+        $form->text('title_lb', __('name'));
+        $form->text('description_lb', __('position'));
         $form->media('image_lb', __('admin.avatar'))->image();
         $form->hidden('language_lb')->default(config('site.locale_default'));
         $form->hidden('type_lb', __('admin.avatar'))->value('partner');
