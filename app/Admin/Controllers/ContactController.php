@@ -29,8 +29,7 @@ class ContactController extends AdminController
     {
         return Grid::make(new Contact(), function (Grid $grid) {
             $grid->model()->orderByDesc('updated_at');
-            $grid->id('ID')->code()->sortable();
-            $grid->title_lb(__('admin.title'));
+            $grid->title_lb(__('Type'))->sortable();
             $grid->column('name_lb', __('admin.name'))->sortable();
             $grid->column('email_lb', __('admin.email'));
             $grid->status_sl(__('site.watched'))
@@ -57,6 +56,9 @@ class ContactController extends AdminController
                 $filter->scope('new', __('site.today'))
                     ->whereDate('created_at', date('Y-m-d'))
                     ->orWhereDate('updated_at', date('Y-m-d'));
+                $filter->scope('type_register', __('Register'))->where('title_lb', 'register');
+                $filter->scope('type_subscribe', __('Subscribe'))->where('title_lb', 'subscribe');
+                $filter->scope('type_contact', __('Contact'))->where('title_lb', 'contact');
             });
             $grid->disableCreateButton();
             $grid->showBatchDelete();
