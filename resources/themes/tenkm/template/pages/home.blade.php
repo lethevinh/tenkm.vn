@@ -78,7 +78,7 @@
                         </div>
                         <div class="media-body">
                             <h4>{{meta($page, 'follow_dream_3_title', 'Enjoy your New Home')}}</h4>
-                            <p>{!! meta($page, 'follow_dream_3_description', 'Enjoy your New Home') !!}</p>
+                            <p>{!! meta($page, 'gfollow_dream_3_description', 'Enjoy your New Home') !!}</p>
                         </div>
                     </div>
                 </div>
