@@ -173,67 +173,7 @@
             <div class="section-title text-center">
                 <h2 class="title">{{tran('site.what_our_customers_are_saying')}}</h2>
             </div>
-            <div class="client-review-img">
-                <img class="clr-img clr-img1" src="/images/client/5.png" alt="client">
-                <img class="clr-img clr-img2" src="/images/client/6.png" alt="client">
-                <img class="clr-img clr-img3" src="/images/client/7.png" alt="client">
-                <img class="clr-img clr-img4" src="/images/client/8.png" alt="client">
-                <img class="clr-img clr-img5" src="/images/client/9.png" alt="client">
-                <div class="row justify-content-center">
-                    <div class="col-xl-6 col-lg-7 col-md-10">
-                        <div class="client-slider-2 text-center">
-                            <div class="item">
-                                <div class="single-client-review">
-                                    <div class="thumb">
-                                        <img src="/images/client/5.png" alt="client">
-                                    </div>
-                                    <div class="review-details">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fringilla dui nibh, idhendrerit tellus rhoncus sit amet. Suspendisse semper, inrhoncus nulla consectetur,sem erat accumsan lacus, et nulla diam eu turpis. </p>
-                                        <h4>Varun Vachhar</h4>
-                                        <p>Land Owner</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="single-client-review">
-                                    <div class="thumb">
-                                        <img src="/images/client/6.png" alt="client">
-                                    </div>
-                                    <div class="review-details">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fringilla dui nibh, idhendrerit tellus rhoncus sit amet. Suspendisse semper, inrhoncus nulla consectetur,sem erat accumsan lacus, et nulla diam eu turpis. </p>
-                                        <h4>Tayla Elias</h4>
-                                        <p>Land Owner</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="single-client-review">
-                                    <div class="thumb">
-                                        <img src="/images/client/7.png" alt="client">
-                                    </div>
-                                    <div class="review-details">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fringilla dui nibh, idhendrerit tellus rhoncus sit amet. Suspendisse semper, inrhoncus nulla consectetur,sem erat accumsan lacus, et nulla diam eu turpis. </p>
-                                        <h4>Luca Inwood</h4>
-                                        <p>Land Owner</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="single-client-review">
-                                    <div class="thumb">
-                                        <img src="/images/client/8.png" alt="client">
-                                    </div>
-                                    <div class="review-details">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fringilla dui nibh, idhendrerit tellus rhoncus sit amet. Suspendisse semper, inrhoncus nulla consectetur,sem erat accumsan lacus, et nulla diam eu turpis. </p>
-                                        <h4>George Kavel</h4>
-                                        <p>Land Owner</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            [clients template="client"]
         </div>
     </div>
     <!-- client area start -->

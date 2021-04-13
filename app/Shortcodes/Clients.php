@@ -1,12 +1,13 @@
 <?php
 namespace App\Shortcodes;
 use App\Entities\Project;
+use App\Models\Client;
 use App\Models\Partner;
 use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 
-class Partners extends AbstractShortcode {
+class Clients extends AbstractShortcode {
 
-    public static $name = 'partners';
+    public static $name = 'clients';
 
 
     protected  $dirTemplate = "collection";
@@ -19,10 +20,10 @@ class Partners extends AbstractShortcode {
 
     public function process(ShortcodeInterface $args) {
         $template = $this->getTemplate($args);
-        $query = Partner::query();
+        $query = Client::query();
 
         $limit = 7;
         $projects = $query->orderBy('updated_at', 'desc')->locale()->paginate($limit);
-        return $this->render($template, ["partners" => $projects]);
+        return $this->render($template, ["clients" => $projects]);
     }
 }
