@@ -91,8 +91,8 @@
         <div class="container">
             <div class="section-title">
                 <h5 class="sub-title">{{tran('site.best_service')}}</h5>
-                <h2 class="title">{{meta($page, 'best_service_title', 'Service We Provide')}}</h2>
-                <p>{{meta($page, 'best_service_description', 'Service We Provide')}}</p>
+                <h2 class="title">{{meta($page, 'best_service_title', '')}}</h2>
+                <p>{{meta($page, 'best_service_description', '')}}</p>
             </div>
             <div class="service-slider-2 row pb-xl-5 pd-0">
                 <div class="item">

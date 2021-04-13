@@ -165,16 +165,20 @@ class PostController extends AdminController
             $model = new \App\Models\Post();
         }
         $language = $model && $model->id ? $model->language_lb : config('site.locale_default');
-        $form->tab(__('admin.basic'), function (Form $form) use ($language){
-            $form->text('title_lb', __('admin.title'));
-            $form->hidden('language_lb')->default(config('site.locale_default'));
-            $form->datetimeRange('published_at', 'validated_at', __('site.public_time'));
-            $form->switch('status_sl', __('site.status'))
-                ->customFormat(function ($value) {
-                    return $value === 'public' ? 1 : 0;
-                })->saving(function ($value) {
-                    return $value === 1 ? 'public' : 'private';
-                });
+        $form->text('title_lb', __('admin.title'));
+        $form->hidden('language_lb')->default(config('site.locale_default'));
+        $form->datetimeRange('published_at', 'validated_at', __('site.public_time'));
+        $form->switch('status_sl', __('site.status'))
+            ->customFormat(function ($value) {
+                return $value === 'public' ? 1 : 0;
+            })->saving(function ($value) {
+                return $value === 1 ? 'public' : 'private';
+            });
+        $form->textarea('description_lb', __('admin.description'));
+        $form->editor('content_lb', __('admin.content'));
+        $form->media('image_lb', __('admin.avatar'))->image();
+        $form->media('download_lb', __('site.docs'))->file();
+        /*$form->tab(__('admin.basic'), function (Form $form) use ($language){
             $form->multipleSelect('categories', __('site.category'))
                 ->options(function () use ($language) {
                     return PostCategory::lang($language)->get()->pluck('title_lb', 'id');
@@ -189,13 +193,10 @@ class PostController extends AdminController
                 });
         })
             ->tab(__('admin.content'), function (Form $form) {
-                $form->textarea('description_lb', __('admin.description'));
-                $form->editor('content_lb', __('admin.content'));
-                $form->media('image_lb', __('admin.avatar'))->image();
-                $form->media('download_lb', __('site.docs'))->file();
+
             });
         if ($form->isCreating()) {
-            $form->tab(__('admin.comment'), function (Form $form) {
+           /* $form->tab(__('admin.comment'), function (Form $form) {
                 $form->hasMany('comments', __('admin.comment'), function (NestedForm $form) {
                     $form->text('title_lb', __('admin.title'))->disable();
                     $form->textarea('body_lb', __('admin.content'))->disable();
@@ -203,7 +204,7 @@ class PostController extends AdminController
                     $form->select('status_sl', __('admin.status'))->options(\App\Models\Post::STATUS);
                 })->useTable()->disableHorizontal()->disableCreate();
             });
-        }
+        }*/
         return $form;
     }
 

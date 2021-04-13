@@ -61,10 +61,12 @@
                         <img class="news-details-thumb" src="{{$post->image_lb}}" alt="{{$post->title_lb}}">
                         {!! $post->content_lb !!}
                         @if($post->download_lb)
-                            <a download href="{{$post->download_lb}}">{{tran('site.download_full_report')}}</a>
+                            <a class="download-report" download href="{{$post->download_lb}}">
+                                {{tran('site.download_full_report')}} <i class="fa fa-external-link" aria-hidden="true"></i>
+                            </a>
                         @endif
                     </div>
-                    @include('partials.comment',['post' => $post, 'type' => 'post'])
+                    {{--@include('partials.comment',['post' => $post, 'type' => 'post'])--}}
                 </div>
             </div>
         </div>

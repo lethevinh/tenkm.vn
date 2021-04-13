@@ -200,12 +200,7 @@
                             </div>
                             <div class="col-md-3 col-sm-4">
                                 <div class="rld-single-select">
-                                    <select class="select single-select">
-                                        <option value="1">Tile View</option>
-                                        <option value="2">Tile View 1</option>
-                                        <option value="3">Tile View 2</option>
-                                        <option value="3">Tile View 3</option>
-                                    </select>
+
                                 </div>
                             </div>
                         </div>

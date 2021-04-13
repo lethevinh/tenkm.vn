@@ -5,8 +5,6 @@
         </div>
         <div class="details">
             <h6>{{$post->creator->name}}</h6>
-            <span class="designation">Building Owner</span>
-            <p class="reviews"><i class="fa fa-star"></i><span>4.8</span> 70 Review</p>
         </div>
     </div>
     <div class="contact">
