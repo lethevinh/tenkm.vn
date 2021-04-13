@@ -3,7 +3,6 @@
 namespace App\Admin\Controllers;
 
 use App\Admin\Repositories\Contact;
-use Dcat\Admin\Auth\Permission;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\IFrameGrid;
@@ -29,7 +28,7 @@ class ContactController extends AdminController
     {
         return Grid::make(new Contact(), function (Grid $grid) {
             $grid->model()->orderByDesc('updated_at');
-            $grid->title_lb(__('Type'))->sortable();
+            $grid->title_lb(__('Type'))->sortable()->label('primary', 1);
             $grid->column('name_lb', __('admin.name'))->sortable();
             $grid->column('email_lb', __('admin.email'));
             $grid->status_sl(__('site.watched'))

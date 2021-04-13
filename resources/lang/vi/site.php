@@ -196,4 +196,6 @@ return [
     'all' => "Tất cả",
     'ward_city' => "Phường",
     'show_in_search' => "Hiển thị khung tìm",
+    'contact_name' => "Tên",
+    'contact_phone' => "Sdt",
 ];

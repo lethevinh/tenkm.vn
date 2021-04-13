@@ -15,6 +15,7 @@ use Dcat\Admin\Form\NestedForm;
 use Dcat\Admin\Grid;
 use Dcat\Admin\IFrameGrid;
 use Dcat\Admin\Controllers\AdminController;
+use Dcat\Admin\Models\Administrator;
 use Dcat\Admin\Models\Administrator as AdministratorModel;
 use Dcat\Admin\Show;
 use Dcat\Admin\Support\Helper;
@@ -143,7 +144,7 @@ class ProductController extends AdminController
     public function form()
     {
         $repositoryClassName = $this->getRepositoryClassName();
-        $form = new Form(new $repositoryClassName(['categories', 'tags', 'comments', 'locations', 'amenities', 'address']));
+        $form = new Form(new $repositoryClassName(['categories', 'tags', 'comments', 'locations', 'amenities', 'address', 'editor']));
         $form->disableViewButton();
         $form->tools([ToolViewLive::make(), ToolTranslatable::make()]);
         $id = str_replace(['/admin/products/', '/edit'], '', request()->getRequestUri());
@@ -184,11 +185,11 @@ class ProductController extends AdminController
                        }
                         return array_column($v, 'id')[0];
                     });
-                $form->tags('tags', __('site.tag'))
+                /*$form->tags('tags', __('site.tag'))
                     ->options(ProductTag::lang($language)->get()->pluck('title_lb', 'id'))
                     ->customFormat(function ($v) {
                         return array_column($v, 'title_lb');
-                    });
+                    });*/
                 $form->radio('property_type', __('site.property_type'))
                     ->setElementName('property_type')
                     ->options(Amenity::ofType('property_type')->lang($language)->get()->pluck('title_lb', 'id'));
@@ -261,6 +262,14 @@ class ProductController extends AdminController
             ->tab(__('site.content'), function (Form $form) {
                 $form->textarea('description_lb', __('admin.description'));
                 $form->editor('content_lb', __('site.content'));
+            });
+            $form->tab(__('site.contact'), function (Form $form) {
+               /* $form->select('editor', __('admin.broker'))
+                    ->options(Administrator::get()->pluck('name', 'id'))
+                    ->customFormat(function ($v) {
+                        if (!$v) return '';
+                        return $v['id'];
+                    });*/
             });
         if ($form->isCreating()) {
             $form->tab(__('site.comment'), function (Form $form) {
