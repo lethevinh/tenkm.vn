@@ -2,10 +2,11 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Forms\ToolTranslatable;
 use App\Admin\Repositories\Partner;
 use Dcat\Admin\Admin;
 use Dcat\Admin\Auth\Permission;
-use Dcat\Admin\Form;
+use App\Admin\Forms\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\IFrameGrid;
 use Dcat\Admin\Controllers\AdminController;
@@ -112,6 +113,7 @@ class PartnerController extends AdminController
     public function form()
     {
         $form = new Form(new Partner());
+        $form->tools([ToolTranslatable::make()]);
         $form->text('title_lb', __('admin.title'));
         $form->media('image_lb', __('admin.avatar'))->image();
         $form->hidden('language_lb')->default(config('site.locale_default'));

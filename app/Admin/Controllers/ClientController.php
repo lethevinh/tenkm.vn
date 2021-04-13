@@ -2,9 +2,10 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Forms\ToolTranslatable;
 use App\Admin\Repositories\Client;
 use Dcat\Admin\Auth\Permission;
-use Dcat\Admin\Form;
+use App\Admin\Forms\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\IFrameGrid;
 use Dcat\Admin\Controllers\AdminController;
@@ -107,6 +108,7 @@ class ClientController extends AdminController
     public function form()
     {
         $form = new Form(new Client());
+        $form->tools([ToolTranslatable::make()]);
         $form->text('title_lb', __('admin.name'));
         $form->media('image_lb', __('admin.avatar'))->image();
         $form->textarea('content_lb', __('admin.content'));
