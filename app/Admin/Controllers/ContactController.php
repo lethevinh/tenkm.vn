@@ -58,9 +58,8 @@ class ContactController extends AdminController
                     ->whereDate('created_at', date('Y-m-d'))
                     ->orWhereDate('updated_at', date('Y-m-d'));
             });
-            $grid->disableBatchDelete();
-            $grid->showQuickEditButton();
-            $grid->enableDialogCreate();
+            $grid->disableCreateButton();
+            $grid->showBatchDelete();
         });
     }
 
@@ -126,10 +125,6 @@ class ContactController extends AdminController
      */
     public function destroy($id)
     {
-        if (in_array(AdministratorModel::DEFAULT_ID, Helper::array($id))) {
-            Permission::error();
-        }
-
         return parent::destroy($id);
     }
 }

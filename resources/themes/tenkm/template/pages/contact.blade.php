@@ -20,7 +20,19 @@
         </div>
     </div>
     <!-- breadcrumb area End -->
-
+    <!-- Modal -->
+    <div class="modal fade" id="thankModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    {{Session::get('success')}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{tran('site.close')}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- contact area start -->
     <div class="contact-area pd-top-100 pd-bottom-65">
         <div class="container">
@@ -29,6 +41,11 @@
                     @if(Session::has('success'))
                         <div class="alert alert-success">
                             {{Session::get('success')}}
+                            <script>
+                                $(document).ready(function (){
+                                    $('#thankModal').modal();
+                                });
+                            </script>
                         </div>
                     @endif
                 </div>
@@ -122,4 +139,5 @@
         </div>
     </div>
     <!-- contact area End -->
+
 @endsection

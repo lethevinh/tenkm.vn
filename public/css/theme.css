@@ -37,3 +37,5 @@
     color: white;
 }
 .download-report:hover{color:white}
+.navbar-area{ z-index: 10;}
+form .error{color:red}

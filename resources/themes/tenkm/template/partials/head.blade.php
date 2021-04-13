@@ -21,4 +21,5 @@
 @endif
 <!-- CSS Global -->
 <link href="{{ mix('css/theme.css') }}" rel="stylesheet">
+<script src="{{ mix('js/vendor.js') }}"></script>
 @include('partials/social')
