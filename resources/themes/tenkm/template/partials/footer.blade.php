@@ -8,8 +8,19 @@
                     <h2 style="color: black">{{option('subscribe_title')}}</h2>
                     <p>{{option('subscribe_description')}}</p>
                     <div class="rld-single-input">
-                        <input type="text" placeholder="{{tran('site.email')}}">
-                        <button class="btn">{{tran('site.submit_now')}}</button>
+                        <form action="{{ route('home.doRegister') }}" method="POST" >
+                            @csrf
+                            <input placeholder="{{tran('site.email')}}" value="{{old('register_email')}}" type="register_email"
+                                   class="{{ $errors->has('register_email') ? 'error' : '' }}" name="register_email"
+                                   id="register_email">
+
+                            @if ($errors->has('register_email'))
+                                <div class="error">
+                                    {{ $errors->first('register_email') }}
+                                </div>
+                            @endif
+                            <button class="btn">{{tran('site.submit_now')}}</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -60,23 +71,24 @@
                     <form class="widget widget-subscribe" action="{{route('home.doSubscribe')}}" method="POST">
                         @csrf
                         <div class="rld-single-input">
-                            <input placeholder="{{tran('site.form_name')}}" value="{{old('name')}}" type="text"
-                                   class="form-control {{ $errors->has('name') ? 'error' : '' }}" name="name" id="name">
+                            <input placeholder="{{tran('site.form_name')}}" value="{{old('subscribe_name')}}" type="text"
+                                   class="form-control {{ $errors->has('subscribe_name') ? 'error' : '' }}" name="subscribe_name"
+                                   id="subscribe_name">
                             <!-- Error -->
-                            @if ($errors->has('name'))
+                            @if ($errors->has('subscribe_name'))
                                 <div class="error">
-                                    {{ $errors->first('name') }}
+                                    {{ $errors->first('subscribe_name') }}
                                 </div>
                             @endif
                         </div>
                         <div class="rld-single-input">
-                            <input placeholder="{{tran('site.form_phone')}}" value="{{old('email')}}"
-                                   class="form-control {{ $errors->has('email') ? 'error' : '' }}" name="email"
-                                   id="email">
+                            <input placeholder="{{tran('site.form_phone')}}" value="{{old('subscribe_phone')}}"
+                                   class="form-control {{ $errors->has('subscribe_phone') ? 'error' : '' }}" name="subscribe_phone"
+                                   id="subscribe_phone">
 
-                            @if ($errors->has('email'))
+                            @if ($errors->has('subscribe_phone'))
                                 <div class="error">
-                                    {{ $errors->first('email') }}
+                                    {{ $errors->first('subscribe_phone') }}
                                 </div>
                             @endif
                         </div>
@@ -97,3 +109,45 @@
     <span class="back-top"><i class="fa fa-angle-up"></i></span>
 </div>
 <!-- back to top area end -->
+@if(Session::has('subscribe_success'))
+    <div class="alert alert-success">
+        <div class="modal fade" id="thankModalSubscribe" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        {{Session::get('subscribe_success')}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{tran('site.close')}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function (){
+                $('#thankModalSubscribe').modal();
+            });
+        </script>
+    </div>
+@endif
+@if(Session::has('register_success'))
+    <div class="alert alert-success">
+        <div class="modal fade" id="thankModalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        {{Session::get('register_success')}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{tran('site.close')}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function (){
+                $('#thankModalRegister').modal();
+            });
+        </script>
+    </div>
+@endif

@@ -88,7 +88,7 @@
                             @endif
                         </div>
                         <div class="rld-single-input">
-                            <input placeholder="{{tran('site.phone')}}" value="{{old('phone')}}" type="text"
+                            <input placeholder="{{tran('site.phone')}}" value="{{old('phone')}}" type="number"
                                    class="form-control {{ $errors->has('phone') ? 'error' : '' }}" name="phone"
                                    id="phone">
 
@@ -101,7 +101,7 @@
                         <div class="rld-single-input">
                                     <textarea placeholder="{{tran('site.content')}}" value="{{old('message')}}"
                                               class="form-control {{ $errors->has('message') ? 'error' : '' }}"
-                                              name="message" id="message"
+                                              name="message" id="message" minlength="20"
                                               rows="4"></textarea>
 
                             @if ($errors->has('message'))

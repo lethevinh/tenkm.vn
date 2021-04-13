@@ -68,7 +68,7 @@ class HomeController extends Controller
         ]);
         Contact::create([
             'name_lb' => $request->name,
-            'title_lb' => $request->name,
+            'title_lb' => 'contact',
             'email_lb' => $request->email,
             'phone_lb' => $request->phone,
             'content_lb' => $request->message,
@@ -76,19 +76,33 @@ class HomeController extends Controller
         return back()->with('success', __('site.create_contact_success'));
     }
 
+    public function doRegister(Request $request)
+    {
+        $this->validate($request, [
+            'register_email' => 'required|email',
+        ]);
+        Contact::create([
+            'email_lb' => $request->register_email,
+            'title_lb' => 'register',
+            'name_lb' => '',
+        ]);
+        return back()->with('register_success', __('site.create_contact_success'));
+    }
+
     public function doSubscribe(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email'
+            'subscribe_name' => 'required',
+            'subscribe_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
         ]);
-        Contact::create([
-            'name_lb' => $request->name,
-            'title_lb' => $request->name,
-            'email_lb' => $request->email,
+       Contact::create([
+            'name_lb' => $request->subscribe_name,
+            'title_lb' => 'subscribe',
+            'phone_lb' => $request->subscribe_phone,
+            'email_lb' => 'null',
             'content_lb' => 'Subscribe',
         ]);
-        return back()->with('success', __('site.create_contact_success'));
+        return back()->with('subscribe_success', __('site.create_contact_success'));
     }
 
     /**

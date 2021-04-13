@@ -20,6 +20,7 @@ Route::get('search.html', 'HomeController@search')->name('home.search');
 Route::get('search-product.html', 'ProductController@search')->name('product.search');
 Route::get('search-project.html', 'ProjectController@search')->name('project.search');
 Route::post('contact.html', 'HomeController@doContact')->name('home.doContact');
+Route::post('register.html', 'HomeController@doRegister')->name('home.doRegister');
 Route::post('subscribe.html', 'HomeController@doSubscribe')->name('home.doSubscribe');
 Route::get('/', 'PageController@home')->name('home.show');
 Route::get('lang/{locale}', 'PageController@lang')->name('lang');
