@@ -2,7 +2,6 @@
 @php $locale = session()->get('locale', 'vi'); @endphp
 <footer class="footer-area @if($locale == 'vi') footer-area style-two @endif">
     <div class="container">
-        @if($locale == 'vi')
         <div class="subscribe-area">
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-9 text-center">
@@ -15,7 +14,6 @@
                 </div>
             </div>
         </div>
-        @endif
         <div class="footer-top">
             <div class="row">
                 <div class="col-sm-4">

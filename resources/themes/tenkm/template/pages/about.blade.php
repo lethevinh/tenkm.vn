@@ -79,7 +79,6 @@
                         <h5 class="sub-title">{{tran('site.about_us')}}</h5>
                         <h2 class="title">{{meta($page, 'about_us_title', 'We Are Dynamic Team And Business Agency')}}</h2>
                         <p>{{meta($page, 'about_us_description', 'We Are Dynamic Team And Business Agency')}}</p>
-                        <a class="btn btn-yellow" href="#">{{tran('site.read_more')}}</a>
                     </div>
                 </div>
             </div>
@@ -104,7 +103,6 @@
                         <div class="details">
                             <h4 class="title"><a href="#">{{meta($page, 'best_service_1_title', 'Marketing Analaysis')}}</a></h4>
                             <p>{{meta($page, 'best_service_1_description', 'Marketing Analaysis')}}</p>
-                            <a class="read-more" href="#">{{tran('site.read_more')}}</a>
                         </div>
                     </div>
                 </div>
@@ -116,7 +114,6 @@
                         <div class="details">
                             <h4 class="title"><a href="#">{{meta($page, 'best_service_2_title', 'Business Consultancy')}}</a></h4>
                             <p>{{meta($page, 'best_service_2_description', 'Marketing Analaysis')}}</p>
-                            <a class="read-more" href="#">{{tran('site.read_more')}}</a>
                         </div>
                     </div>
                 </div>
@@ -128,7 +125,6 @@
                         <div class="details">
                             <h4 class="title"><a href="#">{{meta($page, 'best_service_3_title', 'Business planing')}}</a></h4>
                             <p>{{meta($page, 'best_service_3_description', 'Marketing Analaysis')}}</p>
-                            <a class="read-more" href="#">{{tran('site.read_more')}}</a>
                         </div>
                     </div>
                 </div>

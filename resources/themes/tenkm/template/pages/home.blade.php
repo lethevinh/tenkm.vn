@@ -244,28 +244,7 @@
             <div class="section-title text-center">
                 <h2 class="title">{{tran('site.our_partner')}}</h2>
             </div>
-            <div class="client-slider">
-                <div class="item">
-                    <div class="thumb">
-                        <img src="/images/client/1.png" alt="client">
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="thumb">
-                        <img src="/images/client/2.png" alt="client">
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="thumb">
-                        <img src="/images/client/3.png" alt="client">
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="thumb">
-                        <img src="/images/client/4.png" alt="client">
-                    </div>
-                </div>
-            </div>
+            [partners template="partner"]
         </div>
     </div>
     <!-- client area end -->
