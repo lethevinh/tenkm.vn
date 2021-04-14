@@ -8,17 +8,13 @@ use App\Admin\Repositories\Product;
 use App\Models\Amenity;
 use App\Models\ProductCategory;
 use App\Models\Category;
-use App\Models\ProductTag;
-use Dcat\Admin\Auth\Permission;
 use App\Admin\Forms\Form;
 use Dcat\Admin\Form\NestedForm;
 use Dcat\Admin\Grid;
 use Dcat\Admin\IFrameGrid;
 use Dcat\Admin\Controllers\AdminController;
-use Dcat\Admin\Models\Administrator;
-use Dcat\Admin\Models\Administrator as AdministratorModel;
+use App\Models\Administrator;
 use Dcat\Admin\Show;
-use Dcat\Admin\Support\Helper;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
@@ -75,7 +71,7 @@ class ProductController extends AdminController
                 $filter->panel();
                 $filter->like('title_lb', __('admin.title'))->width(3);
                 $categories = Category::where('type_lb', 'post')->has('posts')->get()->pluck('title_lb', 'id');
-                $admins = AdministratorModel::all()->pluck('name', 'id');
+                $admins = Administrator::all()->pluck('name', 'id');
                 $filter->where('categories', function ($query) {
                     $value = $this->input;
                     $query->whereHas('categories', function (Builder $query) use ($value) {
@@ -264,12 +260,8 @@ class ProductController extends AdminController
                 $form->editor('content_lb', __('site.content'));
             });
             $form->tab(__('site.contact'), function (Form $form) {
-               /* $form->select('editor', __('admin.broker'))
-                    ->options(Administrator::get()->pluck('name', 'id'))
-                    ->customFormat(function ($v) {
-                        if (!$v) return '';
-                        return $v['id'];
-                    });*/
+               $form->select('updated_by', __('admin.broker'))
+                    ->options(Administrator::all()->pluck('name', 'id'));
             });
         if ($form->isCreating()) {
             $form->tab(__('site.comment'), function (Form $form) {

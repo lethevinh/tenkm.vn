@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Models\Product;
 use Dcat\Admin\Admin;
 use Dcat\Admin\Models\Administrator;
 
@@ -17,7 +18,9 @@ class OwnableObserver
             if (is_null($model->created_by)) {
                 $model->created_by = $admin->id;
             }
-            $model->updated_by = $admin->id;
+            if (get_class($model) != Product::class){
+                $model->updated_by = $admin->id;
+            }
         }
     }
 }
