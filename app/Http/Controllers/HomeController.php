@@ -105,6 +105,22 @@ class HomeController extends Controller
         return back()->with('subscribe_success', __('site.create_contact_success'));
     }
 
+    public function doSubscribeProduct(Request $request)
+    {
+        $this->validate($request, [
+            'subscribe_product_name' => 'required',
+            'subscribe_product_message' => 'required|min:20',
+            'subscribe_product_email' => 'required|email',
+        ]);
+        Contact::create([
+            'name_lb' => $request->subscribe_product_name,
+            'title_lb' => 'subscribe_product',
+            'phone_lb' => 'null',
+            'email_lb' => $request->subscribe_product_email,
+            'content_lb' => 'Subscribe Product <br>'. $request->subscribe_product_message . '<br> ' .$request->subscribe_product_link ,
+        ]);
+        return back()->with('subscribe_product_success', __('site.create_contact_success'));
+    }
     /**
      * Show the application dashboard.
      *

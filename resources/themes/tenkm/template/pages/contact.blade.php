@@ -99,10 +99,10 @@
                             @endif
                         </div>
                         <div class="rld-single-input">
-                                    <textarea placeholder="{{tran('site.content')}}" value="{{old('message')}}"
+                                    <textarea placeholder="{{tran('site.content')}}"
                                               class="form-control {{ $errors->has('message') ? 'error' : '' }}"
                                               name="message" id="message" minlength="20"
-                                              rows="4"></textarea>
+                                              rows="4">{{old('message')}}</textarea>
 
                             @if ($errors->has('message'))
                                 <div class="error">

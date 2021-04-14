@@ -58,6 +58,7 @@ class ContactController extends AdminController
                 $filter->scope('type_register', __('Register'))->where('title_lb', 'register');
                 $filter->scope('type_subscribe', __('Subscribe'))->where('title_lb', 'subscribe');
                 $filter->scope('type_contact', __('Contact'))->where('title_lb', 'contact');
+                $filter->scope('type_subscribe_product', __('Subscribe Product'))->where('title_lb', 'subscribe_product');
             });
             $grid->disableCreateButton();
             $grid->showBatchDelete();
@@ -92,6 +93,7 @@ class ContactController extends AdminController
             $show->title_lb(__('admin.title'));
             $show->field('name_lb', __('Name'));
             $show->field('email_lb', __('Email'));
+            $show->field('phone_lb', __('Email'));
             $show->created_at(__('admin.created_at'));
             $show->updated_at(__('admin.updated_at'));
         });
@@ -105,15 +107,16 @@ class ContactController extends AdminController
     public function form()
     {
         $form = new Form(new Contact);
-        $form->text('title_lb', __('admin.title'));
+        $form->text('title_lb', __('Type'))->disable();
         $form->switch('status_sl', __('site.watched'))->customFormat(function ($value) {
             return $value === 'public' ? 1 : 0;
         })->saving(function ($value) {
             return $value === 1 ? 'watched' : 'new' ;
         });
-        $form->text('name_lb', __('admin.name'));
-        $form->email('email_lb', __('admin.email'));
-        $form->textarea('content_lb', __('admin.content'));
+        $form->text('name_lb', __('site.name'));
+        $form->email('email_lb', __('site.email'));
+        $form->text('phone_lb', __('site.phone'));
+        $form->textarea('content_lb', __('admin.content'))->disable();
         return $form;
     }
 

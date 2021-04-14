@@ -151,3 +151,24 @@
         </script>
     </div>
 @endif
+@if(Session::has('subscribe_product_success'))
+    <div class="alert alert-success">
+        <div class="modal fade" id="thankModalSubscribeProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        {{Session::get('subscribe_product_success')}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{tran('site.close')}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function (){
+                $('#thankModalSubscribeProduct').modal();
+            });
+        </script>
+    </div>
+@endif

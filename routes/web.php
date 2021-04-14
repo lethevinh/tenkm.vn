@@ -22,6 +22,7 @@ Route::get('search-project.html', 'ProjectController@search')->name('project.sea
 Route::post('contact.html', 'HomeController@doContact')->name('home.doContact');
 Route::post('register.html', 'HomeController@doRegister')->name('home.doRegister');
 Route::post('subscribe.html', 'HomeController@doSubscribe')->name('home.doSubscribe');
+Route::post('subscribe-product.html', 'HomeController@doSubscribeProduct')->name('home.doSubscribeProduct');
 Route::get('/', 'PageController@home')->name('home.show');
 Route::get('lang/{locale}', 'PageController@lang')->name('lang');
 Route::middleware(['auth:sanctum'])->group(function () {

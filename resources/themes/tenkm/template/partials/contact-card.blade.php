@@ -9,17 +9,41 @@
     </div>
     <div class="contact">
         <h6>{{tran('site.contact')}}</h6>
-        <form action="">
+        <form action="{{ route('home.doSubscribeProduct') }}" method="POST">
+            @csrf
             <div class="rld-single-input">
-                <input type="text" placeholder="{{tran('site.full_name')}}">
+                <input placeholder="{{tran('site.full_name')}}" value="{{old('subscribe_product_name')}}" type="text"
+                       class="form-control {{ $errors->has('subscribe_product_name') ? 'error' : '' }}" name="subscribe_product_name" id="subscribe_product_name">
+                <!-- Error -->
+                @if ($errors->has('subscribe_product_name'))
+                    <div class="error">
+                        {{ $errors->first('subscribe_product_name') }}
+                    </div>
+                @endif
             </div>
             <div class="rld-single-input">
-                <input type="text" placeholder="{{tran('site.email')}}">
+                <input placeholder="{{tran('site.email')}}" value="{{old('subscribe_product_email')}}" type="subscribe_product_email"
+                       class="form-control {{ $errors->has('subscribe_product_email') ? 'error' : '' }}" name="subscribe_product_email"
+                       id="subscribe_product_email">
+                @if ($errors->has('subscribe_product_email'))
+                    <div class="error">
+                        {{ $errors->first('subscribe_product_email') }}
+                    </div>
+                @endif
             </div>
             <div class="rld-single-input">
-                <input type="text" placeholder="{{tran('site.content')}}">
+                 <textarea placeholder="{{tran('site.content')}}"
+                           class="form-control {{ $errors->has('subscribe_product_message') ? 'error' : '' }}"
+                           name="subscribe_product_message" id="subscribe_product_message" minlength="20"
+                           rows="2" style="    background: transparent;">{{old('subscribe_product_message')}}</textarea>
+                @if ($errors->has('subscribe_product_message'))
+                    <div class="error">
+                        {{ $errors->first('subscribe_product_message') }}
+                    </div>
+                @endif
             </div>
-            <button class="btn btn-yellow">{{tran('site.subscribe')}}</button>
+            <input type="hidden" name="subscribe_product_link" value="{{$post->link}}">
+            <button type="submit" class="btn btn-yellow">{{tran('site.subscribe')}}</button>
         </form>
     </div>
     <div class="contact-info">
