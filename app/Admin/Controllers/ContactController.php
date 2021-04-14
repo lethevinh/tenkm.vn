@@ -90,10 +90,11 @@ class ContactController extends AdminController
     {
         return Show::make($id, new Contact(), function (Show $show) {
             $show->id;
-            $show->title_lb(__('admin.title'));
+            $show->title_lb(__('Type'));
             $show->field('name_lb', __('Name'));
             $show->field('email_lb', __('Email'));
-            $show->field('phone_lb', __('Email'));
+            $show->field('phone_lb', __('Phone'));
+            $show->content_lb('Message');
             $show->created_at(__('admin.created_at'));
             $show->updated_at(__('admin.updated_at'));
         });
