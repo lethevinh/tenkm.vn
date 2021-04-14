@@ -19,7 +19,7 @@
 <!-- Your customer chat code -->
 <div class="fb-customerchat"
      attribution=setup_tool
-     page_id="{{option('facebook_page_id', '471465743587728')}}"
+     page_id="471465743587728"
      logged_in_greeting="Xin chào !  Chúng tôi có thể giúp gì cho bạn ?"
      logged_out_greeting="Xin chào !  Chúng tôi có thể giúp gì cho bạn ?">
 </div>
