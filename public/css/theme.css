@@ -39,3 +39,6 @@
 .download-report:hover{color:white}
 .navbar-area{ z-index: 10;}
 form .error{color:red}
+.back-to-top {
+    bottom: 100px;
+}
