@@ -128,10 +128,14 @@ class Map extends BaseMap
                 updateAddress(this, 3)
             })
             let street = $('select.field_address_street_id_');
-            street.change(function() {
-                updateAddress(this, 4)
-            })
             let apartment_number = $('input.field_address_apartment_number_');
+            street.change(function() {
+                if (apartment_number.val()){
+                    updateAddress(apartment_number, 5)
+                }else{
+                    updateAddress(this, 4)
+                }
+            })
             apartment_number.blur(function() {
                 updateAddress(this, 5)
             })
