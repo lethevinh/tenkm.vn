@@ -187,4 +187,5 @@ return [
     'show_form_search' => "Show form search",
     'contact_name' => "Contact Name",
     'contact_phone' => "Contact Phone",
+    'apartment_number' => "Apartment Number",
 ];

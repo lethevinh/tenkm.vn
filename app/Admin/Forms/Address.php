@@ -41,6 +41,10 @@ class Address extends Field
         if ($model->address) {
             $streetField->value($model->address->street_id);
         }
+        $apartmentNumberField = new Field\Text('address.apartment_number', [ __('site.apartment_number')]);
+        if ($model->address) {
+            $apartmentNumberField->value($model->address->apartment_number);
+        }
         $locationField = new Map('address.lat_lb', ['address.lng_lb', __('site.location')]);
         $locationField->value(['lat' => '10.7885136', 'lng' => '106.5982012']);
         if ($model->address) {
@@ -52,8 +56,12 @@ class Address extends Field
         }
         $addressField = new Field\Text('address.address_lb', [__('site.address')]);
         if ($model->address) {
-            $addressField->value('67 Đường Lê Lợi, Bến Nghé, Quận 1, Thành phố Hồ Chí Minh');
-            $addressField->disable();
+            if ($model->address->address_lb){
+                $addressField->value($model->address->address_lb);
+            }else{
+                $addressField->value('67 Đường Lê Lợi, Bến Nghé, Quận 1, Thành phố Hồ Chí Minh');
+            }
+            // $addressField->disable();
         }
         $this->addVariables([
             'provincialField' => $provincialField,
@@ -63,6 +71,7 @@ class Address extends Field
             'locationField' => $locationField,
             'mapIframeField' => $mapIframeField,
             'addressField' => $addressField,
+            'apartmentNumberField' => $apartmentNumberField,
         ]);
         return parent::render();
     }

@@ -131,21 +131,30 @@ class Map extends BaseMap
             street.change(function() {
                 updateAddress(this, 4)
             })
+            let apartment_number = $('input.field_address_apartment_number_');
+            apartment_number.blur(function() {
+                updateAddress(this, 5)
+            })
 
             function updateAddress(domField, level = 1) {
                 let levels = {
                     1: [provincial],
                     2: [district, provincial],
                     3: [ward, district, provincial],
-                    4: [street, ward, district, provincial]
+                    4: [street, ward, district, provincial],
+                    5: ['apartment_number', street, ward, district, provincial]
                 };
                 let address = "";
                 for (let i = 0; i < levels[level].length; i++) {
                     let el = levels[level][i];
                     if (el) {
-                        let data = $(el[0]).select2('data')
-                        if (data && data.length > 0) {
-                            address += data[0].text + ' '
+                        if (el === 'apartment_number' && domField) {
+                            address += $(domField).val() + ' '
+                        }else{
+                            let data = $(el[0]).select2('data')
+                            if (data && data.length > 0) {
+                                address += data[0].text + ' '
+                            }
                         }
                     }
                 }
