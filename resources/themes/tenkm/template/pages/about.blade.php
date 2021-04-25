@@ -103,6 +103,9 @@
                         <div class="details">
                             <h4 class="title"><a href="#">{{meta($page, 'best_service_1_title', 'Marketing Analaysis')}}</a></h4>
                             <p>{{meta($page, 'best_service_1_description', 'Marketing Analaysis')}}</p>
+                            @if(meta($page, 'best_service_1_link'))
+                                <a class="btn" href="{{meta($page, 'best_service_1_link')}}">{{tran('site.read_more')}}</a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -114,6 +117,9 @@
                         <div class="details">
                             <h4 class="title"><a href="#">{{meta($page, 'best_service_2_title', 'Business Consultancy')}}</a></h4>
                             <p>{{meta($page, 'best_service_2_description', 'Marketing Analaysis')}}</p>
+                            @if(meta($page, 'best_service_2_link'))
+                                <a class="btn" href="{{meta($page, 'best_service_2_link')}}">{{tran('site.read_more')}}</a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -125,6 +131,9 @@
                         <div class="details">
                             <h4 class="title"><a href="#">{{meta($page, 'best_service_3_title', 'Business planing')}}</a></h4>
                             <p>{{meta($page, 'best_service_3_description', 'Marketing Analaysis')}}</p>
+                            @if(meta($page, 'best_service_3_link'))
+                                <a class="btn" href="{{meta($page, 'best_service_3_link')}}">{{tran('site.read_more')}}</a>
+                            @endif
                         </div>
                     </div>
                 </div>
