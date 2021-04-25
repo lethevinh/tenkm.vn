@@ -17,7 +17,7 @@
                             <div class="details">
                                 <h4 class="title"><a href="{{$product->link}}">{{$product->title_lb}}</a></h4>
                                 <h5 class="price">{{$product->priceLabel}}</h5>
-                                <span><i class="fa fa-bed"></i> {{$product->bedroom_nb}} | <i class="fa fa-bath"></i> 3 | <i class="fa fa-square-o"></i> {{$product->area_nb}} m²</span>
+                                <span><i class="fa fa-bed"></i> {{$product->bedroom_nb}} | <i class="fa fa-bath"></i> {{$product->bathroom_nb}} | <i class="fa fa-square-o"></i> {{$product->area_nb}} m²</span>
                             </div>
                         </div>
                     </div>
