@@ -149,70 +149,7 @@
                 <h2 class="title">{{tran('site.our_team')}}</h2>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-team">
-                        <div class="thumb">
-                            <img src="/images/team/1.png" alt="team">
-                        </div>
-                        <div class="team-details">
-                            <h4>Louis Rowley</h4>
-                            <span>Co-Founder</span>
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-team">
-                        <div class="thumb">
-                            <img src="/images/team/2.png" alt="team">
-                        </div>
-                        <div class="team-details">
-                            <h4>Riley Moss</h4>
-                            <span>Developer</span>
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-team">
-                        <div class="thumb">
-                            <img src="/images/team/3.png" alt="team">
-                        </div>
-                        <div class="team-details">
-                            <h4>Max Gotch</h4>
-                            <span>Founder</span>
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-team">
-                        <div class="thumb">
-                            <img src="/images/team/4.png" alt="team">
-                        </div>
-                        <div class="team-details">
-                            <h4>Jamie Coal</h4>
-                            <span>Manager</span>
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                {!! do_shortcode('[teams template="team"]') !!}
             </div>
         </div>
     </div>
@@ -224,67 +161,7 @@
             <div class="section-title text-center">
                 <h2 class="title">{{tran('site.what_our_customers_are_saying')}}</h2>
             </div>
-            <div class="client-review-img">
-                <img class="clr-img clr-img1" src="/images/client/5.png" alt="client">
-                <img class="clr-img clr-img2" src="/images/client/6.png" alt="client">
-                <img class="clr-img clr-img3" src="/images/client/7.png" alt="client">
-                <img class="clr-img clr-img4" src="/images/client/8.png" alt="client">
-                <img class="clr-img clr-img5" src="/images/client/9.png" alt="client">
-                <div class="row justify-content-center">
-                    <div class="col-xl-6 col-lg-7 col-md-10">
-                        <div class="client-slider-2 text-center">
-                            <div class="item">
-                                <div class="single-client-review">
-                                    <div class="thumb">
-                                        <img src="/images/client/5.png" alt="client">
-                                    </div>
-                                    <div class="review-details">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fringilla dui nibh, idhendrerit tellus rhoncus sit amet. Suspendisse semper, inrhoncus nulla consectetur,sem erat accumsan lacus, et nulla diam eu turpis. </p>
-                                        <h4>Varun Vachhar</h4>
-                                        <p>Land Owner</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="single-client-review">
-                                    <div class="thumb">
-                                        <img src="/images/client/6.png" alt="client">
-                                    </div>
-                                    <div class="review-details">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fringilla dui nibh, idhendrerit tellus rhoncus sit amet. Suspendisse semper, inrhoncus nulla consectetur,sem erat accumsan lacus, et nulla diam eu turpis. </p>
-                                        <h4>Tayla Elias</h4>
-                                        <p>Land Owner</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="single-client-review">
-                                    <div class="thumb">
-                                        <img src="/images/client/7.png" alt="client">
-                                    </div>
-                                    <div class="review-details">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fringilla dui nibh, idhendrerit tellus rhoncus sit amet. Suspendisse semper, inrhoncus nulla consectetur,sem erat accumsan lacus, et nulla diam eu turpis. </p>
-                                        <h4>Luca Inwood</h4>
-                                        <p>Land Owner</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="single-client-review">
-                                    <div class="thumb">
-                                        <img src="/images/client/8.png" alt="client">
-                                    </div>
-                                    <div class="review-details">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fringilla dui nibh, idhendrerit tellus rhoncus sit amet. Suspendisse semper, inrhoncus nulla consectetur,sem erat accumsan lacus, et nulla diam eu turpis. </p>
-                                        <h4>George Kavel</h4>
-                                        <p>Land Owner</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {!! do_shortcode('[clients template="client"]') !!}
         </div>
     </div>
     <!-- client area end -->

@@ -6,7 +6,7 @@ use App\Admin\Forms\ToolTranslatable;
 use App\Admin\Forms\ToolViewLive;
 use App\Admin\Repositories\Career;
 use Dcat\Admin\Auth\Permission;
-use Dcat\Admin\Form;
+use App\Admin\Forms\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\IFrameGrid;
 use Dcat\Admin\Controllers\AdminController;
