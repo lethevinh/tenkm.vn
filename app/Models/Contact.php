@@ -14,7 +14,7 @@ class Contact extends Model
      * @var array
      */
     protected $fillable = [
-         'title_lb', 'slug_lb', 'content_lb', 'name_lb', 'email_lb', 'status_sl'
+         'title_lb', 'slug_lb', 'content_lb', 'name_lb', 'email_lb', 'status_sl', 'language_lb'
     ];
 
     public $translatable = ['title_lb', 'slug_lb'];

@@ -66,10 +66,12 @@ class HomeController extends Controller
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'message' => 'required|min:20'
         ]);
+        $locale = session()->get('locale', 'en');
         Contact::create([
             'name_lb' => $request->name,
             'title_lb' => 'contact',
             'email_lb' => $request->email,
+            'language_lb' => $locale,
             'phone_lb' => $request->phone,
             'content_lb' => $request->message,
         ]);
@@ -81,9 +83,11 @@ class HomeController extends Controller
         $this->validate($request, [
             'register_email' => 'required|email',
         ]);
+        $locale = session()->get('locale', 'en');
         Contact::create([
             'email_lb' => $request->register_email,
             'title_lb' => 'register',
+            'language_lb' => $locale,
             'name_lb' => '',
         ]);
         return back()->with('register_success', __('site.create_contact_success'));
@@ -95,11 +99,13 @@ class HomeController extends Controller
             'subscribe_name' => 'required',
             'subscribe_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
         ]);
+        $locale = session()->get('locale', 'en');
        Contact::create([
             'name_lb' => $request->subscribe_name,
             'title_lb' => 'subscribe',
             'phone_lb' => $request->subscribe_phone,
             'email_lb' => 'null',
+           'language_lb' => $locale,
             'content_lb' => 'Subscribe',
         ]);
         return back()->with('subscribe_success', __('site.create_contact_success'));
@@ -112,10 +118,12 @@ class HomeController extends Controller
             'subscribe_product_message' => 'required|min:20',
             'subscribe_product_email' => 'required|email',
         ]);
+        $locale = session()->get('locale', 'en');
         Contact::create([
             'name_lb' => $request->subscribe_product_name,
             'title_lb' => 'subscribe_product',
             'phone_lb' => 'null',
+            'language_lb' => $locale,
             'email_lb' => $request->subscribe_product_email,
             'content_lb' => 'Subscribe Product <br>'. $request->subscribe_product_message . '<br> ' .$request->subscribe_product_link ,
         ]);
