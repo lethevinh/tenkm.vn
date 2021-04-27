@@ -32,6 +32,7 @@ class Posts extends AbstractShortcode {
         $posts = $query->with('categories')
             ->where('status_sl', 'public')
             ->locale()
+            ->notReport()
             ->orderBy('updated_at', 'desc')->paginate($limit);
         return $this->render($template, ["posts" => $posts, "template" => $itemTemplate]);
     }

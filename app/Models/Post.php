@@ -134,4 +134,8 @@ class Post extends Model implements Searchable
     {
         return $this;
     }
+    public function scopeNotReport($query)
+    {
+        return $query->whereNull('download_lb');
+    }
 }

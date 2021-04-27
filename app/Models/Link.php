@@ -114,6 +114,7 @@ class Link extends Model
                         break;
                     case 'blog':
                         $data['posts'] = Post::public()->locale()
+                            ->notReport()
                             ->with(['categories', 'tags', 'comments.comments', 'creator'])
                             ->orderBy('created_at', 'desc')
                             ->paginate($offset);
