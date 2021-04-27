@@ -118,6 +118,7 @@ class CareerController extends AdminController
         $form->text('title_lb', __('admin.title'));
         $form->text('slug_lb', __('admin.slug'));
         $form->media('image_lb', __('admin.avatar'))->image();
+        $form->editor('content_lb', __('admin.content'));
         $form->hidden('language_lb')->default(config('site.locale_default'));
         $form->hidden('type_lb', __('admin.avatar'))->value('career');
         $form->datetimeRange('published_at', 'validated_at', __('site.public_time'));
