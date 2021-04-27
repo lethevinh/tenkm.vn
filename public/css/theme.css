@@ -42,3 +42,7 @@ form .error{color:red}
 .back-to-top {
     bottom: 100px;
 }
+.single-feature .thumb {
+    max-height: 190px;
+    height: 190px;
+}
