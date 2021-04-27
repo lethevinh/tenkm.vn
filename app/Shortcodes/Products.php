@@ -42,6 +42,7 @@ class Products extends AbstractShortcode {
         $query = Product::query();
         $query->locale();
         return $query
+            ->where('status_sl', 'public')
             ->orderBy('updated_at', 'desc')
             ->with('categories', 'creator')->paginate($limit);
     }

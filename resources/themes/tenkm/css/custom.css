@@ -130,7 +130,8 @@ footer h1, footer h2, footer h3, footer h4, footer h5, footer h6 {
 .back-to-top {
     bottom: 100px;
 }
-.single-feature .thumb {
+.single-feature .thumb img{
     max-height: 190px;
     height: 190px;
+    width: 100%;
 }

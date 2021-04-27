@@ -18,7 +18,7 @@ class Projects extends AbstractShortcode {
         $query = Project::query();
 
         $limit = 7;
-        $projects = $query->orderBy('updated_at', 'desc')->with('thumbnail', 'categories', 'owner')->paginate($limit);
+        $projects = $query->where('status_sl', 'public')->orderBy('updated_at', 'desc')->with('thumbnail', 'categories', 'owner')->paginate($limit);
         return $this->render($template, ["projects" => $projects]);
     }
 }

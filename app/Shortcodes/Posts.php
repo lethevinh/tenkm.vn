@@ -29,7 +29,7 @@ class Posts extends AbstractShortcode {
         }
         $itemTemplate = $args->getParameter('template');
         $limit = 10;
-        $posts = $query->with('categories')->orderBy('updated_at', 'desc')->paginate($limit);
+        $posts = $query->with('categories')->where('status_sl', 'public')->orderBy('updated_at', 'desc')->paginate($limit);
         return $this->render($template, ["posts" => $posts, "template" => $itemTemplate]);
     }
 }

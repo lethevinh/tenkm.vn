@@ -23,7 +23,7 @@ class Clients extends AbstractShortcode {
         $query = Client::query();
 
         $limit = 7;
-        $projects = $query->orderBy('updated_at', 'desc')->locale()->paginate($limit);
+        $projects = $query->where('status_sl', 'public')->orderBy('updated_at', 'desc')->locale()->paginate($limit);
         return $this->render($template, ["clients" => $projects]);
     }
 }
