@@ -29,7 +29,11 @@ class Posts extends AbstractShortcode {
         }
         $itemTemplate = $args->getParameter('template');
         $limit = 10;
-        $posts = $query->with('categories')->where('status_sl', 'public')->orderBy('updated_at', 'desc')->paginate($limit);
+        $locale = session()->get('locale', 'en');
+        $posts = $query->with('categories')
+            ->where('status_sl', 'public')
+            ->where('language_lb', $locale)
+            ->orderBy('updated_at', 'desc')->paginate($limit);
         return $this->render($template, ["posts" => $posts, "template" => $itemTemplate]);
     }
 }

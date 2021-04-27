@@ -78,7 +78,7 @@ class Model extends Base
 
     public function scopeLocale($query)
     {
-        $locale = session()->get('locale', 'vi');
+        $locale = session()->get('locale', 'en');
         return $query->where('language_lb', $locale);
     }
 
