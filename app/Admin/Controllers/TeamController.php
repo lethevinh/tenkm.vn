@@ -114,7 +114,7 @@ class TeamController extends AdminController
         $form->text('title_lb', __('name'));
         $form->text('description_lb', __('position'));
         $form->text('template_lb', __('facebook'));
-        $form->text('content_lb', __('twitter'));
+        $form->text('content_lb', __('Linkedin'));
         $form->text('download_lb', __('instagram'));
         $form->media('image_lb', __('admin.avatar'))->image();
         $form->hidden('language_lb')->default(config('site.locale_default'));

@@ -7,7 +7,7 @@
         <span>{{$team->description_lb}}</span>
         <ul>
             <li><a href="{{ $team->template_lb }}"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="{{ $team->content_lb }}"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="{{ $team->content_lb }}"><i class="fa fa-linkedin"></i></a></li>
             <li><a href="{{ $team->download_lb }}"><i class="fa fa-instagram"></i></a></li>
         </ul>
     </div>
