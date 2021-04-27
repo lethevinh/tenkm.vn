@@ -19,6 +19,7 @@ class Projects extends AbstractShortcode {
 
         $limit = 7;
         $projects = $query->where('status_sl', 'public')
+            ->locale()
             ->orderBy('updated_at', 'desc')->with('thumbnail', 'categories', 'owner')
             ->paginate($limit);
         return $this->render($template, ["projects" => $projects]);

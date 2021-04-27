@@ -23,6 +23,7 @@ class Teams extends AbstractShortcode {
         $limit = 7;
         $projects = $query
             ->where('status_sl', 'public')
+            ->locale()
             ->orderBy('updated_at', 'desc')
             ->locale()->paginate($limit);
         return $this->render($template, ["teams" => $projects]);
