@@ -36,6 +36,7 @@ class ContactController extends AdminController
                     return $value === 'watched' ? 1 : 0;
                 })
                 ->switch();
+            $grid->language_lb(__('site.lang'))->label();
             $grid->created_at(__('admin.created_at'))->display(function ($at) {
                 return Carbon::make($at)->diffForHumans();
             });
