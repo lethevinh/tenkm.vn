@@ -29,10 +29,9 @@ class Posts extends AbstractShortcode {
         }
         $itemTemplate = $args->getParameter('template');
         $limit = 10;
-        $locale = session()->get('locale', 'en');
         $posts = $query->with('categories')
             ->where('status_sl', 'public')
-            ->where('language_lb', $locale)
+            ->locale()
             ->orderBy('updated_at', 'desc')->paginate($limit);
         return $this->render($template, ["posts" => $posts, "template" => $itemTemplate]);
     }
