@@ -1,6 +1,6 @@
 <!-- footer area start -->
 @php $locale = session()->get('locale', 'vi'); @endphp
-<footer class="footer-area @if($locale == 'vi') footer-area style-two @endif">
+<footer class="footer-area">
     <div class="container">
         <div class="subscribe-area">
             <div class="row justify-content-center">
