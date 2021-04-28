@@ -159,6 +159,7 @@ class ProjectController extends AdminController
         $form
             ->tab(__('site.basic'), function (Form $form) use ($language){
                 $form->text('title_lb', __('admin.title'));
+                $form->text('slug_lb', __('admin.link'));
                 $form->datetimeRange('published_at', 'validated_at', __('site.public_time'));
                 $form->datetime('delivery_time', __('site.delivery_time'));
                 $form->hidden('language_lb')->default(config('site.locale_default'));
