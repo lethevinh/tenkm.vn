@@ -156,6 +156,7 @@ class ProductController extends AdminController
             ->tab(__('site.basic'), function (Form $form) use ($language, $model){
                 $form->text('property_id', __('site.property_id'));
                 $form->text('title_lb', __('admin.title'));
+                $form->text('slug_lb', __('admin.link'));
                 $form->datetimeRange('published_at', 'validated_at', __('site.public_time'));
                 $form->hidden('language_lb')->default(config('site.locale_default'));
                 $form->switch('status_sl', __('site.status'))->customFormat(function ($value) {
