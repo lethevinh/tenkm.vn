@@ -167,6 +167,13 @@ class PostController extends AdminController
         $language = $model && $model->id ? $model->language_lb : config('site.locale_default');
         $form->text('title_lb', __('admin.title'));
         $form->text('slug_lb', __('admin.link'));
+        $form->multipleSelect('categories', __('site.category'))
+            ->options(function () use ($language) {
+                return PostCategory::lang($language)->get()->pluck('title_lb', 'id');
+            })
+            ->customFormat(function ($v) {
+                return array_column($v, 'id');
+            });
         $form->hidden('language_lb')->default(config('site.locale_default'));
         $form->datetimeRange('published_at', 'validated_at', __('site.public_time'));
         $form->switch('status_sl', __('site.status'))
