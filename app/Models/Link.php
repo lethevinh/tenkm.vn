@@ -93,6 +93,7 @@ class Link extends Model
         switch ($this->contentable_type){
             case ProductCategory::class:
                 $data['products'] = $content->products()->public()->locale()
+                ->where('end_of_contract','<>', 0)
                 ->with(['categories', 'tags', 'comments.comments', 'creator'])
                 ->paginate($offset);
                 $data['category'] = $content;
