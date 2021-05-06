@@ -10,9 +10,9 @@
                     <div class="col-xl-6 col-lg-8">
                         <div class="single-leading-feature">
                             <div class="slf-overlay"></div>
-                            <div class="thumb">
-                                <img src="{{resize($product->thumbnail, 665,493)}}" alt="{{$product->title_lb}}">
-                                <a href="#"><i class="fa fa-heart"></i></a>
+                            <div class="thumb" style="height: 395px;">
+                                <img style="width: 100%;height: 100%" src="{{resize($product->thumbnail, 665,493)}}" alt="{{$product->title_lb}}">
+                                <a href="{{$product->link}}"><i class="fa fa-heart"></i></a>
                             </div>
                             <div class="details">
                                 <h4 class="title"><a href="{{$product->link}}">{{$product->title_lb}}</a></h4>
