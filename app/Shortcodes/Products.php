@@ -43,6 +43,7 @@ class Products extends AbstractShortcode {
         $query->locale();
         return $query
             ->where('status_sl', 'public')
+            ->where('end_of_contract','<>', 0)
             ->orderBy('updated_at', 'desc')
             ->with('categories', 'creator')->paginate($limit);
     }
