@@ -83,7 +83,7 @@ return [
     'popular_post' => 'Tin Nổi Bật',
     'view_details' => 'Xem Chi tiết',
     'comments' => 'Bình Luận',
-    'sales_status' => 'Trạng thái',
+    'sales_status' => 'Trạng thái Dự Án',
     'sales_status_open' => 'Mở Bán',
     'sales_status_close' => 'Đã Đóng',
     'sales_status_pending' => 'Đã Đóng',

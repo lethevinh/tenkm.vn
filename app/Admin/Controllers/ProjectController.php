@@ -222,6 +222,12 @@ class ProjectController extends AdminController
                     'unfurnished' => __("site.unfurnished"),
                     'bare_unit' => __("site.bare_unit"),
                 ]);
+                $form->select('sale_status_sl', __('site.sales_status'))->options([
+                    'open' => __("site.sales_status_open"),
+                    'close' => __("site.sales_status_close"),
+                    'coming_soon' => __("site.sales_status_coming_soon"),
+                    'pending' => __("site.sales_status_pending"),
+                ]);
             })
             ->tab(__('site.media'), function (Form $form) {
                 $form->media('image_lb', __('admin.avatar'))->image();
