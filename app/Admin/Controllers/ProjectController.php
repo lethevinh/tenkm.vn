@@ -223,10 +223,10 @@ class ProjectController extends AdminController
                     'bare_unit' => __("site.bare_unit"),
                 ]);
                 $form->select('sale_status_sl', __('site.sales_status'))->options([
-                    'open' => __("site.sales_status_open"),
-                    'close' => __("site.sales_status_close"),
-                    'coming_soon' => __("site.sales_status_coming_soon"),
-                    'pending' => __("site.sales_status_pending"),
+                    'open' => tran("site.sales_status_open"),
+                    'close' => tran("site.sales_status_close"),
+                    'coming_soon' => tran("site.sales_status_coming_soon"),
+                    'pending' => tran("site.sales_status_pending"),
                 ]);
             })
             ->tab(__('site.media'), function (Form $form) {
