@@ -13,6 +13,8 @@
                         <h1 class="page-title">
                             @if(isset($category))
                                 {{$category->title_lb}}
+                            @elseif(isset($link))
+                                {{$link->title_lb}}
                             @elseif(isset($address))
                                 {{$address->address_lb}}
                             @elseif(isset($tag))
@@ -26,6 +28,8 @@
                             <li><a href="{{route('project.index')}}">{{ tran('site.project') }}</a></li>
                             @if(isset($category))
                                 <li> {{$category->title_lb}}</li>
+                            @elseif(isset($link))
+                                <li>{{$link->title_lb}}</li>
                             @elseif(isset($address))
                                 <li>{{$address->address_lb}}</li>
                             @elseif(isset($tag))
