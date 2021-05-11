@@ -180,7 +180,7 @@ class Link extends Model
                             ->has('products')
                             ->withAndWhereHas('products', function($query) use ($locale) {
                                 $query->where('language_lb', $locale)
-                                    ->where('end_of_contract', 1)
+                                    ->where('end_of_contract','<>', 1)
                                     ->where('show_in_location', 1)
                                     ->where('status_sl', 'public');
                             })
