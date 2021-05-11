@@ -164,7 +164,8 @@ class ProductController extends AdminController
                 })->saving(function ($value) {
                     return $value === 1 ? 'public' : 'private';
                 });
-                $form->switch('end_of_contract', __('site.end_of_contract'));
+                $form->switch('end_of_contract', tran('site.end_of_contract'));
+                $form->switch('show_in_location', tran('site.show_in_location'));
                 $form->select('categories', __('site.category'))
                     ->options(function () use ($language) {
                         return ProductCategory::selectOptions($language);

@@ -165,6 +165,7 @@ return [
     'about_us' => 'About Us',
     'best_service' => 'Best Service',
     'end_of_contract' => 'End of contract.',
+    'show_in_location' => 'Show in Location',
     'developer' => 'Developer',
     'total_unit_area' => 'Total Unit',
     'handover_condition' => 'Handover Condition',

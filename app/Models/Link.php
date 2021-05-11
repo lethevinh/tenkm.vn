@@ -178,11 +178,13 @@ class Link extends Model
                         }
                         $data['products'] = $q
                             ->has('products')
-                            ->with(['products'=>function($query) use($locale){
+                            ->withAndWhereHas('products', function($query) use ($locale) {
                                 $query->where('language_lb', $locale)
                                     ->where('end_of_contract', 1)
+                                    ->where('show_in_location', 1)
                                     ->where('status_sl', 'public');
-                            }, 'products.categories', 'products.tags', 'products.comments.comments', 'products.creator'])
+                            })
+                            ->with(['products', 'products.categories', 'products.tags', 'products.comments.comments', 'products.creator'])
                             ->paginate($offset);
                         $data['address'] = $content;
                         break;
