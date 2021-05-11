@@ -127,6 +127,7 @@ class Link extends Model
                 switch ($this->template_lb) {
                     case 'location':
                     case 'location_product':
+                        $offset = 12;
                         $q = $content->wards();
                         if ($content->ward_id){
                             $q = $content->productsInWard()
