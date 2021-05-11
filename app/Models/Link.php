@@ -127,7 +127,6 @@ class Link extends Model
                 switch ($this->template_lb) {
                     case 'location':
                     case 'location_product':
-                        $offset = 14;
                         $q = $content->wards();
                         if ($content->ward_id){
                             $q = $content->productsInWard()
@@ -152,7 +151,6 @@ class Link extends Model
                                     'productsInWard',
                                     'productsInWard.product' => function($query) use($locale){
                                         $query->where('language_lb', $locale)
-                                            ->where('end_of_contract', 1)
                                             ->where('status_sl', 'public');
                                     },
                                     'productsInWard.product.categories' => function($query) use($locale){
@@ -167,7 +165,6 @@ class Link extends Model
                                 })
                                 ->whereHas('productsInWard.product', function ($query) use ($locale) {
                                     $query->where('language_lb', $locale)
-                                        ->where('end_of_contract', 1)
                                         ->where('status_sl', 'public');
                                 })
                                 ->whereNull('street_id')
