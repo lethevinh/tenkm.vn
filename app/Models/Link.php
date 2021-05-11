@@ -151,6 +151,7 @@ class Link extends Model
                                     'productsInWard',
                                     'productsInWard.product' => function($query) use($locale){
                                         $query->where('language_lb', $locale)
+                                            ->where('end_of_contract', 1)
                                             ->where('status_sl', 'public');
                                     },
                                     'productsInWard.product.categories' => function($query) use($locale){
@@ -165,18 +166,22 @@ class Link extends Model
                                 })
                                 ->whereHas('productsInWard.product', function ($query) use ($locale) {
                                     $query->where('language_lb', $locale)
+                                        ->where('end_of_contract', 1)
                                         ->where('status_sl', 'public');
                                 })
                                 ->whereNull('street_id')
                                 ->whereNotNull('ward_id')
-                                ->where('show_in_parrent', 1)->get();
+                                ->where('show_in_parrent', 1)
+                                ->get();
                             //dd($data['children'][0]->link->toArray());
                             $template = 'location_district_product';
                         }
                         $data['products'] = $q
                             ->has('products')
                             ->with(['products'=>function($query) use($locale){
-                                $query->where('language_lb', $locale)->where('status_sl', 'public');
+                                $query->where('language_lb', $locale)
+                                    ->where('end_of_contract', 1)
+                                    ->where('status_sl', 'public');
                             }, 'products.categories', 'products.tags', 'products.comments.comments', 'products.creator'])
                             ->paginate($offset);
                         $data['address'] = $content;
