@@ -37,6 +37,7 @@ class Products extends AbstractShortcode {
             if ($category){
                 return $category->products()
                     ->where('end_of_contract','<>', 1)
+                    ->where('status_sl', 'public')
                     ->locale()->orderBy('updated_at', 'desc')
                     ->with('categories', 'creator')->paginate($limit);
             }

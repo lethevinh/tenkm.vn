@@ -109,6 +109,7 @@ class Link extends Model
                             ->whereHas('categories', function ($query){
                                 $query->whereIn('category_id', [81, 82]);
                             })
+                            ->where('status_sl', 'public')
                             ->orderBy('created_at', 'desc')
                             ->paginate($offset);
                         $data['user'] = Auth::user();
