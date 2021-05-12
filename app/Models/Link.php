@@ -93,7 +93,7 @@ class Link extends Model
         switch ($this->contentable_type){
             case ProductCategory::class:
                 $data['products'] = $content->products()->public()->locale()
-                ->where('end_of_contract','<>', 0)
+                ->where('end_of_contract','<>', 1)
                 ->with(['categories', 'tags', 'comments.comments', 'creator'])
                 ->paginate($offset);
                 $data['category'] = $content;
@@ -133,7 +133,7 @@ class Link extends Model
                                 ->with([
                                     'product' => function ($query) use ($locale) {
                                         $query->where('language_lb', $locale)
-                                            ->where('end_of_contract', 1)
+                                            ->where('end_of_contract','<>', 1)
                                             ->where('status_sl', 'public');
                                     },
                                     'product.categories' => function ($query) use ($locale) {
@@ -151,7 +151,7 @@ class Link extends Model
                                     'productsInWard',
                                     'productsInWard.product' => function($query) use($locale){
                                         $query->where('language_lb', $locale)
-                                            ->where('end_of_contract', 1)
+                                            ->where('end_of_contract','<>', 1)
                                             ->where('status_sl', 'public');
                                     },
                                     'productsInWard.product.categories' => function($query) use($locale){
