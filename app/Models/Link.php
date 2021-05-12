@@ -104,7 +104,7 @@ class Link extends Model
                 switch ($template){
                     case 'products_rented':
                         $data['products'] = Product::public()->locale()
-                            ->where('end_of_contract', 0)
+                            ->where('end_of_contract', 1)
                             ->with(['categories', 'tags', 'comments.comments', 'creator'])
                             ->whereHas('categories', function ($query){
                                 $query->whereIn('category_id', [81, 82]);
