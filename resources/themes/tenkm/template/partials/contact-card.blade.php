@@ -1,10 +1,18 @@
 <div class="widget widget-owner-info mt-lg-0 mt-5">
     <div class="owner-info text-center">
         <div class="thumb">
-            <img src="{{url('storage/'.$post->editor->avatar)}}" alt="img">
+            @if($post->editor->phone)
+                <img src="{{url('storage/'.$post->editor->avatar)}}" alt="img">
+            @else
+                <img src="{{url(option('logo'))}}" alt="img">
+            @endif
         </div>
         <div class="details">
-            <h6>{{$post->editor->name}}</h6>
+            @if($post->editor->name)
+                <h6>{{$post->editor->name}}</h6>
+            @else
+                <h6>TenKM</h6>
+            @endif
         </div>
     </div>
     <div class="contact">
