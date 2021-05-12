@@ -35,7 +35,9 @@ class Products extends AbstractShortcode {
               $category = $translation;
             }
             if ($category){
-                return $category->products()->locale()->orderBy('updated_at', 'desc')
+                return $category->products()
+                    ->where('end_of_contract','<>', 1)
+                    ->locale()->orderBy('updated_at', 'desc')
                     ->with('categories', 'creator')->paginate($limit);
             }
         }
